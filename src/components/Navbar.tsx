@@ -45,7 +45,7 @@ export default function Navbar({ onSearchClick }: { onSearchClick: () => void })
                                     className="object-cover"
                                 />
                             </div>
-                            <div className="hidden sm:block">
+                            <div>
                                 <span className="text-xl font-black text-primary leading-tight block">EV Society™</span>
                             </div>
                         </Link>
