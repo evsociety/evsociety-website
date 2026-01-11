@@ -69,7 +69,7 @@ export default function AboutPage() {
                         <div className="bg-surface rounded-3xl p-8 lg:p-12 relative">
                             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl -mr-16 -mt-16"></div>
                             <blockquote className="relative italic text-2xl text-gray-700 font-medium leading-relaxed">
-                                "Our goal is not just to replace internal combustion engines, but to build a mobility ecosystem that is fundamentally safer, cleaner, and smarter for everyone."
+                                &ldquo;Our goal is not just to replace internal combustion engines, but to build a mobility ecosystem that is fundamentally safer, cleaner, and smarter for everyone.&rdquo;
                             </blockquote>
                             <p className="mt-8 font-bold text-gray-900">— Executive Board, EV Society™</p>
                         </div>

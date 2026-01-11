@@ -87,7 +87,7 @@ export default function SearchModal({ isOpen, onClose }: { isOpen: boolean, onCl
                     </div>
                 ) : query.length > 1 ? (
                     <div className="p-10 text-center text-sm text-gray-500">
-                        No results found for "{query}".
+                        No results found for &ldquo;{query}&rdquo;.
                     </div>
                 ) : (
                     <div className="p-10 text-center text-sm text-gray-400">

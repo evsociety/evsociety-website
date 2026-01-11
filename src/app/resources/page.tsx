@@ -86,7 +86,7 @@ export default function ResourcesPage() {
 
                             <div className="mt-16 p-8 bg-blue-50/50 rounded-2xl border border-blue-100 text-center">
                                 <h4 className="text-lg font-bold text-gray-900 mb-2">Request Custom Research</h4>
-                                <p className="text-sm text-gray-600 mb-6">Can't find the data you're looking for? Our research wing can help.</p>
+                                <p className="text-sm text-gray-600 mb-6">Can&apos;t find the data you&apos;re looking for? Our research wing can help.</p>
                                 <a href="/contact" className="text-primary font-bold text-sm">Submit a Request →</a>
                             </div>
                         </div>
