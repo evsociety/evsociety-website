@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #004a99;
+  --color-primary-hover: #003a7a;
+  --color-accent: #22c55e;
+  --color-surface: #f7f7f8;
+  --color-border-subtle: #e5e7eb;
+  
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+
+  --animate-fade-in: fade-in 0.5s ease-out;
+  --animate-slide-up: slide-up 0.5s ease-out;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #111827;
+  --primary: #004a99;
+}
+
+/* Force light mode styles even if system is dark, as per user requirement "Do NOT use dark mode as default" */
+body {
+  background-color: white;
+  color: #111827;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight text-gray-900;
+  }
+}
+
+.container-custom {
+  @apply max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary/90 transition-colors duration-200;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-200;
+}
+
+.card {
+  @apply bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200;
+}
+
+.badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}

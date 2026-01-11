@@ -1,0 +1,86 @@
+[
+    {
+        "id": "e_001",
+        "title": "EV Battery Safety & Thermal Management Workshop",
+        "date": "2026-02-15",
+        "mode": "Hybrid",
+        "city": "Bengaluru",
+        "summary": "Exploration of the latest AIS standards, thermal runaway prevention, and high-quality cell sourcing.",
+        "registrationUrl": "https://example.com/register-e001",
+        "tags": [
+            "Safety",
+            "Battery",
+            "Workshop"
+        ]
+    },
+    {
+        "id": "e_002",
+        "title": "National EV Policy & Standards Summit",
+        "date": "2026-03-10",
+        "mode": "In-person",
+        "city": "New Delhi",
+        "summary": "Key stakeholders from MoRTH, NITI Aayog, and lead OEMs discuss the roadmap for EV adoption strategies.",
+        "registrationUrl": "https://example.com/register-e002",
+        "tags": [
+            "Policy",
+            "Government",
+            "Summit"
+        ]
+    },
+    {
+        "id": "e_003",
+        "title": "Webinar: Cybersecurity in Connected EVs",
+        "date": "2026-03-25",
+        "mode": "Online",
+        "city": "Online",
+        "summary": "Discussing ISO 21434, OTA security, and data privacy for electric mobility platforms.",
+        "registrationUrl": "https://example.com/register-e003",
+        "tags": [
+            "Cybersecurity",
+            "Software",
+            "Webinar"
+        ]
+    },
+    {
+        "id": "e_004",
+        "title": "EV Charging Infrastructure & Grid Resilience",
+        "date": "2026-04-12",
+        "mode": "In-person",
+        "city": "Hyderabad",
+        "summary": "Technical deep dive into DC fast charging, V2G (Vehicle-to-Grid) technologies, and smart charging.",
+        "registrationUrl": "https://example.com/register-e004",
+        "tags": [
+            "Charging",
+            "Smart Grid",
+            "Technical"
+        ]
+    },
+    {
+        "id": "e_005",
+        "title": "Research Colloquium: Next-Gen Battery Materials",
+        "date": "2026-05-05",
+        "mode": "Online",
+        "city": "Online",
+        "summary": "Academic presentation on Solid-State batteries, Sodium-ion, and LFP optimization for diverse climates.",
+        "registrationUrl": "https://example.com/register-e005",
+        "tags": [
+            "Research",
+            "Materials",
+            "Academia"
+        ]
+    },
+    {
+        "id": "e_006",
+        "title": "Startup Pitch: EV Mobility Innovation",
+        "date": "2026-05-20",
+        "mode": "Hybrid",
+        "city": "Pune",
+        "summary": "A platform for EV startups to showcase their innovations in powertrain, software, and last-mile solutions.",
+        "registrationUrl": "https://example.com/register-e006",
+        "tags": [
+            "Startup",
+            "Innovation",
+            "Pitch"
+        ]
+    }
+]

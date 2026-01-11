@@ -1,0 +1,217 @@
+[
+    {
+        "id": "p_001",
+        "slug": "ev-engineer",
+        "type": "company",
+        "name": "EV.ENGINEER™",
+        "shortDescription": "Advancing high-voltage BMS and power electronics for diverse conditions.",
+        "about": "EV.ENGINEER™ is a leading startup focused on developing robust Battery Management Systems (BMS) that can withstand diverse environmental conditions. Our focus is on thermal management and safety algorithms.",
+        "logo": "/logos/ev-engineer.png",
+        "location": {
+            "city": "Bengaluru",
+            "state": "Karnataka",
+            "country": ""
+        },
+        "domains": [
+            "Battery Systems",
+            "Powertrain",
+            "Safety"
+        ],
+        "tags": [
+            "BMS",
+            "Thermal Management",
+            "High Voltage"
+        ],
+        "links": {
+            "website": "https://example.com/ev-engineer",
+            "linkedin": "https://linkedin.com/company/ev-engineer"
+        }
+    },
+    {
+        "id": "p_002",
+        "slug": "nitk-ev-lab",
+        "type": "institute",
+        "name": "NITK Surathkal - EV Research Center",
+        "shortDescription": "Academic hub for next-gen battery chemistry and charging infrastructure.",
+        "about": "The EV Research Center at NITK Surathkal focuses on fundamental research in solid-state batteries and smart grid integration for EV charging.",
+        "logo": "/logos/nitk.png",
+        "location": {
+            "city": "Surathkal",
+            "state": "Karnataka",
+            "country": ""
+        },
+        "domains": [
+            "Research",
+            "Charging Infrastructure",
+            "Materials"
+        ],
+        "tags": [
+            "Solid State",
+            "Smart Grid",
+            "Academia"
+        ],
+        "links": {
+            "website": "https://example.edu/nitk-ev"
+        }
+    },
+    {
+        "id": "p_003",
+        "slug": "itelematics",
+        "type": "company",
+        "name": "iTelematics Software Private Limited",
+        "shortDescription": "Interoperable charging network management and software.",
+        "about": "iTelematics provides end-to-end software solutions for CPOs (Charge Point Operators) ensuring seamless interoperability and grid-aware charging.",
+        "logo": "/logos/itelematics.png",
+        "location": {
+            "city": "New Delhi",
+            "state": "Delhi",
+            "country": ""
+        },
+        "domains": [
+            "Charging Infrastructure",
+            "Software",
+            "Digital Twins"
+        ],
+        "tags": [
+            "OCPP",
+            "Roaming",
+            "SaaS"
+        ],
+        "links": {
+            "website": "https://itelematics.com"
+        }
+    },
+    {
+        "id": "p_004",
+        "slug": "manjunath",
+        "type": "researcher",
+        "name": "Manjunath",
+        "shortDescription": "Expert in EV Cybersecurity and OTA update safety.",
+        "about": "Manjunath has over 20 years of experience in embedded security and currently consults on cybersecurity standards for electric vehicles.",
+        "logo": "/people/manjunath.png",
+        "location": {
+            "city": "Bangalore",
+            "state": "Karnataka",
+            "country": ""
+        },
+        "domains": [
+            "Cybersecurity",
+            "Software",
+            "Safety"
+        ],
+        "tags": [
+            "OTA",
+            "ISO 21434",
+            "Security"
+        ],
+        "links": {
+            "linkedin": "https://linkedin.com/in/manjunath"
+        }
+    },
+    {
+        "id": "p_005",
+        "slug": "universol-enterprises",
+        "type": "company",
+        "name": "Universol Enterprises",
+        "shortDescription": "Light electric vehicle manufacturing and design.",
+        "about": "Universol Enterprises specializes in 2-wheeler and 3-wheeler EVs designed for last-mile delivery and urban commuting.",
+        "logo": "/logos/universol.png",
+        "location": {
+            "city": "Bangalore",
+            "state": "Karnataka",
+            "country": ""
+        },
+        "domains": [
+            "Manufacturing",
+            "Urban Mobility"
+        ],
+        "tags": [
+            "2-Wheeler",
+            "3-Wheeler",
+            "Last Mile"
+        ],
+        "links": {
+            "website": "https://example.com/universol"
+        }
+    },
+    {
+        "id": "p_006",
+        "slug": "snm-polytechnic",
+        "type": "institute",
+        "name": "SNM Polytechnic, Moodbidri",
+        "shortDescription": "Technical education hub for EV skill development and vocational training.",
+        "about": "SNM Polytechnic is committed to human resource development in the EV sector, offering specialized diplomas and hands-on laboratory experience for the next generation of technicians.",
+        "logo": "/logos/snm.png",
+        "location": {
+            "city": "Moodbidri",
+            "state": "Karnataka",
+            "country": ""
+        },
+        "domains": [
+            "Education",
+            "Manufacturing",
+            "Skill Development"
+        ],
+        "tags": [
+            "Diploma",
+            "Vocational",
+            "Testing"
+        ],
+        "links": {
+            "website": "https://snmpmoodbidri.edu.in"
+        }
+    },
+    {
+        "id": "p_007",
+        "slug": "car-software-systems",
+        "type": "company",
+        "name": "CAR Software Systems",
+        "shortDescription": "Specialized testing and certification for EV safety.",
+        "about": "CAR Software Systems provides independent testing services for AIS-156 and AIS-038 standards, helping OEMs achieve faster compliance.",
+        "logo": "/logos/car-software.png",
+        "location": {
+            "city": "Bangalore",
+            "state": "Karnataka",
+            "country": ""
+        },
+        "domains": [
+            "Safety",
+            "Testing & Certification"
+        ],
+        "tags": [
+            "AIS-156",
+            "Compliance",
+            "Battery Safety"
+        ],
+        "links": {
+            "website": "https://example.com/car-software"
+        }
+    },
+    {
+        "id": "p_008",
+        "slug": "muddu-krishna",
+        "type": "researcher",
+        "name": "Muddu Krishna",
+        "shortDescription": "Researcher in advanced powertrain optimization using AI.",
+        "about": "Muddu Krishna leads investigations into machine learning applications for real-time powertrain efficiency and predictive maintenance in EVs.",
+        "logo": "/people/muddu-krishna.png",
+        "location": {
+            "city": "Bangalore",
+            "state": "Karnataka",
+            "country": ""
+        },
+        "domains": [
+            "Powertrain",
+            "AI",
+            "Digital Twins"
+        ],
+        "tags": [
+            "AI",
+            "Predictive maintenance",
+            "Efficiency"
+        ],
+        "links": {
+            "linkedin": "https://linkedin.com/in/muddukrishna"
+        }
+    }
+]

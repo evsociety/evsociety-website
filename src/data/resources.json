@@ -1,0 +1,68 @@
+[
+    {
+        "id": "r_001",
+        "title": "EV Battery Safety Playbook (v1)",
+        "type": "Guideline",
+        "summary": "Practical best practices for pack design, testing, and incident response.",
+        "url": "https://example.com/resource/playbook-v1.pdf",
+        "tags": [
+            "Battery",
+            "Safety"
+        ]
+    },
+    {
+        "id": "r_002",
+        "title": "Whitepaper: The Future of Smart Charging in",
+        "type": "Whitepaper",
+        "summary": "Analyzing the impact of large-scale EV adoption on the national power grid and potential solutions.",
+        "url": "https://example.com/resource/smart-charging-wp.pdf",
+        "tags": [
+            "Charging",
+            "Policy"
+        ]
+    },
+    {
+        "id": "r_003",
+        "title": "EV Cybersecurity Toolkit for Startups",
+        "type": "Toolkit",
+        "summary": "A starting guide for ensuring basic security measures in EV software and OTA stacks.",
+        "url": "https://example.com/resource/cyber-toolkit.pdf",
+        "tags": [
+            "Cybersecurity",
+            "Startup"
+        ]
+    },
+    {
+        "id": "r_004",
+        "title": "Guideline: AIS-156 Amendment 3 Implementation",
+        "type": "Guideline",
+        "summary": "Detailed technical explanation of the latest battery safety standards for L-category vehicles.",
+        "url": "https://example.com/resource/ais156-guide.pdf",
+        "tags": [
+            "Standards",
+            "Compliance"
+        ]
+    },
+    {
+        "id": "r_005",
+        "title": "Training Module: EV Technician Excellence",
+        "type": "Toolkit",
+        "summary": "Curriculum and assessment framework for EV maintenance and repair training.",
+        "url": "https://example.com/resource/tech-training.pdf",
+        "tags": [
+            "Skill Development",
+            "Training"
+        ]
+    },
+    {
+        "id": "r_006",
+        "title": "Whitepaper: Battery Circular Economy & Recycling",
+        "type": "Whitepaper",
+        "summary": "Techno-economic analysis of battery recycling plants and materials recovery in.",
+        "url": "https://example.com/resource/recycling-wp.pdf",
+        "tags": [
+            "Sustainability",
+            "Materials"
+        ]
+    }
+]
