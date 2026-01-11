@@ -1,5 +1,14 @@
+import type { Metadata } from 'next';
 import PageHeader from '@/components/PageHeader';
 import { Target, ShieldCheck, Zap, Users } from 'lucide-react';
+
+export const metadata: Metadata = {
+    title: 'Vision, Mission & Objectives',
+    description: 'Discover the EV Society™ roadmap for a safe and sustainable transition to electric mobility through innovation, skill development, and policy engagement.',
+    alternates: {
+        canonical: '/vision-mission',
+    },
+};
 
 const objectives = [
     "Promote electric mobility awareness across all strata of society",

@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import PageHeader from '@/components/PageHeader';
 import {
     Zap,
@@ -11,6 +12,14 @@ import {
     Car,
     Users
 } from 'lucide-react';
+
+export const metadata: Metadata = {
+    title: 'Focus Areas',
+    description: 'Explore the EV Society™ focus areas including electric vehicles, battery technology, charging infrastructure, EV safety, standards, and sustainability.',
+    alternates: {
+        canonical: '/domains',
+    },
+};
 
 const focusAreas = [
     {

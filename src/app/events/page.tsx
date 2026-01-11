@@ -1,6 +1,15 @@
+import type { Metadata } from 'next';
 import PageHeader from '@/components/PageHeader';
 import { Calendar, MapPin, Search as SearchIcon, Filter } from 'lucide-react';
 import { getEvents } from '@/utils/data';
+
+export const metadata: Metadata = {
+    title: 'Events',
+    description: 'Participate in EV Society™ roundtables, workshops, technical summits, and webinars focused on electric mobility innovation and safety.',
+    alternates: {
+        canonical: '/events',
+    },
+};
 
 export default function EventsPage() {
     const events = getEvents();

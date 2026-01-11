@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getPartnerBySlug, getPartners } from '@/utils/data';
 import { Globe, Linkedin, MapPin, Building2, School, UserCircle2, ArrowLeft, ArrowRight, ShieldCheck, Mail } from 'lucide-react';
@@ -10,6 +11,31 @@ export async function generateStaticParams() {
     return partners.map((partner) => ({
         slug: partner.slug,
     }));
+}
+
+// Dynamic metadata generation for each partner
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params;
+    const partner = getPartnerBySlug(slug);
+
+    if (!partner) {
+        return {
+            title: 'Partner Not Found',
+        };
+    }
+
+    return {
+        title: partner.name,
+        description: partner.shortDescription,
+        alternates: {
+            canonical: `/partners/${partner.slug}`,
+        },
+        openGraph: {
+            title: `${partner.name} | EV Society™`,
+            description: partner.shortDescription,
+            type: 'profile',
+        },
+    };
 }
 
 export default async function PartnerDetailPage({ params }: { params: Promise<{ slug: string }> }) {

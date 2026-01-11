@@ -1,6 +1,15 @@
+import type { Metadata } from 'next';
 import PageHeader from '@/components/PageHeader';
 import Link from 'next/link';
 import { Check, User, Users, GraduationCap, Building2, Landmark, ArrowRight } from 'lucide-react';
+
+export const metadata: Metadata = {
+    title: 'Membership',
+    description: 'Join EV Society™ as a student, professional, researcher, corporate, or institutional member and shape the future of electric mobility.',
+    alternates: {
+        canonical: '/join',
+    },
+};
 
 const tiers = [
     {

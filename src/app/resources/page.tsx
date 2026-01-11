@@ -1,6 +1,15 @@
+import type { Metadata } from 'next';
 import PageHeader from '@/components/PageHeader';
 import { FileText, Download, ExternalLink, Search, Filter } from 'lucide-react';
 import { getResources } from '@/utils/data';
+
+export const metadata: Metadata = {
+    title: 'Resources',
+    description: 'Access EV Society™ safety playbooks, technical whitepapers, standardized guidelines, and knowledge resources for the electric mobility ecosystem.',
+    alternates: {
+        canonical: '/resources',
+    },
+};
 
 export default function ResourcesPage() {
     const resources = getResources();

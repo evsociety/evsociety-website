@@ -1,5 +1,14 @@
+import type { Metadata } from 'next';
 import PageHeader from '@/components/PageHeader';
 import { Zap, Gavel, GraduationCap, Building2, Globe, Users2 } from 'lucide-react';
+
+export const metadata: Metadata = {
+    title: 'Programs',
+    description: 'Comprehensive EV Society™ programs for technology innovation, policy advocacy, skill development, industry collaboration, sustainability, and public awareness.',
+    alternates: {
+        canonical: '/programs',
+    },
+};
 
 const programs = [
     {

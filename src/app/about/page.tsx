@@ -1,5 +1,14 @@
+import type { Metadata } from 'next';
 import PageHeader from '@/components/PageHeader';
 import { Target, Users2, ShieldCheck, Globe } from 'lucide-react';
+
+export const metadata: Metadata = {
+    title: 'About EV Society™',
+    description: 'EV Society™ is a non-profit, charitable educational and technical organization dedicated to strengthening the understanding and responsible adoption of electric vehicle technology.',
+    alternates: {
+        canonical: '/about',
+    },
+};
 
 const values = [
     {

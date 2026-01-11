@@ -1,4 +1,13 @@
+import type { Metadata } from 'next';
 import PageHeader from '@/components/PageHeader';
+
+export const metadata: Metadata = {
+    title: 'Legal & Policies',
+    description: 'EV Society™ privacy policy, terms of service, logo usage guidelines, and non-endorsement policy for data usage and ecosystem participation.',
+    alternates: {
+        canonical: '/policies',
+    },
+};
 
 export default function PoliciesPage() {
     const sections = [
