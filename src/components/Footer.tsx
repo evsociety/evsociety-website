@@ -89,7 +89,10 @@ export default function Footer() {
                         <Link href="/policies" className="text-gray-500 hover:text-gray-900 transition-colors">Terms of Service</Link>
                     </div>
                 </div>
-                <div className="mt-4 text-center">
+                <div className="mt-4 text-center space-y-2">
+                    <p className="text-xs text-gray-500">
+                        EV Society™ is an independent, non-profit professional organisation and is not a government body.
+                    </p>
                     <p className="text-[10px] text-gray-400 uppercase tracking-wider">
                         Logos are displayed for informational purposes only. No endorsement is implied.
                     </p>
