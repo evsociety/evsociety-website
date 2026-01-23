@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import PageHeader from '@/components/PageHeader';
 import { Calendar, MapPin, Search as SearchIcon, Filter } from 'lucide-react';
 import { getEvents } from '@/utils/data';
+import WednesdayPlans from '@/components/WednesdayPlans';
 
 export const metadata: Metadata = {
     title: 'Events',
@@ -89,6 +90,8 @@ export default function EventsPage() {
                     </div>
                 </div>
             </section>
+
+            <WednesdayPlans />
 
             <section className="py-24 bg-surface/30">
                 <div className="container-custom text-center">

@@ -1,0 +1,37 @@
+{
+    "year": 2026,
+    "months": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+    ],
+    "meetingTypes": [
+        "Webinar",
+        "Skills Development",
+        "EV Workshop Demo",
+        "Paper Presentation"
+    ],
+    "fixedMeetingType": "EV Society Member’s Meeting",
+    "statusOptions": [
+        "Planned",
+        "Confirmed",
+        "Completed",
+        "Cancelled"
+    ],
+    "timeSlots": [
+        "7:00 PM – 7:30 PM",
+        "7:30 PM – 8:00 PM",
+        "8:00 PM – 8:30 PM",
+        "8:30 PM – 9:00 PM",
+        "9:00 PM – 9:30 PM"
+    ]
+}
