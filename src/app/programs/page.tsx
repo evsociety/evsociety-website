@@ -76,6 +76,57 @@ export default function ProgramsPage() {
                 breadcrumb="Programs"
             />
 
+            {/* Featured Program */}
+            <section className="py-12 bg-gray-50 border-b border-gray-100">
+                <div className="container-custom">
+                    <div className="bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow relative">
+                        <div className="absolute top-0 right-0 bg-primary/10 text-primary px-4 py-1.5 rounded-bl-xl font-bold text-xs uppercase tracking-wider">
+                            Flagship Certification
+                        </div>
+                        <div className="grid md:grid-cols-12 gap-0">
+                            <div className="md:col-span-5 bg-gray-900 text-white p-10 flex flex-col justify-center">
+                                <div className="mb-6">
+                                    <span className="inline-block py-1 px-3 rounded-full bg-blue-900/50 text-blue-300 text-xs font-semibold border border-blue-800 mb-4">
+                                        Executive Program
+                                    </span>
+                                    <h2 className="text-3xl font-black mb-4">EVTO™</h2>
+                                    <p className="text-gray-300 font-light text-lg">
+                                        Certified EV Technology Officer
+                                    </p>
+                                </div>
+                                <p className="text-gray-400 mb-8 leading-relaxed">
+                                    The gold standard for engineering leaders, architects, and founders mastering the end-to-end EV ecosystem.
+                                </p>
+                                <a
+                                    href="/programs/evto"
+                                    className="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-900 font-bold rounded-full hover:bg-gray-100 transition-colors w-fit"
+                                >
+                                    View Program Details
+                                </a>
+                            </div>
+                            <div className="md:col-span-7 p-10 flex flex-col justify-center">
+                                <h3 className="text-xl font-bold text-gray-900 mb-4">Program Highlights</h3>
+                                <div className="grid sm:grid-cols-2 gap-x-8 gap-y-4">
+                                    {[
+                                        'Architectural Design & Green Leadership',
+                                        'EV System Ownership & Safety',
+                                        'AI, Digital Twins & Connected Tech',
+                                        'Battery Chemistry & Management',
+                                        'CTO-Grade Systems Engineering',
+                                        'Business Strategy & Market Dominance'
+                                    ].map((item, i) => (
+                                        <div key={i} className="flex items-start">
+                                            <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0 mr-3" />
+                                            <span className="text-gray-600 text-sm">{item}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section className="py-24">
                 <div className="container-custom">
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

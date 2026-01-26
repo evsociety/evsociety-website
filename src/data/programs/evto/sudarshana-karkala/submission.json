@@ -1,0 +1,262 @@
+{
+    "candidateId": "sudarshana-karkala",
+    "programId": "evto",
+    "overallStatus": "in-review",
+    "certificateIssued": false,
+    "lastUpdated": "2026-01-26",
+    "pillars": [
+        {
+            "pillarId": "pillar0",
+            "title": "Pillar 0 – Architectural Design & Green Leadership",
+            "documents": [
+                {
+                    "docId": "p0-01",
+                    "name": "Architectural Design Portfolio / Case Studies",
+                    "description": "Evidence of architecture decisions, system designs, ADRs, diagrams.",
+                    "required": true,
+                    "status": "submitted",
+                    "submittedOn": "2026-01-26",
+                    "reviewNotes": "",
+                    "fileUrl": ""
+                },
+                {
+                    "docId": "p0-02",
+                    "name": "Green Leadership Statement",
+                    "description": "Sustainability leadership examples, measurable outcomes.",
+                    "required": true,
+                    "status": "waiting-for-input",
+                    "submittedOn": "",
+                    "reviewNotes": "Please add 2 case studies with metrics.",
+                    "fileUrl": ""
+                }
+            ]
+        },
+        {
+            "pillarId": "pillar1",
+            "title": "Pillar 1 – EV System Ownership",
+            "documents": [
+                {
+                    "docId": "p1-01",
+                    "name": "EV System Comparison Matrix",
+                    "description": "Artifact required by Pillar 1",
+                    "required": true,
+                    "status": "submitted",
+                    "submittedOn": "2026-01-20",
+                    "reviewNotes": "",
+                    "fileUrl": ""
+                },
+                {
+                    "docId": "p1-02",
+                    "name": "EV Architecture Review Document",
+                    "description": "Artifact required by Pillar 1",
+                    "required": true,
+                    "status": "in-review",
+                    "submittedOn": "2026-01-22",
+                    "reviewNotes": "",
+                    "fileUrl": ""
+                },
+                {
+                    "docId": "p1-03",
+                    "name": "Safety Risk Register",
+                    "description": "Artifact required by Pillar 1",
+                    "required": true,
+                    "status": "draft",
+                    "submittedOn": "",
+                    "reviewNotes": "",
+                    "fileUrl": ""
+                }
+            ]
+        },
+        {
+            "pillarId": "pillar2",
+            "title": "Pillar 2 – AI & Digital Intelligence",
+            "documents": [
+                {
+                    "docId": "p2-01",
+                    "name": "AI vs Rule-based Decision Map",
+                    "description": "Decisioning map for EV operations",
+                    "required": true,
+                    "status": "submitted",
+                    "submittedOn": "2026-01-18",
+                    "reviewNotes": "",
+                    "fileUrl": ""
+                },
+                {
+                    "docId": "p2-02",
+                    "name": "AI System Architecture for EV Ops",
+                    "description": "High-level architecture + modules",
+                    "required": true,
+                    "status": "in-review",
+                    "submittedOn": "2026-01-23",
+                    "reviewNotes": "",
+                    "fileUrl": ""
+                },
+                {
+                    "docId": "p2-03",
+                    "name": "RAG + Agent Flow Design (No coding)",
+                    "description": "Flow diagrams + prompts",
+                    "required": true,
+                    "status": "waiting-for-input",
+                    "submittedOn": "",
+                    "reviewNotes": "",
+                    "fileUrl": ""
+                }
+            ]
+        },
+        {
+            "pillarId": "pillar3",
+            "title": "Pillar 3 – EV Battery",
+            "documents": [
+                {
+                    "docId": "p3-01",
+                    "name": "Battery Safety Decision Checklist",
+                    "description": "Checklist for thermal runaway prevention",
+                    "required": true,
+                    "status": "approved",
+                    "submittedOn": "2026-01-10",
+                    "reviewNotes": "Approved",
+                    "fileUrl": ""
+                },
+                {
+                    "docId": "p3-02",
+                    "name": "Thermal Runaway Prevention Framework",
+                    "description": "Framework + mitigation plan",
+                    "required": true,
+                    "status": "submitted",
+                    "submittedOn": "2026-01-15",
+                    "reviewNotes": "",
+                    "fileUrl": ""
+                },
+                {
+                    "docId": "p3-03",
+                    "name": "Battery Aadhaar Lifecycle Map",
+                    "description": "Lifecycle + governance",
+                    "required": true,
+                    "status": "need-more-details",
+                    "submittedOn": "2026-01-19",
+                    "reviewNotes": "Add data governance + QR mapping details",
+                    "fileUrl": ""
+                }
+            ]
+        },
+        {
+            "pillarId": "pillar4",
+            "title": "Pillar 4 – CTO Grade System",
+            "documents": [
+                {
+                    "docId": "p4-01",
+                    "name": "End-to-End EV Platform Architecture",
+                    "description": "Modular platform architecture",
+                    "required": true,
+                    "status": "submitted",
+                    "submittedOn": "2026-01-21",
+                    "reviewNotes": "",
+                    "fileUrl": ""
+                },
+                {
+                    "docId": "p4-02",
+                    "name": "Architecture Decision Records (ADR)",
+                    "description": "Key decisions + tradeoffs",
+                    "required": true,
+                    "status": "need-more-details",
+                    "submittedOn": "2026-01-24",
+                    "reviewNotes": "Add build vs buy vs partner analysis",
+                    "fileUrl": ""
+                },
+                {
+                    "docId": "p4-03",
+                    "name": "Risk & Compliance Mapping",
+                    "description": "Compliance and security mapping",
+                    "required": true,
+                    "status": "not-started",
+                    "submittedOn": "",
+                    "reviewNotes": "",
+                    "fileUrl": ""
+                }
+            ]
+        },
+        {
+            "pillarId": "pillar5",
+            "title": "Pillar 5 – Business Magnate",
+            "documents": [
+                {
+                    "docId": "p5-01",
+                    "name": "EV Business Model Canvas",
+                    "description": "BMC for EV platform",
+                    "required": true,
+                    "status": "submitted",
+                    "submittedOn": "2026-01-17",
+                    "reviewNotes": "",
+                    "fileUrl": ""
+                },
+                {
+                    "docId": "p5-02",
+                    "name": "Platform Dominance Strategy",
+                    "description": "Go-to-market + moat strategy",
+                    "required": true,
+                    "status": "draft",
+                    "submittedOn": "",
+                    "reviewNotes": "",
+                    "fileUrl": ""
+                },
+                {
+                    "docId": "p5-03",
+                    "name": "10-Year Technology Roadmap",
+                    "description": "Roadmap with milestones",
+                    "required": true,
+                    "status": "not-started",
+                    "submittedOn": "",
+                    "reviewNotes": "",
+                    "fileUrl": ""
+                }
+            ]
+        },
+        {
+            "pillarId": "capstone",
+            "title": "Capstone (Mandatory – Certification Gate)",
+            "capstoneTopicSelected": "AI-driven EV Battery Safety System",
+            "documents": [
+                {
+                    "docId": "c-01",
+                    "name": "Capstone Proposal",
+                    "description": "Problem statement + scope",
+                    "required": true,
+                    "status": "submitted",
+                    "submittedOn": "2026-01-25",
+                    "reviewNotes": "",
+                    "fileUrl": ""
+                },
+                {
+                    "docId": "c-02",
+                    "name": "System Architecture + Diagrams",
+                    "description": "End-to-end architecture",
+                    "required": true,
+                    "status": "in-review",
+                    "submittedOn": "2026-01-26",
+                    "reviewNotes": "",
+                    "fileUrl": ""
+                },
+                {
+                    "docId": "c-03",
+                    "name": "AI Integration Plan",
+                    "description": "Model, data, evaluation",
+                    "required": true,
+                    "status": "waiting-for-input",
+                    "submittedOn": "",
+                    "reviewNotes": "Add offline-first + privacy + RAG approach",
+                    "fileUrl": ""
+                },
+                {
+                    "docId": "c-04",
+                    "name": "Business & Scaling Roadmap",
+                    "description": "Commercialization plan",
+                    "required": true,
+                    "status": "draft",
+                    "submittedOn": "",
+                    "reviewNotes": "",
+                    "fileUrl": ""
+                }
+            ]
+        }
+    ]
+}
