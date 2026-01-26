@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -9,6 +10,30 @@ import { computeProgress } from '../../../../../utils/evtoStatus';
 import { FileText, Linkedin, MapPin, Calendar, Shield, AlertTriangle, CheckCircle } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
+
+export async function generateMetadata({ params }: { params: Promise<{ candidateId: string }> }): Promise<Metadata> {
+    const { candidateId } = await params;
+    const candidate = await getCandidate(candidateId);
+
+    if (!candidate) {
+        return {
+            title: 'Candidate Not Found | EV Society™',
+            description: 'The requested candidate profile could not be found.',
+        };
+    }
+
+    // Title: EVTO™ Program | EV Society™ (as requested)
+    // Description: Candidate Name - Designation
+    return {
+        title: 'EVTO™ Program | EV Society™',
+        description: `${candidate.fullName} - ${candidate.designation}`,
+        openGraph: {
+            title: 'EVTO™ Program | EV Society™',
+            description: `${candidate.fullName} - ${candidate.designation}`,
+            images: candidate.profileImageUrl ? [candidate.profileImageUrl] : [],
+        },
+    };
+}
 
 export default async function CandidateProfilePage({ params }: { params: Promise<{ candidateId: string }> }) {
     // Unwrap params
