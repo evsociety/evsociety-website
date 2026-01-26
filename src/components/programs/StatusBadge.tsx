@@ -1,10 +1,5 @@
 import { Status, Document } from '../../types/evto';
 import { getStatusColor, getStatusLabel, computeOverallStatus } from '../../utils/evtoStatus';
-import { cn } from '../../utils/cn'; // Assuming utils/cn exists, otherwise I'll use template literals or install clsx/tailwind-merge. 
-// Checking codebase, if utils/cn doesn't exist, I'll fallback to simple string concatenation or create it.
-// I'll assume for now I should just use template literals to be safe as I haven't checked for 'cn'.
-
-// Actually, I'll check for 'cn' or similar in a moment. For now, I'll stick to standard template literals.
 
 interface StatusBadgeProps {
     status?: Status;
