@@ -22,13 +22,15 @@ export async function generateMetadata({ params }: { params: Promise<{ candidate
         };
     }
 
-    // Title: EVTO™ Program | EV Society™ (as requested)
+    // Title: EV Society™ | EVTO™ Program (as requested)
     // Description: Candidate Name - Designation
     return {
-        title: 'EVTO™ Program | EV Society™',
+        title: {
+            absolute: 'EV Society™ | EVTO™ Program'
+        },
         description: `${candidate.fullName} - ${candidate.designation}`,
         openGraph: {
-            title: 'EVTO™ Program | EV Society™',
+            title: 'EV Society™ | EVTO™ Program',
             description: `${candidate.fullName} - ${candidate.designation}`,
             images: candidate.profileImageUrl ? [candidate.profileImageUrl] : [],
         },
