@@ -39,8 +39,8 @@ export default async function ProgramPage() {
                         <span className="inline-block py-1 px-3 rounded-full bg-blue-900/50 text-blue-300 text-sm font-semibold border border-blue-800 mb-6">
                             Flagship Certification
                         </span>
-                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight mb-6 leading-tight text-white">
-                            {EVTO_PROGRAM_CONFIG.title}
+                        <h1 className="text-2xl md:text-3xl lg:text-4xl font-black tracking-tight mb-6 leading-tight text-white">
+                            Certified EV Technology Officer <span className="font-normal">(EVTO™)</span>
                         </h1>
                         <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed font-light">
                             {EVTO_PROGRAM_CONFIG.tagline}
@@ -71,7 +71,7 @@ export default async function ProgramPage() {
                 <div className="container-custom">
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         <div>
-                            <SectionHeader title="Why EVTO?" subtitle="Shaping the Future CTOs of Electric Mobility" />
+                            <SectionHeader title="Why EVTO™?" subtitle="Shaping the Future CTOs of Electric Mobility" />
                             <p className="text-gray-600 mb-6 text-lg leading-relaxed">
                                 {EVTO_PROGRAM_CONFIG.description}
                             </p>
@@ -177,7 +177,7 @@ export default async function ProgramPage() {
             {/* Pillars Grid */}
             <section className="py-16">
                 <div className="container-custom">
-                    <SectionHeader title="Program Structure" subtitle="6 Pillars of Excellence" className="text-center max-w-2xl mx-auto" />
+                    <SectionHeader title="Program Structure" subtitle="5 Pillars of Excellence" className="text-center max-w-2xl mx-auto" />
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
                         {EVTO_PROGRAM_CONFIG.pillars.map((pillar, idx) => (
                             <PillarCard key={pillar.id} pillar={pillar} index={idx} />

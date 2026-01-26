@@ -21,7 +21,7 @@ export default async function CandidatesPage() {
                             <li>
                                 <div className="flex items-center">
                                     <span className="mx-2 text-gray-400">/</span>
-                                    <Link href="/programs/evto" className="hover:text-primary">EVTO Program</Link>
+                                    <Link href="/programs/evto" className="hover:text-primary">EVTO™ Program</Link>
                                 </div>
                             </li>
                             <li aria-current="page">
@@ -32,7 +32,7 @@ export default async function CandidatesPage() {
                             </li>
                         </ol>
                     </nav>
-                    <SectionHeader title="EVTO Candidates" subtitle="Engineering Leaders Enrolled in Certification" />
+                    <SectionHeader title="EVTO™ Candidates" subtitle="Engineering Leaders Enrolled in Certification" />
                 </div>
 
                 <CandidatesList candidates={allCandidates} submissions={allSubmissions} />

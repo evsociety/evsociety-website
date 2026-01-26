@@ -20,7 +20,7 @@ export const EVTO_PROGRAM_CONFIG: ProgramConfig = {
     pillars: [
         {
             id: "pillar0",
-            title: "Pillar 0 – Architectural Design & Green Leadership",
+            title: "Eligibility & Prerequisites",
             themeQuestion: "How do you design a system that is sustainable, scalable, and commercially viable?",
             keyOutcomes: [
                 "Mastery of EV system-of-systems architecture.",

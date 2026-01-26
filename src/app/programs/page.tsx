@@ -90,8 +90,8 @@ export default function ProgramsPage() {
                                         Executive Program
                                     </span>
                                     <h2 className="text-3xl font-black mb-4">EVTO™</h2>
-                                    <p className="text-gray-300 font-light text-lg">
-                                        Certified EV Technology Officer
+                                    <p className="text-white font-bold text-lg">
+                                        Certified EV Technology Officer (EVTO™)
                                     </p>
                                 </div>
                                 <p className="text-gray-400 mb-8 leading-relaxed">

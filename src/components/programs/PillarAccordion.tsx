@@ -19,14 +19,18 @@ export default function PillarAccordion({ pillar }: { pillar: PillarSubmission }
                 className={`w-full flex items-center justify-between p-4 ${isCapstone ? 'bg-gray-50' : 'bg-white'} hover:bg-gray-50 transition-colors text-left focus:outline-none`}
             >
                 <div className="flex items-center flex-1 min-w-0 mr-4">
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center mr-3 flex-shrink-0 ${isCompleted ? 'bg-green-100 text-green-600' : 'bg-blue-50 text-blue-600'}`}>
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center mr-3 flex-shrink-0 ${isCompleted ? 'bg-green-100 text-green-600' :
+                        pillar.pillarId === 'pillar0' ? 'bg-red-100 text-red-600' : 'bg-blue-50 text-blue-600'
+                        }`}>
                         {isCompleted ? <CheckCircle className="w-5 h-5" /> : (
                             <span className="text-xs font-bold">{progress}%</span>
                         )}
                     </div>
                     <div className="overflow-hidden">
-                        <h3 className={`text-base font-semibold truncate ${isCapstone ? 'text-purple-900' : 'text-gray-900'}`}>
-                            {pillar.title}
+                        <h3 className={`text-base font-semibold truncate ${isCapstone ? 'text-purple-900' :
+                            pillar.pillarId === 'pillar0' ? (isCompleted ? 'text-green-700' : 'text-red-700') : 'text-gray-900'
+                            }`}>
+                            {pillar.pillarId === 'pillar0' ? 'Eligibility & Prerequisites' : pillar.title}
                         </h3>
                         {pillar.capstoneTopicSelected && (
                             <p className="text-xs text-purple-600 truncate mt-0.5">Topic: {pillar.capstoneTopicSelected}</p>

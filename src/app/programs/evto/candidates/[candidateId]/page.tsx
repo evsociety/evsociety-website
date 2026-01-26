@@ -36,7 +36,7 @@ export default async function CandidateProfilePage({ params }: { params: Promise
                     <nav className="flex mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
                         <ol className="inline-flex items-center space-x-1 md:space-x-3">
                             <li className="inline-flex items-center">
-                                <Link href="/programs/evto" className="hover:text-primary">EVTO Program</Link>
+                                <Link href="/programs/evto" className="hover:text-primary">EVTO™ Program</Link>
                             </li>
                             <li>
                                 <div className="flex items-center">
