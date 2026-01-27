@@ -18,19 +18,19 @@ export default function DocumentList({ documents }: DocumentListProps) {
                 <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">
                         <tr>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/3">
+                            <th scope="col" className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Document
                             </th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th scope="col" className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Required
                             </th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th scope="col" className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Status
                             </th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Submitted On
+                            <th scope="col" className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Submitted
                             </th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th scope="col" className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 File
                             </th>
                         </tr>
@@ -38,14 +38,14 @@ export default function DocumentList({ documents }: DocumentListProps) {
                     <tbody className="bg-white divide-y divide-gray-200">
                         {documents.map((doc) => (
                             <tr key={doc.docId}>
-                                <td className="px-6 py-4">
+                                <td className="px-3 py-4">
                                     <div className="flex items-start">
                                         <FileText className="h-5 w-5 text-gray-400 mr-3 mt-0.5 flex-shrink-0" />
-                                        <div>
+                                        <div className="flex flex-col">
                                             <div className="text-sm font-medium text-gray-900">{doc.name}</div>
                                             <div className="text-xs text-gray-500 mt-1">{doc.description}</div>
                                             {doc.reviewNotes && (
-                                                <div className="mt-2 text-xs bg-yellow-50 text-yellow-800 p-2 rounded border border-yellow-100 flex items-start">
+                                                <div className="mt-2 text-xs bg-yellow-50 text-yellow-800 p-2 rounded border border-yellow-100 flex items-start w-fit">
                                                     <AlertCircle className="w-3 h-3 mr-1 mt-0.5 flex-shrink-0" />
                                                     <span>{doc.reviewNotes}</span>
                                                 </div>
@@ -53,17 +53,17 @@ export default function DocumentList({ documents }: DocumentListProps) {
                                         </div>
                                     </div>
                                 </td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
                                     {doc.required ? (
                                         <span className="text-red-600 text-xs font-semibold bg-red-50 px-2 py-0.5 rounded-full">Required</span>
                                     ) : (
                                         <span className="text-gray-400 text-xs">Optional</span>
                                     )}
                                 </td>
-                                <td className="px-6 py-4 whitespace-nowrap">
+                                <td className="px-3 py-4 whitespace-nowrap">
                                     <StatusBadge status={doc.status} size="sm" />
                                 </td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
                                     {doc.submittedOn ? (
                                         <div className="flex items-center">
                                             <Calendar className="w-3 h-3 mr-1.5 text-gray-400" />
@@ -71,7 +71,7 @@ export default function DocumentList({ documents }: DocumentListProps) {
                                         </div>
                                     ) : '-'}
                                 </td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
                                     {doc.fileUrl ? (
                                         <a href={doc.fileUrl} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-blue-700 flex items-center font-medium">
                                             <Download className="w-4 h-4 mr-1" />

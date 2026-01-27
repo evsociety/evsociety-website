@@ -2,12 +2,17 @@
     "candidateId": "sudarshana-karkala",
     "programId": "evto",
     "overallStatus": "in-review",
+    "overallPercentage": 15,
     "certificateIssued": false,
     "lastUpdated": "2026-01-26",
+    "approverName": "",
+    "approverComment": "",
+    "approvedDate": "",
     "pillars": [
         {
             "pillarId": "pillar0",
-            "title": "Pillar 0 – Architectural Design & Green Leadership",
+            "title": "Architectural Design & Green Leadership",
+            "percentage": 90,
             "documents": [
                 {
                     "docId": "p0-01",
@@ -17,17 +22,45 @@
                     "status": "submitted",
                     "submittedOn": "2026-01-26",
                     "reviewNotes": "",
-                    "fileUrl": ""
+                    "fileUrl": "https://carsoftwaresystems.com/public/EVE&D/AIPoweredEVBatteryFirePreventionSystem.pdf",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
                 },
                 {
                     "docId": "p0-02",
                     "name": "Green Leadership Statement",
                     "description": "Sustainability leadership examples, measurable outcomes.",
                     "required": true,
-                    "status": "waiting-for-input",
-                    "submittedOn": "",
-                    "reviewNotes": "Please add 2 case studies with metrics.",
-                    "fileUrl": ""
+                    "status": "submitted",
+                    "submittedOn": "2026-01-26",
+                    "reviewNotes": "",
+                    "fileUrl": "https://carsoftwaresystems.com/public/EV.Engineer-GreenLeadership.pdf",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
+                },
+                {
+                    "docId": "p0-03",
+                    "name": "Electric Vehicle Engineering & Development",
+                    "description": "IITM CODE Program: Electric Vehicle Engineering & Development - Certificate Details",
+                    "required": false,
+                    "status": "submitted",
+                    "submittedOn": "2026-01-26",
+                    "reviewNotes": "",
+                    "fileUrl": "https://www.evsociety.org/ongoing/EVTO/EV.ENGINEER_SudarshanaKarkala/Certificates/iitm/Sudarshana_Karkala_evdc1200125014@code.iitm.ac.in.jpg",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
                 }
             ]
         },
@@ -43,7 +76,13 @@
                     "status": "submitted",
                     "submittedOn": "2026-01-20",
                     "reviewNotes": "",
-                    "fileUrl": ""
+                    "fileUrl": "",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
                 },
                 {
                     "docId": "p1-02",
@@ -53,7 +92,13 @@
                     "status": "in-review",
                     "submittedOn": "2026-01-22",
                     "reviewNotes": "",
-                    "fileUrl": ""
+                    "fileUrl": "",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
                 },
                 {
                     "docId": "p1-03",
@@ -63,7 +108,13 @@
                     "status": "draft",
                     "submittedOn": "",
                     "reviewNotes": "",
-                    "fileUrl": ""
+                    "fileUrl": "",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
                 }
             ]
         },
@@ -79,7 +130,13 @@
                     "status": "submitted",
                     "submittedOn": "2026-01-18",
                     "reviewNotes": "",
-                    "fileUrl": ""
+                    "fileUrl": "",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
                 },
                 {
                     "docId": "p2-02",
@@ -89,17 +146,29 @@
                     "status": "in-review",
                     "submittedOn": "2026-01-23",
                     "reviewNotes": "",
-                    "fileUrl": ""
+                    "fileUrl": "",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
                 },
                 {
                     "docId": "p2-03",
                     "name": "RAG + Agent Flow Design (No coding)",
                     "description": "Flow diagrams + prompts",
                     "required": true,
-                    "status": "waiting-for-input",
+                    "status": "need-more-details",
                     "submittedOn": "",
                     "reviewNotes": "",
-                    "fileUrl": ""
+                    "fileUrl": "",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
                 }
             ]
         },
@@ -115,7 +184,13 @@
                     "status": "approved",
                     "submittedOn": "2026-01-10",
                     "reviewNotes": "Approved",
-                    "fileUrl": ""
+                    "fileUrl": "",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
                 },
                 {
                     "docId": "p3-02",
@@ -125,7 +200,13 @@
                     "status": "submitted",
                     "submittedOn": "2026-01-15",
                     "reviewNotes": "",
-                    "fileUrl": ""
+                    "fileUrl": "",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
                 },
                 {
                     "docId": "p3-03",
@@ -135,7 +216,13 @@
                     "status": "need-more-details",
                     "submittedOn": "2026-01-19",
                     "reviewNotes": "Add data governance + QR mapping details",
-                    "fileUrl": ""
+                    "fileUrl": "",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
                 }
             ]
         },
@@ -151,7 +238,13 @@
                     "status": "submitted",
                     "submittedOn": "2026-01-21",
                     "reviewNotes": "",
-                    "fileUrl": ""
+                    "fileUrl": "",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
                 },
                 {
                     "docId": "p4-02",
@@ -161,7 +254,13 @@
                     "status": "need-more-details",
                     "submittedOn": "2026-01-24",
                     "reviewNotes": "Add build vs buy vs partner analysis",
-                    "fileUrl": ""
+                    "fileUrl": "",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
                 },
                 {
                     "docId": "p4-03",
@@ -171,7 +270,13 @@
                     "status": "not-started",
                     "submittedOn": "",
                     "reviewNotes": "",
-                    "fileUrl": ""
+                    "fileUrl": "",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
                 }
             ]
         },
@@ -187,7 +292,13 @@
                     "status": "submitted",
                     "submittedOn": "2026-01-17",
                     "reviewNotes": "",
-                    "fileUrl": ""
+                    "fileUrl": "",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
                 },
                 {
                     "docId": "p5-02",
@@ -197,7 +308,13 @@
                     "status": "draft",
                     "submittedOn": "",
                     "reviewNotes": "",
-                    "fileUrl": ""
+                    "fileUrl": "",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
                 },
                 {
                     "docId": "p5-03",
@@ -207,7 +324,13 @@
                     "status": "not-started",
                     "submittedOn": "",
                     "reviewNotes": "",
-                    "fileUrl": ""
+                    "fileUrl": "",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
                 }
             ]
         },
@@ -224,7 +347,13 @@
                     "status": "submitted",
                     "submittedOn": "2026-01-25",
                     "reviewNotes": "",
-                    "fileUrl": ""
+                    "fileUrl": "",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
                 },
                 {
                     "docId": "c-02",
@@ -234,17 +363,29 @@
                     "status": "in-review",
                     "submittedOn": "2026-01-26",
                     "reviewNotes": "",
-                    "fileUrl": ""
+                    "fileUrl": "",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
                 },
                 {
                     "docId": "c-03",
                     "name": "AI Integration Plan",
                     "description": "Model, data, evaluation",
                     "required": true,
-                    "status": "waiting-for-input",
+                    "status": "need-more-details",
                     "submittedOn": "",
                     "reviewNotes": "Add offline-first + privacy + RAG approach",
-                    "fileUrl": ""
+                    "fileUrl": "",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
                 },
                 {
                     "docId": "c-04",
@@ -254,7 +395,13 @@
                     "status": "draft",
                     "submittedOn": "",
                     "reviewNotes": "",
-                    "fileUrl": ""
+                    "fileUrl": "",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
                 }
             ]
         }

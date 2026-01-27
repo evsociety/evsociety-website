@@ -8,7 +8,7 @@ import { ChevronDown, ChevronUp, CheckCircle } from 'lucide-react';
 
 export default function PillarAccordion({ pillar }: { pillar: PillarSubmission }) {
     const [isOpen, setIsOpen] = useState(true);
-    const progress = computeProgress(pillar.documents);
+    const progress = pillar.percentage !== undefined ? pillar.percentage : computeProgress(pillar.documents);
     const isCompleted = progress === 100;
     const isCapstone = pillar.pillarId === 'capstone';
 
@@ -30,23 +30,29 @@ export default function PillarAccordion({ pillar }: { pillar: PillarSubmission }
                         <h3 className={`text-base font-semibold truncate ${isCapstone ? 'text-purple-900' :
                             pillar.pillarId === 'pillar0' ? (isCompleted ? 'text-green-700' : 'text-red-700') : 'text-gray-900'
                             }`}>
-                            {pillar.pillarId === 'pillar0' ? 'Eligibility & Prerequisites' : pillar.title}
+                            {pillar.pillarId === 'pillar0' ? (
+                                <>
+                                    <span>Eligibility & Prerequisites</span>
+                                    <span className="text-gray-500 font-normal ml-2">– {pillar.title}</span>
+                                </>
+                            ) : pillar.title}
                         </h3>
                         {pillar.capstoneTopicSelected && (
-                            <p className="text-xs text-purple-600 truncate mt-0.5">Topic: {pillar.capstoneTopicSelected}</p>
+                            <p className="text-sm font-medium text-purple-600 truncate mt-1">Topic: {pillar.capstoneTopicSelected}</p>
                         )}
                     </div>
                 </div>
                 <div className="flex items-center flex-shrink-0">
                     {isOpen ? <ChevronUp className="w-5 h-5 text-gray-400" /> : <ChevronDown className="w-5 h-5 text-gray-400" />}
                 </div>
-            </button>
+            </button >
 
             {isOpen && (
                 <div className="border-t border-gray-100">
                     <DocumentList documents={pillar.documents} />
                 </div>
-            )}
-        </div>
+            )
+            }
+        </div >
     );
 }

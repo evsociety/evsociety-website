@@ -36,11 +36,20 @@ export interface Document {
     submittedOn: string; // ISO Date string YYYY-MM-DD
     reviewNotes: string;
     fileUrl: string;
+    // Internal Tracking
+    reviewerName?: string;
+    reviewerComment?: string;
+    reviewDate?: string;
+    approverName?: string;
+    approverComment?: string;
+    approvedDate?: string;
 }
 
 export interface PillarSubmission {
     pillarId: string;
     title: string;
+    description?: string; // Optional description for the pillar
+    percentage?: number; // Optional manual override for progress
     capstoneTopicSelected?: string; // Only for capstone
     documents: Document[];
 }
@@ -49,9 +58,14 @@ export interface Submission {
     candidateId: string;
     programId: string;
     overallStatus: Status;
+    overallPercentage?: number; // Optional manual override for overall progress
     certificateIssued: boolean;
     lastUpdated: string; // ISO Date string YYYY-MM-DD
     pillars: PillarSubmission[];
+    // Internal Tracking for Final Approval
+    approverName?: string;
+    approverComment?: string;
+    approvedDate?: string;
 }
 
 

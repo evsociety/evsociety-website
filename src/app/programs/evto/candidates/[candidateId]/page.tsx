@@ -51,7 +51,7 @@ export default async function CandidateProfilePage({ params }: { params: Promise
     const overallStatus = submission?.overallStatus || 'not-started';
     // Calculate overall progress across all pillars
     const allDocs = submission?.pillars.flatMap(p => p.documents) || [];
-    const progress = computeProgress(allDocs);
+    const progress = submission?.overallPercentage !== undefined ? submission.overallPercentage : computeProgress(allDocs);
     const approvedDocsCount = allDocs.filter(d => d.required && (d.status === 'approved' || d.status === 'certificate-approved')).length;
     const totalRequiredDocs = allDocs.filter(d => d.required).length;
 
@@ -131,8 +131,7 @@ export default async function CandidateProfilePage({ params }: { params: Promise
                                     <ProgressBar value={progress} className="mb-2" showPercentage={false} />
                                     <div className="flex justify-between items-end">
                                         <div>
-                                            <span className="text-3xl font-bold text-gray-900">{progress}%</span>
-                                            <span className="text-sm text-gray-500 ml-1">Complete</span>
+                                            <span className="text-2xl font-bold text-gray-900">{progress}%</span>
                                         </div>
                                         <div className="text-xs text-gray-500 text-right">
                                             <div>{approvedDocsCount}/{totalRequiredDocs} Required Docs</div>
@@ -150,72 +149,62 @@ export default async function CandidateProfilePage({ params }: { params: Promise
             </div>
 
             <div className="container-custom py-8">
-                <div className="grid lg:grid-cols-3 gap-8">
-                    <div className="lg:col-span-2 space-y-6">
-                        {/* Eligibility Card */}
-                        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
-                            <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center">
-                                <Shield className="w-5 h-5 mr-2 text-green-600" />
-                                Eligibility & Prerequisites
-                            </h2>
-                            <div className="space-y-3">
-                                <div className="flex items-start">
-                                    {candidate.eligibility.architecturalDesignExperience ? (
-                                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                                    ) : (
-                                        <AlertTriangle className="w-5 h-5 text-yellow-500 mr-3 mt-0.5 flex-shrink-0" />
-                                    )}
-                                    <span className="text-sm text-gray-700">Architectural Design Experience</span>
-                                </div>
-                                <div className="flex items-start">
-                                    {candidate.eligibility.managerialLeadershipExperience ? (
-                                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                                    ) : (
-                                        <AlertTriangle className="w-5 h-5 text-yellow-500 mr-3 mt-0.5 flex-shrink-0" />
-                                    )}
-                                    <span className="text-sm text-gray-700">Managerial Leadership Experience</span>
-                                </div>
-                                {candidate.eligibility.notes && (
-                                    <div className="mt-4 p-3 bg-blue-50 text-blue-800 text-sm rounded-lg border border-blue-100">
-                                        <strong>Note:</strong> {candidate.eligibility.notes}
-                                    </div>
-                                )}
-                            </div>
+                {/* Status Legend - Top Horizontal */}
+                <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 mb-6">
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <h3 className="text-lg font-bold text-gray-900 whitespace-nowrap">Status Legend</h3>
+                        <div className="flex flex-wrap gap-3">
+                            <StatusBadge status="not-started" size="sm" />
+                            <StatusBadge status="draft" size="sm" />
+                            <StatusBadge status="submitted" size="sm" />
+                            <StatusBadge status="need-more-details" size="sm" />
+                            <StatusBadge status="in-review" size="sm" />
+                            <StatusBadge status="rejected" size="sm" />
+                            <StatusBadge status="approved" size="sm" />
+                            <StatusBadge status="certificate-approved" size="sm" />
                         </div>
+                    </div>
+                </div>
 
-                        {/* Submission Tracker */}
-                        <div>
-                            <h2 className="text-xl font-bold text-gray-900 mb-4">Submission Tracker</h2>
-                            <div className="space-y-4">
-                                {submission?.pillars.map((pillar) => (
-                                    <PillarAccordion key={pillar.pillarId} pillar={pillar} />
-                                ))}
+                <div className="space-y-6">
+                    {/* Eligibility Card */}
+                    <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+                        <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                            <Shield className="w-5 h-5 mr-2 text-green-600" />
+                            Eligibility & Prerequisites
+                        </h2>
+                        <div className="space-y-3">
+                            <div className="flex items-start">
+                                {candidate.eligibility.architecturalDesignExperience ? (
+                                    <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                                ) : (
+                                    <AlertTriangle className="w-5 h-5 text-yellow-500 mr-3 mt-0.5 flex-shrink-0" />
+                                )}
+                                <span className="text-sm text-gray-700">Architectural Design Experience</span>
                             </div>
+                            <div className="flex items-start">
+                                {candidate.eligibility.managerialLeadershipExperience ? (
+                                    <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                                ) : (
+                                    <AlertTriangle className="w-5 h-5 text-yellow-500 mr-3 mt-0.5 flex-shrink-0" />
+                                )}
+                                <span className="text-sm text-gray-700">Managerial Leadership Experience</span>
+                            </div>
+                            {candidate.eligibility.notes && (
+                                <div className="mt-4 p-3 bg-blue-50 text-blue-800 text-sm rounded-lg border border-blue-100">
+                                    <strong>Note:</strong> {candidate.eligibility.notes}
+                                </div>
+                            )}
                         </div>
                     </div>
 
-                    <div className="lg:col-span-1">
-                        {/* Status Legend */}
-                        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 sticky top-24">
-                            <h3 className="text-lg font-bold text-gray-900 mb-4">Status Legend</h3>
-                            <div className="space-y-3">
-                                <div className="flex items-center justify-between">
-                                    <span className="text-sm text-gray-600">Document Approved</span>
-                                    <StatusBadge status="approved" size="sm" />
-                                </div>
-                                <div className="flex items-center justify-between">
-                                    <span className="text-sm text-gray-600">Pending Review</span>
-                                    <StatusBadge status="submitted" size="sm" />
-                                </div>
-                                <div className="flex items-center justify-between">
-                                    <span className="text-sm text-gray-600">Revision Needed</span>
-                                    <StatusBadge status="need-more-details" size="sm" />
-                                </div>
-                                <div className="flex items-center justify-between">
-                                    <span className="text-sm text-gray-600">Not Started</span>
-                                    <StatusBadge status="not-started" size="sm" />
-                                </div>
-                            </div>
+                    {/* Submission Tracker */}
+                    <div>
+                        <h2 className="text-xl font-bold text-gray-900 mb-4">Submission Tracker</h2>
+                        <div className="space-y-4">
+                            {submission?.pillars.map((pillar) => (
+                                <PillarAccordion key={pillar.pillarId} pillar={pillar} />
+                            ))}
                         </div>
                     </div>
                 </div>
