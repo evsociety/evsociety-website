@@ -9,9 +9,10 @@ import Image from 'next/image';
 interface CandidateCardProps {
     candidates: Candidate[];
     submissions: Submission[];
+    baseUrl?: string; // e.g., '/programs/evto/candidates' or '/projects/battery-pack-aadhaar-systems/candidates'
 }
 
-export default function CandidateCard({ candidates, submissions }: CandidateCardProps) {
+export default function CandidateCard({ candidates, submissions, baseUrl = '/programs/evto/candidates' }: CandidateCardProps) {
     if (!candidates || candidates.length === 0) {
         return <div className="text-center py-8 text-gray-500 md:hidden">No candidates found.</div>;
     }
@@ -67,7 +68,7 @@ export default function CandidateCard({ candidates, submissions }: CandidateCard
                                 )}
                             </div>
                             <Link
-                                href={`/programs/evto/candidates/${candidate.candidateId}`}
+                                href={`${baseUrl}/${candidate.candidateId}`}
                                 className="inline-flex items-center text-sm font-medium text-primary hover:text-blue-700"
                             >
                                 View Profile <ArrowRight className="ml-1 w-4 h-4" />

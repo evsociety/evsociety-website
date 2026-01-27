@@ -1,0 +1,17 @@
+{
+    "candidateId": "krutarth",
+    "fullName": "Krutarth",
+    "designation": "EV Student",
+    "location": "India",
+    "resumeUrl": "",
+    "linkedinUrl": "",
+    "profileImageUrl": "/people/placeholder.jpg",
+    "enrolledProgramIds": [
+        "battery-pack-aadhaar-systems"
+    ],
+    "eligibility": {
+        "architecturalDesignExperience": false,
+        "managerialLeadershipExperience": false,
+        "notes": "Student Project track"
+    }
+}

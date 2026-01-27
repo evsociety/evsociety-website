@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import PageHeader from '@/components/PageHeader';
+
 import { Zap, Gavel, GraduationCap, Building2, Globe, Users2 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -69,12 +69,20 @@ const programs = [
 
 export default function ProgramsPage() {
     return (
-        <div className="bg-white">
-            <PageHeader
-                title="Our Programs"
-                description="Comprehensive initiatives designed to enable every aspect of the electric mobility ecosystem."
-                breadcrumb="Programs"
-            />
+        <div className="bg-gray-50 min-h-screen">
+            {/* Hero Section */}
+            <section className="bg-gradient-to-br from-primary to-blue-700 text-white py-16">
+                <div className="container-custom">
+                    <div className="max-w-4xl">
+                        <h1 className="text-3xl md:text-4xl font-black mb-4 text-white">
+                            EV Programs
+                        </h1>
+                        <p className="text-xl text-blue-50 leading-relaxed">
+                            Comprehensive initiatives designed to enable every aspect of the electric mobility ecosystem.
+                        </p>
+                    </div>
+                </div>
+            </section>
 
             {/* Featured Program */}
             <section className="py-12 bg-gray-50 border-b border-gray-100">

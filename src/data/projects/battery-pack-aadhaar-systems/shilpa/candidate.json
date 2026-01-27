@@ -1,0 +1,17 @@
+{
+    "candidateId": "shilpa",
+    "fullName": "Shilpa",
+    "designation": "Intern, EV.ENGINEER™",
+    "location": "India",
+    "resumeUrl": "",
+    "linkedinUrl": "",
+    "profileImageUrl": "/people/placeholder.jpg",
+    "enrolledProgramIds": [
+        "battery-pack-aadhaar-systems"
+    ],
+    "eligibility": {
+        "architecturalDesignExperience": false,
+        "managerialLeadershipExperience": false,
+        "notes": "Student Project track"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "projectId": "battery-pack-aadhaar-systems",
+    "title": "Battery Pack Aadhaar Systems",
+    "teamId": "EV.ENGINEER™",
+    "typeLabel": "Student Project",
+    "description": "Battery Pack Aadhaar provides a digital identity and governance layer for battery packs across manufacturing, sales, service, second-life, and recycling. This project tracks engineering delivery from definition to production readiness, including AI-readiness and compliance artifacts.",
+    "cta": {
+        "primaryLabel": "View Candidates",
+        "primaryHref": "/projects/battery-pack-aadhaar-systems/candidates"
+    }
+}

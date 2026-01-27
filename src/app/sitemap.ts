@@ -83,5 +83,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.6,
     }));
 
-    return [...staticRoutes, ...partnerRoutes];
+    // Projects routes
+    const projectRoutes: MetadataRoute.Sitemap = [
+        {
+            url: `${baseUrl}/projects`,
+            lastModified: currentDate,
+            changeFrequency: 'weekly' as const,
+            priority: 0.9,
+        },
+        {
+            url: `${baseUrl}/projects/battery-pack-aadhaar-systems`,
+            lastModified: currentDate,
+            changeFrequency: 'weekly' as const,
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/projects/battery-pack-aadhaar-systems/candidates`,
+            lastModified: currentDate,
+            changeFrequency: 'weekly' as const,
+            priority: 0.7,
+        },
+        {
+            url: `${baseUrl}/projects/ai-powered-ev-battery-fire-prevention`,
+            lastModified: currentDate,
+            changeFrequency: 'weekly' as const,
+            priority: 0.8,
+        },
+    ];
+
+    return [...staticRoutes, ...partnerRoutes, ...projectRoutes];
 }

@@ -1,0 +1,46 @@
+{
+    "label": "EV Projects",
+    "description": "Real-world EV engineering projects built by student teams and professionals. Each project tracks milestones, artifacts, reviews, approvals, and certificate eligibility.",
+    "projects": [
+        {
+            "projectId": "ai-powered-air-taxi-design-development",
+            "title": "AI-Powered Air Taxi (eVTOL) Solutions",
+            "teamId": "EV SOCIETY™",
+            "typeLabel": "Student Project",
+            "status": "draft",
+            "overallPercentage": 0,
+            "heroBadge": [
+                "Research Project",
+                "Internships"
+            ],
+            "shortDescription": "End-to-end AI-assisted design and development of electric Air Taxi (eVTOL) systems covering mission definition, system architecture, and performance validation. The project produces certification-ready engineering evidence, safety artifacts, and predictive operational intelligence.",
+            "highlights": [
+                "Mission and requirement engineering for eVTOL operations including range, payload, safety, and turnaround constraints",
+                "System-of-systems architecture design covering propulsion, energy storage, avionics, communications, thermal, and structures",
+                "AI-assisted sizing, trade studies, and optimization of weight, power, and energy efficiency",
+                "Digital twin and simulation models for mission performance, stress prediction, and validation",
+                "Predictive maintenance framework using telemetry for anomaly detection and remaining useful life estimation"
+            ]
+        },
+        {
+            "projectId": "battery-pack-aadhaar-systems",
+            "title": "Battery Pack Aadhaar Systems",
+            "teamId": "EV.ENGINEER™",
+            "typeLabel": "Student Project",
+            "status": "in-review",
+            "overallPercentage": 2,
+            "heroBadge": [
+                "Student Project",
+                "Internships"
+            ],
+            "shortDescription": "A digital identity and lifecycle governance platform for EV battery packs enabling traceability, ownership verification, and regulatory compliance. The system creates an AI-ready data backbone for safety monitoring, lifecycle intelligence, and sustainable battery management.",
+            "highlights": [
+                "Unique Battery Identity with QR/NFC-based lifecycle tracking from manufacturing to recycling",
+                "Digital Battery Passport storing chemistry, configuration, warranty, and compliance records",
+                "Role-based portals for OEMs, service centers, regulators, and recyclers with governance workflows",
+                "Tamper-proof audit trail of battery events including service, swap, repair, and second-life transfer",
+                "AI-ready structured data model enabling battery health scoring, risk prediction, and performance analytics"
+            ]
+        }
+    ]
+}

@@ -10,9 +10,10 @@ import CandidateCard from './CandidateCard';
 interface CandidatesListProps {
     candidates: Candidate[];
     submissions: Submission[];
+    baseUrl?: string; // e.g., '/programs/evto/candidates' or '/projects/battery-pack-aadhaar-systems/candidates'
 }
 
-export default function CandidatesList({ candidates: initialCandidates, submissions }: CandidatesListProps) {
+export default function CandidatesList({ candidates: initialCandidates, submissions, baseUrl = '/programs/evto/candidates' }: CandidatesListProps) {
     const [searchQuery, setSearchQuery] = useState('');
     const [statusFilter, setStatusFilter] = useState<Status | 'all'>('all');
 
@@ -76,8 +77,8 @@ export default function CandidatesList({ candidates: initialCandidates, submissi
             </div>
 
             {/* List */}
-            <CandidateTable candidates={sortedCandidates} submissions={submissions} />
-            <CandidateCard candidates={sortedCandidates} submissions={submissions} />
+            <CandidateTable candidates={sortedCandidates} submissions={submissions} baseUrl={baseUrl} />
+            <CandidateCard candidates={sortedCandidates} submissions={submissions} baseUrl={baseUrl} />
 
             {sortedCandidates.length === 0 && (
                 <div className="text-center py-20 bg-white rounded-lg border border-gray-200 border-dashed">

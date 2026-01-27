@@ -9,9 +9,10 @@ import Image from 'next/image';
 interface CandidateTableProps {
     candidates: Candidate[];
     submissions: Submission[];
+    baseUrl?: string; // e.g., '/programs/evto/candidates' or '/projects/battery-pack-aadhaar-systems/candidates'
 }
 
-export default function CandidateTable({ candidates, submissions }: CandidateTableProps) {
+export default function CandidateTable({ candidates, submissions, baseUrl = '/programs/evto/candidates' }: CandidateTableProps) {
     if (!candidates || candidates.length === 0) {
         return <div className="text-center py-12 text-gray-500">No candidates found.</div>;
     }
@@ -87,7 +88,7 @@ export default function CandidateTable({ candidates, submissions }: CandidateTab
                                     {submission?.lastUpdated || '-'}
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <Link href={`/programs/evto/candidates/${candidate.candidateId}`} className="text-primary hover:text-blue-700">
+                                    <Link href={`${baseUrl}/${candidate.candidateId}`} className="text-primary hover:text-blue-700">
                                         View Profile
                                     </Link>
                                 </td>

@@ -1,0 +1,29 @@
+{
+    "projectId": "battery-pack-aadhaar-systems",
+    "candidates": [
+        {
+            "candidateId": "nisarga",
+            "fullName": "Nisarga"
+        },
+        {
+            "candidateId": "rakshita",
+            "fullName": "Rakshita"
+        },
+        {
+            "candidateId": "nanditha",
+            "fullName": "Nanditha"
+        },
+        {
+            "candidateId": "namitha",
+            "fullName": "Namitha"
+        },
+        {
+            "candidateId": "krutarth",
+            "fullName": "Krutarth"
+        },
+        {
+            "candidateId": "shilpa",
+            "fullName": "Shilpa"
+        }
+    ]
+}
