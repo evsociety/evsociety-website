@@ -48,6 +48,7 @@ export interface ProjectSummary {
     status: Status;
     overallPercentage: number;
     heroBadge: string[];
+    additionalBadges?: string[];
     shortDescription: string;
     highlights: string[];
 }
