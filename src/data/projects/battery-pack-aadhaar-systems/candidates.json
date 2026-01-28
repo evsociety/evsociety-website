@@ -18,12 +18,20 @@
             "fullName": "Namitha"
         },
         {
+            "candidateId": "anirudhkosgi",
+            "fullName": "Anirudh Kosgi"
+        },
+        {
             "candidateId": "krutarthskarkala",
             "fullName": "Krutarth S Karkala"
         },
         {
             "candidateId": "shilpa",
             "fullName": "Shilpa"
+        },
+        {
+            "candidateId": "ashwinisudarshana",
+            "fullName": "Ashwini Sudarshana"
         }
     ]
 }

@@ -10,8 +10,8 @@
         "battery-pack-aadhaar-systems"
     ],
     "eligibility": {
-        "architecturalDesignExperience": false,
-        "managerialLeadershipExperience": false,
-        "notes": "Student Project track"
+        "architecturalDesignExperience": true,
+        "managerialLeadershipExperience": true,
+        "notes": "Professional Project track"
     }
 }

@@ -1,11 +1,11 @@
 {
-    "candidateId": "krutarthskarkala",
-    "fullName": "Krutarth S Karkala",
-    "designation": "EV Student",
-    "location": "India",
+    "candidateId": "anirudhkosgi",
+    "fullName": "Anirudh Kosgi",
+    "designation": "Intern, EV.ENGINEER™",
+    "location": "Bangalore, India",
     "resumeUrl": "",
-    "linkedinUrl": "",
-    "profileImageUrl": "/people/placeholder.jpg",
+    "linkedinUrl": "https://www.linkedin.com/in/anirudh-kosgi/",
+    "profileImageUrl": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatteryPackAadhaarSystem/1Team/anirudhkosgi.jpeg",
     "enrolledProgramIds": [
         "battery-pack-aadhaar-systems"
     ],
