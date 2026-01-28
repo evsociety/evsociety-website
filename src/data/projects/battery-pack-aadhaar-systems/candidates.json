@@ -2,6 +2,10 @@
     "projectId": "battery-pack-aadhaar-systems",
     "candidates": [
         {
+            "candidateId": "shilpa",
+            "fullName": "Shilpa V"
+        },
+        {
             "candidateId": "nisarga",
             "fullName": "Nisarga"
         },
@@ -24,10 +28,6 @@
         {
             "candidateId": "krutarthskarkala",
             "fullName": "Krutarth S Karkala"
-        },
-        {
-            "candidateId": "shilpa",
-            "fullName": "Shilpa"
         },
         {
             "candidateId": "ashwinisudarshana",
