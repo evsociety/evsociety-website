@@ -16,7 +16,7 @@
             "documents": [
                 {
                     "docId": "s0-01",
-                    "name": "Digital Twin : An AI- Powered Systemfor EV Battery Fire Prevention",
+                    "name": "Digital Twin : An AI- Powered System for EV Battery Fire Prevention",
                     "description": "A sophisticated approach to revolutionize electric vehicle safety through real-time monitoring, predictive analytics, and proactive intervention.",
                     "required": true,
                     "status": "submitted",
