@@ -1,5 +1,8 @@
+'use client';
+
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
+import { trackEvent } from '@/utils/analytics/ga4';
 
 export default function Hero() {
     return (
@@ -17,11 +20,27 @@ export default function Hero() {
                             <span className="text-primary font-extrabold">EV Society™</span> is a non-profit educational and technical community advancing electric mobility through research, safety, standards, skills, and collaboration across industry, academia, startups, and the public.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 sm:justify-center lg:justify-start">
-                            <Link href="/join" className="btn-primary flex items-center gap-2 text-lg px-8">
+                            <Link
+                                href="/join"
+                                onClick={() => trackEvent('cta_click', {
+                                    cta_id: 'hero_join',
+                                    page: '/',
+                                    section: 'hero'
+                                })}
+                                className="btn-primary flex items-center gap-2 text-lg px-8"
+                            >
                                 Join EV Society™
                                 <ChevronRight className="w-5 h-5" />
                             </Link>
-                            <Link href="/domains" className="btn-secondary text-lg px-8">
+                            <Link
+                                href="/domains"
+                                onClick={() => trackEvent('cta_click', {
+                                    cta_id: 'hero_explore_domains',
+                                    page: '/',
+                                    section: 'hero'
+                                })}
+                                className="btn-secondary text-lg px-8"
+                            >
                                 Explore Focus Areas
                             </Link>
                         </div>

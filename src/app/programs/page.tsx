@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import { Zap, Gavel, GraduationCap, Building2, Globe, Users2 } from 'lucide-react';
+import ProgramCTALink from '@/components/programs/ProgramCTALink';
 
 export const metadata: Metadata = {
     title: 'Programs',
@@ -108,12 +109,15 @@ export default function ProgramsPage() {
                                 <p className="text-gray-400 mb-8 leading-relaxed">
                                     The gold standard for engineering leaders, architects, and founders mastering the end-to-end EV ecosystem.
                                 </p>
-                                <a
+                                <ProgramCTALink
                                     href="/programs/evto"
+                                    ctaId="view_evto_details"
+                                    page="/programs"
+                                    section="featured_program"
                                     className="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-900 font-bold rounded-full hover:bg-gray-100 transition-colors w-fit"
                                 >
                                     View Program Details
-                                </a>
+                                </ProgramCTALink>
                             </div>
                             <div className="md:col-span-7 p-10 flex flex-col justify-center">
                                 <h3 className="text-xl font-bold text-gray-900 mb-4">Program Highlights</h3>

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Search, Menu, X, User } from 'lucide-react';
+import { trackEvent } from '@/utils/analytics/ga4';
 
 import Image from 'next/image';
 
@@ -25,10 +26,29 @@ export default function Navbar({ onSearchClick }: { onSearchClick: () => void })
     const pathname = usePathname();
 
     useEffect(() => {
+        let ticking = false;
+
         const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const shouldBeScrolled = window.scrollY > 20;
+                    setScrolled(prev => {
+                        // Only update if state actually changes
+                        if (prev !== shouldBeScrolled) {
+                            return shouldBeScrolled;
+                        }
+                        return prev;
+                    });
+                    ticking = false;
+                });
+                ticking = true;
+            }
         };
-        window.addEventListener('scroll', handleScroll);
+
+        // Set initial scroll state
+        handleScroll();
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
@@ -57,6 +77,11 @@ export default function Navbar({ onSearchClick }: { onSearchClick: () => void })
                             <Link
                                 key={link.name}
                                 href={link.href}
+                                onClick={() => trackEvent('nav_click', {
+                                    nav_item: link.name.toLowerCase(),
+                                    nav_location: 'header',
+                                    destination_path: link.href
+                                })}
                                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${pathname === link.href ? 'text-primary' : 'text-gray-600 hover:text-primary hover:bg-gray-50'}`}
                             >
                                 {link.name}
@@ -66,14 +91,23 @@ export default function Navbar({ onSearchClick }: { onSearchClick: () => void })
 
                     <div className="flex items-center gap-2">
                         <button
-                            onClick={onSearchClick}
+                            onClick={() => {
+                                trackEvent('search_open', { location: 'header' });
+                                onSearchClick();
+                            }}
                             className="p-2 text-gray-500 hover:text-primary transition-colors"
                             aria-label="Search"
                         >
                             <Search className="w-5 h-5" />
                         </button>
 
-                        <button className="hidden sm:flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">
+                        <button
+                            onClick={() => trackEvent('cta_click', {
+                                cta_id: 'member_login',
+                                location: 'header'
+                            })}
+                            className="hidden sm:flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+                        >
                             <User className="w-4 h-4" />
                             Member Login
                         </button>
@@ -99,12 +133,25 @@ export default function Navbar({ onSearchClick }: { onSearchClick: () => void })
                                 key={link.name}
                                 href={link.href}
                                 className={`block px-3 py-2 rounded-md text-base font-medium ${pathname === link.href ? 'text-primary bg-blue-50' : 'text-gray-600 hover:text-primary hover:bg-gray-50'}`}
-                                onClick={() => setIsOpen(false)}
+                                onClick={() => {
+                                    trackEvent('nav_click', {
+                                        nav_item: link.name.toLowerCase(),
+                                        nav_location: 'mobile_drawer',
+                                        destination_path: link.href
+                                    });
+                                    setIsOpen(false);
+                                }}
                             >
                                 {link.name}
                             </Link>
                         ))}
-                        <button className="w-full mt-4 flex items-center justify-center gap-2 px-4 py-3 bg-gray-50 rounded-lg text-sm font-medium text-gray-700 active:bg-gray-100 transition-colors">
+                        <button
+                            onClick={() => trackEvent('cta_click', {
+                                cta_id: 'member_login',
+                                location: 'mobile_drawer'
+                            })}
+                            className="w-full mt-4 flex items-center justify-center gap-2 px-4 py-3 bg-gray-50 rounded-lg text-sm font-medium text-gray-700 active:bg-gray-100 transition-colors"
+                        >
                             <User className="w-4 h-4" />
                             Member Login
                         </button>

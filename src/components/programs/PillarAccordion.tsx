@@ -1,13 +1,16 @@
 'use client';
 
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { PillarSubmission } from '../../types/evto';
 import DocumentList from './DocumentList';
 import { computeProgress } from '../../utils/evtoStatus';
 import { ChevronDown, ChevronUp, CheckCircle } from 'lucide-react';
+import { trackEvent } from '@/utils/analytics/ga4';
 
 export default function PillarAccordion({ pillar }: { pillar: PillarSubmission }) {
     const [isOpen, setIsOpen] = useState(true);
+    const pathname = usePathname();
     const progress = pillar.percentage !== undefined ? pillar.percentage : computeProgress(pillar.documents);
     const isCompleted = progress === 100;
     const isCapstone = pillar.pillarId === 'capstone';
@@ -15,7 +18,14 @@ export default function PillarAccordion({ pillar }: { pillar: PillarSubmission }
     return (
         <div className={`bg-white border rounded-lg transition-all ${isCompleted ? 'border-green-200' : 'border-gray-200'} shadow-sm overflow-hidden`}>
             <button
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={() => {
+                    trackEvent('accordion_toggle', {
+                        accordion_id: pillar.pillarId,
+                        action: isOpen ? 'collapse' : 'expand',
+                        page: pathname
+                    });
+                    setIsOpen(!isOpen);
+                }}
                 className={`w-full flex items-center justify-between p-4 ${isCapstone ? 'bg-gray-50' : 'bg-white'} hover:bg-gray-50 transition-colors text-left focus:outline-none`}
             >
                 <div className="flex items-center flex-1 min-w-0 mr-4">

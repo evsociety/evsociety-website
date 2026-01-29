@@ -1,6 +1,9 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Mail, Phone, MapPin, Linkedin, Twitter, Github } from 'lucide-react';
+import { trackEvent } from '@/utils/analytics/ga4';
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
@@ -42,22 +45,22 @@ export default function Footer() {
                     <div>
                         <h4 className="text-sm font-bold text-gray-900 uppercase tracking-widest mb-6">Quick Links</h4>
                         <ul className="space-y-4">
-                            <li><Link href="/about" className="text-gray-600 hover:text-primary transition-colors">About Us</Link></li>
-                            <li><Link href="/vision-mission" className="text-gray-600 hover:text-primary transition-colors">Vision & Mission</Link></li>
-                            <li><Link href="/domains" className="text-gray-600 hover:text-primary transition-colors">Technical Domains</Link></li>
-                            <li><Link href="/programs" className="text-gray-600 hover:text-primary transition-colors">Programs</Link></li>
-                            <li><Link href="/events" className="text-gray-600 hover:text-primary transition-colors">Upcoming Events</Link></li>
+                            <li><Link href="/about" onClick={() => trackEvent('nav_click', { nav_item: 'about', nav_location: 'footer', destination_path: '/about' })} className="text-gray-600 hover:text-primary transition-colors">About Us</Link></li>
+                            <li><Link href="/vision-mission" onClick={() => trackEvent('nav_click', { nav_item: 'vision_mission', nav_location: 'footer', destination_path: '/vision-mission' })} className="text-gray-600 hover:text-primary transition-colors">Vision & Mission</Link></li>
+                            <li><Link href="/domains" onClick={() => trackEvent('nav_click', { nav_item: 'domains', nav_location: 'footer', destination_path: '/domains' })} className="text-gray-600 hover:text-primary transition-colors">Technical Domains</Link></li>
+                            <li><Link href="/programs" onClick={() => trackEvent('nav_click', { nav_item: 'programs', nav_location: 'footer', destination_path: '/programs' })} className="text-gray-600 hover:text-primary transition-colors">Programs</Link></li>
+                            <li><Link href="/events" onClick={() => trackEvent('nav_click', { nav_item: 'events', nav_location: 'footer', destination_path: '/events' })} className="text-gray-600 hover:text-primary transition-colors">Upcoming Events</Link></li>
                         </ul>
                     </div>
 
                     <div>
                         <h4 className="text-sm font-bold text-gray-900 uppercase tracking-widest mb-6">Resources</h4>
                         <ul className="space-y-4">
-                            <li><Link href="/resources" className="text-gray-600 hover:text-primary transition-colors">Publications</Link></li>
-                            <li><Link href="/resources" className="text-gray-600 hover:text-primary transition-colors">Safety Guidelines</Link></li>
-                            <li><Link href="/partners" className="text-gray-600 hover:text-primary transition-colors">Partner Directory</Link></li>
-                            <li><Link href="/join" className="text-gray-600 hover:text-primary transition-colors">Join EV Society™</Link></li>
-                            <li><Link href="/policies" className="text-gray-600 hover:text-primary transition-colors">Logo Usage</Link></li>
+                            <li><Link href="/resources" onClick={() => trackEvent('nav_click', { nav_item: 'publications', nav_location: 'footer', destination_path: '/resources' })} className="text-gray-600 hover:text-primary transition-colors">Publications</Link></li>
+                            <li><Link href="/resources" onClick={() => trackEvent('nav_click', { nav_item: 'safety_guidelines', nav_location: 'footer', destination_path: '/resources' })} className="text-gray-600 hover:text-primary transition-colors">Safety Guidelines</Link></li>
+                            <li><Link href="/partners" onClick={() => trackEvent('nav_click', { nav_item: 'partners', nav_location: 'footer', destination_path: '/partners' })} className="text-gray-600 hover:text-primary transition-colors">Partner Directory</Link></li>
+                            <li><Link href="/join" onClick={() => trackEvent('nav_click', { nav_item: 'join', nav_location: 'footer', destination_path: '/join' })} className="text-gray-600 hover:text-primary transition-colors">Join EV Society™</Link></li>
+                            <li><Link href="/policies" onClick={() => trackEvent('nav_click', { nav_item: 'logo_usage', nav_location: 'footer', destination_path: '/policies' })} className="text-gray-600 hover:text-primary transition-colors">Logo Usage</Link></li>
                         </ul>
                     </div>
 
@@ -85,8 +88,8 @@ export default function Footer() {
                         © {currentYear} EV Society™. All rights reserved.
                     </p>
                     <div className="flex gap-6 text-sm">
-                        <Link href="/policies" className="text-gray-500 hover:text-gray-900 transition-colors">Privacy Policy</Link>
-                        <Link href="/policies" className="text-gray-500 hover:text-gray-900 transition-colors">Terms of Service</Link>
+                        <Link href="/policies" onClick={() => trackEvent('nav_click', { nav_item: 'privacy_policy', nav_location: 'footer', destination_path: '/policies' })} className="text-gray-500 hover:text-gray-900 transition-colors">Privacy Policy</Link>
+                        <Link href="/policies" onClick={() => trackEvent('nav_click', { nav_item: 'terms_of_service', nav_location: 'footer', destination_path: '/policies' })} className="text-gray-500 hover:text-gray-900 transition-colors">Terms of Service</Link>
                     </div>
                 </div>
                 <div className="mt-4 text-center space-y-2">

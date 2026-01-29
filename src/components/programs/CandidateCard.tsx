@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { Candidate, Submission } from '../../types/evto';
 import StatusBadge from './StatusBadge';
@@ -5,6 +7,7 @@ import ProgressBar from './ProgressBar';
 import { computeProgress } from '../../utils/evtoStatus';
 import { FileText, Linkedin, User, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import { trackEvent } from '@/utils/analytics/ga4';
 
 interface CandidateCardProps {
     candidates: Candidate[];
@@ -69,6 +72,10 @@ export default function CandidateCard({ candidates, submissions, baseUrl = '/pro
                             </div>
                             <Link
                                 href={`${baseUrl}/${candidate.candidateId}`}
+                                onClick={() => trackEvent('candidate_open', {
+                                    candidate_id: candidate.candidateId,
+                                    page: baseUrl
+                                })}
                                 className="inline-flex items-center text-sm font-medium text-primary hover:text-blue-700"
                             >
                                 View Profile <ArrowRight className="ml-1 w-4 h-4" />

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import { getAllProjects } from '@/lib/projects-dal';
 import StatusBadge from '@/components/programs/StatusBadge';
+import ProjectActions from '@/components/projects/ProjectActions';
 
 export const metadata = {
     title: 'EV Projects | EV Society™',
@@ -105,21 +106,7 @@ export default async function ProjectsPage() {
                                         </div>
 
                                         {/* Actions */}
-                                        <div className="flex gap-3">
-                                            <Link
-                                                href={`/projects/${project.projectId}`}
-                                                className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-primary text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
-                                            >
-                                                View Project
-                                                <ArrowRight className="w-4 h-4" />
-                                            </Link>
-                                            <Link
-                                                href={`/projects/${project.projectId}/candidates`}
-                                                className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium"
-                                            >
-                                                Candidates
-                                            </Link>
-                                        </div>
+                                        <ProjectActions projectId={project.projectId} />
                                     </div>
                                 </div>
                             ))}
