@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Suspense } from "react";
 import { Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
@@ -120,7 +121,9 @@ export default function RootLayout({
           {children}
         </ClientLayout>
         <GoogleAnalytics />
-        <RouteAnalytics />
+        <Suspense fallback={null}>
+          <RouteAnalytics />
+        </Suspense>
       </body>
     </html>
   );
