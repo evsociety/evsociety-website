@@ -121,7 +121,35 @@ export async function getAllCandidatesWithSubmissions(projectSlug: string): Prom
         const submission = await getProjectSubmission(projectSlug, candidateSummary.candidateId);
 
         if (candidate) {
-            results.push({ candidate, submission });
+            // Map ProjectSubmission to Submission (EVTO compatible)
+            // 1. Inject candidateId
+            // 2. Map projectId -> programId
+            // 3. Map stages -> pillars
+            let mappedSubmission = null;
+
+            if (submission) {
+                // Defensive check - ensure stages exists and is an array
+                const stages = Array.isArray(submission.stages) ? submission.stages : [];
+
+                mappedSubmission = {
+                    ...submission,
+                    candidateId: candidateSummary.candidateId,
+                    programId: submission.projectId,
+                    pillars: stages.map(stage => ({
+                        ...stage,
+                        pillarId: stage.stageId,
+                        // Ensure documents are preserved
+                        documents: stage.documents || []
+                    }))
+                };
+            }
+
+            results.push({
+                candidate,
+                // Cast to any to bypass strict type check between ProjectSubmission and Submission
+                // The mapped object structure is now compatible with what the UI expects
+                submission: mappedSubmission as any
+            });
         }
     }
 
