@@ -30,7 +30,20 @@
  */
 
 const ADMIN_EMAIL = 'evsociety.org@gmail.com';
-const SHEET_NAME = 'Registrations';
+const SHEET_NAME = 'Sheet1';
+
+/**
+ * Handle CORS preflight requests
+ */
+function doOptions(e) {
+    return ContentService
+        .createTextOutput('')
+        .setMimeType(ContentService.MimeType.JSON)
+        .setHeader('Access-Control-Allow-Origin', '*')
+        .setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
+        .setHeader('Access-Control-Allow-Headers', 'Content-Type')
+        .setHeader('Access-Control-Max-Age', '86400');
+}
 
 /**
  * Main POST handler
@@ -40,6 +53,9 @@ function doPost(e) {
         // Set CORS headers
         const output = ContentService.createTextOutput();
         output.setMimeType(ContentService.MimeType.JSON);
+        output.setHeader('Access-Control-Allow-Origin', '*');
+        output.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+        output.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
         // Parse request body
         const requestData = JSON.parse(e.postData.contents);
@@ -70,12 +86,14 @@ function doPost(e) {
 
     } catch (error) {
         Logger.log('Error in doPost: ' + error.toString());
-        return ContentService
+        const errorOutput = ContentService
             .createTextOutput(JSON.stringify({
                 ok: false,
                 error: error.toString()
             }))
             .setMimeType(ContentService.MimeType.JSON);
+        errorOutput.setHeader('Access-Control-Allow-Origin', '*');
+        return errorOutput;
     }
 }
 
@@ -233,11 +251,4 @@ function applyFilters(registrations, filters) {
     });
 }
 
-/**
- * Handle OPTIONS requests for CORS
- */
-function doOptions(e) {
-    return ContentService
-        .createTextOutput('')
-        .setMimeType(ContentService.MimeType.JSON);
-}
+
