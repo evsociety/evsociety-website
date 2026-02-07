@@ -33,7 +33,7 @@ const initialFormData: RegistrationFormData = {
 };
 
 export default function RegisterClient() {
-    const [selectedType, setSelectedType] = useState<RegistrationType>('events');
+    const [selectedType, setSelectedType] = useState<RegistrationType>('webinars');
     const [selectedRole, setSelectedRole] = useState<RegistrationRole>('attendee');
     const [selectedItem, setSelectedItem] = useState<RegistrationItem | null>(null);
     const [formData, setFormData] = useState<RegistrationFormData>(initialFormData);
