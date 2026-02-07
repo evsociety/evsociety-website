@@ -26,8 +26,8 @@ This guide will help you set up the admin registrations page for EVSociety.org. 
      - `https://www.evsociety.org` (for production)
    - **Authorized redirect URIs**: (leave empty for Google Sign-In)
 7. Click **CREATE**
-8. Copy the **Client ID** (e.g., `973987815424-anc53c7p927h6gn5gbtfhdphjqnlecmu.apps.googleusercontent.com`)
-Client secret :  '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'
+8. Copy the **Client ID** (e.g., `XXXXXXXXXXXXXXXXXX`)
+Client secret :  'XXXXXXXXXXXXXXXXXX'
 
 ### 1.2 Configure OAuth Consent Screen
 
@@ -68,7 +68,7 @@ Client secret :  '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'
    - **Execute as**: Me (evsociety.org@gmail.com)
    - **Who has access**: Anyone
 4. Click **Deploy**
-5. **Copy the Web App URL** (looks like: `https://script.google.com/macros/s/AKfycby.../exec`) -> https://script.google.com/macros/s/AKfycbwG5mj6Hactq_R--Ak34H6KgsJVIPxJv3Xhs_B2sv4-8OffK3KkCiv6yb-DITpTRCFk/exec
+5. **Copy the Web App URL** (looks like: `https://script.google.com/macros/s/AKfycby.../exec`) 
 6. Click **Done**
 
 ### 2.4 Test the Deployment
