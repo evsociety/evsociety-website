@@ -207,6 +207,31 @@
     "webinars": [
         {
             "id": "web_001",
+            "title": "AI-Powered EV Battery Fire Prevention System",
+            "date": "2026-02-11",
+            "time": "8:00 PM IST",
+            "speaker": "Sreenath Asha",
+            "speakerTitle": "Intern, EV Engineer | BE 6 SEM (E&C)",
+            "speakerOrganization": "iTelematics® Software Private Limited",
+            "speakerInstitution": "A J Institute of Engineering & Technology, Mangaluru, India",
+            "location": "Bengaluru, India",
+            "modeOptions": [
+                "online"
+            ],
+            "categoryTags": [
+                "AI/ML",
+                "Battery Safety",
+                "Fire Prevention"
+            ],
+            "sessionTracks": [
+                "Battery Failure Detection",
+                "Thermal Runaway Prevention",
+                "AI-Based Monitoring"
+            ],
+            "description": "The AI-Powered EV Battery Fire Prevention System is an advanced software platform designed to detect early signs of battery failure and prevent thermal runaway incidents in electric vehicles."
+        },
+        {
+            "id": "web_002",
             "title": "Cybersecurity in Connected EVs",
             "date": "2026-03-25",
             "time": "6:00 PM IST",
@@ -225,7 +250,7 @@
             ]
         },
         {
-            "id": "web_002",
+            "id": "web_003",
             "title": "Next-Gen Battery Materials: Research Insights",
             "date": "2026-04-18",
             "time": "5:00 PM IST",
@@ -244,7 +269,7 @@
             ]
         },
         {
-            "id": "web_003",
+            "id": "web_004",
             "title": "AI & Machine Learning in EV Diagnostics",
             "date": "2026-05-08",
             "time": "7:00 PM IST",
@@ -263,7 +288,7 @@
             ]
         },
         {
-            "id": "web_004",
+            "id": "web_005",
             "title": "EV Policy Updates and Industry Impact",
             "date": "2026-06-12",
             "time": "4:00 PM IST",

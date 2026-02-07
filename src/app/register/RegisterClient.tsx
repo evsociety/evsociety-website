@@ -246,7 +246,7 @@ export default function RegisterClient() {
     return (
         <div className="bg-white">
             <PageHeader
-                title="Register for EV Society™"
+                title="Register"
                 description="Register for events, programs, projects, and webinars in one place."
                 breadcrumb="REGISTER"
             />
