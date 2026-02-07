@@ -17,6 +17,7 @@ const navLinks = [
     { name: 'Resources', href: '/resources' },
     { name: 'Partners', href: '/partners' },
     { name: 'Join', href: '/join' },
+    { name: 'Register', href: '/register' },
     { name: 'Contact', href: '/contact' },
 ];
 
