@@ -13,7 +13,9 @@ import type { RegistrationType, RegistrationRole, RegistrationItem, Registration
 import { getRegistrationItems, submitRegistration } from '@/lib/registrationService';
 import { validateEmail, validatePhone, validateRequired, validateLinkedIn, validateConsent } from '@/utils/validation';
 import { trackEvent } from '@/utils/analytics/ga4';
-import { Loader2 } from 'lucide-react';
+import { isAdminAuthenticated } from '@/lib/adminAuth';
+import { Loader2, ShieldCheck } from 'lucide-react';
+import Link from 'next/link';
 
 const initialFormData: RegistrationFormData = {
     fullName: '',
@@ -39,8 +41,14 @@ export default function RegisterClient() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [showSuccess, setShowSuccess] = useState(false);
     const [registrationId, setRegistrationId] = useState('');
+    const [isAdmin, setIsAdmin] = useState(false);
 
     const items = getRegistrationItems(selectedType);
+
+    // Check if user is admin
+    useEffect(() => {
+        setIsAdmin(isAdminAuthenticated());
+    }, []);
 
     // Track page view on mount
     useEffect(() => {
@@ -253,6 +261,19 @@ export default function RegisterClient() {
 
             <section className="py-24">
                 <div className="container-custom">
+                    {/* Admin Button - Only visible to admins */}
+                    {isAdmin && (
+                        <div className="mb-8 flex justify-end">
+                            <Link
+                                href="/admin/registrations"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold rounded-xl shadow-lg shadow-purple-500/20 transition-all hover:shadow-xl hover:shadow-purple-500/30 transform hover:-translate-y-0.5"
+                            >
+                                <ShieldCheck className="w-5 h-5" />
+                                View Registrations (Admin)
+                            </Link>
+                        </div>
+                    )}
+
                     {/* Registration Type Selector */}
                     <div className="mb-12">
                         <RegistrationTypeSelector
