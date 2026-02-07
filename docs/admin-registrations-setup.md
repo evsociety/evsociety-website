@@ -26,8 +26,8 @@ This guide will help you set up the admin registrations page for EVSociety.org. 
      - `https://www.evsociety.org` (for production)
    - **Authorized redirect URIs**: (leave empty for Google Sign-In)
 7. Click **CREATE**
-8. Copy the **Client ID** (e.g., `XXXXXXXXXXXXXXXXXX`)
-Client secret :  'XXXXXXXXXXXXXXXXXX'
+8. Copy the **Client ID** (e.g., ``)
+Client secret :  ''
 
 ### 1.2 Configure OAuth Consent Screen
 
