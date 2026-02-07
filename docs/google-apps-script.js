@@ -50,7 +50,7 @@ function doPost(e) {
             data.itemTitle || '',
             data.fullName || '',
             data.email || '',
-            data.phone || '',
+            data.phone ? `'${data.phone}` : '',
             data.city || '',
             data.state || '',
             data.organization || '',
