@@ -1,25 +1,12 @@
 'use client';
 
-import { LogOut } from 'lucide-react';
-
-interface AdminHeaderProps {
-    onSignOut: () => void;
-}
-
-export default function AdminHeader({ onSignOut }: AdminHeaderProps) {
+export default function AdminHeader() {
     return (
         <div className="bg-gradient-to-br from-primary to-blue-700 text-white py-16">
             <div className="container-custom">
                 {/* Breadcrumb */}
-                <nav className="text-sm font-medium text-blue-100 mb-6 uppercase tracking-widest flex items-center justify-between">
+                <nav className="text-sm font-medium text-blue-100 mb-6 uppercase tracking-widest">
                     <span>ADMIN / REGISTRATIONS</span>
-                    <button
-                        onClick={onSignOut}
-                        className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors text-xs font-semibold"
-                    >
-                        <LogOut className="w-4 h-4" />
-                        Sign Out
-                    </button>
                 </nav>
 
                 {/* Title */}

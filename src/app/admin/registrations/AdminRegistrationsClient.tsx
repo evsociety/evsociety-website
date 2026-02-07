@@ -155,11 +155,6 @@ export default function AdminRegistrationsClient() {
         }
     };
 
-    // Handle sign out
-    const handleSignOut = () => {
-        signOutAdmin();
-    };
-
     // Loading state
     if (isCheckingAuth) {
         return (
@@ -177,7 +172,7 @@ export default function AdminRegistrationsClient() {
     // Authenticated - show admin interface
     return (
         <div className="bg-white min-h-screen">
-            <AdminHeader onSignOut={handleSignOut} />
+            <AdminHeader />
 
             <section className="py-12">
                 <div className="container-custom">

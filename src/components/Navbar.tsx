@@ -3,8 +3,9 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Search, Menu, X, User } from 'lucide-react';
+import { Search, Menu, X, User, LogOut } from 'lucide-react';
 import { trackEvent } from '@/utils/analytics/ga4';
+import { isAdminAuthenticated, signOutAdmin } from '@/lib/adminAuth';
 
 import Image from 'next/image';
 
@@ -24,7 +25,13 @@ const navLinks = [
 export default function Navbar({ onSearchClick }: { onSearchClick: () => void }) {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
     const pathname = usePathname();
+
+    // Check if user is admin
+    useEffect(() => {
+        setIsAdmin(isAdminAuthenticated());
+    }, []);
 
     useEffect(() => {
         let ticking = false;
@@ -102,16 +109,34 @@ export default function Navbar({ onSearchClick }: { onSearchClick: () => void })
                             <Search className="w-5 h-5" />
                         </button>
 
-                        <button
-                            onClick={() => trackEvent('cta_click', {
-                                cta_id: 'member_login',
-                                location: 'header'
-                            })}
-                            className="hidden sm:flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
-                        >
-                            <User className="w-4 h-4" />
-                            Member Login
-                        </button>
+                        {isAdmin ? (
+                            <button
+                                onClick={() => {
+                                    trackEvent('cta_click', {
+                                        cta_id: 'admin_logout',
+                                        location: 'header'
+                                    });
+                                    signOutAdmin();
+                                }}
+                                className="hidden sm:flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+                            >
+                                <LogOut className="w-4 h-4" />
+                                Logout
+                            </button>
+                        ) : (
+                            <Link
+                                href="/admin/registrations"
+                                onClick={() => trackEvent('cta_click', {
+                                    cta_id: 'member_login',
+                                    location: 'header',
+                                    destination_path: '/admin/registrations'
+                                })}
+                                className="hidden sm:flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+                            >
+                                <User className="w-4 h-4" />
+                                Login
+                            </Link>
+                        )}
 
                         <div className="lg:hidden flex items-center">
                             <button
@@ -146,16 +171,37 @@ export default function Navbar({ onSearchClick }: { onSearchClick: () => void })
                                 {link.name}
                             </Link>
                         ))}
-                        <button
-                            onClick={() => trackEvent('cta_click', {
-                                cta_id: 'member_login',
-                                location: 'mobile_drawer'
-                            })}
-                            className="w-full mt-4 flex items-center justify-center gap-2 px-4 py-3 bg-gray-50 rounded-lg text-sm font-medium text-gray-700 active:bg-gray-100 transition-colors"
-                        >
-                            <User className="w-4 h-4" />
-                            Member Login
-                        </button>
+                        {isAdmin ? (
+                            <button
+                                onClick={() => {
+                                    trackEvent('cta_click', {
+                                        cta_id: 'admin_logout',
+                                        location: 'mobile_drawer'
+                                    });
+                                    signOutAdmin();
+                                }}
+                                className="w-full mt-4 flex items-center justify-center gap-2 px-4 py-3 bg-gray-50 rounded-lg text-sm font-medium text-gray-700 active:bg-gray-100 transition-colors"
+                            >
+                                <LogOut className="w-4 h-4" />
+                                Logout
+                            </button>
+                        ) : (
+                            <Link
+                                href="/admin/registrations"
+                                onClick={() => {
+                                    trackEvent('cta_click', {
+                                        cta_id: 'member_login',
+                                        location: 'mobile_drawer',
+                                        destination_path: '/admin/registrations'
+                                    });
+                                    setIsOpen(false);
+                                }}
+                                className="w-full mt-4 flex items-center justify-center gap-2 px-4 py-3 bg-gray-50 rounded-lg text-sm font-medium text-gray-700 active:bg-gray-100 transition-colors"
+                            >
+                                <User className="w-4 h-4" />
+                                Login
+                            </Link>
+                        )}
                     </div>
                 </div>
             )}
