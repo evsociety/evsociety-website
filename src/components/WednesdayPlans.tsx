@@ -122,7 +122,11 @@ export default function WednesdayPlans({ events = [] }: WednesdayPlansProps) {
                 if (existingEvent.speakerOrganization) description += `\n(${existingEvent.speakerOrganization})`;
             }
             if (existingEvent.time) {
-                timeSlot = existingEvent.time;
+                // Try to match specific time format from JSON to dropdown options
+                // e.g. "8:00 PM IST" -> "8:00 PM – 8:30 PM"
+                const cleanTime = existingEvent.time.replace(/\s?IST$/i, '').trim();
+                const standardSlot = TIME_OPTS.find(opt => opt.startsWith(cleanTime));
+                timeSlot = standardSlot || existingEvent.time;
             }
 
             // Infer meeting type from tags or title
@@ -424,6 +428,12 @@ export default function WednesdayPlans({ events = [] }: WednesdayPlansProps) {
                                                     className="w-full pl-9 pr-8 py-2 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/10 outline-none appearance-none cursor-pointer hover:bg-white transition-colors text-gray-700 font-medium"
                                                 >
                                                     {TIME_OPTS.map(t => <option key={t} value={t}>{t}</option>)}
+                                                    {/* If the current timeSlot is not in the list, add it as an option */}
+                                                    {!TIME_OPTS.includes(plan.timeSlot) && (
+                                                        <option key={plan.timeSlot} value={plan.timeSlot}>
+                                                            {plan.timeSlot}
+                                                        </option>
+                                                    )}
                                                 </select>
                                                 <ChevronRight className="w-3.5 h-3.5 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 rotate-90" />
                                             </div>
