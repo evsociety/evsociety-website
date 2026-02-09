@@ -88,6 +88,30 @@ export default function RegistrationSummaryCard({ type, role, item, participatio
                         </div>
                     )}
 
+                    {/* Speaker Information */}
+                    {item.speaker && (
+                        <div className="flex items-start gap-3">
+                            <div className="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center shrink-0">
+                                <Users className="w-5 h-5" />
+                            </div>
+                            <div>
+                                <div className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">
+                                    Speaker
+                                </div>
+                                <div className="text-sm font-bold text-gray-900">{item.speaker}</div>
+                                {item.speakerTitle && (
+                                    <div className="text-xs text-gray-600 mt-0.5">{item.speakerTitle}</div>
+                                )}
+                                {item.speakerOrganization && (
+                                    <div className="text-xs text-gray-600 mt-0.5">{item.speakerOrganization}</div>
+                                )}
+                                {item.speakerInstitution && (
+                                    <div className="text-xs text-gray-500 mt-0.5">{item.speakerInstitution}</div>
+                                )}
+                            </div>
+                        </div>
+                    )}
+
                     {/* Mode */}
                     {participationMode && (
                         <div className="flex items-start gap-3">

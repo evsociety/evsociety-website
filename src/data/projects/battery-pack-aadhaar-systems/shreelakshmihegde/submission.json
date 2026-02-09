@@ -17,12 +17,12 @@
                 {
                     "docId": "s0-01",
                     "name": "WEBINAR - EV BATTERY SAFETY SYSTEM",
-                    "description": "AI-Powered EV Battery Fire Prevention System",
+                    "description": "AI Powered Battery Health Prediction and Failure Detection System in Electric Vehicles.",
                     "required": true,
                     "status": "in-progress",
                     "submittedOn": "2026-02-09",
                     "reviewNotes": "",
-                    "fileUrl": "",
+                    "fileUrl": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatteryPackAadhaarSystem/13Webinars/Webinar - EV Battery Safety System - Shreelakshmi Hegde.png",
                     "reviewerName": "",
                     "reviewerComment": "",
                     "reviewDate": "",
@@ -33,7 +33,7 @@
                 {
                     "docId": "s0-02",
                     "name": "PROJECT REPORT - EV BATTERY SAFETY SYSTEM",
-                    "description": "AI-Powered EV Battery Fire Prevention System",
+                    "description": "AI Powered Battery Health Prediction and Failure Detection System in Electric Vehicles.",
                     "required": true,
                     "status": "submitted",
                     "submittedOn": "2026-02-09",

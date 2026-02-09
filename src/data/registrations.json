@@ -207,13 +207,38 @@
     "webinars": [
         {
             "id": "web_001",
-            "title": "AI-Powered EV Battery Fire Prevention System",
+            "title": "EV BATTERY SAFETY SYSTEM",
             "date": "2026-02-11",
             "time": "8:00 PM IST",
             "speaker": "Sreenath Asha",
-            "speakerTitle": "Intern, EV Engineer | BE 6 SEM (E&C)",
+            "speakerTitle": "Intern, EV.ENGINEER | BE 6 SEM (E&C)",
             "speakerOrganization": "iTelematics® Software Private Limited, Bengaluru",
             "speakerInstitution": "A J Institute of Engineering & Technology, Mangaluru, India",
+            "location": "Bengaluru, India",
+            "modeOptions": [
+                "online"
+            ],
+            "categoryTags": [
+                "AI/ML",
+                "Battery Safety",
+                "Fire Prevention"
+            ],
+            "sessionTracks": [
+                "Battery Failure Detection",
+                "Thermal Runaway Prevention",
+                "AI-Based Monitoring"
+            ],
+            "description": "The AI-Powered EV Battery Fire Prevention System is an advanced software platform designed to detect early signs of battery failure and prevent thermal runaway incidents in electric vehicles."
+        },
+        {
+            "id": "web_002",
+            "title": "EV BATTERY SAFETY SYSTEM",
+            "date": "2026-02-25",
+            "time": "8:00 PM IST",
+            "speaker": "Shreelakshmi Hegde",
+            "speakerTitle": "Intern, EV.ENGINEER | BE 8 SEM (AI/ML)",
+            "speakerOrganization": "iTelematics® Software Private Limited, Bengaluru",
+            "speakerInstitution": "Canara Engineering College, Mangaluru, India",
             "location": "Bengaluru, India",
             "modeOptions": [
                 "online"

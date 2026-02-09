@@ -360,6 +360,10 @@ export default function RegisterClient() {
                     itemTitle={selectedItem?.title || ''}
                     itemDate={selectedItem?.date || selectedItem?.startDate}
                     itemTime={selectedItem?.time}
+                    speaker={selectedItem?.speaker}
+                    speakerTitle={selectedItem?.speakerTitle}
+                    speakerOrganization={selectedItem?.speakerOrganization}
+                    speakerInstitution={selectedItem?.speakerInstitution}
                     onClose={() => {
                         setShowSuccess(false);
                         window.location.reload(); // Refresh to start new registration

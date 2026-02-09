@@ -7,11 +7,15 @@ interface SuccessModalProps {
     itemTitle: string;
     itemDate?: string;
     itemTime?: string;
+    speaker?: string;
+    speakerTitle?: string;
+    speakerOrganization?: string;
+    speakerInstitution?: string;
     onClose: () => void;
     onRegisterAnother: () => void;
 }
 
-export default function SuccessModal({ registrationId, itemTitle, itemDate, itemTime, onClose, onRegisterAnother }: SuccessModalProps) {
+export default function SuccessModal({ registrationId, itemTitle, itemDate, itemTime, speaker, speakerTitle, speakerOrganization, speakerInstitution, onClose, onRegisterAnother }: SuccessModalProps) {
     const downloadConfirmation = () => {
         const confirmationHTML = `
 <!DOCTYPE html>
@@ -45,6 +49,15 @@ export default function SuccessModal({ registrationId, itemTitle, itemDate, item
             <div style="margin-top: 15px; padding-top: 15px; border-top: 1px dashed #bbf7d0; display: flex; justify-content: center; gap: 20px;">
                 ${itemDate ? `<div><span style="color: #6b7280; font-size: 12px; display: block;">DATE</span><strong style="color: #15803d;">${new Date(itemDate).toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' })}</strong></div>` : ''}
                 ${itemTime ? `<div><span style="color: #6b7280; font-size: 12px; display: block;">TIME</span><strong style="color: #15803d;">${itemTime}</strong></div>` : ''}
+            </div>
+            ` : ''}
+            ${speaker ? `
+            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px dashed #bbf7d0;">
+                <div style="color: #6b7280; font-size: 12px; text-transform: uppercase; font-weight: bold; margin-bottom: 5px;">SPEAKER</div>
+                <div style="color: #15803d; font-weight: bold; font-size: 16px;">${speaker}</div>
+                ${speakerTitle ? `<div style="color: #4b5563; font-size: 12px; margin-top: 2px;">${speakerTitle}</div>` : ''}
+                ${speakerOrganization ? `<div style="color: #4b5563; font-size: 12px; margin-top: 2px;">${speakerOrganization}</div>` : ''}
+                ${speakerInstitution ? `<div style="color: #6b7280; font-size: 11px; margin-top: 2px;">${speakerInstitution}</div>` : ''}
             </div>
             ` : ''}
         </div>
@@ -132,6 +145,15 @@ export default function SuccessModal({ registrationId, itemTitle, itemDate, item
                                         <div className="font-bold text-green-800">{itemTime}</div>
                                     </div>
                                 )}
+                            </div>
+                        )}
+                        {speaker && (
+                            <div className="mt-4 pt-4 border-t border-dashed border-green-200">
+                                <div className="text-xs text-gray-500 uppercase font-bold mb-1">Speaker</div>
+                                <div className="font-bold text-green-800">{speaker}</div>
+                                {speakerTitle && <div className="text-xs text-gray-600 mt-0.5">{speakerTitle}</div>}
+                                {speakerOrganization && <div className="text-xs text-gray-600 mt-0.5">{speakerOrganization}</div>}
+                                {speakerInstitution && <div className="text-xs text-gray-500 mt-0.5">{speakerInstitution}</div>}
                             </div>
                         )}
                     </div>

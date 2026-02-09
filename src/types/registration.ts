@@ -20,6 +20,10 @@ export interface RegistrationItem {
     modeOptions: ParticipationMode[];
     categoryTags: string[];
     sessionTracks?: string[];
+    speaker?: string;
+    speakerTitle?: string;
+    speakerOrganization?: string;
+    speakerInstitution?: string;
 }
 
 export interface RegistrationFormData {
