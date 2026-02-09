@@ -2,8 +2,8 @@
  * Unified Google Apps Script for EVSociety
  * 
  * FEATURES:
- * - Handles Public Registrations (no-cors)
- * - Handles Admin API (CORS enabled)
+ * - Handles Public Registrations
+ * - Handles Admin API
  * - Mismatched column mapping fixes
  * 
  * SETUP INSTRUCTIONS:
@@ -27,29 +27,13 @@ const SHEET_NAME_FALLBACK = 'Sheet1';
 const ADMIN_EMAIL = 'evsociety.org@gmail.com';
 
 /**
- * Handle CORS preflight requests
- */
-function doOptions(e) {
-    const output = ContentService.createTextOutput('');
-    output.setMimeType(ContentService.MimeType.JSON);
-    output.setHeader('Access-Control-Allow-Origin', '*');
-    output.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
-    output.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    output.setHeader('Access-Control-Max-Age', '86400');
-    return output;
-}
-
-/**
  * Main POST handler
  * Acts as a router between Registration and Admin actions
  */
 function doPost(e) {
-    // Set Default CORS headers for all responses
+    // ContentService automatically handles CORS for simple requests
     const output = ContentService.createTextOutput();
     output.setMimeType(ContentService.MimeType.JSON);
-    output.setHeader('Access-Control-Allow-Origin', '*');
-    output.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-    output.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
     try {
         // Guard against empty postData
