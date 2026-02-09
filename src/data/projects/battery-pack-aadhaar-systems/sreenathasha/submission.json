@@ -29,6 +29,22 @@
                     "approverName": "",
                     "approverComment": "",
                     "approvedDate": ""
+                },
+                {
+                    "docId": "s0-02",
+                    "name": "PROJECT REPORT - EV BATTERY SAFETY SYSTEM",
+                    "description": "AI-Powered EV Battery Fire Prevention System",
+                    "required": true,
+                    "status": "submitted",
+                    "submittedOn": "2026-02-06",
+                    "reviewNotes": "",
+                    "fileUrl": "",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
                 }
             ]
         }
