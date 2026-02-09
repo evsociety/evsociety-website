@@ -15,35 +15,55 @@ export const listRegistrations = async (
 ): Promise<AdminRegistration[]> => {
     try {
         const session = getAdminSession();
+        console.log('[Admin Service] Listing registrations...');
 
         if (!session) {
+            console.error('[Admin Service] No session found');
             throw new Error('Not authenticated');
         }
 
         const apiUrl = adminConfig.APPS_SCRIPT_ADMIN_API_URL;
+        console.log('[Admin Service] API URL:', apiUrl);
 
         if (!apiUrl) {
+            console.error('[Admin Service] API URL missing');
             throw new Error('Admin API URL not configured');
         }
+
+        const payload = {
+            action: 'listRegistrations',
+            filters: filters || {},
+            idToken: session.idToken,
+        };
+        // console.log('[Admin Service] Request Payload:', JSON.stringify(payload));
 
         const response = await fetch(apiUrl, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'text/plain;charset=utf-8', // Google Apps Script requires text/plain often to avoid CORS preflight issues
             },
-            body: JSON.stringify({
-                action: 'listRegistrations',
-                filters: filters || {},
-                idToken: session.idToken,
-            }),
+            body: JSON.stringify(payload),
         });
 
-        const data: AdminApiResponse<AdminRegistration[]> = await response.json();
+        console.log('[Admin Service] Response Status:', response.status);
+
+        const responseText = await response.text();
+        console.log('[Admin Service] Response Text:', responseText.substring(0, 500) + '...'); // Log first 500 chars
+
+        let data: AdminApiResponse<AdminRegistration[]>;
+        try {
+            data = JSON.parse(responseText);
+        } catch (e) {
+            console.error('[Admin Service] Failed to parse JSON:', e);
+            throw new Error(`Invalid JSON response: ${responseText.substring(0, 100)}`);
+        }
 
         if (!data.ok) {
+            console.error('[Admin Service] API Error:', data.error);
             throw new Error(data.error || 'Failed to fetch registrations');
         }
 
+        console.log(`[Admin Service] Successfully fetched ${data.data?.length || 0} registrations`);
         return data.data || [];
 
     } catch (error) {
