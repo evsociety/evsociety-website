@@ -24,9 +24,9 @@ export default function CandidateCard({ candidates, submissions, baseUrl = '/pro
         <div className="md:hidden space-y-4">
             {candidates.map((candidate) => {
                 const submission = submissions.find(s => s.candidateId === candidate.candidateId);
-                const progress = submission
-                    ? computeProgress(submission.pillars.flatMap(p => p.documents))
-                    : 0;
+                const progress = (submission && submission.overallPercentage !== undefined)
+                    ? submission.overallPercentage
+                    : (submission ? computeProgress(submission.pillars.flatMap(p => p.documents)) : 0);
                 const status = submission?.overallStatus || 'not-started';
 
                 return (
