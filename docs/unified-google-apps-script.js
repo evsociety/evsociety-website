@@ -12,8 +12,8 @@
  * 2. Go to Extensions > Apps Script
  * 3. REPLACE ALL existing code with this file.
  * 4. Click "Deploy" > "Manage deployments"
- * 5. Click "Edit" (pencil icon)
- * 6. Select "New version" from the version dropdown
+ * 5. Click "Edit" (pencil icon) next to your existing deployment
+ * 6. Select "New version" from the version dropdown (CRITICAL!)
  * 7. Click "Deploy"
  * 
  * IMPORTANT: You must reference the SAME Web App URL for both
@@ -21,20 +21,22 @@
  * in your .env.local file.
  */
 
-const SHEET_NAME = 'Sheet1';
+// CONFIGURATION
+const SHEET_NAME = 'EVSociety Registrations'; // Must match your actual sheet name
+const SHEET_NAME_FALLBACK = 'Sheet1';
 const ADMIN_EMAIL = 'evsociety.org@gmail.com';
 
 /**
  * Handle CORS preflight requests
  */
 function doOptions(e) {
-    return ContentService
-        .createTextOutput('')
-        .setMimeType(ContentService.MimeType.JSON)
-        .setHeader('Access-Control-Allow-Origin', '*')
-        .setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
-        .setHeader('Access-Control-Allow-Headers', 'Content-Type')
-        .setHeader('Access-Control-Max-Age', '86400');
+    const output = ContentService.createTextOutput('');
+    output.setMimeType(ContentService.MimeType.JSON);
+    output.setHeader('Access-Control-Allow-Origin', '*');
+    output.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+    output.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    output.setHeader('Access-Control-Max-Age', '86400');
+    return output;
 }
 
 /**
@@ -47,9 +49,14 @@ function doPost(e) {
     output.setMimeType(ContentService.MimeType.JSON);
     output.setHeader('Access-Control-Allow-Origin', '*');
     output.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-    output.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    output.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
     try {
+        // Guard against empty postData
+        if (!e || !e.postData || !e.postData.contents) {
+            throw new Error('No post data received');
+        }
+
         const data = JSON.parse(e.postData.contents);
 
         // ROUTER LOGIC:
@@ -75,11 +82,10 @@ function doPost(e) {
  * Handler for Public Registrations
  */
 function handleRegistration(data, output) {
-    const ss = SpreadsheetApp.getActiveSpreadsheet();
-    let sheet = ss.getSheetByName(SHEET_NAME);
-
-    // Fallback if sheet name is different
-    if (!sheet) sheet = ss.getSheets()[0];
+    const sheet = getSheet();
+    if (!sheet) {
+        throw new Error('Sheet not found');
+    }
 
     // Prepare row data (Append Order)
     const row = [
@@ -134,17 +140,24 @@ function handleAdminAction(data, output) {
     }
 
     if (action === 'listRegistrations') {
-        const registrations = getRegistrations(filters);
-        return output.setContent(JSON.stringify({
-            ok: true,
-            data: registrations,
-            total: registrations.length
-        }));
+        try {
+            const registrations = getRegistrations(filters);
+            return output.setContent(JSON.stringify({
+                ok: true,
+                data: registrations,
+                total: registrations.length
+            }));
+        } catch (err) {
+            return output.setContent(JSON.stringify({
+                ok: false,
+                error: 'Failed to list registrations: ' + err.toString()
+            }));
+        }
     }
 
     return output.setContent(JSON.stringify({
         ok: false,
-        error: 'Unknown action'
+        error: 'Unknown action: ' + action
     }));
 }
 
@@ -161,9 +174,10 @@ function verifyAdminToken(idToken) {
  * Helper: Get Registrations with Mapping
  */
 function getRegistrations(filters) {
-    const ss = SpreadsheetApp.getActiveSpreadsheet();
-    let sheet = ss.getSheetByName(SHEET_NAME);
-    if (!sheet) sheet = ss.getSheets()[0];
+    const sheet = getSheet();
+    if (!sheet) {
+        throw new Error('Sheet not found');
+    }
 
     const dataRange = sheet.getDataRange();
     const values = dataRange.getValues();
@@ -196,10 +210,13 @@ function getRegistrations(filters) {
             // Map 'type' -> 'registrationType' AND 'itemType'
             registrationType: getVal(row, 'type'),
             itemType: getVal(row, 'type'),
-            itemId: getVal(row, 'registrationId'), // Fallback to registrationId as itemId is not in sheet
+            itemId: getVal(row, 'registrationId'), // Fallback to registrationId
 
             role: getVal(row, 'role'),
             itemTitle: getVal(row, 'itemTitle'),
+            eventDate: getVal(row, 'eventDate') || getVal(row, 'timestamp'), // Fallback
+            eventTime: getVal(row, 'eventTime'),
+            location: getVal(row, 'location'),
 
             fullName: getVal(row, 'fullName'),
             email: getVal(row, 'email'),
@@ -214,7 +231,7 @@ function getRegistrations(filters) {
             mode: getVal(row, 'participationMode'),
             topicReason: getVal(row, 'topic'),
             invitedBy: getVal(row, 'reference'),
-            skillArea: getVal(row, 'skillAreas'), // Note: plural in sheet, singular in interface? Mapping safely.
+            skillArea: getVal(row, 'skillAreas'),
 
             // Guests
             guestCategory: getVal(row, 'guestCategory'),
@@ -260,4 +277,15 @@ function getRegistrations(filters) {
     });
 
     return registrations;
+}
+
+/**
+ * Helper: Get Sheet safely
+ */
+function getSheet() {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    let sheet = ss.getSheetByName(SHEET_NAME);
+    if (!sheet) sheet = ss.getSheetByName(SHEET_NAME_FALLBACK);
+    if (!sheet) sheet = ss.getSheets()[0];
+    return sheet;
 }
