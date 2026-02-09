@@ -30,6 +30,10 @@ export interface EVEvent {
   summary: string;
   registrationUrl: string;
   tags: string[];
+  time?: string;
+  speaker?: string;
+  speakerTitle?: string;
+  speakerOrganization?: string;
 }
 
 export interface Resource {

@@ -31,9 +31,9 @@
         "id": "p_002",
         "slug": "nitk-ev-lab",
         "type": "institute",
-        "name": "NITK Surathkal - EV Research Center",
+        "name": "NITK Alumni - EV Research Center",
         "shortDescription": "Academic hub for next-gen battery chemistry and charging infrastructure.",
-        "about": "The EV Research Center at NITK Surathkal focuses on fundamental research in solid-state batteries and smart grid integration for EV charging.",
+        "about": "The EV Research Center at NITK Alumni focuses on fundamental research in solid-state batteries and smart grid integration for EV charging.",
         "logo": "/logos/nitk.png",
         "location": {
             "city": "Surathkal",

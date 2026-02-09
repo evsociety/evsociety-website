@@ -3,19 +3,9 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Calendar, Clock, MapPin, Download, Upload, RotateCcw, Search, Filter, CheckCircle2, XCircle, AlertCircle } from 'lucide-react';
 import wedConfig from '@/data/wednesday-config.json';
+import { EVEvent } from '@/types';
 
 // --- Types ---
-
-/* 
-QA Checklist:
-- Month switching works (Jan–Dec 2026)
-- Correct Wednesdays generated
-- 1st & 3rd are fixed to “EV Society Member’s Meeting”
-- 2nd/4th/5th have dropdown default “Webinar”
-- LocalStorage save/restore works
-- Export/Import works
-- Mobile responsive layout looks like existing cards
-*/
 
 type MeetingType = 'EV Society Member’s Meeting' | 'Webinar' | 'Skills Development' | 'EV Workshop Demo' | 'Paper Presentation';
 type Status = 'Planned' | 'Confirmed' | 'Completed' | 'Cancelled';
@@ -27,7 +17,7 @@ interface WednesdayPlan {
     nthInMonth: number; // 1, 2, 3, 4, 5
     timeSlot: string;
     meetingType: MeetingType;
-    customMeetingType?: string; // For "Other" if needed, though reqs specified specific dropdowns.
+    customMeetingType?: string; // For "Other" if needed
     title: string;
     description: string;
     status: Status;
@@ -64,34 +54,6 @@ const getWednesdaysInMonth = (monthIndex: number): Date[] => {
     return dates;
 };
 
-const generateDefaultPlan = (date: Date, nth: number): WednesdayPlan => {
-    const isFixed = nth === 1 || nth === 3;
-    let meetingType: MeetingType = 'Webinar';
-
-    if (isFixed) {
-        meetingType = wedConfig.fixedMeetingType as MeetingType;
-    }
-
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    const dateIso = `${year}-${month}-${day}`;
-
-    return {
-        id: dateIso,
-        dateIso: dateIso,
-        dateDisplay: date.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' }),
-        nthInMonth: nth,
-        timeSlot: '8:00 PM – 8:30 PM',
-        meetingType,
-        title: '',
-        description: '',
-        status: 'Planned',
-        comments: '',
-        isFixedType: isFixed
-    };
-};
-
 const getStorageKey = (monthIndex: number) => {
     const m = (monthIndex + 1).toString().padStart(2, '0');
     return `evsociety_wedplan_${YEAR}_${m}`;
@@ -99,8 +61,19 @@ const getStorageKey = (monthIndex: number) => {
 
 // --- Component ---
 
-export default function WednesdayPlans() {
-    const [selectedMonth, setSelectedMonth] = useState(0); // 0 = Jan
+interface WednesdayPlansProps {
+    events?: EVEvent[];
+}
+
+export default function WednesdayPlans({ events = [] }: WednesdayPlansProps) {
+    const [selectedMonth, setSelectedMonth] = useState(() => {
+        const now = new Date();
+        // If current year is same as config year, show current month
+        if (now.getFullYear() === YEAR) {
+            return now.getMonth();
+        }
+        return 0; // Default to Jan
+    });
     const [plans, setPlans] = useState<WednesdayPlan[]>([]);
     const [searchQuery, setSearchQuery] = useState('');
     const [filterType, setFilterType] = useState<string>('All');
@@ -110,7 +83,70 @@ export default function WednesdayPlans() {
     // Initial Load & Month Change
     useEffect(() => {
         loadMonthData(selectedMonth);
-    }, [selectedMonth]);
+    }, [selectedMonth, events]); // Depend on events to re-process if needed
+
+    // Helper inside to access events prop
+    const generateDefaultPlan = (date: Date, nth: number, existingEvent?: EVEvent): WednesdayPlan => {
+        const isFixed = nth === 1 || nth === 3;
+        let meetingType: MeetingType = 'Webinar';
+
+        if (isFixed) {
+            meetingType = wedConfig.fixedMeetingType as MeetingType;
+        }
+
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const dateIso = `${year}-${month}-${day}`;
+
+        // Defaults
+        let timeSlot = '8:00 PM – 8:30 PM';
+        let title = '';
+        let description = '';
+        let status: Status = 'Planned';
+        let comments = '';
+
+        // Determine status based on date
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        if (date < today) {
+            status = 'Completed';
+        }
+
+        if (existingEvent) {
+            title = existingEvent.title;
+            description = existingEvent.summary;
+            if (existingEvent.speaker) {
+                description += `\n\nSpeaker: ${existingEvent.speaker}`;
+                if (existingEvent.speakerTitle) description += `, ${existingEvent.speakerTitle}`;
+                if (existingEvent.speakerOrganization) description += `\n(${existingEvent.speakerOrganization})`;
+            }
+            if (existingEvent.time) {
+                timeSlot = existingEvent.time;
+            }
+
+            // Infer meeting type from tags or title
+            if (existingEvent.title.toLowerCase().includes('member')) meetingType = 'EV Society Member’s Meeting';
+            else if (existingEvent.title.toLowerCase().includes('webinar') || existingEvent.tags.some(t => t.toLowerCase() === 'webinar')) meetingType = 'Webinar';
+            else if (existingEvent.title.toLowerCase().includes('workshop') || existingEvent.tags.some(t => t.toLowerCase() === 'workshop')) meetingType = 'EV Workshop Demo';
+
+            status = date < today ? 'Completed' : 'Confirmed';
+        }
+
+        return {
+            id: dateIso,
+            dateIso: dateIso,
+            dateDisplay: date.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' }),
+            nthInMonth: nth,
+            timeSlot,
+            meetingType,
+            title,
+            description,
+            status,
+            comments,
+            isFixedType: isFixed && !existingEvent
+        };
+    };
 
     const loadMonthData = (monthIndex: number) => {
         const key = getStorageKey(monthIndex);
@@ -119,8 +155,47 @@ export default function WednesdayPlans() {
         if (stored) {
             try {
                 const parsed = JSON.parse(stored);
-                // Validate if needed, but for now mostly trust local storage
-                setPlans(parsed);
+                // Merge with JSON events if title is missing in stored plan
+                const merged = parsed.map((p: WednesdayPlan) => {
+                    const evt = events.find(e => e.date === p.dateIso);
+
+                    // Logic to update stored plans:
+                    // 1. If we have multiple fields missing but event exists, fill it.
+                    // 2. Refresh Status based on Date & Event existence.
+
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+                    const pDate = new Date(p.dateIso);
+                    const isPast = pDate < today;
+
+                    let updates: Partial<WednesdayPlan> = {};
+                    let currentStatus = p.status;
+
+                    // If we have an event match and the stored plan hasn't been titled yet
+                    if (evt && (!p.title || p.title.trim() === '')) {
+                        const d = new Date(p.dateIso);
+                        // Start with fresh default from event
+                        const generated = generateDefaultPlan(d, p.nthInMonth || 1, evt);
+                        updates = { ...generated, id: p.id }; // Keep ID
+                        currentStatus = generated.status;
+                    }
+
+                    // Enforce Status Rules
+                    if (isPast) {
+                        if (currentStatus !== 'Cancelled' && currentStatus !== 'Completed') {
+                            updates.status = 'Completed';
+                        }
+                    } else {
+                        // Future / Today
+                        if (evt && currentStatus === 'Planned') {
+                            updates.status = 'Confirmed';
+                        }
+                    }
+
+                    return { ...p, ...updates };
+                });
+
+                setPlans(merged);
                 return;
             } catch (e) {
                 console.error("Failed to parse stored plans", e);
@@ -129,10 +204,13 @@ export default function WednesdayPlans() {
 
         // Generate defaults if nothing stored
         const weds = getWednesdaysInMonth(monthIndex);
-        const defaults = weds.map((d, i) => generateDefaultPlan(d, i + 1));
+        const defaults = weds.map((d, i) => {
+            const dateIso = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+            const evt = events.find(e => e.date === dateIso);
+            return generateDefaultPlan(d, i + 1, evt);
+        });
+
         setPlans(defaults);
-        // We don't auto-save immediately to avoid overwriting empty storage with defaults if not intended,
-        // but requirements say "On page reload, restore...". If nothing stored, showing defaults is correct.
     };
 
     // Auto-save on every edit
@@ -193,7 +271,11 @@ export default function WednesdayPlans() {
             localStorage.removeItem(key);
             // Reload defaults
             const weds = getWednesdaysInMonth(selectedMonth);
-            const defaults = weds.map((d, i) => generateDefaultPlan(d, i + 1));
+            const defaults = weds.map((d, i) => {
+                const dateIso = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+                const evt = events.find(e => e.date === dateIso);
+                return generateDefaultPlan(d, i + 1, evt);
+            });
             setPlans(defaults);
         }
     };
