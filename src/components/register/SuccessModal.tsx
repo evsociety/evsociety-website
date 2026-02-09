@@ -77,9 +77,9 @@ export default function SuccessModal({ registrationId, itemTitle, itemDate, item
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 animate-fade-in">
-            <div className="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl animate-slide-up">
-                <div className="text-center">
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/50 animate-fade-in">
+            <div className="flex min-h-full items-center justify-center p-4">
+                <div className="bg-white rounded-3xl max-w-md w-full p-6 md:p-8 shadow-2xl animate-slide-up relative text-center">
                     <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <CheckCircle className="w-10 h-10 text-green-600" />
                     </div>
