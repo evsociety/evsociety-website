@@ -5,11 +5,13 @@ import { CheckCircle, Download, RefreshCw } from 'lucide-react';
 interface SuccessModalProps {
     registrationId: string;
     itemTitle: string;
+    itemDate?: string;
+    itemTime?: string;
     onClose: () => void;
     onRegisterAnother: () => void;
 }
 
-export default function SuccessModal({ registrationId, itemTitle, onClose, onRegisterAnother }: SuccessModalProps) {
+export default function SuccessModal({ registrationId, itemTitle, itemDate, itemTime, onClose, onRegisterAnother }: SuccessModalProps) {
     const downloadConfirmation = () => {
         const confirmationHTML = `
 <!DOCTYPE html>
@@ -34,6 +36,19 @@ export default function SuccessModal({ registrationId, itemTitle, onClose, onReg
         <p><strong>Thank you for registering!</strong></p>
         <p>Your registration for <strong>${itemTitle}</strong> has been successfully confirmed.</p>
         <div class="registration-id">${registrationId}</div>
+        
+        <div style="background-color: #f0fdf4; border: 2px dashed #16a34a; border-radius: 5px; padding: 15px; margin: 20px 0; text-align: center;">
+            <p style="margin: 0 0 5px 0; color: #6b7280; font-size: 12px; text-transform: uppercase; font-weight: bold;">Meeting Link</p>
+            <a href="https://meet.google.com/jfh-onie-xge" style="color: #15803d; font-weight: bold; text-decoration: none; font-size: 18px; word-break: break-all;">https://meet.google.com/jfh-onie-xge</a>
+            <p style="margin: 5px 0 0 0; color: #4b5563; font-size: 12px;">Use this link to join the meeting</p>
+            ${itemDate || itemTime ? `
+            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px dashed #bbf7d0; display: flex; justify-content: center; gap: 20px;">
+                ${itemDate ? `<div><span style="color: #6b7280; font-size: 12px; display: block;">DATE</span><strong style="color: #15803d;">${new Date(itemDate).toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' })}</strong></div>` : ''}
+                ${itemTime ? `<div><span style="color: #6b7280; font-size: 12px; display: block;">TIME</span><strong style="color: #15803d;">${itemTime}</strong></div>` : ''}
+            </div>
+            ` : ''}
+        </div>
+
         <p><strong>What's Next?</strong></p>
         <ul>
             <li>Save this confirmation for your records</li>
@@ -79,6 +94,46 @@ export default function SuccessModal({ registrationId, itemTitle, onClose, onReg
                             Registration ID
                         </div>
                         <div className="text-2xl font-black text-primary">{registrationId}</div>
+                    </div>
+
+                    {/* Meeting Link */}
+                    <div className="bg-green-50 border-2 border-dashed border-green-600 rounded-xl p-4 mb-6">
+                        <div className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">
+                            Meeting Link
+                        </div>
+                        <a
+                            href="https://meet.google.com/jfh-onie-xge"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-lg font-bold text-green-700 hover:underline break-all block"
+                        >
+                            https://meet.google.com/jfh-onie-xge
+                        </a>
+                        <div className="text-xs text-gray-600 mt-1">Use this link to join the meeting</div>
+
+                        {(itemDate || itemTime) && (
+                            <div className="mt-4 pt-4 border-t border-dashed border-green-200 flex flex-wrap gap-6 justify-center">
+                                {itemDate && (
+                                    <div className="text-center">
+                                        <div className="text-xs text-gray-500 uppercase font-bold">Date</div>
+                                        <div className="font-bold text-green-800">
+                                            {new Date(itemDate).toLocaleDateString('en-US', {
+                                                weekday: 'short',
+                                                year: 'numeric',
+                                                month: 'short',
+                                                day: 'numeric'
+                                            })}
+                                        </div>
+                                    </div>
+                                )}
+                                {itemTime && (
+                                    <div className="text-center">
+                                        <div className="text-xs text-gray-500 uppercase font-bold">Time</div>
+                                        <div className="font-bold text-green-800">{itemTime}</div>
+                                    </div>
+                                )}
+                            </div>
+                        )}
                     </div>
 
                     {/* Info */}

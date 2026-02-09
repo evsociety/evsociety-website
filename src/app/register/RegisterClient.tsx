@@ -358,6 +358,8 @@ export default function RegisterClient() {
                 <SuccessModal
                     registrationId={registrationId}
                     itemTitle={selectedItem?.title || ''}
+                    itemDate={selectedItem?.date || selectedItem?.startDate}
+                    itemTime={selectedItem?.time}
                     onClose={() => {
                         setShowSuccess(false);
                         window.location.reload(); // Refresh to start new registration

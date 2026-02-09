@@ -3,7 +3,7 @@
         {
             "id": "evt_001",
             "title": "EV Battery Safety & Thermal Management Workshop",
-            "date": "2026-02-15",
+            "date": "2027-02-15",
             "time": "10:00 AM IST",
             "location": "Bengaluru, Karnataka",
             "modeOptions": [
@@ -25,7 +25,7 @@
         {
             "id": "evt_002",
             "title": "National EV Policy & Standards Summit",
-            "date": "2026-03-10",
+            "date": "2027-03-10",
             "time": "9:00 AM IST",
             "location": "New Delhi",
             "modeOptions": [
@@ -45,7 +45,7 @@
         {
             "id": "evt_003",
             "title": "EV Charging Infrastructure & Grid Resilience",
-            "date": "2026-04-12",
+            "date": "2027-04-12",
             "time": "10:00 AM IST",
             "location": "Hyderabad, Telangana",
             "modeOptions": [
@@ -66,7 +66,7 @@
         {
             "id": "evt_004",
             "title": "Startup Pitch: EV Mobility Innovation",
-            "date": "2026-05-20",
+            "date": "2027-05-20",
             "time": "2:00 PM IST",
             "location": "Pune, Maharashtra",
             "modeOptions": [
@@ -91,7 +91,7 @@
             "id": "prg_001",
             "title": "EVTO™ - EV Training & Outreach Program",
             "duration": "6 months",
-            "startDate": "2026-03-01",
+            "startDate": "2027-03-01",
             "modeOptions": [
                 "online",
                 "hybrid"
@@ -106,7 +106,7 @@
             "id": "prg_002",
             "title": "EV Software Development Bootcamp",
             "duration": "3 months",
-            "startDate": "2026-04-15",
+            "startDate": "2027-04-15",
             "modeOptions": [
                 "online"
             ],
@@ -120,7 +120,7 @@
             "id": "prg_003",
             "title": "Battery Management Systems (BMS) Specialization",
             "duration": "4 months",
-            "startDate": "2026-05-01",
+            "startDate": "2027-05-01",
             "modeOptions": [
                 "online",
                 "hybrid"
@@ -135,7 +135,7 @@
             "id": "prg_004",
             "title": "EV Cybersecurity Professional Course",
             "duration": "2 months",
-            "startDate": "2026-06-01",
+            "startDate": "2027-06-01",
             "modeOptions": [
                 "online"
             ],
@@ -150,7 +150,7 @@
         {
             "id": "proj_001",
             "title": "Battery Pack Aadhaar Systems",
-            "startDate": "2026-02-01",
+            "startDate": "2027-02-01",
             "modeOptions": [
                 "online",
                 "offline",
@@ -165,7 +165,7 @@
         {
             "id": "proj_002",
             "title": "Smart Charging Infrastructure for Urban Areas",
-            "startDate": "2026-03-15",
+            "startDate": "2027-03-15",
             "modeOptions": [
                 "offline",
                 "hybrid"
@@ -179,7 +179,7 @@
         {
             "id": "proj_003",
             "title": "EV Fleet Management Platform",
-            "startDate": "2026-04-01",
+            "startDate": "2027-04-01",
             "modeOptions": [
                 "online",
                 "hybrid"
@@ -193,7 +193,7 @@
         {
             "id": "proj_004",
             "title": "Solid-State Battery Research Collaboration",
-            "startDate": "2026-05-10",
+            "startDate": "2027-05-10",
             "modeOptions": [
                 "offline"
             ],
@@ -233,7 +233,7 @@
         {
             "id": "web_002",
             "title": "Cybersecurity in Connected EVs",
-            "date": "2026-03-25",
+            "date": "2027-03-25",
             "time": "6:00 PM IST",
             "modeOptions": [
                 "online"
@@ -252,7 +252,7 @@
         {
             "id": "web_003",
             "title": "Next-Gen Battery Materials: Research Insights",
-            "date": "2026-04-18",
+            "date": "2027-04-18",
             "time": "5:00 PM IST",
             "modeOptions": [
                 "online"
@@ -271,7 +271,7 @@
         {
             "id": "web_004",
             "title": "AI & Machine Learning in EV Diagnostics",
-            "date": "2026-05-08",
+            "date": "2027-05-08",
             "time": "7:00 PM IST",
             "modeOptions": [
                 "online"
@@ -290,7 +290,7 @@
         {
             "id": "web_005",
             "title": "EV Policy Updates and Industry Impact",
-            "date": "2026-06-12",
+            "date": "2027-06-12",
             "time": "4:00 PM IST",
             "modeOptions": [
                 "online"
