@@ -1,0 +1,52 @@
+{
+    "projectId": "battery-pack-aadhaar-systems",
+    "teamId": "EV.ENGINEER™",
+    "overallStatus": "submitted",
+    "overallPercentage": 80,
+    "certificateIssued": false,
+    "lastUpdated": "2026-02-11",
+    "approverName": "",
+    "approverComment": "",
+    "approvedDate": "",
+    "stages": [
+        {
+            "stageId": "stage0",
+            "title": "Battery Pack Aadhaar System",
+            "percentage": 80,
+            "documents": [
+                {
+                    "docId": "s0-01",
+                    "name": "WEBINAR - EV BATTERY SAFETY SYSTEM",
+                    "description": "AI-Powered EV Battery Fire Prevention System",
+                    "required": true,
+                    "status": "in-progress",
+                    "submittedOn": "2026-02-09",
+                    "reviewNotes": "",
+                    "fileUrl": "",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
+                },
+                {
+                    "docId": "s0-02",
+                    "name": "PROJECT REPORT - EV BATTERY SAFETY SYSTEM",
+                    "description": "AI-Powered EV Battery Fire Prevention System",
+                    "required": true,
+                    "status": "submitted",
+                    "submittedOn": "2026-02-09",
+                    "reviewNotes": "",
+                    "fileUrl": "",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
+                }
+            ]
+        }
+    ]
+}
