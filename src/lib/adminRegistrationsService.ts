@@ -83,6 +83,7 @@ export const exportToCSV = (registrations: AdminRegistration[], filename: string
             'Interest Level',
             'Participant Type',
             'Experience Level',
+            'Session Track',
             'Questions',
             'Registered On',
         ];
@@ -113,9 +114,11 @@ export const exportToCSV = (registrations: AdminRegistration[], filename: string
             reg.interestLevel || '',
             reg.participantType || '',
             reg.experienceLevel || '',
+            reg.sessionTrack || '',
             reg.questions || '',
             reg.timestamp,
         ]);
+
 
         // Combine headers and rows
         const csvContent = [

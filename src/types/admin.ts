@@ -39,6 +39,7 @@ export interface AdminRegistration {
     questions?: string;
 
     // Metadata
+    sessionTrack?: string;
     timestamp: string;
 }
 
