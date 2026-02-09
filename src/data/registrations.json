@@ -1,6 +1,26 @@
 {
     "events": [
         {
+            "id": "evt_past_001",
+            "title": "EV Fundamentals Workshop (Completed)",
+            "date": "2026-01-15",
+            "time": "10:00 AM IST",
+            "location": "Online",
+            "modeOptions": [
+                "online"
+            ],
+            "categoryTags": [
+                "Workshop",
+                "Basics",
+                "Completed"
+            ],
+            "sessionTracks": [
+                "EV History",
+                "Basic Components",
+                "Market Overview"
+            ]
+        },
+        {
             "id": "evt_001",
             "title": "EV Battery Safety & Thermal Management Workshop",
             "date": "2027-02-15",
@@ -221,7 +241,8 @@
             "categoryTags": [
                 "AI/ML",
                 "Battery Safety",
-                "Fire Prevention"
+                "Fire Prevention",
+                "Webinar"
             ],
             "sessionTracks": [
                 "Battery Failure Detection",
@@ -246,7 +267,8 @@
             "categoryTags": [
                 "AI/ML",
                 "Battery Safety",
-                "Fire Prevention"
+                "Fire Prevention",
+                "Webinar"
             ],
             "sessionTracks": [
                 "Battery Failure Detection",
@@ -256,7 +278,7 @@
             "description": "The AI-Powered EV Battery Fire Prevention System is an advanced software platform designed to detect early signs of battery failure and prevent thermal runaway incidents in electric vehicles."
         },
         {
-            "id": "web_002",
+            "id": "web_003",
             "title": "Cybersecurity in Connected EVs",
             "date": "2027-03-25",
             "time": "6:00 PM IST",
@@ -275,7 +297,7 @@
             ]
         },
         {
-            "id": "web_003",
+            "id": "web_004",
             "title": "Next-Gen Battery Materials: Research Insights",
             "date": "2027-04-18",
             "time": "5:00 PM IST",
@@ -294,7 +316,7 @@
             ]
         },
         {
-            "id": "web_004",
+            "id": "web_005",
             "title": "AI & Machine Learning in EV Diagnostics",
             "date": "2027-05-08",
             "time": "7:00 PM IST",
@@ -313,7 +335,7 @@
             ]
         },
         {
-            "id": "web_005",
+            "id": "web_006",
             "title": "EV Policy Updates and Industry Impact",
             "date": "2027-06-12",
             "time": "4:00 PM IST",

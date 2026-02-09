@@ -53,12 +53,14 @@ export default function EventList({ events }: EventListProps) {
 
             return true;
         }).sort((a, b) => {
-            const dateA = new Date(a.date).getTime();
-            const dateB = new Date(b.date).getTime();
             // Upcoming: Ascending (soonest first)
             // Completed: Descending (most recent first)
-            return activeTab === 'Upcoming' ? dateA - dateB : dateB - dateA;
+            if (activeTab === 'Upcoming') {
+                return a.date.localeCompare(b.date);
+            }
+            return b.date.localeCompare(a.date);
         });
+
     }, [events, activeTab, searchQuery, selectedCategory]);
 
     const categories = ['All', 'Roundtable', 'Workshop', 'Summit', 'Webinar'];
@@ -75,8 +77,8 @@ export default function EventList({ events }: EventListProps) {
                                     key={tab}
                                     onClick={() => setActiveTab(tab)}
                                     className={`px-8 py-3 text-sm font-bold border-b-2 transition-colors ${activeTab === tab
-                                            ? 'border-primary text-primary'
-                                            : 'border-transparent text-gray-500 hover:text-gray-700'
+                                        ? 'border-primary text-primary'
+                                        : 'border-transparent text-gray-500 hover:text-gray-700'
                                         }`}
                                 >
                                     {tab} Events
@@ -102,8 +104,8 @@ export default function EventList({ events }: EventListProps) {
                                         key={cat}
                                         onClick={() => setSelectedCategory(cat)}
                                         className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${selectedCategory === cat
-                                                ? 'bg-primary text-white shadow-md'
-                                                : 'bg-white text-gray-600 border border-gray-200 hover:border-primary/20'
+                                            ? 'bg-primary text-white shadow-md'
+                                            : 'bg-white text-gray-600 border border-gray-200 hover:border-primary/20'
                                             }`}
                                     >
                                         {cat}
