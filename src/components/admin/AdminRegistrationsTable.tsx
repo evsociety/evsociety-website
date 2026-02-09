@@ -57,9 +57,7 @@ export default function AdminRegistrationsTable({ registrations }: AdminRegistra
                     <table className="w-full">
                         <thead className="bg-gray-50 sticky top-0 z-10">
                             <tr>
-                                <th className="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
-                                    Event Date
-                                </th>
+
                                 <th className="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
                                     Type
                                 </th>
@@ -104,9 +102,6 @@ export default function AdminRegistrationsTable({ registrations }: AdminRegistra
                                     key={registration.registrationId || index}
                                     className="hover:bg-gray-50 transition-colors"
                                 >
-                                    <td className="px-4 py-3 text-sm text-gray-900 whitespace-nowrap">
-                                        {formatDate(registration.eventDate)}
-                                    </td>
                                     <td className="px-4 py-3 text-sm">
                                         <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 capitalize">
                                             {registration.itemType || registration.registrationType}
@@ -117,8 +112,8 @@ export default function AdminRegistrationsTable({ registrations }: AdminRegistra
                                     </td>
                                     <td className="px-4 py-3 text-sm">
                                         <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium capitalize ${registration.role === 'guest'
-                                                ? 'bg-purple-100 text-purple-800'
-                                                : 'bg-green-100 text-green-800'
+                                            ? 'bg-purple-100 text-purple-800'
+                                            : 'bg-green-100 text-green-800'
                                             }`}>
                                             {registration.role}
                                         </span>
@@ -180,8 +175,8 @@ export default function AdminRegistrationsTable({ registrations }: AdminRegistra
                                 <p className="text-xs text-gray-600">{registration.email}</p>
                             </div>
                             <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium capitalize ${registration.role === 'guest'
-                                    ? 'bg-purple-100 text-purple-800'
-                                    : 'bg-green-100 text-green-800'
+                                ? 'bg-purple-100 text-purple-800'
+                                : 'bg-green-100 text-green-800'
                                 }`}>
                                 {registration.role}
                             </span>
@@ -200,12 +195,7 @@ export default function AdminRegistrationsTable({ registrations }: AdminRegistra
                                     {registration.itemType || registration.registrationType}
                                 </span>
                             </div>
-                            <div className="flex items-center justify-between text-xs">
-                                <span className="text-gray-600">Date:</span>
-                                <span className="font-semibold text-gray-900">
-                                    {formatDate(registration.eventDate)}
-                                </span>
-                            </div>
+
                             <div className="flex items-center justify-between text-xs">
                                 <span className="text-gray-600">City:</span>
                                 <span className="font-semibold text-gray-900">{registration.city}</span>

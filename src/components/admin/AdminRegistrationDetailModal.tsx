@@ -50,7 +50,7 @@ export default function AdminRegistrationDetailModal({
                 {/* Header */}
                 <div className="bg-gradient-to-br from-primary to-blue-700 text-white px-8 py-6 flex items-center justify-between">
                     <div>
-                        <h2 className="text-2xl font-bold mb-1">Registration Details</h2>
+                        <h2 className="text-2xl font-bold mb-1 text-white">Registration Details</h2>
                         <p className="text-blue-100 text-sm">ID: {registration.registrationId}</p>
                     </div>
                     <button
@@ -75,7 +75,7 @@ export default function AdminRegistrationDetailModal({
                             <DetailRow label="Role" value={registration.role} />
                             <DetailRow label="Item ID" value={registration.itemId} />
                             <DetailRow label="Item Title" value={registration.itemTitle} />
-                            <DetailRow label="Event Date" value={registration.eventDate} />
+
                             <DetailRow label="Event Time" value={registration.eventTime} />
                             <DetailRow label="Location" value={registration.location} />
                             <DetailRow label="Mode" value={registration.mode} />

@@ -199,11 +199,6 @@ export default function AdminRegistrationsClient() {
                         <div className="bg-red-50 border border-red-200 text-red-800 px-6 py-4 rounded-xl mt-6">
                             <p className="font-semibold">Error</p>
                             <p className="text-sm mt-1">{error}</p>
-                            <div className="mt-4 p-2 bg-red-100 text-xs font-mono rounded overflow-auto max-h-40">
-                                <p className="font-bold mb-1">Debug Info:</p>
-                                <p>Check browser console for more details.</p>
-                                <p>API URL Configured: {process.env.NEXT_PUBLIC_ADMIN_API_URL ? 'Yes' : 'No'}</p>
-                            </div>
                         </div>
                     )}
 
