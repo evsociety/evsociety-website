@@ -37,7 +37,7 @@ export default function AdminAccessDenied() {
 
                 {/* Note */}
                 <p className="text-xs text-gray-500 mt-6">
-                    Only <strong>evsociety.org@gmail.com</strong> can access this page.
+                    Only <strong>admin email</strong> (evsociety.org) can access this page.
                 </p>
             </div>
         </div>
