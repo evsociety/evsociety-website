@@ -1,13 +1,13 @@
 {
     "projectId": "battery-pack-aadhaar-systems",
     "teamId": "EV.ENGINEER™",
-    "overallStatus": "submitted",
+    "overallStatus": "approved",
     "overallPercentage": 100,
     "certificateIssued": false,
     "lastUpdated": "2026-02-11",
-    "approverName": "",
-    "approverComment": "",
-    "approvedDate": "",
+    "approverName": "Sudarshana Karkala",
+    "approverComment": "Project, Demo and Webinar are excellent, completed",
+    "approvedDate": "2026-02-12",
     "stages": [
         {
             "stageId": "stage0",
