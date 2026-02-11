@@ -16,7 +16,7 @@
             "documents": [
                 {
                     "docId": "s0-01",
-                    "name": "WEBINAR - EV BATTERY SAFETY SYSTEM",
+                    "name": "WEBINAR - EV BATTERY SAFETY SYSTEM (Poster)",
                     "description": "AI Powered Battery Health Prediction and Failure Detection System in Electric Vehicles.",
                     "required": true,
                     "status": "in-progress",
@@ -32,6 +32,22 @@
                 },
                 {
                     "docId": "s0-02",
+                    "name": "WEBINAR - EV BATTERY SAFETY SYSTEM (Video)",
+                    "description": "AI Powered Battery Health Prediction and Failure Detection System in Electric Vehicles.",
+                    "required": true,
+                    "status": "",
+                    "submittedOn": "2026-02-09",
+                    "reviewNotes": "",
+                    "fileUrl": "",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
+                },
+                {
+                    "docId": "s0-03",
                     "name": "PROJECT REPORT - EV BATTERY SAFETY SYSTEM",
                     "description": "AI Powered Battery Health Prediction and Failure Detection System in Electric Vehicles.",
                     "required": true,
