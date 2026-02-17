@@ -9,9 +9,30 @@ const STORAGE_KEY = 'evsociety_registrations';
 
 /**
  * Get registration items by type
+ * Filters out past items based on their date/startDate
  */
 export const getRegistrationItems = (type: RegistrationType): RegistrationItem[] => {
-    return registrationData[type] as RegistrationItem[];
+    const allItems = registrationData[type] as RegistrationItem[];
+
+    // Get current date (at start of day for comparison)
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    // Filter items based on their date
+    return allItems.filter((item) => {
+        // Determine which date field to use
+        const dateStr = item.date || item.startDate;
+
+        // If no date field exists, include the item
+        if (!dateStr) return true;
+
+        // Parse the item's date
+        const itemDate = new Date(dateStr);
+        itemDate.setHours(0, 0, 0, 0);
+
+        // Only include items where date is today or in the future
+        return itemDate >= today;
+    });
 };
 
 /**
