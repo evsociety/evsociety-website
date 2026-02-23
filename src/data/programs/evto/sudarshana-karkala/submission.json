@@ -301,6 +301,22 @@
                     "approvedDate": ""
                 },
                 {
+                    "docId": "p5-nitkonnect2026-10",
+                    "name": "NITKonnect 2026 - The EV Pivot (Panel Discussion Video)",
+                    "description": "The EV Pivot: Can India Lead the Global Electric Revolution?",
+                    "required": true,
+                    "status": "completed",
+                    "submittedOn": "2026-02-21",
+                    "reviewNotes": "",
+                    "fileUrl": "https://www.youtube.com/watch?v=gtQfkFySRIw",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
+                },
+                {
                     "docId": "p5-nitkonnect2026-1",
                     "name": "NITKonnect 2026 - The EV Pivot (Panel Discussion)",
                     "description": "The EV Pivot: Can India Lead the Global Electric Revolution?",
