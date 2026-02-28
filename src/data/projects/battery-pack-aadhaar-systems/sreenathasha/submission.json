@@ -7,7 +7,7 @@
     "certificatePath": "/ongoing/OpenDesign/EV.ENGINEER_BatteryPackAadhaarSystem/14Certificates/EV Society - Sreenath Asha.pdf",
     "lastUpdated": "2026-02-11",
     "approverName": "B V Manjunath",
-    "approverComment": "Project, Demo and Webinar are excellent, completed",
+    "approverComment": "Project, Demo and Webinar are completed",
     "approvedDate": "2026-02-28",
     "stages": [
         {
@@ -51,7 +51,7 @@
                     "docId": "s0-04",
                     "name": "WEBINAR - EV BATTERY SAFETY SYSTEM (LinkedIn Post)",
                     "description": "AI-Powered EV Battery Fire Prevention System",
-                    "required": true,
+                    "required": false,
                     "status": "completed",
                     "submittedOn": "2026-02-11",
                     "reviewNotes": "",
