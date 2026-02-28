@@ -1,13 +1,14 @@
 {
     "projectId": "battery-pack-aadhaar-systems",
     "teamId": "EV.ENGINEER™",
-    "overallStatus": "approved",
+    "overallStatus": "completed",
     "overallPercentage": 100,
-    "certificateIssued": false,
+    "certificateIssued": true,
+    "certificatePath": "/ongoing/OpenDesign/EV.ENGINEER_BatteryPackAadhaarSystem/14Certificates/EV Society - Shreelakshmi Hegde.pdf",
     "lastUpdated": "2026-02-25",
-    "approverName": "Sudarshana Karkala",
+    "approverName": "B V Manjunath",
     "approverComment": "Project, Demo and Webinar are excellent, completed",
-    "approvedDate": "2026-02-25",
+    "approvedDate": "2026-02-28",
     "stages": [
         {
             "stageId": "stage0",

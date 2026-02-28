@@ -15,6 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ projectSl
     const { projectSlug, candidateId } = await params;
     const candidate = await getProjectCandidate(projectSlug, candidateId);
     const project = await getProject(projectSlug);
+    const submission = await getProjectSubmission(projectSlug, candidateId);
 
     if (!candidate || !project) {
         return {
@@ -22,17 +23,24 @@ export async function generateMetadata({ params }: { params: Promise<{ projectSl
             description: 'The requested candidate profile could not be found.',
         };
     }
+    const hasCertificate = submission?.certificateIssued && submission?.certificatePath;
+    const metaTitle = hasCertificate
+        ? `Certificate of Completion - ${candidate.fullName} | EV Society™`
+        : `EV Society™ | ${project.title}`;
+    const metaDescription = hasCertificate
+        ? `View ${candidate.fullName}'s Certificate of Completion for ${project.title}`
+        : `${candidate.fullName} - ${candidate.designation}`;
 
     // Title: EV Society™ | {Project Title} (matching EVTO pattern)
     // Description: Candidate Name - Designation
     return {
         title: {
-            absolute: `EV Society™ | ${project.title}`
+            absolute: metaTitle
         },
-        description: `${candidate.fullName} - ${candidate.designation}`,
+        description: metaDescription,
         openGraph: {
-            title: `EV Society™ | ${project.title}`,
-            description: `${candidate.fullName} - ${candidate.designation}`,
+            title: metaTitle,
+            description: metaDescription,
             images: candidate.profileImageUrl ? [candidate.profileImageUrl] : [],
         },
     };
@@ -60,7 +68,7 @@ export default async function ProjectCandidateProfilePage({ params }: { params: 
             for (const doc of stage.documents) {
                 if (doc.required) {
                     totalRequiredDocs++;
-                    if (doc.status === 'approved' || doc.status === 'certificate-approved') {
+                    if (doc.status === 'approved' || doc.status === 'certificate-approved' || (doc.status as string) === 'completed') {
                         approvedDocsCount++;
                     }
                 }
@@ -185,6 +193,27 @@ export default async function ProjectCandidateProfilePage({ params }: { params: 
             </div>
 
             <div className="container-custom py-8">
+                {/* Certificate Banner */}
+                {submission?.certificateIssued && submission?.certificatePath && (
+                    <div className="bg-gradient-to-r from-emerald-50 to-green-100 rounded-xl border border-green-200 shadow-sm p-6 mb-6">
+                        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <div>
+                                <h3 className="text-xl font-bold text-green-900 mb-1">Certificate of Completion</h3>
+                                <p className="text-sm text-green-800">Congratulations to <strong>{candidate.fullName}</strong> for successfully completing the {project.title} project!</p>
+                            </div>
+                            <a
+                                href={submission.certificatePath}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-lg shadow-sm transition-colors whitespace-nowrap"
+                            >
+                                <FileText className="w-4 h-4" />
+                                View/Download Certificate
+                            </a>
+                        </div>
+                    </div>
+                )}
+
                 {/* Status Legend */}
                 <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 mb-6">
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">

@@ -10,6 +10,7 @@ export const STATUS_LABELS: Record<Status, string> = {
     'rejected': 'Rejected',
     'approved': 'Approved',
     'certificate-approved': 'Certificate Approved',
+    'completed': 'Completed',
 };
 
 // Map statuses to Tailwind color classes (bg and text)
@@ -23,6 +24,7 @@ export const STATUS_COLORS: Record<Status, string> = {
     'rejected': 'bg-red-50 text-red-700 border border-red-100',
     'approved': 'bg-green-50 text-green-700 border border-green-100',
     'certificate-approved': 'bg-purple-50 text-purple-700 border border-purple-100 font-medium',
+    'completed': 'bg-green-50 text-green-700 border border-green-100',
 };
 
 export function getStatusLabel(status: Status): string {
@@ -44,7 +46,7 @@ export function computeProgress(documents: Document[]): number {
     if (requiredDocs.length === 0) return 0; // Avoid division by zero if no required docs
 
     const approvedCount = requiredDocs.filter(doc =>
-        doc.status === 'approved' || doc.status === 'certificate-approved'
+        doc.status === 'approved' || doc.status === 'certificate-approved' || doc.status === 'completed'
     ).length;
 
     return Math.round((approvedCount / requiredDocs.length) * 100);
@@ -67,7 +69,7 @@ export function computeOverallStatus(documents: Document[]): Status {
 
     const hasStatus = (s: Status) => documents.some(d => d.status === s);
     const requiredDocs = documents.filter(d => d.required);
-    const allRequiredApproved = requiredDocs.length > 0 && requiredDocs.every(d => d.status === 'approved' || d.status === 'certificate-approved');
+    const allRequiredApproved = requiredDocs.length > 0 && requiredDocs.every(d => d.status === 'approved' || d.status === 'certificate-approved' || d.status === 'completed');
 
     if (hasStatus('rejected')) return 'rejected';
     if (allRequiredApproved) return 'certificate-approved'; // Approximation

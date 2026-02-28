@@ -4,6 +4,7 @@
     "overallStatus": "submitted",
     "overallPercentage": 5,
     "certificateIssued": false,
+    "certificatePath": "",
     "lastUpdated": "2026-01-27",
     "approverName": "",
     "approverComment": "",

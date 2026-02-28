@@ -21,6 +21,7 @@ export interface ProjectSubmission {
     overallStatus: Status;
     overallPercentage: number;
     certificateIssued: boolean;
+    certificatePath?: string;
     lastUpdated: string;
     stages: ProjectStage[];
     approverName?: string;

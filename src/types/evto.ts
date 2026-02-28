@@ -7,7 +7,8 @@ export type Status =
     | 'need-more-details'
     | 'rejected'
     | 'approved'
-    | 'certificate-approved';
+    | 'certificate-approved'
+    | 'completed';
 
 export interface Eligibility {
     architecturalDesignExperience: boolean;
@@ -60,6 +61,7 @@ export interface Submission {
     overallStatus: Status;
     overallPercentage?: number; // Optional manual override for overall progress
     certificateIssued: boolean;
+    certificatePath?: string;
     lastUpdated: string; // ISO Date string YYYY-MM-DD
     pillars: PillarSubmission[];
     // Internal Tracking for Final Approval
