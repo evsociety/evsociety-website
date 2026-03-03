@@ -239,6 +239,22 @@
                     "approverName": "Dr. Thyagaraj, SDMIT, Ujire",
                     "approverComment": "",
                     "approvedDate": "2026-03-06"
+                },
+                {
+                    "docId": "p3-041",
+                    "name": "EV Battery Pack Aadhaar System",
+                    "description": "AI-Driven EV Battery Pack Aadhaar & Safety Systems",
+                    "required": true,
+                    "status": "submitted",
+                    "submittedOn": "2026-03-03",
+                    "reviewNotes": "Computer Science and Engineering, SDMIT, Ujire",
+                    "fileUrl": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatteryPackAadhaarSystem/13Webinars/Webinar - CSE SDMIT Ujire - Sudarshana Karkala.pdf",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "2026-03-06",
+                    "approverName": "Dr. Thyagaraj, SDMIT, Ujire",
+                    "approverComment": "",
+                    "approvedDate": "2026-03-06"
                 }
             ]
         },
