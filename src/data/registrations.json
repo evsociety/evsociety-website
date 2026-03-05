@@ -282,36 +282,6 @@
             "description": "The AI-Powered EV Battery Fire Prevention System is an advanced software platform designed to detect early signs of battery failure and prevent thermal runaway incidents in electric vehicles."
         },
         {
-            "id": "web_0020",
-            "title": "EV BATTERY PACK AADHAAR & SAFETY SYSTEM - 3 (CSE SDMIT Ujire)",
-            "date": "2027-03-06",
-            "time": "4:00 PM IST",
-            "speaker": "Mr. Sudarshana Karkala",
-            "speakerTitle": "Principal Architect – eMobility, GenAI & Agentic AI | SDV & Automotive AI",
-            "speakerOrganization": "iTelematics® Software Private Limited, Bengaluru",
-            "speakerInstitution": "Computer Science and Engineering, SDMIT, Ujire",
-            "location": "Bengaluru, India",
-            "modeOptions": [
-                "online"
-            ],
-            "categoryTags": [
-                "AI/ML",
-                "Battery Safety",
-                "Battery Pack Aadhaar Systems",
-                "Fire Prevention",
-                "Webinar"
-            ],
-            "sessionTracks": [
-                "Battery Failure Detection",
-                "Thermal Runaway Prevention",
-                "Battery Pack Aadhaar Systems",
-                "AI-Based Monitoring"
-            ],
-            "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatteryPackAadhaarSystem/13Webinars/Webinar%20-%20EV%20Battery%20safety%20-%20CSE%20SDMIT%20Ujire%20-%20Sudarshana%20Karkala.png",
-            "youtubeURL": "",
-            "description": "The Battery Pack Aadhaar System is a proposed Indian digital, 21-character unique identification system for Electric Vehicle (EV) batteries, aiming to ensure end-to-end traceability from manufacturing to disposal."
-        },
-        {
             "id": "web_003",
             "title": "Degradation of Lithium-ion Battery",
             "date": "2026-03-11",
@@ -368,6 +338,35 @@
             "description": "Part 1 - Introduction to IPR, Discover the breakthrough technologies defining the next decade of electric transportation. Join industry leaders for an exclusive deep dive."
         },
         {
+            "id": "web_20260408",
+            "title": "Technology Evaluation Methodologies",
+            "date": "2026-04-08",
+            "time": "8:00 PM IST",
+            "speaker": "Mr. Amarnath Kosgi",
+            "speakerTitle": "Scientist, DRDO",
+            "speakerOrganization": "Defence Research & Development Organisation",
+            "speakerInstitution": "",
+            "location": "Bengaluru, India",
+            "modeOptions": [
+                "online"
+            ],
+            "categoryTags": [
+                "AI/ML",
+                "Battery",
+                "Fire Prevention",
+                "Webinar"
+            ],
+            "sessionTracks": [
+                "Battery Failure Detection",
+                "Thermal Runaway Prevention",
+                "AI-Based Monitoring",
+                "Technology Evaluation Methodologies"
+            ],
+            "posterLinkURL": "https://www.evsociety.org/ongoing/Webinars/AmarnathKosgi/mr-amarnath-kosgi_technology-evaluation-methodologies_poster.jpg",
+            "youtubeURL": "",
+            "description": "Decision making situations demand us to sort and pick a preferred solution out of several options available. Technical complexity ranges from a simple shopping choice while buying a gadget to higher level business decisions in R&D project management. This lecture attempts to introduce different Technology Evaluation (TE) models from published literature focused on various scenarios. Three cases are chosen to represent different technical complexities such as Evaluation of Airbus TD project and a simpler choice whether or not to go for a new improved option in ASSB (Battery) manufacturing process. A third case is on TE process developed by an MIT research group for the US military. Focus here is on scientific understanding to choose the right measuring scale (framework) for evaluating the available options to serve a particular purpose."
+        },
+        {
             "id": "web_0035",
             "title": "Safeguarding EV Innovations through IPR (2)",
             "date": "2026-04-22",
@@ -395,6 +394,36 @@
             "posterLinkURL": "https://www.evsociety.org/ongoing/Webinars/RiteshRShetty/mr-ritesh-r-shetty_safeguarding-ev-innovations-through-ipr_poster.jpg",
             "youtubeURL": "",
             "description": "Part 2 - Introduction to IPR, Discover the breakthrough technologies defining the next decade of electric transportation. Join industry leaders for an exclusive deep dive."
+        },
+        {
+            "id": "web_0020",
+            "title": "EV BATTERY PACK AADHAAR & SAFETY SYSTEM - 3 (CSE SDMIT Ujire)",
+            "date": "2027-03-06",
+            "time": "4:00 PM IST",
+            "speaker": "Mr. Sudarshana Karkala",
+            "speakerTitle": "Principal Architect – eMobility, GenAI & Agentic AI | SDV & Automotive AI",
+            "speakerOrganization": "iTelematics® Software Private Limited, Bengaluru",
+            "speakerInstitution": "Computer Science and Engineering, SDMIT, Ujire",
+            "location": "Bengaluru, India",
+            "modeOptions": [
+                "online"
+            ],
+            "categoryTags": [
+                "AI/ML",
+                "Battery Safety",
+                "Battery Pack Aadhaar Systems",
+                "Fire Prevention",
+                "Webinar"
+            ],
+            "sessionTracks": [
+                "Battery Failure Detection",
+                "Thermal Runaway Prevention",
+                "Battery Pack Aadhaar Systems",
+                "AI-Based Monitoring"
+            ],
+            "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatteryPackAadhaarSystem/13Webinars/Webinar%20-%20EV%20Battery%20safety%20-%20CSE%20SDMIT%20Ujire%20-%20Sudarshana%20Karkala.png",
+            "youtubeURL": "",
+            "description": "The Battery Pack Aadhaar System is a proposed Indian digital, 21-character unique identification system for Electric Vehicle (EV) batteries, aiming to ensure end-to-end traceability from manufacturing to disposal."
         },
         {
             "id": "web_004",
