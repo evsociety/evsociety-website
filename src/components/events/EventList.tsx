@@ -195,27 +195,6 @@ export default function EventList({ events }: EventListProps) {
                                             <h3 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4 border-b border-gray-50 pb-2">Sessions by {group.speaker}</h3>
                                             {group.webinars.map(event => (
                                                 <div key={event.id} className="group relative border border-gray-100 rounded-2xl p-6 hover:shadow-md transition-all flex flex-col md:flex-row gap-6">
-                                                    {(event.posterLinkURL || event.youtubeURL) && (
-                                                        <div className="w-full md:w-48 shrink-0 flex flex-col gap-2">
-                                                            {event.posterLinkURL && (
-                                                                <a href={event.posterLinkURL} target="_blank" rel="noopener noreferrer" className="block w-full overflow-hidden rounded-xl border border-gray-100 group-hover:border-primary/20 transition-all">
-                                                                    <img src={event.posterLinkURL} alt={`Poster for ${event.title}`} className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" />
-                                                                </a>
-                                                            )}
-                                                            <div className="flex flex-col gap-2 mt-2">
-                                                                {event.posterLinkURL && (
-                                                                    <a href={event.posterLinkURL} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-center py-2 px-3 bg-blue-50 text-blue-700 hover:bg-blue-100 rounded-lg transition-colors">
-                                                                        View Poster
-                                                                    </a>
-                                                                )}
-                                                                {event.youtubeURL && (
-                                                                    <a href={event.youtubeURL} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-center py-2 px-3 bg-red-50 text-red-700 hover:bg-red-100 rounded-lg transition-colors">
-                                                                        Watch on YouTube
-                                                                    </a>
-                                                                )}
-                                                            </div>
-                                                        </div>
-                                                    )}
                                                     <div className="flex-grow">
                                                         <div className="flex flex-wrap gap-2 mb-3">
                                                             {event.tags.map(tag => (
@@ -234,6 +213,22 @@ export default function EventList({ events }: EventListProps) {
                                                             <div className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5 text-primary" /> {new Date(event.date).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
                                                             <div className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5 text-primary" /> {event.time || 'TBA'}</div>
                                                             <div className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-primary" /> {event.mode} • {event.city}</div>
+                                                        </div>
+                                                    </div>
+
+                                                    {/* Right Side: Actions */}
+                                                    <div className="w-full md:w-56 shrink-0 flex flex-col gap-3">
+                                                        <div className="flex flex-col gap-2 w-full md:w-auto mt-4 md:mt-0 items-end">
+                                                            {event.posterLinkURL && (
+                                                                <a href={event.posterLinkURL} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-center py-2 px-4 bg-blue-50 text-blue-700 hover:bg-blue-100 rounded-lg transition-colors w-full md:w-40 border border-blue-100">
+                                                                    Webinar Poster
+                                                                </a>
+                                                            )}
+                                                            {event.youtubeURL && (
+                                                                <a href={event.youtubeURL} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-center py-2 px-4 bg-red-50 text-red-700 hover:bg-red-100 rounded-lg transition-colors w-full md:w-40 border border-red-100">
+                                                                    YouTube
+                                                                </a>
+                                                            )}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -316,12 +311,12 @@ export default function EventList({ events }: EventListProps) {
                                                 <div className="flex items-center gap-4 border-l border-gray-200 pl-6 ml-2">
                                                     {event.posterLinkURL && (
                                                         <a href={event.posterLinkURL} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline font-bold transition-colors">
-                                                            View Poster
+                                                            Webinar Poster
                                                         </a>
                                                     )}
                                                     {event.youtubeURL && (
                                                         <a href={event.youtubeURL} target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-red-800 hover:underline font-bold transition-colors">
-                                                            YouTube Recording
+                                                            YouTube
                                                         </a>
                                                     )}
                                                 </div>
@@ -329,13 +324,8 @@ export default function EventList({ events }: EventListProps) {
                                         </div>
                                     </div>
 
-                                    {/* Right Side: Poster (if exists) + Action Button */}
+                                    {/* Right Side: Action Button */}
                                     <div className="w-full lg:w-64 shrink-0 mt-4 lg:mt-0 flex flex-col gap-4">
-                                        {event.posterLinkURL && (
-                                            <a href={event.posterLinkURL} target="_blank" rel="noopener noreferrer" className="block w-full overflow-hidden rounded-xl border border-gray-100 shadow-sm group-hover:shadow-md transition-all">
-                                                <img src={event.posterLinkURL} alt={`Poster for ${event.title}`} className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" />
-                                            </a>
-                                        )}
                                         {activeTab === 'Completed' ? (
                                             <button disabled className="btn-secondary w-full px-8 py-3 rounded-xl whitespace-nowrap opacity-50 cursor-not-allowed">
                                                 Event Completed

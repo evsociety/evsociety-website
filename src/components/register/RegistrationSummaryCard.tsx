@@ -124,7 +124,7 @@ export default function RegistrationSummaryCard({ type, role, item, participatio
                                 </div>
                                 <div className="text-sm font-bold text-gray-900">
                                     <a href={item.posterLinkURL} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline">
-                                        Open Webinar Poster
+                                        Webinar Poster
                                     </a>
                                 </div>
                             </div>
@@ -143,7 +143,7 @@ export default function RegistrationSummaryCard({ type, role, item, participatio
                                 </div>
                                 <div className="text-sm font-bold text-gray-900">
                                     <a href={item.youtubeURL} target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-red-800 hover:underline">
-                                        Watch Recording
+                                        YouTube
                                     </a>
                                 </div>
                             </div>
