@@ -340,7 +340,7 @@
         },
         {
             "id": "web_0034",
-            "title": "Safeguarding EV Innovations through IPR",
+            "title": "Safeguarding EV Innovations through IPR (1)",
             "date": "2026-03-25",
             "time": "8:00 PM IST",
             "speaker": "Mr. Ritesh R Shetty",
@@ -366,6 +366,35 @@
             "posterLinkURL": "https://www.evsociety.org/ongoing/Webinars/Ritesh/mr-ritesh-r-shetty_safeguarding-ev-innovations-through-ipr_poster.jpg",
             "youtubeURL": "",
             "description": "Part 1 - Introduction to IPR, Discover the breakthrough technologies defining the next decade of electric transportation. Join industry leaders for an exclusive deep dive."
+        },
+        {
+            "id": "web_0035",
+            "title": "Safeguarding EV Innovations through IPR (2)",
+            "date": "2026-04-25",
+            "time": "8:00 PM IST",
+            "speaker": "Mr. Ritesh R Shetty",
+            "speakerTitle": "Deputy General Manager",
+            "speakerOrganization": "BHARAT HEAVY ELECTRICALS LTD",
+            "speakerInstitution": "",
+            "location": "Bengaluru, India",
+            "modeOptions": [
+                "online"
+            ],
+            "categoryTags": [
+                "Law",
+                "IPR",
+                "Innovations",
+                "Webinar"
+            ],
+            "sessionTracks": [
+                "Battery Failure Detection",
+                "Thermal Runaway Prevention",
+                "AI-Based Monitoring",
+                "IPR"
+            ],
+            "posterLinkURL": "https://www.evsociety.org/ongoing/Webinars/Ritesh/mr-ritesh-r-shetty_safeguarding-ev-innovations-through-ipr_poster.jpg",
+            "youtubeURL": "",
+            "description": "Part 2 - Introduction to IPR, Discover the breakthrough technologies defining the next decade of electric transportation. Join industry leaders for an exclusive deep dive."
         },
         {
             "id": "web_004",
