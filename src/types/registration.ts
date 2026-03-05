@@ -24,6 +24,8 @@ export interface RegistrationItem {
     speakerTitle?: string;
     speakerOrganization?: string;
     speakerInstitution?: string;
+    posterLinkURL?: string;
+    youtubeURL?: string;
 }
 
 export interface RegistrationFormData {

@@ -8,7 +8,7 @@ interface EventListProps {
     events: EVEvent[];
 }
 
-type Tab = 'Upcoming' | 'Completed';
+type Tab = 'Upcoming' | 'Completed' | 'Speakers';
 
 export default function EventList({ events }: EventListProps) {
     const [activeTab, setActiveTab] = useState<Tab>('Upcoming');
@@ -25,6 +25,7 @@ export default function EventList({ events }: EventListProps) {
             eventDate.setHours(0, 0, 0, 0);
 
             // 1. Tab Filter
+            if (activeTab === 'Speakers') return false; // Speakers handled separately
             if (activeTab === 'Upcoming' && eventDate < today) return false;
             if (activeTab === 'Completed' && eventDate >= today) return false;
 
@@ -63,6 +64,49 @@ export default function EventList({ events }: EventListProps) {
 
     }, [events, activeTab, searchQuery, selectedCategory]);
 
+    // Group active webinars with speakers for the Speakers tab
+    const speakerGroups = useMemo(() => {
+        if (activeTab !== 'Speakers') return [];
+
+        const webinarEvents = events.filter(e =>
+            e.speaker && (e.tags.some(t => t.toLowerCase() === 'webinar') || e.title.toLowerCase().includes('webinar'))
+        );
+
+        const groups: Record<string, {
+            speaker: string;
+            speakerTitle?: string;
+            speakerOrganization?: string;
+            speakerInstitution?: string;
+            webinars: EVEvent[];
+        }> = {};
+
+        webinarEvents.forEach(event => {
+            const speakerName = event.speaker!;
+            if (!groups[speakerName]) {
+                const rawObj = (require('@/data/registrations.json').webinars || []).find((w: any) => w.speaker === speakerName);
+
+                groups[speakerName] = {
+                    speaker: speakerName,
+                    speakerTitle: event.speakerTitle,
+                    speakerOrganization: event.speakerOrganization,
+                    speakerInstitution: rawObj?.speakerInstitution, // Fetch from raw JSON if needed
+                    webinars: []
+                };
+            }
+            groups[speakerName].webinars.push(event);
+        });
+
+        // Sort speakers alphabetically
+        const sortedSpeakerKeys = Object.keys(groups).sort((a, b) => a.localeCompare(b));
+
+        // Return sorted arrays of speaker groups, sorting their events by date ascending
+        return sortedSpeakerKeys.map(key => {
+            const group = groups[key];
+            group.webinars.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+            return group;
+        });
+    }, [events, activeTab]);
+
     const categories = ['All', 'Roundtable', 'Workshop', 'Summit', 'Webinar'];
 
     return (
@@ -72,7 +116,7 @@ export default function EventList({ events }: EventListProps) {
                     <div className="flex flex-col gap-6">
                         {/* Tabs */}
                         <div className="flex border-b border-gray-200 w-full">
-                            {(['Upcoming', 'Completed'] as Tab[]).map((tab) => (
+                            {(['Upcoming', 'Completed', 'Speakers'] as Tab[]).map((tab) => (
                                 <button
                                     key={tab}
                                     onClick={() => setActiveTab(tab)}
@@ -81,45 +125,125 @@ export default function EventList({ events }: EventListProps) {
                                         : 'border-transparent text-gray-500 hover:text-gray-700'
                                         }`}
                                 >
-                                    {tab} Events
+                                    {tab === 'Speakers' ? 'Speakers' : `${tab} Events`}
                                 </button>
                             ))}
                         </div>
 
-                        {/* Search & Filter */}
-                        <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-                            <div className="relative w-full md:w-96">
-                                <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                                <input
-                                    type="text"
-                                    placeholder="Find an event..."
-                                    value={searchQuery}
-                                    onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="w-full pl-10 pr-4 py-2 bg-white border border-gray-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-primary/20 transition-all"
-                                />
+                        {/* Search & Filter - Hide on Speakers Tab */}
+                        {activeTab !== 'Speakers' && (
+                            <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+                                <div className="relative w-full md:w-96">
+                                    <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                                    <input
+                                        type="text"
+                                        placeholder="Find an event..."
+                                        value={searchQuery}
+                                        onChange={(e) => setSearchQuery(e.target.value)}
+                                        className="w-full pl-10 pr-4 py-2 bg-white border border-gray-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-primary/20 transition-all"
+                                    />
+                                </div>
+                                <div className="flex gap-2 w-full md:w-auto overflow-x-auto pb-2 md:pb-0 hide-scrollbar">
+                                    {categories.map(cat => (
+                                        <button
+                                            key={cat}
+                                            onClick={() => setSelectedCategory(cat)}
+                                            className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${selectedCategory === cat
+                                                ? 'bg-primary text-white shadow-md'
+                                                : 'bg-white text-gray-600 border border-gray-200 hover:border-primary/20'
+                                                }`}
+                                        >
+                                            {cat}
+                                        </button>
+                                    ))}
+                                </div>
                             </div>
-                            <div className="flex gap-2 w-full md:w-auto overflow-x-auto pb-2 md:pb-0 hide-scrollbar">
-                                {categories.map(cat => (
-                                    <button
-                                        key={cat}
-                                        onClick={() => setSelectedCategory(cat)}
-                                        className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${selectedCategory === cat
-                                            ? 'bg-primary text-white shadow-md'
-                                            : 'bg-white text-gray-600 border border-gray-200 hover:border-primary/20'
-                                            }`}
-                                    >
-                                        {cat}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
+                        )}
                     </div>
                 </div>
             </section>
 
             <section className="py-12 md:py-24">
                 <div className="container-custom">
-                    {filteredEvents.length === 0 ? (
+                    {activeTab === 'Speakers' ? (
+                        speakerGroups.length === 0 ? (
+                            <div className="text-center py-20 bg-gray-50 rounded-3xl border border-dashed border-gray-200">
+                                <User className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+                                <h3 className="text-xl font-bold text-gray-900 mb-2">No speakers found</h3>
+                                <p className="text-gray-500">There are no speakers registered yet.</p>
+                            </div>
+                        ) : (
+                            <div className="space-y-12">
+                                {speakerGroups.map(group => (
+                                    <div key={group.speaker} className="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm">
+                                        <div className="bg-surface/50 p-6 md:p-8 border-b border-gray-100 flex items-start gap-5">
+                                            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                                                <User className="w-8 h-8 text-primary" />
+                                            </div>
+                                            <div>
+                                                <h2 className="text-2xl font-bold text-gray-900">{group.speaker}</h2>
+                                                {(group.speakerTitle || group.speakerOrganization || group.speakerInstitution) && (
+                                                    <div className="mt-2 space-y-1 text-sm text-gray-600">
+                                                        {group.speakerTitle && <div className="font-medium text-gray-900">{group.speakerTitle}</div>}
+                                                        {group.speakerOrganization && <div>{group.speakerOrganization}</div>}
+                                                        {group.speakerInstitution && <div>{group.speakerInstitution}</div>}
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+                                        <div className="p-6 md:p-8 space-y-6 bg-white">
+                                            <h3 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4 border-b border-gray-50 pb-2">Sessions by {group.speaker}</h3>
+                                            {group.webinars.map(event => (
+                                                <div key={event.id} className="group relative border border-gray-100 rounded-2xl p-6 hover:shadow-md transition-all flex flex-col md:flex-row gap-6">
+                                                    {(event.posterLinkURL || event.youtubeURL) && (
+                                                        <div className="w-full md:w-48 shrink-0 flex flex-col gap-2">
+                                                            {event.posterLinkURL && (
+                                                                <a href={event.posterLinkURL} target="_blank" rel="noopener noreferrer" className="block w-full overflow-hidden rounded-xl border border-gray-100 group-hover:border-primary/20 transition-all">
+                                                                    <img src={event.posterLinkURL} alt={`Poster for ${event.title}`} className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" />
+                                                                </a>
+                                                            )}
+                                                            <div className="flex flex-col gap-2 mt-2">
+                                                                {event.posterLinkURL && (
+                                                                    <a href={event.posterLinkURL} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-center py-2 px-3 bg-blue-50 text-blue-700 hover:bg-blue-100 rounded-lg transition-colors">
+                                                                        View Poster
+                                                                    </a>
+                                                                )}
+                                                                {event.youtubeURL && (
+                                                                    <a href={event.youtubeURL} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-center py-2 px-3 bg-red-50 text-red-700 hover:bg-red-100 rounded-lg transition-colors">
+                                                                        Watch on YouTube
+                                                                    </a>
+                                                                )}
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                    <div className="flex-grow">
+                                                        <div className="flex flex-wrap gap-2 mb-3">
+                                                            {event.tags.map(tag => (
+                                                                <span key={tag} className="px-2 py-0.5 bg-gray-50 text-gray-500 rounded text-[10px] uppercase font-bold tracking-wider">
+                                                                    {tag}
+                                                                </span>
+                                                            ))}
+                                                        </div>
+                                                        <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">
+                                                            {event.title}
+                                                        </h4>
+                                                        <p className="text-sm text-gray-600 leading-relaxed mb-4 max-w-2xl">
+                                                            {event.summary}
+                                                        </p>
+                                                        <div className="flex flex-wrap gap-4 text-xs font-medium text-gray-500">
+                                                            <div className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5 text-primary" /> {new Date(event.date).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+                                                            <div className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5 text-primary" /> {event.time || 'TBA'}</div>
+                                                            <div className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-primary" /> {event.mode} • {event.city}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )
+                    ) : filteredEvents.length === 0 ? (
                         <div className="text-center py-20 bg-gray-50 rounded-3xl border border-dashed border-gray-200">
                             <Calendar className="w-12 h-12 text-gray-300 mx-auto mb-4" />
                             <h3 className="text-xl font-bold text-gray-900 mb-2">No {activeTab.toLowerCase()} events found</h3>
@@ -129,8 +253,8 @@ export default function EventList({ events }: EventListProps) {
                         <div className="space-y-8">
                             {filteredEvents.map((event) => (
                                 <div key={event.id} className="group bg-white border border-gray-100 rounded-3xl p-6 md:p-8 hover:shadow-xl transition-all flex flex-col lg:flex-row gap-8 items-start lg:items-center">
-                                    {/* Date Badge */}
-                                    <div className="w-full lg:w-48 shrink-0">
+                                    {/* Date Badge and Optional Poster */}
+                                    <div className="w-full lg:w-48 shrink-0 flex flex-col gap-4">
                                         <div className="bg-surface rounded-2xl p-6 text-center border border-gray-50 group-hover:bg-primary/5 transition-colors">
                                             <span className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">
                                                 {new Date(event.date).toLocaleDateString('en-IN', { month: 'short' })}
@@ -142,6 +266,12 @@ export default function EventList({ events }: EventListProps) {
                                                 {new Date(event.date).getFullYear()}
                                             </span>
                                         </div>
+
+                                        {event.posterLinkURL && (
+                                            <a href={event.posterLinkURL} target="_blank" rel="noopener noreferrer" className="block w-full overflow-hidden rounded-xl border border-gray-100 group-hover:border-primary/20 transition-all">
+                                                <img src={event.posterLinkURL} alt={`Poster for ${event.title}`} className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" />
+                                            </a>
+                                        )}
                                     </div>
 
                                     {/* Content */}
@@ -179,7 +309,7 @@ export default function EventList({ events }: EventListProps) {
                                         )}
 
                                         {/* Meta Info */}
-                                        <div className="flex flex-wrap gap-6 text-sm text-gray-500 font-medium">
+                                        <div className="flex flex-wrap items-center gap-6 text-sm text-gray-500 font-medium">
                                             <div className="flex items-center gap-2">
                                                 <MapPin className="w-4 h-4 text-primary" />
                                                 <span>{event.mode} • {event.city}</span>
@@ -188,6 +318,20 @@ export default function EventList({ events }: EventListProps) {
                                                 <Clock className="w-4 h-4 text-primary" />
                                                 <span>{event.time || '10:00 AM IST'}</span>
                                             </div>
+                                            {(event.posterLinkURL || event.youtubeURL) && (
+                                                <div className="flex items-center gap-4 border-l border-gray-200 pl-6 ml-2">
+                                                    {event.posterLinkURL && (
+                                                        <a href={event.posterLinkURL} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline font-bold transition-colors">
+                                                            View Poster
+                                                        </a>
+                                                    )}
+                                                    {event.youtubeURL && (
+                                                        <a href={event.youtubeURL} target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-red-800 hover:underline font-bold transition-colors">
+                                                            YouTube Recording
+                                                        </a>
+                                                    )}
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
 

@@ -112,6 +112,44 @@ export default function RegistrationSummaryCard({ type, role, item, participatio
                         </div>
                     )}
 
+                    {/* Poster Link */}
+                    {item.posterLinkURL && (
+                        <div className="flex items-start gap-3">
+                            <div className="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center shrink-0">
+                                <MapPin className="w-5 h-5" /> {/* Use MapPin or an image icon as fallback */}
+                            </div>
+                            <div>
+                                <div className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">
+                                    POSTER
+                                </div>
+                                <div className="text-sm font-bold text-gray-900">
+                                    <a href={item.posterLinkURL} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline">
+                                        Open Webinar Poster
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* YouTube Link */}
+                    {item.youtubeURL && (
+                        <div className="flex items-start gap-3">
+                            <div className="w-10 h-10 bg-red-50 text-red-600 rounded-xl flex items-center justify-center shrink-0">
+                                <Users className="w-5 h-5" /> {/* Use appropriate icon visually similar */}
+                            </div>
+                            <div>
+                                <div className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">
+                                    YOUTUBE
+                                </div>
+                                <div className="text-sm font-bold text-gray-900">
+                                    <a href={item.youtubeURL} target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-red-800 hover:underline">
+                                        Watch Recording
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
                     {/* Mode */}
                     {participationMode && (
                         <div className="flex items-start gap-3">

@@ -43,7 +43,9 @@ export function getEvents(): EVEvent[] {
         city: 'Online',
         summary: w.description || (w.sessionTracks ? `Topics: ${w.sessionTracks.slice(0, 3).join(', ')}` : ''),
         registrationUrl: '/register',
-        tags: w.categoryTags || []
+        tags: w.categoryTags || [],
+        posterLinkURL: w.posterLinkURL,
+        youtubeURL: w.youtubeURL
     }));
 
     const allEvents = [...events, ...webinars];
