@@ -250,7 +250,7 @@
                 "AI-Based Monitoring"
             ],
             "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatteryPackAadhaarSystem/13Webinars/Webinar%20-%20EV%20Battery%20Safety%20System%20-%20Sreenath%20Asha.png",
-            "youtubeURL": "",
+            "youtubeURL": "https://www.youtube.com/watch?v=GzPgV3nC9WA",
             "description": "The AI-Powered EV Battery Fire Prevention System is an advanced software platform designed to detect early signs of battery failure and prevent thermal runaway incidents in electric vehicles."
         },
         {
@@ -277,8 +277,8 @@
                 "Thermal Runaway Prevention",
                 "AI-Based Monitoring"
             ],
-            "posterLinkURL": "",
-            "youtubeURL": "",
+            "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatteryPackAadhaarSystem/13Webinars/Webinar%20-%20EV%20Battery%20Safety%20System%20-%20Shreelakshmi%20Hegde.png",
+            "youtubeURL": "https://www.youtube.com/watch?v=m_cz65VZnV8&feature=youtu.be",
             "description": "The AI-Powered EV Battery Fire Prevention System is an advanced software platform designed to detect early signs of battery failure and prevent thermal runaway incidents in electric vehicles."
         },
         {
@@ -307,7 +307,7 @@
                 "Battery Pack Aadhaar Systems",
                 "AI-Based Monitoring"
             ],
-            "posterLinkURL": "",
+            "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatteryPackAadhaarSystem/13Webinars/Webinar%20-%20EV%20Battery%20safety%20-%20CSE%20SDMIT%20Ujire%20-%20Sudarshana%20Karkala.png",
             "youtubeURL": "",
             "description": "The Battery Pack Aadhaar System is a proposed Indian digital, 21-character unique identification system for Electric Vehicle (EV) batteries, aiming to ensure end-to-end traceability from manufacturing to disposal."
         },
@@ -334,9 +334,38 @@
                 "Thermal Runaway Prevention",
                 "AI-Based Monitoring"
             ],
-            "posterLinkURL": "",
+            "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatteryPackAadhaarSystem/13Webinars/Webinar%20-%20Ageing%20and%20Degradation%20of%20Lithium-ion%20Battery%20-%20Shilajit%20Das.png",
             "youtubeURL": "",
             "description": "The AI-Powered EV Battery Fire Prevention System is an advanced software platform designed to detect early signs of battery failure and prevent thermal runaway incidents in electric vehicles."
+        },
+        {
+            "id": "web_0034",
+            "title": "Safeguarding EV Innovations through IPR",
+            "date": "2026-03-25",
+            "time": "8:00 PM IST",
+            "speaker": "Mr. Ritesh R Shetty",
+            "speakerTitle": "Deputy General Manager",
+            "speakerOrganization": "BHARAT HEAVY ELECTRICALS LTD",
+            "speakerInstitution": "",
+            "location": "Bengaluru, India",
+            "modeOptions": [
+                "online"
+            ],
+            "categoryTags": [
+                "Law",
+                "IPR",
+                "Innovations",
+                "Webinar"
+            ],
+            "sessionTracks": [
+                "Battery Failure Detection",
+                "Thermal Runaway Prevention",
+                "AI-Based Monitoring",
+                "IPR"
+            ],
+            "posterLinkURL": "https://www.evsociety.org/ongoing/Webinars/Ritesh/mr-ritesh-r-shetty_safeguarding-ev-innovations-through-ipr_poster.jpg",
+            "youtubeURL": "",
+            "description": "Part 1 - Introduction to IPR, Discover the breakthrough technologies defining the next decade of electric transportation. Join industry leaders for an exclusive deep dive."
         },
         {
             "id": "web_004",
