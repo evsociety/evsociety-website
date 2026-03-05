@@ -253,7 +253,7 @@ export default function EventList({ events }: EventListProps) {
                         <div className="space-y-8">
                             {filteredEvents.map((event) => (
                                 <div key={event.id} className="group bg-white border border-gray-100 rounded-3xl p-6 md:p-8 hover:shadow-xl transition-all flex flex-col lg:flex-row gap-8 items-start lg:items-center">
-                                    {/* Date Badge and Optional Poster */}
+                                    {/* Date Badge */}
                                     <div className="w-full lg:w-48 shrink-0 flex flex-col gap-4">
                                         <div className="bg-surface rounded-2xl p-6 text-center border border-gray-50 group-hover:bg-primary/5 transition-colors">
                                             <span className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">
@@ -266,12 +266,6 @@ export default function EventList({ events }: EventListProps) {
                                                 {new Date(event.date).getFullYear()}
                                             </span>
                                         </div>
-
-                                        {event.posterLinkURL && (
-                                            <a href={event.posterLinkURL} target="_blank" rel="noopener noreferrer" className="block w-full overflow-hidden rounded-xl border border-gray-100 group-hover:border-primary/20 transition-all">
-                                                <img src={event.posterLinkURL} alt={`Poster for ${event.title}`} className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" />
-                                            </a>
-                                        )}
                                     </div>
 
                                     {/* Content */}
@@ -335,14 +329,19 @@ export default function EventList({ events }: EventListProps) {
                                         </div>
                                     </div>
 
-                                    {/* Action Button */}
-                                    <div className="w-full lg:w-auto shrink-0 mt-4 lg:mt-0">
+                                    {/* Right Side: Poster (if exists) + Action Button */}
+                                    <div className="w-full lg:w-64 shrink-0 mt-4 lg:mt-0 flex flex-col gap-4">
+                                        {event.posterLinkURL && (
+                                            <a href={event.posterLinkURL} target="_blank" rel="noopener noreferrer" className="block w-full overflow-hidden rounded-xl border border-gray-100 shadow-sm group-hover:shadow-md transition-all">
+                                                <img src={event.posterLinkURL} alt={`Poster for ${event.title}`} className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" />
+                                            </a>
+                                        )}
                                         {activeTab === 'Completed' ? (
-                                            <button disabled className="btn-secondary w-full lg:px-8 py-3 rounded-xl whitespace-nowrap opacity-50 cursor-not-allowed">
+                                            <button disabled className="btn-secondary w-full px-8 py-3 rounded-xl whitespace-nowrap opacity-50 cursor-not-allowed">
                                                 Event Completed
                                             </button>
                                         ) : (
-                                            <a href={event.registrationUrl} className="btn-primary w-full lg:px-8 py-3 rounded-xl whitespace-nowrap">
+                                            <a href={event.registrationUrl} className="btn-primary w-full px-8 py-3 rounded-xl text-center whitespace-nowrap">
                                                 Register Details
                                             </a>
                                         )}
