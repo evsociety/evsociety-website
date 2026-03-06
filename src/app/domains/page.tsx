@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import PageHeader from '@/components/PageHeader';
+import FeatureHighlightCard from '@/components/domains/FeatureHighlightCard';
+import { SKILL_MATRIX_DATA } from '@/data/domains/skillMatrix';
 import {
     Zap,
     Battery,
@@ -82,6 +84,17 @@ export default function DomainsPage() {
                     </div>
                 </div>
             </section>
+
+            {/* Featured Block: EV Industry Skill Matrix */}
+            <FeatureHighlightCard
+                pill={SKILL_MATRIX_DATA.featuredBlock.pill}
+                title={SKILL_MATRIX_DATA.featuredBlock.title}
+                description={SKILL_MATRIX_DATA.featuredBlock.description}
+                highlightsHeading="Key Highlights"
+                highlights={SKILL_MATRIX_DATA.featuredBlock.highlights}
+                ctaText={SKILL_MATRIX_DATA.featuredBlock.ctaText}
+                ctaRoute={SKILL_MATRIX_DATA.featuredBlock.ctaRoute}
+            />
 
             <section className="py-24 bg-surface">
                 <div className="container-custom text-center">
