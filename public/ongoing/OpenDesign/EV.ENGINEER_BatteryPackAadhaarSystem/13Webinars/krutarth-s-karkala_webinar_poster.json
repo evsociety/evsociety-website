@@ -1,0 +1,60 @@
+{
+  "styles": {
+    "bgGradientFrom": "#000000",
+    "bgGradientTo": "#022c22",
+    "borderColor": "#4ade80",
+    "titleColor": "#ffffff",
+    "subtitleColor": "#86efac",
+    "accentColor": "#22c55e"
+  },
+  "background": {
+    "url": "",
+    "visible": true,
+    "opacity": 50,
+    "blendMode": "overlay",
+    "blur": false
+  },
+  "organizer": {
+    "visible": true,
+    "logoUrl": "https://www.krutarth.in/Krutarth%20S%20Karkala.png",
+    "logoSize": 80,
+    "name": "KRUTARTH.in™",
+    "details": "Bengaluru, India"
+  },
+  "presenter": {
+    "visible": true,
+    "name": "Krutarth S Karkala",
+    "designation": "Chess Strategist",
+    "company": "",
+    "institute": "KRUTARTH.in™",
+    "photoUrl": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatteryPackAadhaarSystem/1Team/krutarthskarkala.jpeg"
+  },
+  "event": {
+    "title": "FUTURE OF EV MOBILITY",
+    "subtitle": "Next-Gen Charging Architectures",
+    "showSubtitle": true,
+    "date": "09 OCT 2026",
+    "time": "08:00pm IST",
+    "duration": "",
+    "description": "Discover the breakthrough technologies defining the next decade of electric transportation. Join industry leaders for an exclusive deep dive.",
+    "showDescription": true
+  },
+  "sponsors": {
+    "visible": false,
+    "logos": []
+  },
+  "cta": {
+    "visible": true,
+    "text": "REGISTER NOW",
+    "link": "www.evsociety.org/register",
+    "showQr": false,
+    "additionalDetail1": "",
+    "additionalDetail2": ""
+  },
+  "footer": {
+    "visible": true,
+    "website": "www.evsociety.org | www.krutarth.in",
+    "email": "info@iTelematics.com",
+    "phone": ""
+  }
+}
