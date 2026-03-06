@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import { Zap, Gavel, GraduationCap, Building2, Globe, Users2 } from 'lucide-react';
+import { Zap, Gavel, GraduationCap, Building2, Globe, Users2, ArrowRight } from 'lucide-react';
 import ProgramCTALink from '@/components/programs/ProgramCTALink';
 
 export const metadata: Metadata = {
@@ -19,7 +19,8 @@ const programs = [
             'Encourage R&D in batteries, power electronics, motors, charging systems, BMS, diagnostics, and recycling',
             'Support startups, MSMEs, and academic institutions building EV technologies',
             'Promote indigenous solutions aligned with manufacturing and innovation priorities'
-        ]
+        ],
+        cta: { label: 'Learn More', href: '#' }
     },
     {
         title: 'Policy & Advocacy',
@@ -28,7 +29,8 @@ const programs = [
             'Provide technical inputs to relevant bodies on policies, standards, and safety guidelines',
             'Advocate harmonized regulations, safety compliance, and enabling incentives',
             'Support state and city-level electric mobility roadmaps and implementation playbooks'
-        ]
+        ],
+        cta: { label: 'Learn More', href: '#' }
     },
     {
         title: 'Skill Development & Education',
@@ -37,7 +39,11 @@ const programs = [
             'Develop EV-focused curricula, certifications, and practical training programs',
             'Conduct workshops, seminars, and faculty development programs',
             'Enable reskilling and upskilling from conventional automotive roles to EV domains'
-        ]
+        ],
+        cta: {
+            label: 'View EV Skill Matrix',
+            href: '/domains/ev-industry-skill-matrix-india'
+        }
     },
     {
         title: 'Industry & Ecosystem Development',
@@ -46,7 +52,8 @@ const programs = [
             'Connect industry, academia, government, startups, and users through working groups',
             'Facilitate collaborations, pilot projects, and technology transfer',
             'Support ecosystem readiness across charging, diagnostics, service, and recycling supply chains'
-        ]
+        ],
+        cta: { label: 'Learn More', href: '#' }
     },
     {
         title: 'Sustainability & Environment',
@@ -55,7 +62,8 @@ const programs = [
             'Promote life-cycle thinking for EV adoption',
             'Encourage battery reuse, second-life applications, and responsible recycling',
             'Support renewable energy integration with charging and smart energy management'
-        ]
+        ],
+        cta: { label: 'Learn More', href: '#' }
     },
     {
         title: 'Public Awareness & Outreach',
@@ -64,7 +72,8 @@ const programs = [
             'Build awareness around benefits, myths, safety, and responsible usage',
             'Promote adoption across rural, semi-urban, and urban communities',
             'Engage students and youth through EV clubs, challenges, and competitions'
-        ]
+        ],
+        cta: { label: 'Learn More', href: '#' }
     }
 ];
 
@@ -146,12 +155,12 @@ export default function ProgramsPage() {
                 <div className="container-custom">
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {programs.map((program) => (
-                            <div key={program.title} className="bg-surface p-8 rounded-3xl border border-gray-200 hover:shadow-xl hover:shadow-primary/5 transition-all group">
+                            <div key={program.title} className="bg-surface p-8 rounded-3xl border border-gray-200 hover:shadow-xl hover:shadow-primary/5 transition-all group flex flex-col">
                                 <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-primary mb-8 shadow-sm group-hover:bg-primary group-hover:text-white transition-colors border border-gray-100">
                                     <program.icon className="w-7 h-7" />
                                 </div>
                                 <h3 className="text-2xl font-bold text-gray-900 mb-6">{program.title}</h3>
-                                <ul className="space-y-4">
+                                <ul className="space-y-4 flex-1">
                                     {program.bullets.map((bullet, i) => (
                                         <li key={i} className="flex items-start gap-3">
                                             <div className="mt-2 w-1.5 h-1.5 rounded-full bg-primary/40 shrink-0" />
@@ -159,6 +168,17 @@ export default function ProgramsPage() {
                                         </li>
                                     ))}
                                 </ul>
+                                {'cta' in program && program.cta && (
+                                    <div className="mt-8 pt-6 border-t border-gray-200">
+                                        <a
+                                            href={program.cta.href}
+                                            className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white text-sm font-bold rounded-full hover:bg-blue-700 transition-colors"
+                                        >
+                                            {program.cta.label}
+                                            <ArrowRight className="w-4 h-4" />
+                                        </a>
+                                    </div>
+                                )}
                             </div>
                         ))}
                     </div>
