@@ -38,7 +38,6 @@ export const SKILL_MATRIX_DATA = {
             "Trainers",
             "Architects",
             "OEMs",
-            "Suppliers",
             "Institutions",
             "Policy Stakeholders",
             "EV Professionals",
