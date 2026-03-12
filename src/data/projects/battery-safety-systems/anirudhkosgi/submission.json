@@ -1,0 +1,37 @@
+{
+    "projectId": "battery-safety-systems",
+    "teamId": "EV.ENGINEER™",
+    "overallStatus": "submitted",
+    "overallPercentage": 25,
+    "certificateIssued": false,
+    "certificatePath": "",
+    "lastUpdated": "2026-01-27",
+    "approverName": "",
+    "approverComment": "",
+    "approvedDate": "",
+    "stages": [
+        {
+            "stageId": "stage0",
+            "title": "Digital Twin",
+            "percentage": 25,
+            "documents": [
+                {
+                    "docId": "s0-01",
+                    "name": "Digital Twin : An AI- Powered System for EV Battery Fire Prevention",
+                    "description": "A sophisticated approach to revolutionize electric vehicle safety through real-time monitoring, predictive analytics, and proactive intervention.",
+                    "required": true,
+                    "status": "submitted",
+                    "submittedOn": "2025-05-27",
+                    "reviewNotes": "",
+                    "fileUrl": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/12Presentation/Battery-Digital-Twin_AnirudhKosgi.pdf",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
+                }
+            ]
+        }
+    ]
+}

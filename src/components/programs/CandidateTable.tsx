@@ -9,7 +9,7 @@ import Image from 'next/image';
 interface CandidateTableProps {
     candidates: Candidate[];
     submissions: Submission[];
-    baseUrl?: string; // e.g., '/programs/evto/candidates' or '/projects/battery-pack-aadhaar-systems/candidates'
+    baseUrl?: string; // e.g., '/programs/evto/candidates' or '/projects/battery-safety-systems/candidates'
 }
 
 export default function CandidateTable({ candidates, submissions, baseUrl = '/programs/evto/candidates' }: CandidateTableProps) {

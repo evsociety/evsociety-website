@@ -12,7 +12,7 @@ import { trackEvent } from '@/utils/analytics/ga4';
 interface CandidateCardProps {
     candidates: Candidate[];
     submissions: Submission[];
-    baseUrl?: string; // e.g., '/programs/evto/candidates' or '/projects/battery-pack-aadhaar-systems/candidates'
+    baseUrl?: string; // e.g., '/programs/evto/candidates' or '/projects/battery-safety-systems/candidates'
 }
 
 export default function CandidateCard({ candidates, submissions, baseUrl = '/programs/evto/candidates' }: CandidateCardProps) {

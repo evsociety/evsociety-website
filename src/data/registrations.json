@@ -169,7 +169,7 @@
     "projects": [
         {
             "id": "proj_001",
-            "title": "Battery Pack Aadhaar Systems",
+            "title": "Battery Safety Systems",
             "startDate": "2027-02-01",
             "modeOptions": [
                 "online",
@@ -249,7 +249,7 @@
                 "Thermal Runaway Prevention",
                 "AI-Based Monitoring"
             ],
-            "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatteryPackAadhaarSystem/13Webinars/Webinar%20-%20EV%20Battery%20Safety%20System%20-%20Sreenath%20Asha.png",
+            "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/13Webinars/Webinar%20-%20EV%20Battery%20Safety%20System%20-%20Sreenath%20Asha.png",
             "youtubeURL": "https://www.youtube.com/watch?v=GzPgV3nC9WA",
             "presentationURL": "https://drive.google.com/file/d/1YuFpvtAx7Ks3zA7TR24JS9xzZbIVOv5Z/view?usp=drivesdk",
             "description": "The AI-Powered EV Battery Fire Prevention System is an advanced software platform designed to detect early signs of battery failure and prevent thermal runaway incidents in electric vehicles."
@@ -278,9 +278,9 @@
                 "Thermal Runaway Prevention",
                 "AI-Based Monitoring"
             ],
-            "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatteryPackAadhaarSystem/13Webinars/Webinar%20-%20EV%20Battery%20Safety%20System%20-%20Shreelakshmi%20Hegde.png",
+            "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/13Webinars/Webinar%20-%20EV%20Battery%20Safety%20System%20-%20Shreelakshmi%20Hegde.png",
             "youtubeURL": "https://www.youtube.com/watch?v=m_cz65VZnV8&feature=youtu.be",
-            "presentationURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatteryPackAadhaarSystem/12Presentation/EV Battery Safety - EV Society - iTelematics - Canara Engineering College Mangaluru - Shreelakshmi Hegde.pdf",
+            "presentationURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/12Presentation/EV Battery Safety - EV Society - iTelematics - Canara Engineering College Mangaluru - Shreelakshmi Hegde.pdf",
             "description": "The AI-Powered EV Battery Fire Prevention System is an advanced software platform designed to detect early signs of battery failure and prevent thermal runaway incidents in electric vehicles."
         },
         {
@@ -299,20 +299,20 @@
             "categoryTags": [
                 "AI/ML",
                 "Battery Safety",
-                "Battery Pack Aadhaar Systems",
+                "Battery Safety Systems",
                 "Fire Prevention",
                 "Webinar"
             ],
             "sessionTracks": [
                 "Battery Failure Detection",
                 "Thermal Runaway Prevention",
-                "Battery Pack Aadhaar Systems",
+                "Battery Safety Systems",
                 "AI-Based Monitoring"
             ],
-            "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatteryPackAadhaarSystem/13Webinars/Webinar%20-%20EV%20Battery%20safety%20-%20CSE%20SDMIT%20Ujire%20-%20Sudarshana%20Karkala.png",
+            "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/13Webinars/Webinar%20-%20EV%20Battery%20safety%20-%20CSE%20SDMIT%20Ujire%20-%20Sudarshana%20Karkala.png",
             "youtubeURL": "https://youtu.be/ICoauPw99bc?t=4",
             "presentationURL": "https://itelematics.com/public/EV.ENGINEER%20-%20Battery%20Pack%20Aadhaar%20-%20Krutarth%20S%20Karkala.pdf",
-            "description": "The Battery Pack Aadhaar System is a proposed Indian digital, 21-character unique identification system for Electric Vehicle (EV) batteries, aiming to ensure end-to-end traceability from manufacturing to disposal."
+            "description": "The Battery Safety System is a proposed Indian digital, 21-character unique identification system for Electric Vehicle (EV) batteries, aiming to ensure end-to-end traceability from manufacturing to disposal."
         },
         {
             "id": "web_003",
@@ -337,9 +337,9 @@
                 "Thermal Runaway Prevention",
                 "AI-Based Monitoring"
             ],
-            "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatteryPackAadhaarSystem/13Webinars/Webinar%20-%20Ageing%20and%20Degradation%20of%20Lithium-ion%20Battery%20-%20Shilajit%20Das.png",
-            "youtubeURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatteryPackAadhaarSystem/13Webinars/Webinar%20-%20Ageing%20and%20Degradation%20of%20Lithium-ion%20Battery%20-%20Shilajit%20Das.pdf",
-            "presentationURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatteryPackAadhaarSystem/13Webinars/Webinar%20-%20Ageing%20and%20Degradation%20of%20Lithium-ion%20Battery%20-%20Shilajit%20Das.pdf",
+            "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/13Webinars/Webinar%20-%20Ageing%20and%20Degradation%20of%20Lithium-ion%20Battery%20-%20Shilajit%20Das.png",
+            "youtubeURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/13Webinars/Webinar%20-%20Ageing%20and%20Degradation%20of%20Lithium-ion%20Battery%20-%20Shilajit%20Das.pdf",
+            "presentationURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/13Webinars/Webinar%20-%20Ageing%20and%20Degradation%20of%20Lithium-ion%20Battery%20-%20Shilajit%20Das.pdf",
             "description": "The AI-Powered EV Battery Fire Prevention System is an advanced software platform designed to detect early signs of battery failure and prevent thermal runaway incidents in electric vehicles."
         },
         {

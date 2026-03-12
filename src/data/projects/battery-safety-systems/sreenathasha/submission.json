@@ -1,0 +1,101 @@
+{
+    "projectId": "battery-safety-systems",
+    "teamId": "EV.ENGINEER™",
+    "overallStatus": "completed",
+    "overallPercentage": 100,
+    "certificateIssued": true,
+    "certificatePath": "/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/14Certificates/EV Society - Sreenath Asha.pdf",
+    "lastUpdated": "2026-02-11",
+    "approverName": "B V Manjunath",
+    "approverComment": "Project, Demo and Webinar are completed",
+    "approvedDate": "2026-02-28",
+    "stages": [
+        {
+            "stageId": "stage0",
+            "title": "EV BATTERY SAFETY SYSTEMS",
+            "percentage": 100,
+            "documents": [
+                {
+                    "docId": "s0-01",
+                    "name": "WEBINAR - EV BATTERY SAFETY SYSTEM (LinkedIn Event)",
+                    "description": "AI-Powered EV Battery Fire Prevention System",
+                    "required": true,
+                    "status": "completed",
+                    "submittedOn": "2026-02-11",
+                    "reviewNotes": "",
+                    "fileUrl": "https://www.linkedin.com/events/7426439501431898113",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
+                },
+                {
+                    "docId": "s0-02",
+                    "name": "WEBINAR - EV BATTERY SAFETY SYSTEM (Youtube Video)",
+                    "description": "AI-Powered EV Battery Fire Prevention System",
+                    "required": true,
+                    "status": "completed",
+                    "submittedOn": "2026-02-11",
+                    "reviewNotes": "Excellent Presentation | A very good session, we'll done by Asha ",
+                    "fileUrl": "https://youtu.be/GzPgV3nC9WA",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
+                },
+                {
+                    "docId": "s0-04",
+                    "name": "WEBINAR - EV BATTERY SAFETY SYSTEM (LinkedIn Post)",
+                    "description": "AI-Powered EV Battery Fire Prevention System",
+                    "required": false,
+                    "status": "completed",
+                    "submittedOn": "2026-02-11",
+                    "reviewNotes": "",
+                    "fileUrl": "https://www.linkedin.com/posts/kiran-kumar-7a111b40_activity-7427684425083056128-LcUY/?utm_source=share&utm_medium=member_android&rcm=ACoAAAJKGCMB-9ydba1RRPEUW8U9eAsRos_4HB8",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
+                },
+                {
+                    "docId": "s0-03",
+                    "name": "PROJECT REPORT - EV BATTERY SAFETY SYSTEM",
+                    "description": "AI-Powered EV Battery Fire Prevention System",
+                    "required": true,
+                    "status": "completed",
+                    "submittedOn": "2026-02-06",
+                    "reviewNotes": "",
+                    "fileUrl": "https://drive.google.com/file/d/1YuFpvtAx7Ks3zA7TR24JS9xzZbIVOv5Z/view?usp=drivesdk",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
+                },
+                {
+                    "docId": "s0-05",
+                    "name": "WEBINAR - EV BATTERY SAFETY SYSTEM (Poster)",
+                    "description": "AI-Powered EV Battery Fire Prevention System",
+                    "required": true,
+                    "status": "completed",
+                    "submittedOn": "2026-02-06",
+                    "reviewNotes": "",
+                    "fileUrl": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/13Webinars/Webinar%20-%20EV%20Battery%20Safety%20System%20-%20Sreenath%20Asha.png",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
+                }
+            ]
+        }
+    ]
+}

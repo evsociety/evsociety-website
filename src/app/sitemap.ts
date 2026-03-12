@@ -98,13 +98,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.9,
         },
         {
-            url: `${baseUrl}/projects/battery-pack-aadhaar-systems`,
+            url: `${baseUrl}/projects/battery-safety-systems`,
             lastModified: currentDate,
             changeFrequency: 'weekly' as const,
             priority: 0.8,
         },
         {
-            url: `${baseUrl}/projects/battery-pack-aadhaar-systems/candidates`,
+            url: `${baseUrl}/projects/battery-safety-systems/candidates`,
             lastModified: currentDate,
             changeFrequency: 'weekly' as const,
             priority: 0.7,

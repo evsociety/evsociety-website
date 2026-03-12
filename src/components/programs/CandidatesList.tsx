@@ -10,7 +10,7 @@ import CandidateCard from './CandidateCard';
 interface CandidatesListProps {
     candidates: Candidate[];
     submissions: Submission[];
-    baseUrl?: string; // e.g., '/programs/evto/candidates' or '/projects/battery-pack-aadhaar-systems/candidates'
+    baseUrl?: string; // e.g., '/programs/evto/candidates' or '/projects/battery-safety-systems/candidates'
 }
 
 export default function CandidatesList({ candidates: initialCandidates, submissions, baseUrl = '/programs/evto/candidates' }: CandidatesListProps) {

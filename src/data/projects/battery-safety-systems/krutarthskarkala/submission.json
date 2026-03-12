@@ -1,0 +1,37 @@
+{
+    "projectId": "battery-safety-systems",
+    "teamId": "EV.ENGINEER™",
+    "overallStatus": "submitted",
+    "overallPercentage": 5,
+    "certificateIssued": false,
+    "certificatePath": "",
+    "lastUpdated": "2026-01-27",
+    "approverName": "",
+    "approverComment": "",
+    "approvedDate": "",
+    "stages": [
+        {
+            "stageId": "stage0",
+            "title": "EV BATTERY SAFETY SYSTEMS",
+            "percentage": 5,
+            "documents": [
+                {
+                    "docId": "s0-01",
+                    "name": "Battery Safety System",
+                    "description": "Digital Identity, Health & Safety Platform for EV Batteries in India",
+                    "required": true,
+                    "status": "submitted",
+                    "submittedOn": "2025-09-10",
+                    "reviewNotes": "",
+                    "fileUrl": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/12Presentation/EV.ENGINEER_BatteryPackAadhaar_KrutarthSKarkala.pdf",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
+                }
+            ]
+        }
+    ]
+}
