@@ -229,6 +229,11 @@ export default function EventList({ events }: EventListProps) {
                                                                     YouTube
                                                                 </a>
                                                             )}
+                                                            {event.presentationURL && (
+                                                                <a href={event.presentationURL} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-center py-2 px-4 bg-green-50 text-green-700 hover:bg-green-100 rounded-lg transition-colors w-full md:w-40 border border-green-100">
+                                                                    Presentation
+                                                                </a>
+                                                            )}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -307,7 +312,7 @@ export default function EventList({ events }: EventListProps) {
                                                 <Clock className="w-4 h-4 text-primary" />
                                                 <span>{event.time || '10:00 AM IST'}</span>
                                             </div>
-                                            {(event.posterLinkURL || event.youtubeURL) && (
+                                            {(event.posterLinkURL || event.youtubeURL || event.presentationURL) && (
                                                 <div className="flex items-center gap-4 border-l border-gray-200 pl-6 ml-2">
                                                     {event.posterLinkURL && (
                                                         <a href={event.posterLinkURL} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline font-bold transition-colors">
@@ -317,6 +322,11 @@ export default function EventList({ events }: EventListProps) {
                                                     {event.youtubeURL && (
                                                         <a href={event.youtubeURL} target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-red-800 hover:underline font-bold transition-colors">
                                                             YouTube
+                                                        </a>
+                                                    )}
+                                                    {event.presentationURL && (
+                                                        <a href={event.presentationURL} target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-800 hover:underline font-bold transition-colors">
+                                                            Presentation
                                                         </a>
                                                     )}
                                                 </div>

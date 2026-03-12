@@ -45,7 +45,8 @@ export function getEvents(): EVEvent[] {
         registrationUrl: '/register',
         tags: w.categoryTags || [],
         posterLinkURL: w.posterLinkURL,
-        youtubeURL: w.youtubeURL
+        youtubeURL: w.youtubeURL,
+        presentationURL: w.presentationURL
     }));
 
     const allEvents = [...events, ...webinars];

@@ -36,6 +36,7 @@ export interface EVEvent {
   speakerOrganization?: string;
   posterLinkURL?: string;
   youtubeURL?: string;
+  presentationURL?: string;
 }
 
 export interface Resource {
