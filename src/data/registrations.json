@@ -362,14 +362,11 @@
                 "Webinar"
             ],
             "sessionTracks": [
-                "Battery Failure Detection",
-                "Thermal Runaway Prevention",
-                "AI-Based Monitoring",
                 "IPR"
             ],
             "posterLinkURL": "https://www.evsociety.org/ongoing/Webinars/RiteshRShetty/mr-ritesh-r-shetty_safeguarding-ev-innovations-through-ipr_poster.jpg",
             "youtubeURL": "",
-            "presentationURL": "https://www.evsociety.org/ongoing/Webinars/RiteshRShetty/mr-ritesh-r-shetty_safeguarding-ev-innovations-through-ipr_poster.pdf",
+            "presentationURL": "",
             "description": "This presentation introduces the concept of Intellectual Property Rights (IPR) and its importance in protecting innovation and creativity in the modern world. It explains different forms of IPR, along with what each protects. Through interesting examples from history, mythology, and modern cases, it highlights the ethical, legal, and commercial value of protecting ideas. The presentation also discusses real-world trademark disputes, digital copying challenges, and emerging issues like AI-generated works."
         },
         {
