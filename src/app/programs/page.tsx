@@ -148,6 +148,52 @@ export default function ProgramsPage() {
                             </div>
                         </div>
                     </div>
+                    
+                    <div className="bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow relative mt-8">
+                        <div className="grid md:grid-cols-12 gap-0">
+                            <div className="md:col-span-5 bg-gray-900 text-white p-10 flex flex-col justify-center">
+                                <div className="mb-6">
+                                    <span className="inline-block py-1 px-3 rounded-full bg-blue-900/50 text-blue-300 text-xs font-semibold border border-blue-800 mb-4">
+                                        Executive Program
+                                    </span>
+                                    <h2 className="text-3xl font-black mb-4">EVLBS™</h2>
+                                    <p className="text-white font-bold text-lg">
+                                        Certified EV Legal & Business Strategist (EVLBS™)
+                                    </p>
+                                </div>
+                                <p className="text-gray-400 mb-8 leading-relaxed">
+                                    The gold standard for legal, regulatory, and business leaders mastering the legal, contractual, and intellectual property frameworks of the EV ecosystem.
+                                </p>
+                                <ProgramCTALink
+                                    href="/programs/evlbs"
+                                    ctaId="view_evlbs_details"
+                                    page="/programs"
+                                    section="featured_program"
+                                    className="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-900 font-bold rounded-full hover:bg-gray-100 transition-colors w-fit"
+                                >
+                                    View Program Details
+                                </ProgramCTALink>
+                            </div>
+                            <div className="md:col-span-7 p-10 flex flex-col justify-center">
+                                <h3 className="text-xl font-bold text-gray-900 mb-4">Program Highlights</h3>
+                                <div className="grid sm:grid-cols-2 gap-x-8 gap-y-4">
+                                    {[
+                                        'EV Regulatory Frameworks & Compliance',
+                                        'EV Contracts & Supplier Negotiations',
+                                        'Intellectual Property Strategy for EV',
+                                        'Insurance, Risk & Liability Management',
+                                        'EV Taxation & Global Trade',
+                                        'Dispute Resolution & Arbitration'
+                                    ].map((item, i) => (
+                                        <div key={i} className="flex items-start">
+                                            <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0 mr-3" />
+                                            <span className="text-gray-600 text-sm">{item}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
