@@ -150,6 +150,9 @@ export default function ProgramsPage() {
                     </div>
                     
                     <div className="bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow relative mt-8">
+                        <div className="absolute top-0 right-0 bg-primary/10 text-primary px-4 py-1.5 rounded-bl-xl font-bold text-xs uppercase tracking-wider">
+                            Flagship Certification
+                        </div>
                         <div className="grid md:grid-cols-12 gap-0">
                             <div className="md:col-span-5 bg-gray-900 text-white p-10 flex flex-col justify-center">
                                 <div className="mb-6">
