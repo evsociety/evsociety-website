@@ -2,7 +2,7 @@
     "candidateId": "sudarshana-karkala",
     "programId": "evto",
     "overallStatus": "in-review",
-    "overallPercentage": 15,
+    "overallPercentage": 40,
     "certificateIssued": false,
     "lastUpdated": "2026-01-26",
     "approverName": "",
@@ -67,6 +67,7 @@
         {
             "pillarId": "pillar1",
             "title": "Pillar 1 – EV System Ownership",
+            "percentage": 70,
             "documents": [
                 {
                     "docId": "p1-01",
@@ -121,6 +122,7 @@
         {
             "pillarId": "pillar2",
             "title": "Pillar 2 – AI & Digital Intelligence",
+            "percentage": 40,
             "documents": [
                 {
                     "docId": "p2-01",
@@ -175,6 +177,7 @@
         {
             "pillarId": "pillar3",
             "title": "Pillar 3 – EV Battery",
+            "percentage": 52,
             "documents": [
                 {
                     "docId": "p3-01",
@@ -277,6 +280,7 @@
         {
             "pillarId": "pillar4",
             "title": "Pillar 4 – CTO Grade System",
+            "percentage": 10,
             "documents": [
                 {
                     "docId": "p4-01",
@@ -331,6 +335,7 @@
         {
             "pillarId": "pillar5",
             "title": "Pillar 5 – Business Magnate",
+            "percentage": 8,
             "documents": [
                 {
                     "docId": "p5-nitkonnect2026-0",
@@ -450,16 +455,33 @@
             "pillarId": "capstone",
             "title": "Capstone (Mandatory – Certification Gate)",
             "capstoneTopicSelected": "AI-driven EV Battery Safety System",
+            "percentage": 25,
             "documents": [
                 {
                     "docId": "c-01",
                     "name": "Capstone Proposal",
-                    "description": "Problem statement + scope",
+                    "description": "EV Battery Health & Diagnostics (Problem statement + scope)",
                     "required": true,
                     "status": "submitted",
                     "submittedOn": "2026-01-25",
                     "reviewNotes": "",
-                    "fileUrl": "",
+                    "fileUrl": "https://battery.ev.engineer/",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
+                },
+                {
+                    "docId": "c-01",
+                    "name": "Initial POC/Demo",
+                    "description": "EV Battery Health & Diagnostics(POC)",
+                    "required": true,
+                    "status": "submitted",
+                    "submittedOn": "2026-01-25",
+                    "reviewNotes": "",
+                    "fileUrl": "https://demo.battery.ev.engineer/",
                     "reviewerName": "",
                     "reviewerComment": "",
                     "reviewDate": "",
