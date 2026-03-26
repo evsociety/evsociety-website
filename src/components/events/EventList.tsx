@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { Calendar, MapPin, Search as SearchIcon, Filter, User, Building2, Clock } from 'lucide-react';
+import { Calendar, MapPin, Search as SearchIcon, Filter, User, Building2, Clock, ChevronDown } from 'lucide-react';
 import { EVEvent } from '@/types';
 
 interface EventListProps {
@@ -9,6 +9,129 @@ interface EventListProps {
 }
 
 type Tab = 'Upcoming' | 'Completed' | 'Speakers';
+
+function SpeakerGroupCard({ group }: { group: any }) {
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    return (
+        <div className="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm">
+            <div 
+                className="bg-surface/50 p-6 md:p-8 cursor-pointer hover:bg-surface/80 transition-colors flex flex-col md:flex-row md:items-center justify-between gap-5 border-b border-gray-100"
+                onClick={() => setIsExpanded(!isExpanded)}
+            >
+                <div className="flex items-start gap-5">
+                    <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                        <User className="w-8 h-8 text-primary" />
+                    </div>
+                    <div>
+                        <h2 className="text-2xl font-bold text-gray-900">{group.speaker}</h2>
+                        {(group.speakerTitle || group.speakerOrganization || group.speakerInstitution) && (
+                            <div className="mt-2 space-y-1 text-sm text-gray-600">
+                                {group.speakerTitle && <div className="font-medium text-gray-900">{group.speakerTitle}</div>}
+                                {group.speakerOrganization && <div>{group.speakerOrganization}</div>}
+                                {group.speakerInstitution && <div>{group.speakerInstitution}</div>}
+                            </div>
+                        )}
+                    </div>
+                </div>
+                <div className="text-gray-400 shrink-0 self-start md:self-center mt-4 md:mt-0">
+                    <button className="flex items-center gap-2 text-sm font-bold text-primary hover:text-primary/80 transition-colors">
+                        <span className="md:inline">{isExpanded ? 'Hide Sessions' : 'View Sessions'}</span>
+                        <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
+                    </button>
+                </div>
+            </div>
+            
+            {isExpanded && (
+                <div className="p-6 md:p-8 space-y-6 bg-white">
+                    <h3 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4 border-b border-gray-50 pb-2">Sessions by {group.speaker}</h3>
+                    {group.webinars.map((event: any) => (
+                        <div key={event.id} className="group relative border border-gray-100 rounded-2xl p-6 hover:shadow-md transition-all flex flex-col md:flex-row gap-6">
+                            <div className="flex-grow">
+                                <div className="flex flex-wrap gap-2 mb-3">
+                                    {event.tags.map((tag: string) => (
+                                        <span key={tag} className="px-2 py-0.5 bg-gray-50 text-gray-500 rounded text-[10px] uppercase font-bold tracking-wider">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                                <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">
+                                    {event.title}
+                                </h4>
+                                <ExpandableDescription
+                                    text={event.summary}
+                                    textClassName="text-sm text-gray-600 leading-relaxed max-w-2xl"
+                                    containerClassName="mb-4"
+                                />
+                                <div className="flex flex-wrap gap-4 text-xs font-medium text-gray-500">
+                                    <div className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5 text-primary" /> {new Date(event.date).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+                                    <div className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5 text-primary" /> {event.time || 'TBA'}</div>
+                                    <div className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-primary" /> {event.mode} • {event.city}</div>
+                                </div>
+                                
+                                {event.reference && event.reference.length > 0 && event.reference.some((r: any) => r.docName && r.docURL) && (
+                                    <div className="mt-4 pt-4 border-t border-gray-50">
+                                        <h5 className="text-xs font-bold text-gray-900 mb-2">Reference Documents:</h5>
+                                        <div className="flex flex-col gap-2">
+                                            {event.reference.map((ref: any, idx: number) => ref.docName && ref.docURL ? (
+                                                <a key={idx} href={ref.docURL} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline flex items-center gap-1.5 w-fit">
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-primary/40 shrink-0"></span>
+                                                    {ref.docName} {ref.Source ? <span className="text-gray-500 font-medium">({ref.Source})</span> : ''}
+                                                </a>
+                                            ) : null)}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Right Side: Actions */}
+                            <div className="w-full md:w-56 shrink-0 flex flex-col gap-3">
+                                <div className="flex flex-col gap-2 w-full md:w-auto mt-4 md:mt-0 items-end">
+                                    {event.posterLinkURL && (
+                                        <a href={event.posterLinkURL} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-center py-2 px-4 bg-blue-50 text-blue-700 hover:bg-blue-100 rounded-lg transition-colors w-full md:w-40 border border-blue-100">
+                                            Webinar Poster
+                                        </a>
+                                    )}
+                                    {event.youtubeURL && (
+                                        <a href={event.youtubeURL} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-center py-2 px-4 bg-red-50 text-red-700 hover:bg-red-100 rounded-lg transition-colors w-full md:w-40 border border-red-100">
+                                            YouTube
+                                        </a>
+                                    )}
+                                    {event.presentationURL && (
+                                        <a href={event.presentationURL} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-center py-2 px-4 bg-green-50 text-green-700 hover:bg-green-100 rounded-lg transition-colors w-full md:w-40 border border-green-100">
+                                            Presentation
+                                        </a>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+}
+
+function ExpandableDescription({ text, textClassName, containerClassName }: { text: string; textClassName?: string; containerClassName?: string; }) {
+    const [isExpanded, setIsExpanded] = useState(false);
+    const isLong = text.length > 180;
+
+    return (
+        <div className={containerClassName}>
+            <p className={`${textClassName || ''} ${!isExpanded && isLong ? 'line-clamp-3' : ''}`}>
+                {text}
+            </p>
+            {isLong && (
+                <button
+                    onClick={() => setIsExpanded(!isExpanded)}
+                    className="font-bold text-gray-900 hover:text-primary transition-colors text-sm mt-1"
+                >
+                    {isExpanded ? 'Less' : 'More'}
+                </button>
+            )}
+        </div>
+    );
+}
 
 export default function EventList({ events }: EventListProps) {
     const [activeTab, setActiveTab] = useState<Tab>('Upcoming');
@@ -175,85 +298,7 @@ export default function EventList({ events }: EventListProps) {
                         ) : (
                             <div className="space-y-12">
                                 {speakerGroups.map(group => (
-                                    <div key={group.speaker} className="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm">
-                                        <div className="bg-surface/50 p-6 md:p-8 border-b border-gray-100 flex items-start gap-5">
-                                            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                                                <User className="w-8 h-8 text-primary" />
-                                            </div>
-                                            <div>
-                                                <h2 className="text-2xl font-bold text-gray-900">{group.speaker}</h2>
-                                                {(group.speakerTitle || group.speakerOrganization || group.speakerInstitution) && (
-                                                    <div className="mt-2 space-y-1 text-sm text-gray-600">
-                                                        {group.speakerTitle && <div className="font-medium text-gray-900">{group.speakerTitle}</div>}
-                                                        {group.speakerOrganization && <div>{group.speakerOrganization}</div>}
-                                                        {group.speakerInstitution && <div>{group.speakerInstitution}</div>}
-                                                    </div>
-                                                )}
-                                            </div>
-                                        </div>
-                                        <div className="p-6 md:p-8 space-y-6 bg-white">
-                                            <h3 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4 border-b border-gray-50 pb-2">Sessions by {group.speaker}</h3>
-                                            {group.webinars.map(event => (
-                                                <div key={event.id} className="group relative border border-gray-100 rounded-2xl p-6 hover:shadow-md transition-all flex flex-col md:flex-row gap-6">
-                                                    <div className="flex-grow">
-                                                        <div className="flex flex-wrap gap-2 mb-3">
-                                                            {event.tags.map(tag => (
-                                                                <span key={tag} className="px-2 py-0.5 bg-gray-50 text-gray-500 rounded text-[10px] uppercase font-bold tracking-wider">
-                                                                    {tag}
-                                                                </span>
-                                                            ))}
-                                                        </div>
-                                                        <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">
-                                                            {event.title}
-                                                        </h4>
-                                                        <p className="text-sm text-gray-600 leading-relaxed mb-4 max-w-2xl">
-                                                            {event.summary}
-                                                        </p>
-                                                        <div className="flex flex-wrap gap-4 text-xs font-medium text-gray-500">
-                                                            <div className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5 text-primary" /> {new Date(event.date).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
-                                                            <div className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5 text-primary" /> {event.time || 'TBA'}</div>
-                                                            <div className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-primary" /> {event.mode} • {event.city}</div>
-                                                        </div>
-                                                        
-                                                        {event.reference && event.reference.length > 0 && event.reference.some(r => r.docName && r.docURL) && (
-                                                            <div className="mt-4 pt-4 border-t border-gray-50">
-                                                                <h5 className="text-xs font-bold text-gray-900 mb-2">Reference Documents:</h5>
-                                                                <div className="flex flex-col gap-2">
-                                                                    {event.reference.map((ref, idx) => ref.docName && ref.docURL ? (
-                                                                        <a key={idx} href={ref.docURL} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline flex items-center gap-1.5 w-fit">
-                                                                            <span className="w-1.5 h-1.5 rounded-full bg-primary/40 shrink-0"></span>
-                                                                            {ref.docName} {ref.Source ? <span className="text-gray-500 font-medium">({ref.Source})</span> : ''}
-                                                                        </a>
-                                                                    ) : null)}
-                                                                </div>
-                                                            </div>
-                                                        )}
-                                                    </div>
-
-                                                    {/* Right Side: Actions */}
-                                                    <div className="w-full md:w-56 shrink-0 flex flex-col gap-3">
-                                                        <div className="flex flex-col gap-2 w-full md:w-auto mt-4 md:mt-0 items-end">
-                                                            {event.posterLinkURL && (
-                                                                <a href={event.posterLinkURL} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-center py-2 px-4 bg-blue-50 text-blue-700 hover:bg-blue-100 rounded-lg transition-colors w-full md:w-40 border border-blue-100">
-                                                                    Webinar Poster
-                                                                </a>
-                                                            )}
-                                                            {event.youtubeURL && (
-                                                                <a href={event.youtubeURL} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-center py-2 px-4 bg-red-50 text-red-700 hover:bg-red-100 rounded-lg transition-colors w-full md:w-40 border border-red-100">
-                                                                    YouTube
-                                                                </a>
-                                                            )}
-                                                            {event.presentationURL && (
-                                                                <a href={event.presentationURL} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-center py-2 px-4 bg-green-50 text-green-700 hover:bg-green-100 rounded-lg transition-colors w-full md:w-40 border border-green-100">
-                                                                    Presentation
-                                                                </a>
-                                                            )}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
+                                    <SpeakerGroupCard key={group.speaker} group={group} />
                                 ))}
                             </div>
                         )
@@ -296,9 +341,11 @@ export default function EventList({ events }: EventListProps) {
                                             {event.title}
                                         </h3>
 
-                                        <p className="text-gray-600 leading-relaxed max-w-2xl mb-6">
-                                            {event.summary}
-                                        </p>
+                                        <ExpandableDescription
+                                            text={event.summary}
+                                            textClassName="text-gray-600 leading-relaxed max-w-2xl"
+                                            containerClassName="mb-6"
+                                        />
 
                                         {/* Speaker Details */}
                                         {event.speaker && (
