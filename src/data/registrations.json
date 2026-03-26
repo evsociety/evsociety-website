@@ -252,7 +252,19 @@
             "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/13Webinars/Webinar%20-%20EV%20Battery%20Safety%20System%20-%20Sreenath%20Asha.png",
             "youtubeURL": "https://www.youtube.com/watch?v=GzPgV3nC9WA",
             "presentationURL": "https://drive.google.com/file/d/1YuFpvtAx7Ks3zA7TR24JS9xzZbIVOv5Z/view?usp=drivesdk",
-            "description": "The AI-Powered EV Battery Fire Prevention System is an advanced software platform designed to detect early signs of battery failure and prevent thermal runaway incidents in electric vehicles."
+            "description": "The AI-Powered EV Battery Fire Prevention System is an advanced software platform designed to detect early signs of battery failure and prevent thermal runaway incidents in electric vehicles.",
+            "reference": [
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                },
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                }
+            ]
         },
         {
             "id": "web_002",
@@ -281,7 +293,19 @@
             "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/13Webinars/Webinar%20-%20EV%20Battery%20Safety%20System%20-%20Shreelakshmi%20Hegde.png",
             "youtubeURL": "https://www.youtube.com/watch?v=m_cz65VZnV8&feature=youtu.be",
             "presentationURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/12Presentation/EV Battery Safety - EV Society - iTelematics - Canara Engineering College Mangaluru - Shreelakshmi Hegde.pdf",
-            "description": "The AI-Powered EV Battery Fire Prevention System is an advanced software platform designed to detect early signs of battery failure and prevent thermal runaway incidents in electric vehicles."
+            "description": "The AI-Powered EV Battery Fire Prevention System is an advanced software platform designed to detect early signs of battery failure and prevent thermal runaway incidents in electric vehicles.",
+            "reference": [
+                {
+                    "docName": "Q & A",
+                    "docURL": "https://youtu.be/bw2qb3O77Ag?t=13",
+                    "Source": ""
+                },
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                }
+            ]
         },
         {
             "id": "web_0020",
@@ -312,7 +336,19 @@
             "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/13Webinars/Webinar%20-%20EV%20Battery%20safety%20-%20CSE%20SDMIT%20Ujire%20-%20Sudarshana%20Karkala.png",
             "youtubeURL": "https://youtu.be/ICoauPw99bc?t=4",
             "presentationURL": "https://itelematics.com/public/EV.ENGINEER%20-%20Battery%20Pack%20Aadhaar%20-%20Krutarth%20S%20Karkala.pdf",
-            "description": "The Battery Safety System is a proposed Indian digital, 21-character unique identification system for Electric Vehicle (EV) batteries, aiming to ensure end-to-end traceability from manufacturing to disposal."
+            "description": "The Battery Safety System is a proposed Indian digital, 21-character unique identification system for Electric Vehicle (EV) batteries, aiming to ensure end-to-end traceability from manufacturing to disposal.",
+            "reference": [
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                },
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                }
+            ]
         },
         {
             "id": "web_003",
@@ -340,7 +376,19 @@
             "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/13Webinars/Webinar%20-%20Ageing%20and%20Degradation%20of%20Lithium-ion%20Battery%20-%20Shilajit%20Das.png",
             "youtubeURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/13Webinars/Webinar%20-%20Ageing%20and%20Degradation%20of%20Lithium-ion%20Battery%20-%20Shilajit%20Das.pdf",
             "presentationURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/13Webinars/Webinar%20-%20Ageing%20and%20Degradation%20of%20Lithium-ion%20Battery%20-%20Shilajit%20Das.pdf",
-            "description": "The AI-Powered EV Battery Fire Prevention System is an advanced software platform designed to detect early signs of battery failure and prevent thermal runaway incidents in electric vehicles."
+            "description": "The AI-Powered EV Battery Fire Prevention System is an advanced software platform designed to detect early signs of battery failure and prevent thermal runaway incidents in electric vehicles.",
+            "reference": [
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                },
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                }
+            ]
         },
         {
             "id": "web_0034",
@@ -365,9 +413,21 @@
                 "IPR"
             ],
             "posterLinkURL": "https://www.evsociety.org/ongoing/Webinars/RiteshRShetty/mr-ritesh-r-shetty_safeguarding-ev-innovations-through-ipr_poster.jpg",
-            "youtubeURL": "",
+            "youtubeURL": "https://youtu.be/WhQoNVZWoTk",
             "presentationURL": "",
-            "description": "This presentation introduces the concept of Intellectual Property Rights (IPR) and its importance in protecting innovation and creativity in the modern world. It explains different forms of IPR, along with what each protects. Through interesting examples from history, mythology, and modern cases, it highlights the ethical, legal, and commercial value of protecting ideas. The presentation also discusses real-world trademark disputes, digital copying challenges, and emerging issues like AI-generated works."
+            "description": "This presentation introduces the concept of Intellectual Property Rights (IPR) and its importance in protecting innovation and creativity in the modern world. It explains different forms of IPR, along with what each protects. Through interesting examples from history, mythology, and modern cases, it highlights the ethical, legal, and commercial value of protecting ideas. The presentation also discusses real-world trademark disputes, digital copying challenges, and emerging issues like AI-generated works.",
+            "reference": [
+                {
+                    "docName": "Q & A",
+                    "docURL": "https://youtu.be/1XlvoyNhLq0",
+                    "Source": ""
+                },
+                {
+                    "docName": "Intellectual Property Rights & Legislations in India",
+                    "docURL": "https://www.evsociety.org/ongoing/Webinars/AmarnathKosgi/FAQ_IPR_Amarnath_Kosgi.pdf",
+                    "Source": "Mr. Amarnath Kosgi"
+                }
+            ]
         },
         {
             "id": "web_20260408",
@@ -397,7 +457,19 @@
             "posterLinkURL": "https://www.evsociety.org/ongoing/Webinars/AmarnathKosgi/mr-amarnath-kosgi_technology-evaluation-methodologies_poster.jpg",
             "youtubeURL": "",
             "presentationURL": "",
-            "description": "Decision making situations demand us to sort and pick a preferred solution out of several options available. Technical complexity ranges from a simple shopping choice while buying a gadget to higher level business decisions in R&D project management. This lecture attempts to introduce different Technology Evaluation (TE) models from published literature focused on various scenarios. Three cases are chosen to represent different technical complexities such as Evaluation of Airbus TD project and a simpler choice whether or not to go for a new improved option in ASSB (Battery) manufacturing process. A third case is on TE process developed by an MIT research group for the US military. Focus here is on scientific understanding to choose the right measuring scale (framework) for evaluating the available options to serve a particular purpose."
+            "description": "Decision making situations demand us to sort and pick a preferred solution out of several options available. Technical complexity ranges from a simple shopping choice while buying a gadget to higher level business decisions in R&D project management. This lecture attempts to introduce different Technology Evaluation (TE) models from published literature focused on various scenarios. Three cases are chosen to represent different technical complexities such as Evaluation of Airbus TD project and a simpler choice whether or not to go for a new improved option in ASSB (Battery) manufacturing process. A third case is on TE process developed by an MIT research group for the US military. Focus here is on scientific understanding to choose the right measuring scale (framework) for evaluating the available options to serve a particular purpose.",
+            "reference": [
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                },
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                }
+            ]
         },
         {
             "id": "web_0035",
@@ -427,7 +499,19 @@
             "posterLinkURL": "https://www.evsociety.org/ongoing/Webinars/RiteshRShetty/mr-ritesh-r-shetty_safeguarding-ev-innovations-through-ipr_poster.jpg",
             "youtubeURL": "",
             "presentationURL": "",
-            "description": "Part 2 - Introduction to IPR, Discover the breakthrough technologies defining the next decade of electric transportation. Join industry leaders for an exclusive deep dive."
+            "description": "Part 2 - Introduction to IPR, Discover the breakthrough technologies defining the next decade of electric transportation. Join industry leaders for an exclusive deep dive.",
+            "reference": [
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                },
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                }
+            ]
         },
         {
             "id": "web_004",
@@ -448,7 +532,19 @@
                 "Data Privacy"
             ],
             "posterLinkURL": "",
-            "youtubeURL": ""
+            "youtubeURL": "",
+            "reference": [
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                },
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                }
+            ]
         },
         {
             "id": "web_005",
@@ -469,7 +565,19 @@
                 "LFP Optimization"
             ],
             "posterLinkURL": "",
-            "youtubeURL": ""
+            "youtubeURL": "",
+            "reference": [
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                },
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                }
+            ]
         },
         {
             "id": "web_006",
@@ -490,7 +598,19 @@
                 "Data Analytics"
             ],
             "posterLinkURL": "",
-            "youtubeURL": ""
+            "youtubeURL": "",
+            "reference": [
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                },
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                }
+            ]
         },
         {
             "id": "web_007",
@@ -511,7 +631,19 @@
                 "Market Trends"
             ],
             "posterLinkURL": "",
-            "youtubeURL": ""
+            "youtubeURL": "",
+            "reference": [
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                },
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                }
+            ]
         }
     ]
 }

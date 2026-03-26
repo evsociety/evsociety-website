@@ -214,6 +214,20 @@ export default function EventList({ events }: EventListProps) {
                                                             <div className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5 text-primary" /> {event.time || 'TBA'}</div>
                                                             <div className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-primary" /> {event.mode} • {event.city}</div>
                                                         </div>
+                                                        
+                                                        {event.reference && event.reference.length > 0 && event.reference.some(r => r.docName && r.docURL) && (
+                                                            <div className="mt-4 pt-4 border-t border-gray-50">
+                                                                <h5 className="text-xs font-bold text-gray-900 mb-2">Reference Documents:</h5>
+                                                                <div className="flex flex-col gap-2">
+                                                                    {event.reference.map((ref, idx) => ref.docName && ref.docURL ? (
+                                                                        <a key={idx} href={ref.docURL} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline flex items-center gap-1.5 w-fit">
+                                                                            <span className="w-1.5 h-1.5 rounded-full bg-primary/40 shrink-0"></span>
+                                                                            {ref.docName} {ref.Source ? <span className="text-gray-500 font-medium">({ref.Source})</span> : ''}
+                                                                        </a>
+                                                                    ) : null)}
+                                                                </div>
+                                                            </div>
+                                                        )}
                                                     </div>
 
                                                     {/* Right Side: Actions */}
@@ -303,7 +317,7 @@ export default function EventList({ events }: EventListProps) {
                                         )}
 
                                         {/* Meta Info */}
-                                        <div className="flex flex-wrap items-center gap-6 text-sm text-gray-500 font-medium">
+                                        <div className="flex flex-wrap items-center gap-6 text-sm text-gray-500 font-medium pb-4 border-b border-gray-50 mb-4">
                                             <div className="flex items-center gap-2">
                                                 <MapPin className="w-4 h-4 text-primary" />
                                                 <span>{event.mode} • {event.city}</span>
@@ -332,6 +346,20 @@ export default function EventList({ events }: EventListProps) {
                                                 </div>
                                             )}
                                         </div>
+                                        
+                                        {event.reference && event.reference.length > 0 && event.reference.some(r => r.docName && r.docURL) && (
+                                            <div>
+                                                <h5 className="text-xs font-bold text-gray-900 mb-2">Reference Documents:</h5>
+                                                <div className="flex flex-col gap-2">
+                                                    {event.reference.map((ref, idx) => ref.docName && ref.docURL ? (
+                                                        <a key={idx} href={ref.docURL} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline flex items-center gap-1.5 w-fit">
+                                                            <span className="w-1.5 h-1.5 rounded-full bg-primary/40 shrink-0"></span>
+                                                            {ref.docName} {ref.Source ? <span className="text-gray-500 font-medium">({ref.Source})</span> : ''}
+                                                        </a>
+                                                    ) : null)}
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
 
                                     {/* Right Side: Action Button */}
