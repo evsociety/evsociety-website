@@ -2,9 +2,9 @@
     "projectId": "battery-safety-systems",
     "teamId": "EV.ENGINEER™",
     "overallStatus": "in-progress",
-    "overallPercentage": 90,
+    "overallPercentage": 100,
     "certificateIssued": false,
-    "certificatePath": "",
+    "certificatePath": "/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/14Certificates/EVSOCIETY11032026.pdf",
     "lastUpdated": "2026-02-25",
     "approverName": "",
     "approverComment": "",
@@ -13,7 +13,7 @@
         {
             "stageId": "stage0",
             "title": "DEGRADATION OF LITHIUM-ION BATTERY",
-            "percentage": 90,
+            "percentage": 100,
             "documents": [
                 {
                     "docId": "s0-031",
