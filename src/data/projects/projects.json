@@ -41,6 +41,30 @@
                 "Tamper-proof audit trail of battery events including service, swap, repair, and second-life transfer",
                 "AI-ready structured data model enabling battery health scoring, risk prediction, and performance analytics"
             ]
+        },
+        {
+            "projectId": "micro-nano-satellites-light-rockets",
+            "title": "Design and Development of Micro & Nano Satellites with Light Rocket Systems",
+            "teamId": "EV SOCIETY™",
+            "typeLabel": "Student Project",
+            "status": "draft",
+            "overallPercentage": 0,
+            "heroBadge": [
+                "Research Project",
+                "Aerospace Engineering",
+                "Internships"
+            ],
+            "shortDescription": "End-to-end design and development of micro and nano satellite systems integrated with light rocket platforms for low-altitude missions. The project focuses on payload design, avionics, telemetry, energy systems, and safe launch-recovery mechanisms, enabling hands-on aerospace engineering experience aligned with real-world space missions.",
+            "highlights": [
+                "Design and development of micro/nano satellite (CANSAT-class) systems with modular payload architecture",
+                "Lightweight model rocket design for safe payload deployment up to target altitude",
+                "Integrated avionics system including sensors, flight controller, and telemetry communication",
+                "Energy system design inspired by EV Battery Management Systems (BMS) for efficient power utilization",
+                "Real-time data acquisition, transmission, and ground station monitoring",
+                "Safe deployment, parachute-based descent, and recovery system design",
+                "Simulation and validation using digital twin models for flight dynamics and mission performance",
+                "End-to-end mission lifecycle engineering including design, testing, launch, and post-flight analysis"
+            ]
         }
     ]
 }
