@@ -43,7 +43,7 @@ export default function SuccessModal({ registrationId, itemTitle, itemDate, item
         
         <div style="background-color: #f0fdf4; border: 2px dashed #16a34a; border-radius: 5px; padding: 15px; margin: 20px 0; text-align: center;">
             <p style="margin: 0 0 5px 0; color: #6b7280; font-size: 12px; text-transform: uppercase; font-weight: bold;">Meeting Link</p>
-            <a href="https://meet.google.com/jfh-onie-xge" style="color: #15803d; font-weight: bold; text-decoration: none; font-size: 18px; word-break: break-all;">https://meet.google.com/jfh-onie-xge</a>
+            <a href="https://meet.google.com/gzw-muvj-whf" style="color: #15803d; font-weight: bold; text-decoration: none; font-size: 18px; word-break: break-all;">https://meet.google.com/gzw-muvj-whf</a>
             <p style="margin: 5px 0 0 0; color: #4b5563; font-size: 12px;">Use this link to join the meeting</p>
             ${itemDate || itemTime ? `
             <div style="margin-top: 15px; padding-top: 15px; border-top: 1px dashed #bbf7d0; display: flex; justify-content: center; gap: 20px;">
@@ -115,12 +115,12 @@ export default function SuccessModal({ registrationId, itemTitle, itemDate, item
                             Meeting Link
                         </div>
                         <a
-                            href="https://meet.google.com/jfh-onie-xge"
+                            href="https://meet.google.com/gzw-muvj-whf"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-lg font-bold text-green-700 hover:underline break-all block"
                         >
-                            https://meet.google.com/jfh-onie-xge
+                            https://meet.google.com/gzw-muvj-whf
                         </a>
                         <div className="text-xs text-gray-600 mt-1">Use this link to join the meeting</div>
 
