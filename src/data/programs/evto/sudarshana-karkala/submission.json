@@ -228,6 +228,22 @@
             "percentage": 52,
             "documents": [
                 {
+                    "docId": "p3-001",
+                    "name": "EV Battery Intelligence Platform",
+                    "description": "This platform provides end-to-end battery lifecycle intelligence including diagnostics, grading, identity, repurposing, and thermal reconfiguration for second-life EV battery systems.",
+                    "required": true,
+                    "status": "completed",
+                    "submittedOn": "2026-04-29",
+                    "reviewNotes": "",
+                    "fileUrl": "https://autonomous.ev.engineer/internships/battery-fire-prevention",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
+                },
+                {
                     "docId": "p3-01",
                     "name": "Battery Safety Decision Checklist",
                     "description": "Checklist for thermal runaway prevention",

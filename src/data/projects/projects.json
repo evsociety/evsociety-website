@@ -3,26 +3,6 @@
     "description": "Real-world EV engineering projects built by student teams and professionals. Each project tracks milestones, artifacts, reviews, approvals, and certificate eligibility.",
     "projects": [
         {
-            "projectId": "ai-powered-air-taxi-design-development",
-            "title": "AI-Powered Air Taxi (eVTOL) Solutions",
-            "teamId": "EV SOCIETY™",
-            "typeLabel": "Student Project",
-            "status": "draft",
-            "overallPercentage": 0,
-            "heroBadge": [
-                "Research Project",
-                "Internships"
-            ],
-            "shortDescription": "End-to-end AI-assisted design and development of electric Air Taxi (eVTOL) systems covering mission definition, system architecture, and performance validation. The project produces certification-ready engineering evidence, safety artifacts, and predictive operational intelligence.",
-            "highlights": [
-                "Mission and requirement engineering for eVTOL operations including range, payload, safety, and turnaround constraints",
-                "System-of-systems architecture design covering propulsion, energy storage, avionics, communications, thermal, and structures",
-                "AI-assisted sizing, trade studies, and optimization of weight, power, and energy efficiency",
-                "Digital twin and simulation models for mission performance, stress prediction, and validation",
-                "Predictive maintenance framework using telemetry for anomaly detection and remaining useful life estimation."
-            ]
-        },
-        {
             "projectId": "battery-safety-systems",
             "title": "EV BATTERY SAFETY SYSTEMS",
             "teamId": "EV.ENGINEER™",
@@ -40,6 +20,26 @@
                 "Role-based portals for OEMs, service centers, regulators, and recyclers with governance workflows",
                 "Tamper-proof audit trail of battery events including service, swap, repair, and second-life transfer",
                 "AI-ready structured data model enabling battery health scoring, risk prediction, and performance analytics"
+            ]
+        },
+        {
+            "projectId": "ai-powered-air-taxi-design-development",
+            "title": "AI-Powered Air Taxi (eVTOL) Solutions",
+            "teamId": "EV SOCIETY™",
+            "typeLabel": "Student Project",
+            "status": "draft",
+            "overallPercentage": 0,
+            "heroBadge": [
+                "Research Project",
+                "Internships"
+            ],
+            "shortDescription": "End-to-end AI-assisted design and development of electric Air Taxi (eVTOL) systems covering mission definition, system architecture, and performance validation. The project produces certification-ready engineering evidence, safety artifacts, and predictive operational intelligence.",
+            "highlights": [
+                "Mission and requirement engineering for eVTOL operations including range, payload, safety, and turnaround constraints",
+                "System-of-systems architecture design covering propulsion, energy storage, avionics, communications, thermal, and structures",
+                "AI-assisted sizing, trade studies, and optimization of weight, power, and energy efficiency",
+                "Digital twin and simulation models for mission performance, stress prediction, and validation",
+                "Predictive maintenance framework using telemetry for anomaly detection and remaining useful life estimation."
             ]
         },
         {

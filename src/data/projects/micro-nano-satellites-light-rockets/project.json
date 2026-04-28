@@ -1,11 +1,11 @@
 {
-    "projectId": "battery-safety-systems",
-    "title": "EV BATTERY SAFETY SYSTEMS",
-    "teamId": "EV.ENGINEER™",
+    "projectId": "micro-nano-satellites-light-rockets",
+    "title": "Design and Development of Micro & Nano Satellites with Light Rocket Systems",
+    "teamId": "EV SOCIETY™",
     "typeLabel": "Student Project",
-    "description": "EV Battery Safety Systems provides a digital identity and governance layer for battery packs across manufacturing, sales, service, second-life, and recycling. This project tracks engineering delivery from definition to production readiness, including AI-readiness and compliance artifacts.",
+    "description": "This project focuses on the design, development, and launch of micro and nano satellite systems integrated with light rocket platforms for low-altitude aerospace missions.\n\nThe system includes the development of a CANSAT-class satellite capable of performing real-time sensing, telemetry, and controlled descent after deployment from a model rocket at approximately 1000 meters altitude.\n\nThe project emphasizes a system-of-systems engineering approach, covering payload design, avionics, communication systems, energy management, and structural integration.\n\nInspired by Electric Vehicle (EV) Battery Management Systems (BMS), the project introduces intelligent energy monitoring, efficient power utilization, and safety mechanisms into aerospace systems.\n\nParticipants will gain hands-on experience in rocket design, satellite integration, telemetry systems, and mission lifecycle engineering—from concept definition and simulation to launch and post-flight analysis.\n\nThis initiative aims to bridge the gap between EV engineering and aerospace systems, enabling future-ready engineers to work on autonomous air mobility, space technologies, and advanced energy systems.",
     "cta": {
         "primaryLabel": "View Candidates",
-        "primaryHref": "/projects/battery-safety-systems/candidates"
+        "primaryHref": "/projects/micro-nano-satellites-light-rockets/candidates"
     }
 }
