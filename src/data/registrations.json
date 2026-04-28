@@ -455,18 +455,18 @@
                 "Technology Evaluation Methodologies"
             ],
             "posterLinkURL": "https://www.evsociety.org/ongoing/Webinars/AmarnathKosgi/mr-amarnath-kosgi_technology-evaluation-methodologies_poster.jpg",
-            "youtubeURL": "",
+            "youtubeURL": "https://youtu.be/LO7hpuIdmeU",
             "presentationURL": "",
             "description": "Decision making situations demand us to sort and pick a preferred solution out of several options available. Technical complexity ranges from a simple shopping choice while buying a gadget to higher level business decisions in R&D project management. This lecture attempts to introduce different Technology Evaluation (TE) models from published literature focused on various scenarios. Three cases are chosen to represent different technical complexities such as Evaluation of Airbus TD project and a simpler choice whether or not to go for a new improved option in ASSB (Battery) manufacturing process. A third case is on TE process developed by an MIT research group for the US military. Focus here is on scientific understanding to choose the right measuring scale (framework) for evaluating the available options to serve a particular purpose.",
             "reference": [
                 {
-                    "docName": "",
-                    "docURL": "",
+                    "docName": "YouTube Link - Part 1",
+                    "docURL": "https://youtu.be/LO7hpuIdmeU",
                     "Source": ""
                 },
                 {
-                    "docName": "",
-                    "docURL": "",
+                    "docName": "YouTube Link - Part 2",
+                    "docURL": "https://youtu.be/bAIq3YrK5iw",
                     "Source": ""
                 }
             ]
@@ -514,7 +514,7 @@
         {
             "id": "web_0035",
             "title": "Safeguarding EV Innovations through IPR (2)",
-            "date": "2026-04-22",
+            "date": "2026-05-22",
             "time": "8:00 PM IST",
             "speaker": "Mr. Ritesh R Shetty",
             "speakerTitle": "Deputy General Manager",
