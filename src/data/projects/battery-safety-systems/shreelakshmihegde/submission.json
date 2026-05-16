@@ -17,6 +17,22 @@
             "documents": [
                 {
                     "docId": "s0-031",
+                    "name": "WEBINAR - Certificate distribution",
+                    "description": "AI Powered Battery Health Prediction and Failure Detection System in Electric Vehicles.",
+                    "required": true,
+                    "status": "completed",
+                    "submittedOn": "2026-02-25",
+                    "reviewNotes": "Excellent Presentation",
+                    "fileUrl": "https://autonomous.ev.engineer/workshops/evsociety2026_webinar2.jpeg",
+                    "reviewerName": "",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
+                },
+                {
+                    "docId": "s0-031",
                     "name": "WEBINAR - EV BATTERY SAFETY SYSTEM (PDF)",
                     "description": "AI Powered Battery Health Prediction and Failure Detection System in Electric Vehicles.",
                     "required": true,

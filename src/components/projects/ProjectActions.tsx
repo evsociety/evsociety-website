@@ -10,7 +10,7 @@ interface ProjectActionsProps {
 
 export default function ProjectActions({ projectId }: ProjectActionsProps) {
     return (
-        <div className="flex gap-3">
+        <div className="flex flex-col sm:flex-row gap-3">
             <Link
                 href={`/projects/${projectId}`}
                 onClick={() => trackEvent('project_open', {
@@ -32,6 +32,19 @@ export default function ProjectActions({ projectId }: ProjectActionsProps) {
                 className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium"
             >
                 Candidates
+            </Link>
+            <Link
+                href="https://autonomous.ev.engineer/workshop-gallery"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent('nav_click', {
+                    nav_item: 'project_gallery',
+                    nav_location: 'project_card',
+                    destination_path: 'https://autonomous.ev.engineer/workshop-gallery'
+                })}
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-medium shadow-sm"
+            >
+                Gallery
             </Link>
         </div>
     );
