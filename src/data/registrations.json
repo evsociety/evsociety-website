@@ -554,6 +554,40 @@
             ]
         },
         {
+            "id": "web_0036",
+            "title": "Accessibility, Affordability and Availability (AAA) Of Electricty in india",
+            "date": "2026-07-23",
+            "time": "6:30 PM IST",
+            "speaker": "Mr. Ritesh R Shetty",
+            "speakerTitle": "Senior Deputy General Manager",
+            "speakerOrganization": "BHARAT HEAVY ELECTRICALS LTD",
+            "speakerInstitution": "",
+            "location": "Bengaluru, India",
+            "modeOptions": [
+                "online"
+            ],
+            "categoryTags": [
+                "Law",
+                "IPR",
+                "Innovations",
+                "Webinar"
+            ],
+            "sessionTracks": [
+                "IPR"
+            ],
+            "posterLinkURL": "https://www.evsociety.org/ongoing/Webinars/RiteshRShetty/mr-ritesh-r-shetty_accessibility-affordability-and-availability-aaa-of-electricty-in-india_poster.jpg",
+            "youtubeURL": "https://youtu.be/WhQoNVZWoTk",
+            "presentationURL": "https://www.evsociety.org/ongoing/Webinars/RiteshRShetty/mr-ritesh-r-shetty_safeguarding-ev-innovations-through-ipr_1.pdf",
+            "description": "Accessibility, Affordability and Availability (AAA) Of Electricty in india",
+            "reference": [
+                {
+                    "docName": "Q & A Session",
+                    "docURL": "https://youtu.be/1XlvoyNhLq0",
+                    "Source": ""
+                }
+            ]
+        },
+        {
             "id": "web_004",
             "title": "Cybersecurity in Connected EVs",
             "date": "2027-03-25",

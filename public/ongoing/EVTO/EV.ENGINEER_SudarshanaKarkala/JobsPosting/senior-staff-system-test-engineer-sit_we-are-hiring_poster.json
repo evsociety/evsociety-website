@@ -1,0 +1,63 @@
+{
+  "styles": {
+    "bgGradientFrom": "#0f0518",
+    "bgGradientTo": "#2e1065",
+    "borderColor": "#d8b4fe",
+    "titleColor": "#faf5ff",
+    "subtitleColor": "#e9d5ff",
+    "accentColor": "#9333ea"
+  },
+  "background": {
+    "url": "",
+    "visible": true,
+    "opacity": 50,
+    "blendMode": "overlay",
+    "blur": false
+  },
+  "organizer": {
+    "visible": true,
+    "logoUrl": "",
+    "logoSize": 80,
+    "name": "EV.ENGINEER™",
+    "details": "Bengaluru, India"
+  },
+  "presenter": {
+    "visible": true,
+    "name": "SENIOR / STAFF SYSTEM TEST ENGINEER  (SIT) ",
+    "designation": "Build next-generation intelligent energy systems",
+    "company": "BE / BTech / ME / MTech",
+    "institute": "",
+    "photoUrl": ""
+  },
+  "event": {
+    "title": "✨ We Are Hiring  🚀",
+    "subtitle": "Solar Energy • Battery Storage • EV Charging • Embedded ",
+    "showSubtitle": true,
+    "date": "9+ Years Exp",
+    "time": "",
+    "duration": "EEE • ECE • Electrical • Embedded",
+    "location": "Murugeshpalya, Bengaluru, Karnataka 560017",
+    "description": "Design, develop, and execute comprehensive test plans and test cases for system integration and end-to-end testing. Actively participate in engineering discussions by reviewing technical documents, product and design specifications, providing feedback from a system test perspective, and developing detailed test scenarios. Contact us for detailed JD.",
+    "showDescription": true
+  },
+  "sponsors": {
+    "visible": false,
+    "logos": []
+  },
+  "cta": {
+    "visible": true,
+    "text": "SEND RESUME ",
+    "link": "EMAIL: info@iTelematics.com",
+    "showQr": false,
+    "offerPrice": "",
+    "originalPrice": "",
+    "additionalDetail1": "After Initial discussion, detailed JD will be shared over email.",
+    "additionalDetail2": "Connect with us to learn more about the role."
+  },
+  "footer": {
+    "visible": true,
+    "website": "EV.ENGINEER",
+    "email": "info@iTelematics.com",
+    "phone": "+91 91082 06147"
+  }
+}

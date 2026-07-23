@@ -1,0 +1,29 @@
+{
+    "label": "AE Research Projects",
+    "description": "Real-world EV engineering projects built by student teams and professionals. Each project tracks milestones, artifacts, reviews, approvals, and certificate eligibility.",
+    "projects": [
+        {
+            "projectId": "in-space-model-rocketry-cansat-india-student-2026",
+            "title": "IN-SPACe Model Rocketry and CANSAT INDIA student competition 2026",
+            "teamId": "EV SOCIETY™",
+            "typeLabel": "Research Project",
+            "status": "in-review",
+            "overallPercentage": 20,
+            "heroBadge": [
+                "Research Project",
+                "CANSAT",
+                "IN-SPACe Model Rocketry",
+                "Internships"
+            ],
+            "shortDescription": "A digital identity and lifecycle governance platform for EV battery packs enabling traceability, ownership verification, and regulatory compliance. The system creates an AI-ready data backbone for safety monitoring, lifecycle intelligence, and sustainable battery management..",
+            "highlights": [
+                "Unique Battery Identity with QR/NFC-based lifecycle tracking from manufacturing to recycling",
+                "Digital Battery Passport storing chemistry, configuration, warranty, and compliance records",
+                "Role-based portals for OEMs, service centers, regulators, and recyclers with governance workflows",
+                "Tamper-proof audit trail of battery events including service, swap, repair, and second-life transfer",
+                "AI-ready structured data model enabling battery health scoring, risk prediction, and performance analytics"
+            ]
+        }
+        
+    ]
+}

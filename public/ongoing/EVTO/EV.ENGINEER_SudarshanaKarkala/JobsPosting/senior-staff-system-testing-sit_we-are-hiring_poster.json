@@ -1,0 +1,63 @@
+{
+  "styles": {
+    "bgGradientFrom": "#0f0518",
+    "bgGradientTo": "#2e1065",
+    "borderColor": "#d8b4fe",
+    "titleColor": "#faf5ff",
+    "subtitleColor": "#e9d5ff",
+    "accentColor": "#9333ea"
+  },
+  "background": {
+    "url": "",
+    "visible": true,
+    "opacity": 50,
+    "blendMode": "overlay",
+    "blur": false
+  },
+  "organizer": {
+    "visible": true,
+    "logoUrl": "",
+    "logoSize": 80,
+    "name": "Enphase Energy",
+    "details": "Bengaluru, India"
+  },
+  "presenter": {
+    "visible": true,
+    "name": "SENIOR STAFF SYSTEM TESTING  (SIT) ",
+    "designation": "Build next-generation intelligent energy systems",
+    "company": "A Master’s or Bachelor’s degree in Electrical / Electronics Engineering",
+    "institute": "",
+    "photoUrl": ""
+  },
+  "event": {
+    "title": "✨ We Are Hiring  🚀",
+    "subtitle": "Solar Energy • System Integration & Validation Testing",
+    "showSubtitle": true,
+    "date": "8+ Years Exp",
+    "time": "",
+    "duration": "Electrical • Electronics Engineering",
+    "location": "Enphase Energy • Bengaluru, Karnataka, India 560017",
+    "description": "We are looking for a dynamic and results-driven Sr. Staff Engineer - SIT with proven leadership capabilities, deep technical acumen, and strong communication and collaboration skills to drive system-level testing initiatives in a fast-paced and innovative environment.",
+    "showDescription": true
+  },
+  "sponsors": {
+    "visible": false,
+    "logos": []
+  },
+  "cta": {
+    "visible": true,
+    "text": "EASY APPLY",
+    "link": "https://www.linkedin.com/jobs/view/4423615563/",
+    "showQr": false,
+    "offerPrice": "",
+    "originalPrice": "",
+    "additionalDetail1": "After Initial discussion, detailed JD will be shared over email.",
+    "additionalDetail2": "Connect with us to learn more about the role."
+  },
+  "footer": {
+    "visible": true,
+    "website": "EV.ENGINEER",
+    "email": "info@iTelematics.com",
+    "phone": "+91 91082 06147"
+  }
+}
