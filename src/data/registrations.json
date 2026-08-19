@@ -226,6 +226,47 @@
     ],
     "webinars": [
         {
+            "id": "web_00001",
+            "title": "Battery Pack Simulator",
+            "date": "2026-08-26",
+            "time": "8:00 PM IST",
+            "speaker": "Prateek Dangwal",
+            "speakerTitle": "Intern, EV.ENGINEER",
+            "speakerOrganization": "iTelematics® Software Private Limited, Bengaluru",
+            "speakerInstitution": "Guru Gobind Singh Indraprastha University (GGSIPU), Delhi",
+            "location": "Bengaluru, India",
+            "modeOptions": [
+                "online"
+            ],
+            "categoryTags": [
+                "AI/ML",
+                "Battery Safety",
+                "Fire Prevention",
+                "Webinar"
+            ],
+            "sessionTracks": [
+                "Battery Failure Detection",
+                "Thermal Runaway Prevention",
+                "AI-Based Monitoring"
+            ],
+            "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/13Webinars/prateek-dangwal_battery-pack-simulator_poster.png",
+            "youtubeURL": "",
+            "presentationURL": "",
+            "description": "Simulate mission-critical battery packs with static and dynamic attributes for aerospace and EV applications.",
+            "reference": [
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                },
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                }
+            ]
+        },
+        {
             "id": "web_001",
             "title": "EV BATTERY SAFETY SYSTEM - 1",
             "date": "2026-02-11",
