@@ -48,6 +48,22 @@
                     "approvedDate": ""
                 },
                 {
+                    "docId": "s0-029",
+                    "name": "IEEE conference certificate - Battery Intelligence.pdf",
+                    "description": "AI-Powered Battery Health Prediction and Failure Detection System in Electric Vehicle",
+                    "required": true,
+                    "status": "in-review",
+                    "submittedOn": "2026-01-01",
+                    "reviewNotes": "Waiting for the final paper to be published in IEEE Xplore. Please submit the link to the published paper.",
+                    "fileUrl": "https://www.evsociety.org//Users/ananth/Developer/evsociety-website/public/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/11Papers/IEEE conference certificate - Battery Intelligence.pdf",
+                    "reviewerName": "IEEE",
+                    "reviewerComment": "Waiting for the final paper to be published in IEEE Xplore. Please submit the link to the published paper.",
+                    "reviewDate": "2026-07-25",
+                    "approverName": "IEEE",
+                    "approverComment": "",
+                    "approvedDate": "2026-07-25"
+                },
+                {
                     "docId": "s0-032",
                     "name": "WEBINAR - EV BATTERY SAFETY SYSTEM (YouTube)",
                     "description": "AI Powered Battery Health Prediction and Failure Detection System in Electric Vehicles.",

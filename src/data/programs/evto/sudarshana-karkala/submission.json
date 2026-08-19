@@ -228,6 +228,22 @@
             "percentage": 52,
             "documents": [
                 {
+                    "docId": "p3-000",
+                    "name": "IEEE conference certificate - Battery Intelligence.pdf",
+                    "description": "AI-Powered Battery Health Prediction and Failure Detection System in Electric Vehicle",
+                    "required": true,
+                    "status": "in-review",
+                    "submittedOn": "2026-01-01",
+                    "reviewNotes": "Waiting for the final paper to be published in IEEE Xplore. Please submit the link to the published paper.",
+                    "fileUrl": "https://www.evsociety.org//Users/ananth/Developer/evsociety-website/public/ongoing/EVTO/EV.ENGINEER_SudarshanaKarkala/ResearchPapers/IEEE conference certificate - Battery Intelligence.pdf",
+                    "reviewerName": "IEEE",
+                    "reviewerComment": "Waiting for the final paper to be published in IEEE Xplore. Please submit the link to the published paper.",
+                    "reviewDate": "2026-07-25",
+                    "approverName": "IEEE",
+                    "approverComment": "",
+                    "approvedDate": "2026-07-25"
+                },
+                {
                     "docId": "p3-001",
                     "name": "EV Battery Intelligence Platform",
                     "description": "This platform provides end-to-end battery lifecycle intelligence including diagnostics, grading, identity, repurposing, and thermal reconfiguration for second-life EV battery systems.",
