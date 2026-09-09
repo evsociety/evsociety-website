@@ -2,7 +2,7 @@
     "projectId": "battery-safety-systems",
     "teamId": "EV.ENGINEER™",
     "overallStatus": "in-progress",
-    "overallPercentage": 75,
+    "overallPercentage": 80,
     "certificateIssued": false,
     "certificatePath": "",
     "lastUpdated": "2026-09-09",
@@ -13,7 +13,7 @@
         {
             "stageId": "stage0",
             "title": "EV BATTERY SAFETY SYSTEMS",
-            "percentage": 75,
+            "percentage": 80,
             "documents": [
                 {
                     "docId": "s0-031-1",
