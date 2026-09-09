@@ -226,6 +226,49 @@
     ],
     "webinars": [
         {
+            "id": "web_00000",
+            "title": "Human Resource Operating System",
+            "date": "2026-09-10",
+            "time": "8:00 PM IST",
+            "speaker": "Ms. Tanuja Jadhav",
+            "speakerTitle": "Intern, HR Manager",
+            "speakerOrganization": "iTelematics® Software Private Limited, Bengaluru",
+            "speakerInstitution": "Zeal College of Engineering & Research, Pune",
+            "location": "Bengaluru, India",
+            "modeOptions": [
+                "online"
+            ],
+            "categoryTags": [
+                "AI/ML",
+                "Battery Safety",
+                "Human Resource",
+                "Human Resource Operating System",
+                "Webinar"
+            ],
+            "sessionTracks": [
+                "Battery Failure Detection",
+                "Thermal Runaway Prevention",
+                "AI-Based Monitoring",
+                "Human Resource Operating System"
+            ],
+            "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/13Webinars/ms-tanuja-jadhav_hr-operating-system_poster.png",
+            "youtubeURL": "",
+            "presentationURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/12Presentation/Tanuja_Jadhav_HR_nternship_Presentation.pdf",
+            "description": "People ᐧ Process ᐧ Technology ᐧ Leadership",
+            "reference": [
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                },
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                }
+            ]
+        },
+        {
             "id": "web_00001",
             "title": "Battery Pack Simulator",
             "date": "2026-08-26",
@@ -250,8 +293,8 @@
                 "AI-Based Monitoring"
             ],
             "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/13Webinars/prateek-dangwal_battery-pack-simulator_poster.png",
-            "youtubeURL": "",
-            "presentationURL": "",
+            "youtubeURL": "https://www.youtube.com/watch?v=MOSOq5-G9kA",
+            "presentationURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/12Presentation/EV_Battery_Pack_Simulator_Prateek Dangwal.pdf",
             "description": "Simulate mission-critical battery packs with static and dynamic attributes for aerospace and EV applications.",
             "reference": [
                 {
