@@ -5,7 +5,7 @@
     "overallPercentage": 100,
     "certificateIssued": true,
     "certificatePath": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/14Certificates/EVSOCIETY09092026.pdf",
-    "lastUpdated": "2026-09-09",
+    "lastUpdated": "2026-09-20",
     "approverName": "B V Manjunath",
     "approverComment": "",
     "approvedDate": "",
@@ -128,7 +128,7 @@
                     "approvedDate": ""
                 },
                 {
-                    "docId": "s0-031-1",
+                    "docId": "s0-04-9",
                     "name": "Recommendation Letter - Human Resource Operating System",
                     "description": "People ᐧ Process ᐧ Technology ᐧ Leadership",
                     "required": false,
