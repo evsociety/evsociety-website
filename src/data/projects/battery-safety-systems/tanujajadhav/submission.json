@@ -126,7 +126,23 @@
                     "approverName": "",
                     "approverComment": "",
                     "approvedDate": ""
-                }
+                },
+                {
+                    "docId": "s0-031-1",
+                    "name": "Recommendation Letter - Human Resource Operating System",
+                    "description": "People ᐧ Process ᐧ Technology ᐧ Leadership",
+                    "required": false,
+                    "status": "completed",
+                    "submittedOn": "2026-09-20",
+                    "reviewNotes": "Recommendation Letter from Sudarshana Karkala, Co-Founder, Director, Thasmai InfoTech Private Limited",
+                    "fileUrl": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/15Recomendations/tanuja_jadhav.pdf",
+                    "reviewerName": "Sudarshana Karkala",
+                    "reviewerComment": "",
+                    "reviewDate": "",
+                    "approverName": "",
+                    "approverComment": "",
+                    "approvedDate": ""
+                },
             ]
         }
     ]
