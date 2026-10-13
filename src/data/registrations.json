@@ -226,6 +226,92 @@
     ],
     "webinars": [
         {
+            "id": "web_20261014_1",
+            "title": "Model Rocketry & OpenRocket Simulation",
+            "date": "2026-10-14",
+            "time": "8:00 PM IST",
+            "speaker": "Mr. Muhammad Salman S",
+            "speakerTitle": "Intern, Model Rocketry",
+            "speakerOrganization": "iTelematics® Software Private Limited, Bengaluru",
+            "speakerInstitution": "SRM Institute of Science and Technology, Tiruchirappalli",
+            "location": "Bengaluru, India",
+            "modeOptions": [
+                "online"
+            ],
+            "categoryTags": [
+                "AI/ML",
+                "Model Rocketry",
+                "Cybersecurity",
+                "Webinar"
+            ],
+            "sessionTracks": [
+                "Battery Failure Detection",
+                "Thermal Runaway Prevention",
+                "AI-Based Monitoring",
+                "Model Rocketry",
+                "Cybersecurity"
+            ],
+            "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.SOCIETY_MicroNanoSatellitesLightRockets/13Webinars/mr-muhammad-salman-s_model-rocketry-openrocket-simulation_poster.png",
+            "youtubeURL": "",
+            "presentationURL": "",
+            "description": "Rocket ᐧ Space ᐧ Technology ᐧ Innovation",
+            "reference": [
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                },
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                }
+            ]
+        },
+        {
+            "id": "web_20261014_2",
+            "title": "Model Rocketry & OpenRocket Simulation",
+            "date": "2026-10-14",
+            "time": "8:00 PM IST",
+            "speaker": "Mr. Pranay Grandhi",
+            "speakerTitle": "Intern, Model Rocketry",
+            "speakerOrganization": "iTelematics® Software Private Limited, Bengaluru",
+            "speakerInstitution": "SRM University (Sri Ramaswamy Memorial University)",
+            "location": "Bengaluru, India",
+            "modeOptions": [
+                "online"
+            ],
+            "categoryTags": [
+                "AI/ML",
+                "Model Rocketry",
+                "Cybersecurity",
+                "Webinar"
+            ],
+            "sessionTracks": [
+                "Battery Failure Detection",
+                "Thermal Runaway Prevention",
+                "AI-Based Monitoring",
+                "Model Rocketry",
+                "Cybersecurity"
+            ],
+            "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.SOCIETY_MicroNanoSatellitesLightRockets/13Webinars/mr-pranay-grandhi_model-rocketry-openrocket-simulation_poster.png",
+            "youtubeURL": "",
+            "presentationURL": "",
+            "description": "Rocket ᐧ Space ᐧ Technology ᐧ Innovation",
+            "reference": [
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                },
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                }
+            ]
+        },
+        {
             "id": "web_00000",
             "title": "Human Resource Operating System",
             "date": "2026-09-10",
