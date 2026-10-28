@@ -226,6 +226,94 @@
     ],
     "webinars": [
         {
+            "id": "web_20261028_1",
+            "title": "Security Analysis",
+            "date": "2026-10-28",
+            "time": "8:00 PM IST",
+            "speaker": "Mr. Hanish D",
+            "speakerTitle": "Intern, Cyber Security",
+            "speakerOrganization": "iTelematics® Software Private Limited, Bengaluru",
+            "speakerInstitution": "KGiSL Institute of Technology, Coimbatore",
+            "location": "Bengaluru, India",
+            "modeOptions": [
+                "online"
+            ],
+            "categoryTags": [
+                "Cybersecurity",
+                "Battery Safety",
+                "Application Security",
+                "Webinar"
+            ],
+            "sessionTracks": [
+                "Battery Failure Detection",
+                "Thermal Runaway Prevention",
+                "AI-Based Monitoring",
+                "Application Security",
+                "Electron IPC Security",
+                "License Security"
+            ],
+            "posterLinkURL": "",
+            "youtubeURL": "",
+            "presentationURL": "",
+            "description": "Assessing LOONIST's application security, reviewing Electron IPC controls and offline license validation, and documenting evidence-based findings and recommendations.",
+            "reference": [
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                },
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                }
+            ]
+        },
+        {
+            "id": "web_20261028_2",
+            "title": "SIM-003: MQTT Telemetry Simulator",
+            "date": "2026-10-28",
+            "time": "8:00 PM IST",
+            "speaker": "Mr. Vishal Kumar",
+            "speakerTitle": "Intern, Embedded Systems & IoT",
+            "speakerOrganization": "iTelematics® Software Private Limited, Bengaluru",
+            "speakerInstitution": "Raj Kumar Goel Institute of Technology, Ghaziabad",
+            "location": "Bengaluru, India",
+            "modeOptions": [
+                "online"
+            ],
+            "categoryTags": [
+                "AI/ML",
+                "Battery Safety",
+                "IoT",
+                "MQTT Telemetry",
+                "Webinar"
+            ],
+            "sessionTracks": [
+                "Battery Failure Detection",
+                "Thermal Runaway Prevention",
+                "AI-Based Monitoring",
+                "MQTT Telemetry Simulation",
+                "Battery Anomaly Detection"
+            ],
+            "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/13Webinars/mr-vishal-kumar_sim-003-mqtt-telemetry-simulator_poster.png",
+            "youtubeURL": "",
+            "presentationURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/12Presentation/mr-vishal-kumar_sim-003-mqtt-telemetry-simulator_ppt.pdf",
+            "description": "Design and Development of a Battery Telemetry Simulation System with Anomaly Scenarios, FastAPI Integration, and an Interactive Streamlit Dashboard",
+            "reference": [
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                },
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                }
+            ]
+        },
+        {
             "id": "web_20261014_1",
             "title": "Model Rocketry & OpenRocket Simulation",
             "date": "2026-10-14",
@@ -298,6 +386,93 @@
             "youtubeURL": "",
             "presentationURL": "",
             "description": "Rocket ᐧ Space ᐧ Technology ᐧ Innovation",
+            "reference": [
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                },
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                }
+            ]
+        },
+        {
+            "id": "web_20261014_3",
+            "title": "Balloon Drawings and AS9102 FAI Reports",
+            "date": "2026-10-14",
+            "time": "8:00 PM IST",
+            "speaker": "Mr. Harsh Yadav",
+            "speakerTitle": "Intern, Software Engineering & Technical Lead",
+            "speakerOrganization": "iTelematics® Software Private Limited, Bengaluru",
+            "speakerInstitution": "University of Engineering and Management, Kolkata",
+            "location": "Bengaluru, India",
+            "modeOptions": [
+                "online"
+            ],
+            "categoryTags": [
+                "AI/ML",
+                "Battery Safety",
+                "First Article Inspection",
+                "AS9102",
+                "Webinar"
+            ],
+            "sessionTracks": [
+                "Battery Failure Detection",
+                "Thermal Runaway Prevention",
+                "AI-Based Monitoring",
+                "Balloon Drawings",
+                "AS9102 FAI Reports"
+            ],
+            "posterLinkURL": "",
+            "youtubeURL": "",
+            "presentationURL": "",
+            "description": "Automating First Article Inspection (FAI) for aerospace and precision manufacturing, from balloon drawings to AS9102 FAI reports.",
+            "reference": [
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                },
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                }
+            ]
+        },
+        {
+            "id": "web_20260930_1",
+            "title": "Image & Face Matching Next-Gen AI/ML Solution",
+            "date": "2026-09-30",
+            "time": "8:00 PM IST",
+            "speaker": "Ms. Sneha Sidhwani",
+            "speakerTitle": "Intern, AI/ML",
+            "speakerOrganization": "iTelematics® Software Private Limited, Bengaluru",
+            "speakerInstitution": "",
+            "location": "Bengaluru, India",
+            "modeOptions": [
+                "online"
+            ],
+            "categoryTags": [
+                "AI/ML",
+                "Battery Safety",
+                "Computer Vision",
+                "Webinar"
+            ],
+            "sessionTracks": [
+                "Battery Failure Detection",
+                "Thermal Runaway Prevention",
+                "AI-Based Monitoring",
+                "Image & Face Matching",
+                "Vector Search"
+            ],
+            "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/13Webinars/sneha-sidhwani_image-face-matching-next-gen-ai-ml-solution_poster.jpeg",
+            "youtubeURL": "",
+            "presentationURL": "",
+            "description": "Learn how VisualTrace delivers sub-second image search across millions of records by combining InsightFace, ResNet-50, and FAISS into an intelligent hybrid pipeline.",
             "reference": [
                 {
                     "docName": "",

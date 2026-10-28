@@ -1,0 +1,17 @@
+{
+    "candidateId": "vishalkumar",
+    "fullName": "Mr. Vishal Kumar",
+    "designation": "Embedded Systems & IoT (Intern)",
+    "location": "iTelematics®, Bangalore, India",
+    "resumeUrl": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/1Team/resume/Vishal_Kumar_Resume.pdf",
+    "linkedinUrl": "https://www.linkedin.com/in/vishal-kumar-ba5b16330/",
+    "profileImageUrl": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/1Team/vishalkumar.jpg",
+    "enrolledProgramIds": [
+        "battery-safety-systems"
+    ],
+    "eligibility": {
+        "architecturalDesignExperience": false,
+        "managerialLeadershipExperience": false,
+        "notes": "Student Project track"
+    }
+}
