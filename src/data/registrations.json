@@ -252,7 +252,7 @@
                 "Electron IPC Security",
                 "License Security"
             ],
-            "posterLinkURL": "",
+            "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/13Webinars/hanish-d_security-analysis_poster.png",
             "youtubeURL": "",
             "presentationURL": "",
             "description": "Assessing LOONIST's application security, reviewing Electron IPC controls and offline license validation, and documenting evidence-based findings and recommendations.",
