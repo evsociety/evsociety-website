@@ -5,6 +5,7 @@ import FeaturedPrograms from '@/components/home/FeaturedPrograms';
 import UpcomingEvents from '@/components/home/UpcomingEvents';
 import PartnerSpotlight from '@/components/home/PartnerSpotlight';
 import Newsletter from '@/components/home/Newsletter';
+import PosterPopup from '@/components/home/PosterPopup';
 
 export default function Home() {
   return (
@@ -29,6 +30,7 @@ export default function Home() {
       <UpcomingEvents />
       <PartnerSpotlight />
       <Newsletter />
+      <PosterPopup />
     </>
   );
 }

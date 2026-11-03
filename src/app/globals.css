@@ -14,6 +14,17 @@
 
   --animate-fade-in: fade-in 0.5s ease-out;
   --animate-slide-up: slide-up 0.5s ease-out;
+  /* Duration is set inline by the component using it */
+  --animate-countdown: countdown linear forwards;
+}
+
+@keyframes countdown {
+  to { transform: scaleX(0); }
+}
+
+/* Stop the page behind the home page poster from scrolling while it is open */
+html:has(dialog[data-poster-popup][open]) {
+  overflow: hidden;
 }
 
 @keyframes fade-in {
