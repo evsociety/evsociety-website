@@ -304,7 +304,7 @@ export default function WednesdayPlans({ events = [] }: WednesdayPlansProps) {
     const getStatusColor = (s: Status) => {
         switch (s) {
             case 'Confirmed': return 'bg-green-100 text-green-700 border-green-200';
-            case 'Completed': return 'bg-blue-100 text-blue-700 border-blue-200';
+            case 'Completed': return 'bg-primary-100 text-primary border-primary-200';
             case 'Cancelled': return 'bg-red-100 text-red-700 border-red-200';
             default: return 'bg-yellow-50 text-yellow-700 border-yellow-200'; // Planned
         }
@@ -499,11 +499,11 @@ export default function WednesdayPlans({ events = [] }: WednesdayPlansProps) {
 
                                     {/* Right Column: Comments & Actions */}
                                     <div className="w-full lg:w-72 shrink-0 border-t lg:border-t-0 lg:border-l border-gray-100 pt-4 lg:pt-0 lg:pl-6 flex flex-col gap-2">
-                                        <label className="text-xs font-semibold text-gray-400 uppercase tracking-widest block mb-1">
+                                        <label htmlFor="plan-plan-comments" className="text-xs font-semibold text-gray-400 uppercase tracking-widest block mb-1">
                                             Internal Comments
                                         </label>
                                         <div className="relative flex-grow">
-                                            <textarea
+                                            <textarea id="plan-plan-comments"
                                                 value={plan.comments}
                                                 onChange={(e) => updatePlan(plan.id, { comments: e.target.value })}
                                                 className="w-full h-full min-h-[80px] text-xs text-gray-600 bg-yellow-50/50 border border-yellow-100 rounded-lg p-3 outline-none focus:border-yellow-300 focus:bg-yellow-50 transition-all resize-none"

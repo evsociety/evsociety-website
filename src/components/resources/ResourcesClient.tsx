@@ -38,6 +38,7 @@ const SearchInput = ({ value, onChange }: { value: string; onChange: (v: string)
         <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-primary transition-colors" />
         <input
             type="text"
+            aria-label="Search resources"
             placeholder="Search keywords..."
             value={value}
             onChange={(e) => onChange(e.target.value)}
@@ -236,7 +237,7 @@ export default function ResourcesClient({ resources }: ResourcesClientProps) {
             <div className="container-custom">
 
                 {/* Mobile Header: Search + Filter Toggle */}
-                <div className="lg:hidden mb-8 sticky top-20 z-30 bg-white/80 backdrop-blur-md p-4 -mx-4 rounded-[20px] shadow-sm border border-gray-100/50">
+                <div className="lg:hidden mb-8 sticky top-[72px] z-30 bg-white/80 backdrop-blur-md p-4 -mx-4 rounded-[20px] shadow-sm border border-gray-100/50">
                     <div className="flex gap-3">
                         <div className="flex-grow">
                             <SearchInput value={filters.search} onChange={handleSearchChange} />
@@ -333,7 +334,7 @@ export default function ResourcesClient({ resources }: ResourcesClientProps) {
                         )}
 
                         {/* CTA Box */}
-                        <div className="mt-16 p-8 md:p-10 bg-gradient-to-br from-blue-50 to-white rounded-[24px] border border-blue-100 text-center shadow-sm">
+                        <div className="mt-16 p-8 md:p-10 bg-primary-50 rounded-[24px] border border-primary-100 text-center shadow-sm">
                             <h4 className="text-xl md:text-2xl font-bold text-gray-900 mb-3">Request Custom Research</h4>
                             <p className="text-sm md:text-base text-gray-600 mb-8 max-w-lg mx-auto leading-relaxed">
                                 Can&apos;t find the specific data or insights you need? Our dedicated research wing can help you with tailored reports and analysis.

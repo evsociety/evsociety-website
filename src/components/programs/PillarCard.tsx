@@ -1,5 +1,5 @@
 import { ProgramPillar } from '../../types/evto';
-import { Clock, CheckCircle, HelpCircle } from 'lucide-react';
+import { Clock, Target, FileText } from 'lucide-react';
 
 interface PillarCardProps {
     pillar: ProgramPillar;
@@ -7,51 +7,50 @@ interface PillarCardProps {
 }
 
 export default function PillarCard({ pillar, index }: PillarCardProps) {
+    const isEligibility = index === 0;
     return (
-        <div className={`bg-white rounded-xl border shadow-sm hover:shadow-md transition-shadow p-6 flex flex-col h-full ${index === 0 ? 'border-red-200 shadow-red-50' : 'border-gray-200'}`}>
-            <div className="mb-4">
-                <div className="flex justify-between items-start mb-2">
-                    <span className={`inline-block px-3 py-1 text-xs font-semibold rounded-full mb-2 ${index === 0 ? 'bg-red-100 text-red-700' : 'bg-blue-50 text-blue-700'}`}>
-                        {index === 0 ? 'Eligibility & Prerequisites' : `Pillar ${index}`}
-                    </span>
-                    <div className="flex items-center text-gray-500 text-xs">
-                        <Clock className="w-3 h-3 mr-1" />
-                        {pillar.estimatedDuration}
-                    </div>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{index === 0 ? pillar.title : pillar.title.replace(/^Pillar \d+ – /, '')}</h3>
-                {pillar.themeQuestion && (
-                    <p className="text-sm text-gray-600 italic border-l-2 border-primary pl-3 py-1 mb-4">
-                        &quot;{pillar.themeQuestion}&quot;
-                    </p>
-                )}
+        <article className={`flex h-full flex-col rounded-2xl border bg-white p-7 ${isEligibility ? 'border-navy/30 ring-1 ring-navy/10' : 'border-gray-200'}`}>
+            <div className="mb-4 flex items-start justify-between gap-3">
+                <span className={`inline-block rounded-full px-3 py-1 text-xs font-semibold ${isEligibility ? 'bg-navy text-white' : 'bg-primary-50 text-primary'}`}>
+                    {isEligibility ? 'Eligibility & Prerequisites' : `Pillar ${index}`}
+                </span>
+                <span className="flex items-center gap-1 text-xs text-gray-500">
+                    <Clock className="h-3.5 w-3.5" aria-hidden="true" />
+                    {pillar.estimatedDuration}
+                </span>
             </div>
+            <h3 className="mb-3 text-xl font-bold text-gray-900">{isEligibility ? pillar.title : pillar.title.replace(/^Pillar \d+ – /, '')}</h3>
+            {pillar.themeQuestion && (
+                <p className="mb-5 border-l-2 border-primary py-1 pl-3 text-sm italic text-gray-600">
+                    &quot;{pillar.themeQuestion}&quot;
+                </p>
+            )}
 
-            <div className="space-y-4 flex-grow">
+            <div className="flex-grow space-y-5">
                 <div>
-                    <h4 className="text-sm font-semibold text-gray-900 mb-2 flex items-center">
-                        <CheckCircle className="w-4 h-4 mr-1.5 text-green-600" />
+                    <h4 className="mb-2 flex items-center gap-1.5 text-sm font-semibold text-gray-900">
+                        <Target className="h-4 w-4 text-primary" aria-hidden="true" />
                         Key Outcomes
                     </h4>
-                    <ul className="text-sm text-gray-600 space-y-1 pl-6 list-disc marker:text-gray-300">
+                    <ul className="list-disc space-y-1 pl-6 text-sm text-gray-600 marker:text-gray-300">
                         {pillar.keyOutcomes.map((outcome, idx) => (
                             <li key={idx}>{outcome}</li>
                         ))}
                     </ul>
                 </div>
 
-                <div>
-                    <h4 className="text-sm font-semibold text-gray-900 mb-2 flex items-center">
-                        <HelpCircle className="w-4 h-4 mr-1.5 text-orange-600" />
+                <div className="border-t border-gray-100 pt-5">
+                    <h4 className="mb-2 flex items-center gap-1.5 text-sm font-semibold text-gray-900">
+                        <FileText className="h-4 w-4 text-primary" aria-hidden="true" />
                         Required Artifacts
                     </h4>
-                    <ul className="text-sm text-gray-600 space-y-1 pl-6 list-disc marker:text-gray-300">
+                    <ul className="list-disc space-y-1 pl-6 text-sm text-gray-600 marker:text-gray-300">
                         {pillar.requiredArtifacts.map((artifact, idx) => (
                             <li key={idx}>{artifact}</li>
                         ))}
                     </ul>
                 </div>
             </div>
-        </div>
+        </article>
     );
 }

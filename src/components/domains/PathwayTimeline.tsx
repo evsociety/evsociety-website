@@ -1,32 +1,25 @@
 import React from 'react';
-import { ArrowRight, ArrowDown } from 'lucide-react';
 
 interface PathwayTimelineProps {
     title: string;
     steps: string[];
+    id?: string;
 }
 
-export default function PathwayTimeline({ title, steps }: PathwayTimelineProps) {
+export default function PathwayTimeline({ title, steps, id }: PathwayTimelineProps) {
+    const headingId = id ? `${id}-heading` : undefined;
     return (
-        <div className="mb-16">
-            <h3 className="text-xl font-bold text-gray-900 mb-8 px-1 text-center md:text-left">{title}</h3>
+        <section id={id} aria-labelledby={headingId} className="scroll-mt-36">
+            <h2 id={headingId} className="mb-8 text-xl font-bold text-gray-900">{title}</h2>
 
-            <div className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-4 md:gap-2">
+            <ol className="flex flex-col gap-3 md:flex-row">
                 {steps.map((step, index) => (
-                    <React.Fragment key={index}>
-                        <div className="bg-white border border-gray-200 shadow-sm rounded-xl p-4 text-center md:flex-1 w-full md:w-auto relative group hover:border-primary hover:shadow-md transition-all">
-                            <span className="block text-sm font-bold text-gray-900">{step}</span>
-                        </div>
-
-                        {index < steps.length - 1 && (
-                            <div className="text-gray-300 md:px-2 flex justify-center">
-                                <ArrowRight className="w-5 h-5 hidden md:block" />
-                                <ArrowDown className="w-5 h-5 md:hidden" />
-                            </div>
-                        )}
-                    </React.Fragment>
+                    <li key={index} className="flex items-center gap-3 rounded-xl border border-gray-200 bg-white p-4 md:flex-1 md:flex-col md:items-start">
+                        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-navy text-xs font-bold text-white">{index + 1}</span>
+                        <span className="text-sm font-semibold text-gray-900">{step}</span>
+                    </li>
                 ))}
-            </div>
-        </div>
+            </ol>
+        </section>
     );
 }

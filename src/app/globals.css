@@ -1,12 +1,41 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #004a99;
-  --color-primary-hover: #003a7a;
+  /* Sky blue: links, primary actions and highlights. The deeper shade keeps white text at
+     5.9:1 contrast; brighter sky blues (e.g. #0ea5e9) fall below 3:1 with white text */
+  --color-primary: #0369a1;
+  --color-primary-hover: #075985;
+  --color-primary-dark: #075985;
+  --color-primary-50: #f0f9ff;
+  --color-primary-100: #e0f2fe;
+  --color-primary-200: #bae6fd;
+  /* Bright sky for text and accents on navy (10.5:1) */
+  --color-primary-300: #7dd3fc;
   --color-accent: #22c55e;
-  --color-surface: #f7f7f8;
-  --color-border-subtle: #e5e7eb;
-  
+  --color-surface: #f5f7fa;
+  --color-border-subtle: #e2e8f0;
+
+  --color-navy: #0b1930;
+  --color-navy-raised: #15294a;
+  --color-ink: #15263e;
+  --color-muted: #526479;
+  --color-off-white: #f5f7fa;
+  /* Logo green, darkened enough for text on white */
+  --color-brand-green: #15803d;
+
+  /* Neutral scale tuned to the navy/ink palette; gray-600 is the secondary text colour */
+  --color-gray-50: #f5f7fa;
+  --color-gray-100: #edf1f6;
+  --color-gray-200: #e2e8f0;
+  --color-gray-300: #cbd5e1;
+  --color-gray-400: #94a3b8;
+  --color-gray-500: #64748b;
+  --color-gray-600: #526479;
+  --color-gray-700: #3b4c63;
+  --color-gray-800: #23344d;
+  --color-gray-900: #15263e;
+  --color-gray-950: #0b1930;
+
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   
   --radius-xl: 1rem;
@@ -20,6 +49,13 @@
 
 @keyframes countdown {
   to { transform: scaleX(0); }
+}
+
+/* Jump instead of smooth-scrolling to in-page anchors when the visitor prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 /* Stop the page behind the home page poster from scrolling while it is open */
@@ -39,14 +75,14 @@ html:has(dialog[data-poster-popup][open]) {
 
 :root {
   --background: #ffffff;
-  --foreground: #111827;
-  --primary: #004a99;
+  --foreground: #15263e;
+  --primary: #0369a1;
 }
 
 /* Force light mode styles even if system is dark, as per user requirement "Do NOT use dark mode as default" */
 body {
   background-color: white;
-  color: #111827;
+  color: #15263e;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -55,6 +91,12 @@ body {
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold tracking-tight text-gray-900;
   }
+
+  /* Visible keyboard focus everywhere, without changing mouse interactions */
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
 }
 
 .container-custom {
@@ -62,17 +104,22 @@ body {
 }
 
 .btn-primary {
-  @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary/90 transition-colors duration-200;
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3 border border-transparent text-base font-semibold rounded-full text-white bg-primary hover:bg-primary-hover transition-colors duration-200 motion-reduce:transition-none;
 }
 
 .btn-secondary {
-  @apply inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-200;
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3 border border-gray-300 text-base font-semibold rounded-full text-gray-800 bg-white hover:border-primary hover:text-primary transition-colors duration-200 motion-reduce:transition-none;
 }
 
 .card {
-  @apply bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200;
+  @apply bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 motion-reduce:transition-none;
 }
 
 .badge {
   @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+/* Small uppercase label above section headings */
+.eyebrow {
+  @apply text-xs font-semibold uppercase tracking-[0.16em] text-primary;
 }

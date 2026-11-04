@@ -1,57 +1,99 @@
 import Link from 'next/link';
-import { Calendar, MapPin, ArrowRight } from 'lucide-react';
+import { Clock, MapPin, ArrowRight } from 'lucide-react';
 import { getEvents } from '@/utils/data';
+import SectionHeading from '@/components/ui/SectionHeading';
+
+// Today's date in India as YYYY-MM-DD, comparable with the event date strings
+const todayInIndia = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Kolkata' }).format(new Date());
+
+const dateParts = (date: string) => {
+    const d = new Date(`${date}T00:00:00`);
+    return {
+        day: d.toLocaleDateString('en-IN', { day: '2-digit' }),
+        month: d.toLocaleDateString('en-IN', { month: 'short' }),
+        year: d.getFullYear(),
+        full: d.toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }),
+    };
+};
 
 export default function UpcomingEvents() {
-    const events = getEvents().slice(0, 3);
+    // Only events dated today or later count as upcoming; getEvents() returns them oldest first
+    const today = todayInIndia();
+    const events = getEvents().filter((event) => event.date >= today).slice(0, 3);
 
     return (
-        <section className="py-24 bg-white">
+        <section className="bg-surface py-20 lg:py-24" aria-labelledby="upcoming-events-heading">
             <div className="container-custom">
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-                    <div>
-                        <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-4">Upcoming Events</h2>
-                        <p className="text-xl text-gray-600">
-                            Join the dialogue and stay updated with the latest in EV technology.
+                <SectionHeading
+                    id="upcoming-events-heading"
+                    title="Upcoming Events"
+                    intro="Join the dialogue and stay updated with the latest in EV technology."
+                    action={
+                        <Link href="/events" className="inline-flex items-center gap-2 rounded font-semibold text-primary hover:text-primary-hover">
+                            See all events <ArrowRight className="h-5 w-5" aria-hidden="true" />
+                        </Link>
+                    }
+                />
+
+                {events.length === 0 ? (
+                    <div className="rounded-2xl border border-dashed border-gray-300 bg-white p-10 text-center">
+                        <p className="font-semibold text-gray-900">No upcoming events are scheduled right now.</p>
+                        <p className="mt-2 text-gray-600">
+                            Recordings and materials from past sessions are on the <Link href="/events" className="font-semibold text-primary underline-offset-4 hover:underline">events page</Link>.
                         </p>
                     </div>
-                    <Link href="/events" className="text-primary font-bold inline-flex items-center hover:translate-x-1 transition-transform">
-                        See all events <ArrowRight className="ml-2 w-5 h-5" />
-                    </Link>
-                </div>
+                ) : (
+                    <ul className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+                        {events.map((event) => {
+                            const date = dateParts(event.date);
+                            return (
+                                <li key={event.id} className="flex flex-col rounded-2xl border border-gray-200 bg-white p-6">
+                                    <div className="flex items-start gap-4">
+                                        <time dateTime={event.date} className="flex w-16 shrink-0 flex-col items-center rounded-xl bg-navy py-2.5 text-white">
+                                            <span className="text-xs font-semibold uppercase tracking-wider text-primary-300">{date.month}</span>
+                                            <span className="text-2xl font-bold leading-tight">{date.day}</span>
+                                            <span className="text-xs text-slate-300">{date.year}</span>
+                                        </time>
+                                        <div className="min-w-0">
+                                            <p className="text-xs font-semibold uppercase tracking-wider text-primary">Upcoming</p>
+                                            <h3 className="mt-1 text-lg font-bold leading-snug text-gray-900">{event.title}</h3>
+                                        </div>
+                                    </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    {events.map((event) => (
-                        <div key={event.id} className="group relative bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-lg transition-all border-l-4 border-l-primary">
-                            <div className="flex items-center gap-2 mb-4">
-                                {event.tags.map(tag => (
-                                    <span key={tag} className="px-2 py-0.5 bg-gray-50 text-gray-500 rounded text-[10px] uppercase font-bold tracking-wider">{tag}</span>
-                                ))}
-                            </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-4 line-clamp-2 leading-tight group-hover:text-primary transition-colors">
-                                {event.title}
-                            </h3>
-                            <p className="text-gray-600 mb-6 text-sm line-clamp-3">
-                                {event.summary}
-                            </p>
-                            <div className="space-y-3 pt-6 border-t border-gray-50 mt-auto text-sm text-gray-500">
-                                <div className="flex items-center gap-2">
-                                    <Calendar className="w-4 h-4 text-primary" />
-                                    <span suppressHydrationWarning>{new Date(event.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <MapPin className="w-4 h-4 text-primary" />
-                                    <span>{event.mode} • {event.city}</span>
-                                </div>
-                            </div>
-                            <div className="mt-6">
-                                <a href={event.registrationUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary w-full py-2 text-sm">
-                                    Register Now
-                                </a>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+                                    {event.tags.length > 0 && (
+                                        <ul className="mt-5 flex flex-wrap gap-1.5" aria-label="Topics">
+                                            {event.tags.map((tag) => (
+                                                <li key={tag} className="rounded bg-gray-100 px-2 py-0.5 text-xs font-semibold uppercase tracking-wide text-gray-600">{tag}</li>
+                                            ))}
+                                        </ul>
+                                    )}
+
+                                    {event.summary && (
+                                        <p className="mt-4 line-clamp-3 text-sm leading-relaxed text-gray-600">{event.summary}</p>
+                                    )}
+
+                                    <div className="mt-auto pt-6" />
+                                    <dl className="space-y-2 border-t border-gray-100 pt-5 text-sm text-gray-600">
+                                        <div className="flex items-center gap-2">
+                                            <dt className="sr-only">Date and time</dt>
+                                            <Clock className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                                            <dd>{date.full}{event.time ? `, ${event.time}` : ''}</dd>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <dt className="sr-only">Format and location</dt>
+                                            <MapPin className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                                            <dd>{event.mode} • {event.city}</dd>
+                                        </div>
+                                    </dl>
+                                    <Link href={event.registrationUrl} className="btn-secondary mt-6 w-full py-2.5 text-sm">
+                                        Register Now
+                                        <span className="sr-only"> for {event.title}</span>
+                                    </Link>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                )}
             </div>
         </section>
     );

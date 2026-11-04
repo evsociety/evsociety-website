@@ -50,7 +50,7 @@ function SpeakerGroupCard({ group }: { group: any }) {
                             <div className="flex-grow">
                                 <div className="flex flex-wrap gap-2 mb-3">
                                     {event.tags.map((tag: string) => (
-                                        <span key={tag} className="px-2 py-0.5 bg-gray-50 text-gray-500 rounded text-[10px] uppercase font-bold tracking-wider">
+                                        <span key={tag} className="px-2 py-0.5 bg-gray-50 text-gray-500 rounded text-xs uppercase font-bold tracking-wider">
                                             {tag}
                                         </span>
                                     ))}
@@ -88,7 +88,7 @@ function SpeakerGroupCard({ group }: { group: any }) {
                             <div className="w-full md:w-56 shrink-0 flex flex-col gap-3">
                                 <div className="flex flex-col gap-2 w-full md:w-auto mt-4 md:mt-0 items-end">
                                     {event.posterLinkURL && (
-                                        <a href={event.posterLinkURL} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-center py-2 px-4 bg-blue-50 text-blue-700 hover:bg-blue-100 rounded-lg transition-colors w-full md:w-40 border border-blue-100">
+                                        <a href={event.posterLinkURL} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-center py-2 px-4 bg-primary-50 text-primary hover:bg-primary-100 rounded-lg transition-colors w-full md:w-40 border border-primary-100">
                                             Webinar Poster
                                         </a>
                                     )}
@@ -238,12 +238,14 @@ export default function EventList({ events }: EventListProps) {
                 <div className="container-custom">
                     <div className="flex flex-col gap-6">
                         {/* Tabs */}
-                        <div className="flex border-b border-gray-200 w-full">
+                        <div className="flex w-full overflow-x-auto border-b border-gray-200">
                             {(['Upcoming', 'Completed', 'Speakers'] as Tab[]).map((tab) => (
                                 <button
                                     key={tab}
+                                    type="button"
+                                    aria-pressed={activeTab === tab}
                                     onClick={() => setActiveTab(tab)}
-                                    className={`px-8 py-3 text-sm font-bold border-b-2 transition-colors ${activeTab === tab
+                                    className={`min-h-11 shrink-0 whitespace-nowrap px-3 py-3 text-sm font-bold border-b-2 transition-colors sm:px-8 ${activeTab === tab
                                         ? 'border-primary text-primary'
                                         : 'border-transparent text-gray-500 hover:text-gray-700'
                                         }`}
@@ -260,6 +262,7 @@ export default function EventList({ events }: EventListProps) {
                                     <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                                     <input
                                         type="text"
+                                        aria-label="Search events"
                                         placeholder="Find an event..."
                                         value={searchQuery}
                                         onChange={(e) => setSearchQuery(e.target.value)}
@@ -314,24 +317,25 @@ export default function EventList({ events }: EventListProps) {
                                 <div key={event.id} className="group bg-white border border-gray-100 rounded-3xl p-6 md:p-8 hover:shadow-xl transition-all flex flex-col lg:flex-row gap-8 items-start lg:items-center">
                                     {/* Date Badge */}
                                     <div className="w-full lg:w-48 shrink-0 flex flex-col gap-4">
-                                        <div className="bg-surface rounded-2xl p-6 text-center border border-gray-50 group-hover:bg-primary/5 transition-colors">
-                                            <span className="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">
+                                        {/* Compact one-line date on small screens, a stacked badge on wide ones */}
+                                        <time dateTime={event.date} className="inline-flex w-fit items-baseline gap-2 rounded-xl border border-gray-100 bg-surface px-4 py-2 transition-colors group-hover:bg-primary/5 lg:w-full lg:flex-col lg:items-center lg:gap-0 lg:rounded-2xl lg:p-6 lg:text-center">
+                                            <span className="text-sm font-bold uppercase tracking-widest text-gray-500 lg:mb-1">
                                                 {new Date(event.date).toLocaleDateString('en-IN', { month: 'short' })}
                                             </span>
-                                            <span className="block text-4xl font-black text-gray-900">
+                                            <span className="text-2xl font-black text-gray-900 lg:text-4xl">
                                                 {new Date(event.date).toLocaleDateString('en-IN', { day: '2-digit' })}
                                             </span>
-                                            <span className="block text-xs font-bold text-primary mt-2">
+                                            <span className="text-xs font-bold text-primary lg:mt-2">
                                                 {new Date(event.date).getFullYear()}
                                             </span>
-                                        </div>
+                                        </time>
                                     </div>
 
                                     {/* Content */}
                                     <div className="flex-grow w-full">
                                         <div className="flex flex-wrap gap-2 mb-4">
                                             {event.tags.map(tag => (
-                                                <span key={tag} className="px-2 py-0.5 bg-gray-50 text-gray-500 rounded text-[10px] uppercase font-bold tracking-wider">
+                                                <span key={tag} className="px-2 py-0.5 bg-gray-50 text-gray-500 rounded text-xs uppercase font-bold tracking-wider">
                                                     {tag}
                                                 </span>
                                             ))}
@@ -376,7 +380,7 @@ export default function EventList({ events }: EventListProps) {
                                             {(event.posterLinkURL || event.youtubeURL || event.presentationURL) && (
                                                 <div className="flex items-center gap-4 border-l border-gray-200 pl-6 ml-2">
                                                     {event.posterLinkURL && (
-                                                        <a href={event.posterLinkURL} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline font-bold transition-colors">
+                                                        <a href={event.posterLinkURL} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-hover hover:underline font-bold transition-colors">
                                                             Webinar Poster
                                                         </a>
                                                     )}

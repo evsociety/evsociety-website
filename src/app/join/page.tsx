@@ -92,7 +92,7 @@ export default function JoinPage() {
                         {tiers.map((tier) => (
                             <div key={tier.name} className={`relative flex flex-col p-10 rounded-3xl border ${tier.popular ? 'border-primary shadow-2xl ring-4 ring-primary/5' : 'border-gray-100 shadow-sm'} bg-white group hover:-translate-y-2 transition-all duration-500`}>
                                 {tier.popular && (
-                                    <div className="absolute top-0 right-10 -translate-y-1/2 bg-primary text-white text-[10px] font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-full">
+                                    <div className="absolute top-0 right-10 -translate-y-1/2 bg-primary text-white text-xs font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-full">
                                         Most Popular
                                     </div>
                                 )}
@@ -143,7 +143,7 @@ export default function JoinPage() {
                             ].map(i => (
                                 <div key={i.l} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm text-center">
                                     <div className="text-2xl font-black text-primary mb-1">{i.v}</div>
-                                    <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{i.l}</div>
+                                    <div className="text-xs font-bold text-gray-400 uppercase tracking-widest">{i.l}</div>
                                 </div>
                             ))}
                         </div>

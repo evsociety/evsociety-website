@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import PageHeader from '@/components/PageHeader';
-import { Target, ShieldCheck, Zap, Users } from 'lucide-react';
+import SectionHeading from '@/components/ui/SectionHeading';
+import { Target, ShieldCheck } from 'lucide-react';
 
 export const metadata: Metadata = {
     title: 'Vision, Mission & Objectives',
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
     },
 };
 
+// Not currently rendered on the page; kept as authored
 const objectives = [
     "Promote electric mobility awareness across all strata of society",
     "Support EV research, design, testing, validation & safety protocols",
@@ -18,6 +20,24 @@ const objectives = [
     "Enable skills, training, and competency-based certifications for the workforce",
     "Support startups and MSMEs via mentorship, expert access, and industry pathways",
     "Promote sustainability, circular economy, and responsible battery lifecycle practices"
+];
+
+const mission = [
+    "Promote electric mobility adoption across all transport segments",
+    "Enable research, innovation, and indigenization of EV technologies",
+    "Build skilled manpower for the EV ecosystem",
+    "Act as a knowledge, policy, and industry interface",
+    "Encourage sustainable and ethical mobility practices"
+];
+
+const coreObjectives = [
+    "Promote electric mobility awareness",
+    "Support EV research, design, testing, and safety",
+    "Act as a knowledge-sharing platform (industry–academia–startups)",
+    "Enable skill development and certification programs",
+    "Provide technical inputs to policy and standards initiatives",
+    "Support startups, MSMEs, and innovators",
+    "Drive a strong focus on standards, reliability, and quality—critical for EV safety"
 ];
 
 export default function VisionMissionPage() {
@@ -29,35 +49,29 @@ export default function VisionMissionPage() {
                 breadcrumb="Vision & Mission"
             />
 
-            <section className="py-24">
+            <section className="py-20 lg:py-24">
                 <div className="container-custom">
-                    <div className="grid lg:grid-cols-2 gap-12">
-                        <div className="bg-blue-50/50 p-10 rounded-3xl border border-blue-100">
-                            <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white mb-8 shadow-lg shadow-primary/20">
-                                <Target className="w-6 h-6" />
-                            </div>
-                            <h2 className="text-3xl font-extrabold text-gray-900 mb-6 uppercase tracking-tight">Our Vision</h2>
-                            <p className="text-2xl text-gray-700 font-medium leading-relaxed italic">
+                    <div className="grid gap-6 lg:grid-cols-12">
+                        <div className="rounded-3xl bg-navy p-8 text-white sm:p-10 lg:col-span-7">
+                            <span className="mb-8 grid h-11 w-11 place-items-center rounded-xl bg-white/10 text-primary-300 ring-1 ring-white/15">
+                                <Target className="h-5 w-5" aria-hidden="true" />
+                            </span>
+                            <h2 className="mb-6 text-xs font-semibold uppercase tracking-[0.16em] text-primary-300">Our Vision</h2>
+                            <p className="text-2xl font-medium leading-relaxed text-white sm:text-[1.7rem]">
                                 “To accelerate the transition to sustainable, affordable, and indigenous electric mobility by fostering innovation, skill development, public awareness, and policy engagement—supporting energy security, environmental stewardship, and inclusive economic growth.”
                             </p>
                         </div>
 
-                        <div className="bg-green-50/50 p-10 rounded-3xl border border-green-100">
-                            <div className="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center text-white mb-8 shadow-lg shadow-green-600/20">
-                                <ShieldCheck className="w-6 h-6" />
-                            </div>
-                            <h2 className="text-3xl font-extrabold text-gray-900 mb-6 uppercase tracking-tight">Our Mission</h2>
-                            <ul className="space-y-4">
-                                {[
-                                    "Promote electric mobility adoption across all transport segments",
-                                    "Enable research, innovation, and indigenization of EV technologies",
-                                    "Build skilled manpower for the EV ecosystem",
-                                    "Act as a knowledge, policy, and industry interface",
-                                    "Encourage sustainable and ethical mobility practices"
-                                ].map((item, i) => (
-                                    <li key={i} className="flex items-start gap-3">
-                                        <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-green-600 shrink-0" />
-                                        <span className="text-gray-700 font-semibold">{item}</span>
+                        <div className="rounded-3xl border border-gray-200 bg-white p-8 sm:p-10 lg:col-span-5">
+                            <span className="mb-8 grid h-11 w-11 place-items-center rounded-xl bg-primary-50 text-primary">
+                                <ShieldCheck className="h-5 w-5" aria-hidden="true" />
+                            </span>
+                            <h2 className="mb-6 text-xs font-semibold uppercase tracking-[0.16em] text-primary">Our Mission</h2>
+                            <ul className="divide-y divide-gray-100">
+                                {mission.map((item, i) => (
+                                    <li key={i} className="flex items-start gap-3 py-3 first:pt-0 last:pb-0">
+                                        <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                                        <span className="font-semibold text-gray-800">{item}</span>
                                     </li>
                                 ))}
                             </ul>
@@ -66,42 +80,36 @@ export default function VisionMissionPage() {
                 </div>
             </section>
 
-            <section className="py-24 bg-surface">
+            <section className="bg-surface py-20 lg:py-24" aria-labelledby="objectives-heading">
                 <div className="container-custom">
-                    <div className="max-w-3xl mx-auto">
-                        <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Core Objectives</h2>
-                        <div className="grid gap-6">
-                            {[
-                                "Promote electric mobility awareness",
-                                "Support EV research, design, testing, and safety",
-                                "Act as a knowledge-sharing platform (industry–academia–startups)",
-                                "Enable skill development and certification programs",
-                                "Provide technical inputs to policy and standards initiatives",
-                                "Support startups, MSMEs, and innovators",
-                                "Drive a strong focus on standards, reliability, and quality—critical for EV safety"
-                            ].map((obj, i) => (
-                                <div key={i} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex gap-4 items-center">
-                                    <div className="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center text-primary font-bold shrink-0 border border-gray-100">
-                                        {i + 1}
-                                    </div>
-                                    <p className="text-lg text-gray-700 font-medium">{obj}</p>
-                                </div>
-                            ))}
+                    <div className="grid gap-10 lg:grid-cols-12">
+                        <div className="lg:col-span-4">
+                            <SectionHeading id="objectives-heading" title="Core Objectives" />
                         </div>
+                        <ol className="grid gap-3 lg:col-span-8">
+                            {coreObjectives.map((obj, i) => (
+                                <li key={i} className="flex items-center gap-5 rounded-2xl border border-gray-200 bg-white p-5">
+                                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-navy text-sm font-bold text-white">
+                                        {i + 1}
+                                    </span>
+                                    <p className="text-lg font-medium text-gray-800">{obj}</p>
+                                </li>
+                            ))}
+                        </ol>
                     </div>
                 </div>
             </section>
 
-            <section className="py-24">
+            <section className="py-20 lg:py-24">
                 <div className="container-custom text-center">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-8 underline decoration-primary decoration-4 underline-offset-8">Aligned with National Priorities</h3>
-                    <div className="flex flex-wrap justify-center gap-6 mt-12 opacity-50">
+                    <h2 className="text-2xl font-bold text-gray-900">Aligned with National Priorities</h2>
+                    <ul className="mt-8 flex flex-wrap justify-center gap-3">
                         {["FAME-II", "PLI Schemes", "Niti Aayog", "AIS Standards"].map(tag => (
-                            <span key={tag} className="px-6 py-2 bg-gray-100 rounded-full font-bold text-gray-600 grayscale uppercase tracking-widest text-xs">
+                            <li key={tag} className="rounded-full border border-gray-200 bg-surface px-5 py-2 text-xs font-bold uppercase tracking-widest text-gray-700">
                                 {tag}
-                            </span>
+                            </li>
                         ))}
-                    </div>
+                    </ul>
                 </div>
             </section>
         </div>

@@ -2,7 +2,7 @@
 
 export default function AdminAccessDenied() {
     return (
-        <div className="min-h-screen bg-gradient-to-br from-primary to-blue-700 flex items-center justify-center p-6">
+        <div className="min-h-screen bg-navy flex items-center justify-center p-6">
             <div className="bg-white rounded-3xl shadow-2xl p-12 max-w-md w-full text-center">
                 {/* Icon */}
                 <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">

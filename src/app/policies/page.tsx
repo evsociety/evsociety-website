@@ -9,6 +9,8 @@ export const metadata: Metadata = {
     },
 };
 
+const slugify = (title: string) => title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
 export default function PoliciesPage() {
     const sections = [
         {
@@ -37,21 +39,37 @@ export default function PoliciesPage() {
                 breadcrumb="Policies"
             />
 
-            <section className="py-24">
-                <div className="container-custom">
-                    <div className="max-w-4xl space-y-16">
+            <section className="py-16 lg:py-24">
+                <div className="container-custom grid gap-12 lg:grid-cols-12">
+                    <nav aria-label="On this page" className="lg:col-span-3">
+                        <div className="lg:sticky lg:top-28">
+                            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-gray-500">On this page</p>
+                            <ol className="space-y-1 border-l border-gray-200">
+                                {sections.map((section) => (
+                                    <li key={section.title}>
+                                        <a
+                                            href={`#${slugify(section.title)}`}
+                                            className="-ml-px block border-l-2 border-transparent py-1.5 pl-4 text-sm font-medium text-gray-600 hover:border-primary hover:text-primary"
+                                        >
+                                            {section.title}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ol>
+                        </div>
+                    </nav>
+
+                    <div className="max-w-3xl divide-y divide-gray-200 lg:col-span-9">
                         {sections.map(section => (
-                            <div key={section.title}>
-                                <h2 className="text-2xl font-bold text-gray-900 mb-6">{section.title}</h2>
-                                <div className="prose prose-gray">
-                                    <p className="text-gray-600 leading-relaxed text-lg">
-                                        {section.content}
-                                    </p>
-                                    <p className="text-sm text-gray-400 mt-4 italic">
-                                        Last updated: January 2026
-                                    </p>
-                                </div>
-                            </div>
+                            <article key={section.title} id={slugify(section.title)} className="scroll-mt-28 py-10 first:pt-0">
+                                <h2 className="mb-5 text-2xl font-bold text-gray-900">{section.title}</h2>
+                                <p className="text-lg leading-relaxed text-gray-700">
+                                    {section.content}
+                                </p>
+                                <p className="mt-5 text-sm text-gray-500">
+                                    Last updated: January 2026
+                                </p>
+                            </article>
                         ))}
                     </div>
                 </div>

@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getPartnerBySlug, getPartners } from '@/utils/data';
-import { Globe, Linkedin, MapPin, Building2, School, UserCircle2, ArrowLeft, ArrowRight, ShieldCheck, Mail } from 'lucide-react';
+import { Globe, Linkedin, MapPin, ArrowLeft, ArrowRight, ShieldCheck, Mail } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
+import PartnerLogo from '@/components/partners/PartnerLogo';
 
 // Mandatory for static exports or to pre-render these routes
 export async function generateStaticParams() {
@@ -61,30 +61,13 @@ export default async function PartnerDetailPage({ params }: { params: Promise<{ 
                     </Link>
 
                     <div className="flex flex-col lg:flex-row items-start gap-12">
-                        <div className="w-32 h-32 bg-white rounded-3xl flex items-center justify-center border border-gray-100 shadow-xl shrink-0 overflow-hidden relative">
-                            {/* Fallback Icon */}
-                            <div className="absolute inset-0 flex items-center justify-center -z-10 group">
-                                {partner.type === 'company' && <Building2 className="w-16 h-16 text-gray-100" />}
-                                {partner.type === 'institute' && <School className="w-16 h-16 text-gray-100" />}
-                                {partner.type === 'researcher' && <UserCircle2 className="w-16 h-16 text-gray-100" />}
-                                <div className="absolute inset-0 flex items-center justify-center p-4">
-                                    <span className="text-[10px] font-black text-gray-300 text-center uppercase leading-tight scale-110 opacity-30 select-none">{partner.name}</span>
-                                </div>
-                            </div>
-                            {/* Actual Logo */}
-                            <div className="w-full h-full relative z-10">
-                                <Image
-                                    src={partner.logo}
-                                    alt={partner.name}
-                                    fill
-                                    className="object-contain p-4"
-                                />
-                            </div>
+                        <div className="relative h-32 w-32 shrink-0 overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-xl">
+                            <PartnerLogo src={partner.logo} name={partner.name} sizes="128px" className="p-4" textClassName="text-3xl" />
                         </div>
 
                         <div className="flex-grow">
                             <div className="flex flex-wrap items-center gap-4 mb-6">
-                                <span className={`badge ${partner.type === 'company' ? 'bg-blue-600' : partner.type === 'institute' ? 'bg-green-600' : 'bg-purple-600'} text-white px-4 py-1.5 rounded-xl uppercase tracking-widest text-[10px]`}>
+                                <span className={`badge ${partner.type === 'company' ? 'bg-navy' : partner.type === 'institute' ? 'bg-green-600' : 'bg-purple-600'} text-white px-4 py-1.5 rounded-xl uppercase tracking-widest text-xs`}>
                                     {partner.type}
                                 </span>
                                 {partner.tags.map(tag => (
@@ -153,7 +136,7 @@ export default async function PartnerDetailPage({ params }: { params: Promise<{ 
                         </div>
 
                         <div className="lg:col-span-4">
-                            <div className="sticky top-[120px] space-y-8">
+                            <div className="space-y-8 lg:sticky lg:top-28">
                                 <div className="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm">
                                     <h4 className="text-sm font-bold text-gray-900 uppercase tracking-widest mb-6">Quick Actions</h4>
                                     <div className="space-y-4">
@@ -171,7 +154,7 @@ export default async function PartnerDetailPage({ params }: { params: Promise<{ 
                                 <div className="bg-primary rounded-3xl p-8 text-white relative overflow-hidden">
                                     <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
                                     <h4 className="text-lg font-bold mb-4 relative z-10">Institutional Support</h4>
-                                    <p className="text-sm text-blue-100 mb-6 relative z-10 leading-relaxed">
+                                    <p className="text-sm text-slate-300 mb-6 relative z-10 leading-relaxed">
                                         This partner is a verified member of the <span className="text-white font-extrabold">EV Society™</span> ecosystem.
                                     </p>
                                     <Link href="/join" className="inline-block px-6 py-2 bg-white text-primary rounded-lg text-sm font-bold relative z-10">

@@ -38,6 +38,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.9,
         },
         {
+            url: `${baseUrl}/programs/inspace-model-rocketry-cansat`,
+            lastModified: currentDate,
+            changeFrequency: 'weekly',
+            priority: 0.8,
+        },
+        {
             url: `${baseUrl}/events`,
             lastModified: currentDate,
             changeFrequency: 'weekly',

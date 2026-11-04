@@ -103,7 +103,7 @@ export default function AdminRegistrationsTable({ registrations }: AdminRegistra
                                     className="hover:bg-gray-50 transition-colors"
                                 >
                                     <td className="px-4 py-3 text-sm">
-                                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 capitalize">
+                                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary capitalize">
                                             {registration.itemType || registration.registrationType}
                                         </span>
                                     </td>
@@ -191,7 +191,7 @@ export default function AdminRegistrationsTable({ registrations }: AdminRegistra
                             </div>
                             <div className="flex items-center justify-between text-xs">
                                 <span className="text-gray-600">Type:</span>
-                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 capitalize">
+                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary capitalize">
                                     {registration.itemType || registration.registrationType}
                                 </span>
                             </div>

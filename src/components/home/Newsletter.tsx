@@ -2,30 +2,31 @@
 
 export default function Newsletter() {
     return (
-        <section className="py-24 bg-white">
+        <section className="bg-white pb-20 lg:pb-24" aria-labelledby="newsletter-heading">
             <div className="container-custom">
-                <div className="bg-primary rounded-3xl p-8 md:p-16 relative overflow-hidden shadow-2xl">
-                    {/* Decorative shapes */}
-                    <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
-                    <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-black/10 rounded-full blur-3xl"></div>
-
-                    <div className="relative z-10 max-w-2xl mx-auto text-center">
-                        <h2 className="text-3xl font-extrabold text-white sm:text-4xl mb-6">Stay ahead of the curve</h2>
-                        <p className="text-xl text-blue-50/80 mb-10">
+                <div className="grid gap-10 rounded-3xl bg-navy p-8 sm:p-12 lg:grid-cols-12 lg:items-center lg:p-16">
+                    <div className="lg:col-span-6">
+                        <h2 id="newsletter-heading" className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Stay ahead of the curve</h2>
+                        <p className="mt-4 text-lg leading-relaxed text-slate-300">
                             Get monthly updates on EV safety standards, research breakthroughs, and upcoming events delivered to your inbox.
                         </p>
-                        <form className="flex flex-col sm:flex-row gap-4" onSubmit={(e) => e.preventDefault()}>
+                    </div>
+                    <div className="lg:col-span-6">
+                        <form className="flex flex-col gap-3 sm:flex-row" onSubmit={(e) => e.preventDefault()}>
+                            <label htmlFor="newsletter-email" className="sr-only">Professional email address</label>
                             <input
+                                id="newsletter-email"
                                 type="email"
+                                autoComplete="email"
                                 placeholder="Enter your professional email"
-                                className="flex-grow px-6 py-4 rounded-xl text-gray-900 border-none outline-none focus:ring-4 focus:ring-blue-400 font-medium"
+                                className="min-h-12 flex-grow rounded-full border-0 bg-white px-6 font-medium text-gray-900 placeholder:text-gray-500 focus:outline-2 focus:outline-offset-2 focus:outline-primary-300"
                                 required
                             />
-                            <button type="submit" className="bg-white text-primary font-bold px-8 py-4 rounded-xl hover:bg-blue-50 transition-colors">
+                            <button type="submit" className="min-h-12 rounded-full bg-primary px-8 font-semibold text-white transition-colors hover:bg-primary-hover focus-visible:outline-primary-300 motion-reduce:transition-none">
                                 Subscribe Now
                             </button>
                         </form>
-                        <p className="mt-4 text-sm text-blue-100/60">
+                        <p className="mt-4 text-sm text-slate-300">
                             We respect your privacy. No spam, only industry insights.
                         </p>
                     </div>

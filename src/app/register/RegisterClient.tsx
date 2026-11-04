@@ -266,7 +266,7 @@ export default function RegisterClient() {
                         <div className="mb-8 flex justify-end">
                             <Link
                                 href="/admin/registrations"
-                                className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold rounded-xl shadow-lg shadow-purple-500/20 transition-all hover:shadow-xl hover:shadow-purple-500/30 transform hover:-translate-y-0.5"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary-hover text-white font-semibold rounded-xl shadow-lg shadow-purple-500/20 transition-all hover:shadow-xl hover:shadow-purple-500/30 transform hover:-translate-y-0.5"
                             >
                                 <ShieldCheck className="w-5 h-5" />
                                 View Registrations (Admin)

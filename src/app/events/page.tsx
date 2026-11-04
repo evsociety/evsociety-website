@@ -34,7 +34,7 @@ export default function EventsPage() {
                         <p className="text-gray-600 mb-8">
                             <span className="text-primary font-bold">EV Society™</span> partners with corporate and academic institutes to host regional roundtables and technical workshops.
                         </p>
-                        <a href="/contact" className="text-primary font-bold hover:underline">
+                        <a href="/contact" className="inline-flex min-h-11 items-center rounded font-bold text-primary hover:underline">
                             Submit a Proposal →
                         </a>
                     </div>

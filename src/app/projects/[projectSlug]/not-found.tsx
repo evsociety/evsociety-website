@@ -14,7 +14,7 @@ export default function NotFound() {
                 </div>
                 <Link
                     href="/projects"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors font-medium"
                 >
                     <ArrowLeft className="w-4 h-4" />
                     Back to Projects

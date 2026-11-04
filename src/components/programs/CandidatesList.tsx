@@ -47,24 +47,32 @@ export default function CandidatesList({ candidates: initialCandidates, submissi
     return (
         <>
             {/* Filters */}
-            <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm mb-6 flex flex-col md:flex-row gap-4 justify-between items-center">
-                <div className="relative w-full md:w-96">
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <Search className="h-4 w-4 text-gray-400" />
+            <div className="mb-6 grid gap-4 rounded-2xl border border-gray-200 bg-white p-4 sm:p-5 md:grid-cols-[1fr_auto] md:items-end">
+                <div>
+                    <label htmlFor="candidate-search" className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500">Search</label>
+                    <div className="relative">
+                        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                            <Search className="h-4 w-4 text-gray-400" aria-hidden="true" />
+                        </div>
+                        <input
+                            id="candidate-search"
+                            type="search"
+                            className="block min-h-11 w-full rounded-xl border border-gray-300 bg-white pl-10 pr-3 text-sm placeholder-gray-500 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                            placeholder="Search by name or designation..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                        />
                     </div>
-                    <input
-                        type="text"
-                        className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm"
-                        placeholder="Search by name or designation..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                    />
                 </div>
 
-                <div className="flex items-center w-full md:w-auto gap-2">
-                    <Filter className="h-4 w-4 text-gray-500" />
+                <div>
+                    <label htmlFor="candidate-status" className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-gray-500">
+                        <Filter className="h-3.5 w-3.5" aria-hidden="true" />
+                        Status
+                    </label>
                     <select
-                        className="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm rounded-md"
+                        id="candidate-status"
+                        className="block min-h-11 w-full rounded-xl border border-gray-300 bg-white pl-3 pr-10 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary md:w-56"
                         value={statusFilter}
                         onChange={(e) => setStatusFilter(e.target.value as Status | 'all')}
                     >
@@ -76,16 +84,26 @@ export default function CandidatesList({ candidates: initialCandidates, submissi
                 </div>
             </div>
 
+            <p className="mb-3 text-sm text-gray-500" aria-live="polite">
+                Showing {sortedCandidates.length} of {initialCandidates.length} candidates
+            </p>
+
             {/* List */}
-            <CandidateTable candidates={sortedCandidates} submissions={submissions} baseUrl={baseUrl} />
-            <CandidateCard candidates={sortedCandidates} submissions={submissions} baseUrl={baseUrl} />
+            {/* The table and cards have their own empty messages, so only render them when there are results */}
+            {sortedCandidates.length > 0 && (
+                <>
+                    <CandidateTable candidates={sortedCandidates} submissions={submissions} baseUrl={baseUrl} />
+                    <CandidateCard candidates={sortedCandidates} submissions={submissions} baseUrl={baseUrl} />
+                </>
+            )}
 
             {sortedCandidates.length === 0 && (
-                <div className="text-center py-20 bg-white rounded-lg border border-gray-200 border-dashed">
-                    <p className="text-gray-500 text-lg">No candidates found matching your criteria.</p>
+                <div className="rounded-2xl border border-dashed border-gray-300 bg-white py-16 text-center">
+                    <p className="text-lg text-gray-600">No candidates found matching your criteria.</p>
                     <button
+                        type="button"
                         onClick={() => { setSearchQuery(''); setStatusFilter('all'); }}
-                        className="mt-4 text-primary hover:text-blue-700 font-medium"
+                        className="mt-4 rounded font-semibold text-primary hover:text-primary-hover"
                     >
                         Clear filters
                     </button>

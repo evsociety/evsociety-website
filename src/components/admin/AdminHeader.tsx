@@ -2,10 +2,10 @@
 
 export default function AdminHeader() {
     return (
-        <div className="bg-gradient-to-br from-primary to-blue-700 text-white py-16">
+        <div className="bg-navy text-white py-16">
             <div className="container-custom">
                 {/* Breadcrumb */}
-                <nav className="text-sm font-medium text-blue-100 mb-6 uppercase tracking-widest">
+                <nav className="text-sm font-medium text-slate-300 mb-6 uppercase tracking-widest">
                     <span>ADMIN / REGISTRATIONS</span>
                 </nav>
 
@@ -15,7 +15,7 @@ export default function AdminHeader() {
                 </h1>
 
                 {/* Subtitle */}
-                <p className="text-xl text-blue-50 leading-relaxed max-w-3xl">
+                <p className="text-xl text-slate-200 leading-relaxed max-w-3xl">
                     View and export registrations by date, type, and role.
                 </p>
             </div>

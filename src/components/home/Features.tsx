@@ -1,4 +1,5 @@
 import { Megaphone, ShieldAlert, FlaskConical, Terminal, GraduationCap, Rocket } from 'lucide-react';
+import SectionHeading from '@/components/ui/SectionHeading';
 
 const features = [
     {
@@ -35,28 +36,31 @@ const features = [
 
 export default function Features() {
     return (
-        <section className="py-24 bg-white">
+        <section className="bg-surface py-20 lg:py-24" aria-labelledby="features-heading">
             <div className="container-custom">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-4">What <span className="text-primary font-black">EV Society™</span> Does</h2>
-                    <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                        Our mission is implemented through six core pillars of excellence designed to support the entire EV value chain.
-                    </p>
-                </div>
+                <SectionHeading
+                    id="features-heading"
+                    eyebrow="Six pillars"
+                    title={<>What <span className="text-primary">EV Society™</span> Does</>}
+                    intro="Our mission is implemented through six core pillars of excellence designed to support the entire EV value chain."
+                />
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    {features.map((feature) => (
-                        <div key={feature.title} className="group p-8 rounded-2xl bg-white border border-gray-100 hover:border-primary/20 hover:bg-blue-50/30 transition-all duration-300">
-                            <div className="w-12 h-12 bg-primary/5 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300 text-primary">
-                                <feature.icon className="w-6 h-6" />
+                <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    {features.map((feature, index) => (
+                        <li key={feature.title} className="flex flex-col rounded-2xl border border-gray-200 bg-white p-7">
+                            <div className="flex items-center justify-between">
+                                <span className="grid h-11 w-11 place-items-center rounded-xl bg-primary-50 text-primary">
+                                    <feature.icon className="h-5 w-5" aria-hidden="true" />
+                                </span>
+                                <span aria-hidden="true" className="text-sm font-semibold tabular-nums text-gray-400">0{index + 1}</span>
                             </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                            <p className="text-gray-600 leading-relaxed">
+                            <h3 className="mt-6 text-xl font-bold text-gray-900">{feature.title}</h3>
+                            <p className="mt-3 leading-relaxed text-gray-600">
                                 {feature.description}
                             </p>
-                        </div>
+                        </li>
                     ))}
-                </div>
+                </ul>
             </div>
         </section>
     );

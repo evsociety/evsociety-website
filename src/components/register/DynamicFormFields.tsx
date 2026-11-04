@@ -33,10 +33,10 @@ export default function DynamicFormFields({ type, role, item, formData, errors, 
             {/* Common Fields - Always shown */}
             <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                    <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
+                    <label htmlFor="reg-fullName" className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
                         Full Name <span className="text-red-500">*</span>
                     </label>
-                    <input
+                    <input id="reg-fullName"
                         type="text"
                         value={formData.fullName}
                         onChange={(e) => onChange('fullName', e.target.value)}
@@ -48,10 +48,10 @@ export default function DynamicFormFields({ type, role, item, formData, errors, 
                 </div>
 
                 <div className="space-y-2">
-                    <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
+                    <label htmlFor="reg-email" className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
                         Email Address <span className="text-red-500">*</span>
                     </label>
-                    <input
+                    <input id="reg-email"
                         type="email"
                         value={formData.email}
                         onChange={(e) => onChange('email', e.target.value)}
@@ -66,10 +66,10 @@ export default function DynamicFormFields({ type, role, item, formData, errors, 
             {/* Phone with Country Code */}
             <div className="grid md:grid-cols-3 gap-4">
                 <div className="space-y-2">
-                    <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
+                    <label htmlFor="reg-countryCode" className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
                         Country Code <span className="text-red-500">*</span>
                     </label>
-                    <select
+                    <select id="reg-countryCode"
                         value={formData.countryCode}
                         onChange={(e) => onChange('countryCode', e.target.value)}
                         className="w-full px-5 py-3 rounded-xl border-none outline-none ring-1 ring-gray-200 focus:ring-2 focus:ring-primary transition-all bg-white"
@@ -82,10 +82,10 @@ export default function DynamicFormFields({ type, role, item, formData, errors, 
                     </select>
                 </div>
                 <div className="md:col-span-2 space-y-2">
-                    <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
+                    <label htmlFor="reg-phone" className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
                         Phone Number <span className="text-red-500">*</span>
                     </label>
-                    <input
+                    <input id="reg-phone"
                         type="tel"
                         value={formData.phone}
                         onChange={(e) => onChange('phone', e.target.value)}
@@ -100,10 +100,10 @@ export default function DynamicFormFields({ type, role, item, formData, errors, 
             {/* City and State */}
             <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                    <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
+                    <label htmlFor="reg-city" className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
                         City <span className="text-red-500">*</span>
                     </label>
-                    <input
+                    <input id="reg-city"
                         type="text"
                         value={formData.city}
                         onChange={(e) => onChange('city', e.target.value)}
@@ -115,10 +115,10 @@ export default function DynamicFormFields({ type, role, item, formData, errors, 
                 </div>
 
                 <div className="space-y-2">
-                    <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
+                    <label htmlFor="reg-state" className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
                         State <span className="text-red-500">*</span>
                     </label>
-                    <input
+                    <input id="reg-state"
                         type="text"
                         value={formData.state}
                         onChange={(e) => onChange('state', e.target.value)}
@@ -133,10 +133,10 @@ export default function DynamicFormFields({ type, role, item, formData, errors, 
             {/* Organization and Designation */}
             <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                    <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
+                    <label htmlFor="reg-organization" className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
                         Organization/Company <span className="text-red-500">*</span>
                     </label>
-                    <input
+                    <input id="reg-organization"
                         type="text"
                         value={formData.organization}
                         onChange={(e) => onChange('organization', e.target.value)}
@@ -148,10 +148,10 @@ export default function DynamicFormFields({ type, role, item, formData, errors, 
                 </div>
 
                 <div className="space-y-2">
-                    <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
+                    <label htmlFor="reg-designation" className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
                         Designation/Role <span className="text-red-500">*</span>
                     </label>
-                    <input
+                    <input id="reg-designation"
                         type="text"
                         value={formData.designation}
                         onChange={(e) => onChange('designation', e.target.value)}
@@ -165,10 +165,10 @@ export default function DynamicFormFields({ type, role, item, formData, errors, 
 
             {/* LinkedIn URL (optional) */}
             <div className="space-y-2">
-                <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
+                <label htmlFor="reg-linkedinUrl" className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
                     LinkedIn Profile URL
                 </label>
-                <input
+                <input id="reg-linkedinUrl"
                     type="url"
                     value={formData.linkedinUrl || ''}
                     onChange={(e) => onChange('linkedinUrl', e.target.value)}
@@ -192,7 +192,7 @@ export default function DynamicFormFields({ type, role, item, formData, errors, 
                                 type="button"
                                 onClick={() => onChange('participationMode', mode)}
                                 className={`p-3 rounded-xl text-center font-bold capitalize transition-all border-2 ${formData.participationMode === mode
-                                        ? 'border-primary bg-blue-50 text-primary'
+                                        ? 'border-primary bg-primary-50 text-primary'
                                         : 'border-gray-200 bg-white text-gray-600 hover:border-primary/30'
                                     }`}
                             >
@@ -210,10 +210,10 @@ export default function DynamicFormFields({ type, role, item, formData, errors, 
                     <h4 className="text-lg font-bold text-gray-900">Guest Information</h4>
 
                     <div className="space-y-2">
-                        <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
+                        <label htmlFor="reg-guestCategory" className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
                             Guest Category <span className="text-red-500">*</span>
                         </label>
-                        <select
+                        <select id="reg-guestCategory"
                             value={formData.guestCategory || ''}
                             onChange={(e) => onChange('guestCategory', e.target.value)}
                             className={`w-full px-5 py-3 rounded-xl border-none outline-none ring-1 ${errors.guestCategory ? 'ring-red-500' : 'ring-gray-200'
@@ -231,10 +231,10 @@ export default function DynamicFormFields({ type, role, item, formData, errors, 
                     </div>
 
                     <div className="space-y-2">
-                        <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
+                        <label htmlFor="reg-topic" className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
                             Topic/Reason <span className="text-red-500">*</span>
                         </label>
-                        <input
+                        <input id="reg-topic"
                             type="text"
                             value={formData.topic || ''}
                             onChange={(e) => onChange('topic', e.target.value)}
@@ -246,10 +246,10 @@ export default function DynamicFormFields({ type, role, item, formData, errors, 
                     </div>
 
                     <div className="space-y-2">
-                        <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
+                        <label htmlFor="reg-reference" className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
                             Reference/Invited By
                         </label>
-                        <input
+                        <input id="reg-reference"
                             type="text"
                             value={formData.reference || ''}
                             onChange={(e) => onChange('reference', e.target.value)}
@@ -259,10 +259,10 @@ export default function DynamicFormFields({ type, role, item, formData, errors, 
                     </div>
 
                     <div className="space-y-2">
-                        <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
+                        <label htmlFor="reg-specialRequirements" className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
                             Special Requirements
                         </label>
-                        <textarea
+                        <textarea id="reg-specialRequirements"
                             rows={3}
                             value={formData.specialRequirements || ''}
                             onChange={(e) => onChange('specialRequirements', e.target.value)}
@@ -289,7 +289,7 @@ export default function DynamicFormFields({ type, role, item, formData, errors, 
                                     type="button"
                                     onClick={() => handleMultiSelectChange('skillAreas', skill)}
                                     className={`p-3 rounded-xl text-sm font-bold capitalize transition-all border-2 ${formData.skillAreas?.includes(skill as any)
-                                            ? 'border-primary bg-blue-50 text-primary'
+                                            ? 'border-primary bg-primary-50 text-primary'
                                             : 'border-gray-200 bg-white text-gray-600 hover:border-primary/30'
                                         }`}
                                 >
@@ -301,10 +301,10 @@ export default function DynamicFormFields({ type, role, item, formData, errors, 
                     </div>
 
                     <div className="space-y-2">
-                        <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
+                        <label htmlFor="reg-interestLevel" className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
                             Interest Level <span className="text-red-500">*</span>
                         </label>
-                        <select
+                        <select id="reg-interestLevel"
                             value={formData.interestLevel || ''}
                             onChange={(e) => onChange('interestLevel', e.target.value)}
                             className={`w-full px-5 py-3 rounded-xl border-none outline-none ring-1 ${errors.interestLevel ? 'ring-red-500' : 'ring-gray-200'
@@ -327,10 +327,10 @@ export default function DynamicFormFields({ type, role, item, formData, errors, 
                     <h4 className="text-lg font-bold text-gray-900">Program Details</h4>
 
                     <div className="space-y-2">
-                        <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
+                        <label htmlFor="reg-participantType" className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
                             Participant Type <span className="text-red-500">*</span>
                         </label>
-                        <select
+                        <select id="reg-participantType"
                             value={formData.participantType || ''}
                             onChange={(e) => onChange('participantType', e.target.value)}
                             className={`w-full px-5 py-3 rounded-xl border-none outline-none ring-1 ${errors.participantType ? 'ring-red-500' : 'ring-gray-200'
@@ -348,10 +348,10 @@ export default function DynamicFormFields({ type, role, item, formData, errors, 
                     </div>
 
                     <div className="space-y-2">
-                        <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
+                        <label htmlFor="reg-experienceLevel" className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
                             Experience Level <span className="text-red-500">*</span>
                         </label>
-                        <select
+                        <select id="reg-experienceLevel"
                             value={formData.experienceLevel || ''}
                             onChange={(e) => onChange('experienceLevel', e.target.value)}
                             className={`w-full px-5 py-3 rounded-xl border-none outline-none ring-1 ${errors.experienceLevel ? 'ring-red-500' : 'ring-gray-200'
@@ -374,10 +374,10 @@ export default function DynamicFormFields({ type, role, item, formData, errors, 
 
                     {item?.sessionTracks && item.sessionTracks.length > 0 && (
                         <div className="space-y-2">
-                            <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
+                            <label htmlFor="reg-sessionTrack" className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
                                 Session Track (Optional)
                             </label>
-                            <select
+                            <select id="reg-sessionTrack"
                                 value={formData.sessionTrack || ''}
                                 onChange={(e) => onChange('sessionTrack', e.target.value)}
                                 className="w-full px-5 py-3 rounded-xl border-none outline-none ring-1 ring-gray-200 focus:ring-2 focus:ring-primary transition-all bg-white"
@@ -391,10 +391,10 @@ export default function DynamicFormFields({ type, role, item, formData, errors, 
                     )}
 
                     <div className="space-y-2">
-                        <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
+                        <label htmlFor="reg-questions" className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">
                             Questions for Organizer (Optional)
                         </label>
-                        <textarea
+                        <textarea id="reg-questions"
                             rows={3}
                             value={formData.questions || ''}
                             onChange={(e) => onChange('questions', e.target.value)}

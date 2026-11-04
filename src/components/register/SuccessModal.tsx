@@ -102,7 +102,7 @@ export default function SuccessModal({ registrationId, itemTitle, itemDate, item
                     </p>
 
                     {/* Registration ID */}
-                    <div className="bg-blue-50 border-2 border-dashed border-primary rounded-xl p-4 mb-6">
+                    <div className="bg-primary-50 border-2 border-dashed border-primary rounded-xl p-4 mb-6">
                         <div className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">
                             Registration ID
                         </div>

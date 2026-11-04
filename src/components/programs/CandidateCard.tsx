@@ -30,25 +30,26 @@ export default function CandidateCard({ candidates, submissions, baseUrl = '/pro
                 const status = submission?.overallStatus || 'not-started';
 
                 return (
-                    <div key={candidate.candidateId} className="bg-white rounded-lg border border-gray-200 shadow-sm p-4">
+                    <article key={candidate.candidateId} className="rounded-2xl border border-gray-200 bg-white p-5">
                         <div className="flex items-center mb-4">
                             <div className="h-12 w-12 flex-shrink-0 relative rounded-full overflow-hidden bg-gray-100 border border-gray-200">
                                 {candidate.profileImageUrl ? (
                                     <Image
                                         src={candidate.profileImageUrl}
-                                        alt={candidate.fullName}
+                                        alt=""
+                                        sizes="48px"
                                         fill
                                         className="object-cover"
                                     />
                                 ) : (
-                                    <div className="h-full w-full flex items-center justify-center text-gray-400 font-semibold">
+                                    <div aria-hidden="true" className="h-full w-full flex items-center justify-center bg-primary-50 text-primary font-semibold">
                                         {candidate.fullName.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()}
                                     </div>
                                 )}
                             </div>
                             <div className="ml-3 flex-1 min-w-0">
                                 <h3 className="text-lg font-semibold text-gray-900 truncate">{candidate.fullName}</h3>
-                                <p className="text-xs text-gray-500 truncate">{candidate.designation}</p>
+                                <p className="text-xs text-gray-600 line-clamp-2">{candidate.designation}</p>
                             </div>
                             <StatusBadge status={status} size="sm" />
                         </div>
@@ -58,14 +59,14 @@ export default function CandidateCard({ candidates, submissions, baseUrl = '/pro
                         </div>
 
                         <div className="flex justify-between items-center pt-3 border-t border-gray-100">
-                            <div className="flex space-x-3">
+                            <div className="flex gap-1">
                                 {candidate.resumeUrl && (
-                                    <a href={candidate.resumeUrl} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary" aria-label="Resume">
+                                    <a href={candidate.resumeUrl} target="_blank" rel="noopener noreferrer" className="grid h-10 w-10 place-items-center rounded-full text-gray-500 hover:bg-gray-50 hover:text-primary" aria-label={`Resume of ${candidate.fullName} (opens in a new tab)`}>
                                         <FileText className="w-5 h-5" />
                                     </a>
                                 )}
                                 {candidate.linkedinUrl && (
-                                    <a href={candidate.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#0077b5]" aria-label="LinkedIn">
+                                    <a href={candidate.linkedinUrl} target="_blank" rel="noopener noreferrer" className="grid h-10 w-10 place-items-center rounded-full text-gray-500 hover:bg-gray-50 hover:text-[#0077b5]" aria-label={`LinkedIn profile of ${candidate.fullName} (opens in a new tab)`}>
                                         <Linkedin className="w-5 h-5" />
                                     </a>
                                 )}
@@ -76,12 +77,12 @@ export default function CandidateCard({ candidates, submissions, baseUrl = '/pro
                                     candidate_id: candidate.candidateId,
                                     page: baseUrl
                                 })}
-                                className="inline-flex items-center text-sm font-medium text-primary hover:text-blue-700"
+                                className="inline-flex min-h-10 items-center rounded text-sm font-semibold text-primary hover:text-primary-hover"
                             >
-                                View Profile <ArrowRight className="ml-1 w-4 h-4" />
+                                View Profile <ArrowRight className="ml-1 w-4 h-4" aria-hidden="true" /><span className="sr-only">: {candidate.fullName}</span>
                             </Link>
                         </div>
-                    </div>
+                    </article>
                 );
             })}
         </div>

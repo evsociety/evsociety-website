@@ -17,7 +17,7 @@ export const STATUS_LABELS: Record<Status, string> = {
 export const STATUS_COLORS: Record<Status, string> = {
     'not-started': 'bg-gray-100 text-gray-600',
     'draft': 'bg-gray-100 text-gray-700 dashed border border-gray-300',
-    'submitted': 'bg-blue-50 text-blue-700 border border-blue-100',
+    'submitted': 'bg-primary-50 text-primary border border-primary-100',
     'in-review': 'bg-yellow-50 text-yellow-700 border border-yellow-100',
     'waiting-for-input': 'bg-orange-50 text-orange-700 border border-orange-100',
     'need-more-details': 'bg-orange-100 text-orange-800 border border-orange-200',

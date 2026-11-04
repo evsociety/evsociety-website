@@ -25,7 +25,7 @@ export default function RoleSelector({ selectedRole, onRoleChange }: RoleSelecto
                         type="button"
                         onClick={() => onRoleChange(role.value)}
                         className={`p-4 rounded-xl text-left transition-all border-2 ${selectedRole === role.value
-                                ? 'border-primary bg-blue-50'
+                                ? 'border-primary bg-primary-50'
                                 : 'border-gray-200 bg-white hover:border-primary/30'
                             }`}
                     >

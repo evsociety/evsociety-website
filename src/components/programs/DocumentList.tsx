@@ -1,88 +1,83 @@
 import { Document } from '../../types/evto';
 import StatusBadge from './StatusBadge';
-import { FileText, Download, Upload, AlertCircle, Calendar } from 'lucide-react';
+import { FileText, Download, AlertCircle, Calendar } from 'lucide-react';
 
 interface DocumentListProps {
     documents: Document[];
 }
 
+function RequiredTag({ required }: { required: boolean }) {
+    return required ? (
+        <span className="rounded-full bg-red-50 px-2 py-0.5 text-xs font-semibold text-red-700">Required</span>
+    ) : (
+        <span className="text-xs text-gray-500">Optional</span>
+    );
+}
+
+function ReviewNote({ note }: { note: string }) {
+    return (
+        <div className="mt-2 flex w-fit items-start gap-1.5 rounded-lg border border-amber-200 bg-amber-50 p-2 text-xs text-amber-900">
+            <AlertCircle className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+            <span>{note}</span>
+        </div>
+    );
+}
+
+function FileLink({ doc, label }: { doc: Document; label: string }) {
+    return doc.fileUrl ? (
+        <a href={doc.fileUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-10 items-center gap-1 rounded font-semibold text-primary hover:text-primary-hover">
+            <Download className="h-4 w-4" aria-hidden="true" />
+            {label}
+            <span className="sr-only">: {doc.name} (opens in a new tab)</span>
+        </a>
+    ) : (
+        <span className="text-xs text-gray-500">No file</span>
+    );
+}
+
 export default function DocumentList({ documents }: DocumentListProps) {
     if (!documents || documents.length === 0) {
-        return <div className="text-gray-500 text-sm italic py-4">No documents required for this section.</div>;
+        return <div className="px-5 py-4 text-sm italic text-gray-500">No documents required for this section.</div>;
     }
 
     return (
         <div>
             {/* Desktop Table */}
-            <div className="hidden md:block overflow-x-auto">
+            <div className="hidden overflow-x-auto md:block">
                 <table className="min-w-full divide-y divide-gray-200">
-                    <thead className="bg-gray-50">
+                    <thead className="bg-surface">
                         <tr>
-                            <th scope="col" className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Document
-                            </th>
-                            <th scope="col" className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Required
-                            </th>
-                            <th scope="col" className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Status
-                            </th>
-                            <th scope="col" className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Submitted
-                            </th>
-                            <th scope="col" className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                File
-                            </th>
+                            {['Document', 'Required', 'Status', 'Submitted', 'File'].map((col) => (
+                                <th key={col} scope="col" className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
+                                    {col}
+                                </th>
+                            ))}
                         </tr>
                     </thead>
-                    <tbody className="bg-white divide-y divide-gray-200">
-                        {documents.map((doc) => (
-                            <tr key={doc.docId}>
-                                <td className="px-3 py-4">
-                                    <div className="flex items-start">
-                                        <FileText className="h-5 w-5 text-gray-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <tbody className="divide-y divide-gray-100 bg-white">
+                        {documents.map((doc, index) => (
+                            <tr key={`${doc.docId}-${index}`} className="align-top">
+                                <td className="px-5 py-4">
+                                    <div className="flex items-start gap-3">
+                                        <FileText className="mt-0.5 h-5 w-5 shrink-0 text-gray-400" aria-hidden="true" />
                                         <div className="flex flex-col">
-                                            <div className="text-sm font-medium text-gray-900">{doc.name}</div>
-                                            <div className="text-xs text-gray-500 mt-1">{doc.description}</div>
-                                            {doc.reviewNotes && (
-                                                <div className="mt-2 text-xs bg-yellow-50 text-yellow-800 p-2 rounded border border-yellow-100 flex items-start w-fit">
-                                                    <AlertCircle className="w-3 h-3 mr-1 mt-0.5 flex-shrink-0" />
-                                                    <span>{doc.reviewNotes}</span>
-                                                </div>
-                                            )}
+                                            <div className="text-sm font-semibold text-gray-900">{doc.name}</div>
+                                            <div className="mt-1 text-xs leading-relaxed text-gray-600">{doc.description}</div>
+                                            {doc.reviewNotes && <ReviewNote note={doc.reviewNotes} />}
                                         </div>
                                     </div>
                                 </td>
-                                <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    {doc.required ? (
-                                        <span className="text-red-600 text-xs font-semibold bg-red-50 px-2 py-0.5 rounded-full">Required</span>
-                                    ) : (
-                                        <span className="text-gray-400 text-xs">Optional</span>
-                                    )}
-                                </td>
-                                <td className="px-3 py-4 whitespace-nowrap">
-                                    <StatusBadge status={doc.status} size="sm" />
-                                </td>
-                                <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <td className="whitespace-nowrap px-5 py-4"><RequiredTag required={doc.required} /></td>
+                                <td className="whitespace-nowrap px-5 py-4"><StatusBadge status={doc.status} size="sm" /></td>
+                                <td className="whitespace-nowrap px-5 py-4 text-sm text-gray-600">
                                     {doc.submittedOn ? (
-                                        <div className="flex items-center">
-                                            <Calendar className="w-3 h-3 mr-1.5 text-gray-400" />
+                                        <span className="flex items-center gap-1.5">
+                                            <Calendar className="h-3.5 w-3.5 text-gray-400" aria-hidden="true" />
                                             {doc.submittedOn}
-                                        </div>
+                                        </span>
                                     ) : '-'}
                                 </td>
-                                <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    {doc.fileUrl ? (
-                                        <a href={doc.fileUrl} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-blue-700 flex items-center font-medium">
-                                            <Download className="w-4 h-4 mr-1" />
-                                            View
-                                        </a>
-                                    ) : (
-                                        <span className="text-gray-400 text-xs flex items-center">
-                                            No file
-                                        </span>
-                                    )}
-                                </td>
+                                <td className="whitespace-nowrap px-5 py-4 text-sm"><FileLink doc={doc} label="View" /></td>
                             </tr>
                         ))}
                     </tbody>
@@ -90,49 +85,35 @@ export default function DocumentList({ documents }: DocumentListProps) {
             </div>
 
             {/* Mobile Stacked Cards */}
-            <div className="md:hidden space-y-4">
-                {documents.map((doc) => (
-                    <div key={doc.docId} className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-                        <div className="flex justify-between items-start mb-2">
-                            <div className="flex-1">
-                                <h4 className="text-sm font-medium text-gray-900">{doc.name}</h4>
-                                <p className="text-xs text-gray-500 mt-1">{doc.description}</p>
+            <ul className="space-y-3 p-4 md:hidden">
+                {documents.map((doc, index) => (
+                    <li key={`${doc.docId}-${index}`} className="rounded-xl border border-gray-200 bg-white p-4">
+                        <div className="flex items-start justify-between gap-3">
+                            <div className="min-w-0 flex-1">
+                                <h4 className="text-sm font-semibold text-gray-900">{doc.name}</h4>
+                                <p className="mt-1 text-xs leading-relaxed text-gray-600">{doc.description}</p>
                             </div>
-                            {doc.required && (
-                                <span className="text-red-600 text-[10px] font-semibold bg-red-50 px-2 py-0.5 rounded-full ml-2">Required</span>
-                            )}
+                            <RequiredTag required={doc.required} />
                         </div>
 
-                        <div className="flex justify-between items-center mt-3 mb-3">
+                        <div className="mt-3 flex items-center justify-between gap-3">
                             <StatusBadge status={doc.status} size="sm" />
                             {doc.submittedOn && (
-                                <div className="text-xs text-gray-500 flex items-center">
-                                    <Calendar className="w-3 h-3 mr-1" />
+                                <span className="flex items-center gap-1 text-xs text-gray-600">
+                                    <Calendar className="h-3 w-3" aria-hidden="true" />
                                     {doc.submittedOn}
-                                </div>
+                                </span>
                             )}
                         </div>
 
-                        {doc.reviewNotes && (
-                            <div className="mb-3 text-xs bg-yellow-50 text-yellow-800 p-2 rounded border border-yellow-100 flex items-start">
-                                <AlertCircle className="w-3 h-3 mr-1 mt-0.5 flex-shrink-0" />
-                                <span>{doc.reviewNotes}</span>
-                            </div>
-                        )}
+                        {doc.reviewNotes && <ReviewNote note={doc.reviewNotes} />}
 
-                        <div className="pt-3 border-t border-gray-100 flex justify-end">
-                            {doc.fileUrl ? (
-                                <a href={doc.fileUrl} target="_blank" rel="noopener noreferrer" className="text-primary text-sm hover:text-blue-700 flex items-center font-medium">
-                                    <Download className="w-4 h-4 mr-1" />
-                                    View / Download
-                                </a>
-                            ) : (
-                                <span className="text-gray-400 text-xs text-center w-full">No file uploaded</span>
-                            )}
+                        <div className="mt-3 flex justify-end border-t border-gray-100 pt-3 text-sm">
+                            {doc.fileUrl ? <FileLink doc={doc} label="View / Download" /> : <span className="w-full text-center text-xs text-gray-500">No file uploaded</span>}
                         </div>
-                    </div>
+                    </li>
                 ))}
-            </div>
+            </ul>
         </div>
     );
 }

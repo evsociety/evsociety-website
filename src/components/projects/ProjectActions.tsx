@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { trackEvent } from '@/utils/analytics/ga4';
 
 interface ProjectActionsProps {
@@ -10,17 +10,17 @@ interface ProjectActionsProps {
 
 export default function ProjectActions({ projectId }: ProjectActionsProps) {
     return (
-        <div className="flex flex-col sm:flex-row gap-3">
+        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Link
                 href={`/projects/${projectId}`}
                 onClick={() => trackEvent('project_open', {
                     project_id: projectId,
                     page: '/projects'
                 })}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-primary text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-primary px-6 font-semibold text-white transition-colors hover:bg-primary-hover motion-reduce:transition-none"
             >
                 View Project
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
             <Link
                 href={`/projects/${projectId}/candidates`}
@@ -29,7 +29,7 @@ export default function ProjectActions({ projectId }: ProjectActionsProps) {
                     nav_location: 'project_card',
                     destination_path: `/projects/${projectId}/candidates`
                 })}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium"
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-gray-300 px-6 font-semibold text-gray-800 transition-colors hover:border-primary hover:text-primary motion-reduce:transition-none"
             >
                 Candidates
             </Link>
@@ -42,9 +42,11 @@ export default function ProjectActions({ projectId }: ProjectActionsProps) {
                     nav_location: 'project_card',
                     destination_path: 'https://autonomous.ev.engineer/workshop-gallery'
                 })}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-medium shadow-sm"
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-gray-300 px-6 font-semibold text-gray-800 transition-colors hover:border-primary hover:text-primary motion-reduce:transition-none"
             >
                 Gallery
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                <span className="sr-only"> (opens in a new tab)</span>
             </Link>
         </div>
     );

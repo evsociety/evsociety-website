@@ -48,10 +48,10 @@ export default function AdminRegistrationDetailModal({
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
             <div className="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col">
                 {/* Header */}
-                <div className="bg-gradient-to-br from-primary to-blue-700 text-white px-8 py-6 flex items-center justify-between">
+                <div className="bg-navy text-white px-8 py-6 flex items-center justify-between">
                     <div>
                         <h2 className="text-2xl font-bold mb-1 text-white">Registration Details</h2>
-                        <p className="text-blue-100 text-sm">ID: {registration.registrationId}</p>
+                        <p className="text-slate-300 text-sm">ID: {registration.registrationId}</p>
                     </div>
                     <button
                         onClick={onClose}

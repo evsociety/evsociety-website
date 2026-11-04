@@ -22,17 +22,17 @@ export default function ContactClient() {
                                 <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
                                     <div className="grid md:grid-cols-2 gap-6">
                                         <div className="space-y-2">
-                                            <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Full Name</label>
-                                            <input type="text" className="w-full px-5 py-3 rounded-xl border-none outline-none ring-1 ring-gray-200 focus:ring-2 focus:ring-primary transition-all" placeholder="John Doe" />
+                                            <label htmlFor="contact-field-1" className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Full Name</label>
+                                            <input id="contact-field-1" type="text" className="w-full px-5 py-3 rounded-xl border-none outline-none ring-1 ring-gray-200 focus:ring-2 focus:ring-primary transition-all" placeholder="John Doe" />
                                         </div>
                                         <div className="space-y-2">
-                                            <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Email Address</label>
-                                            <input type="email" className="w-full px-5 py-3 rounded-xl border-none outline-none ring-1 ring-gray-200 focus:ring-2 focus:ring-primary transition-all" placeholder="john@example.com" />
+                                            <label htmlFor="contact-field-2" className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Email Address</label>
+                                            <input id="contact-field-2" type="email" className="w-full px-5 py-3 rounded-xl border-none outline-none ring-1 ring-gray-200 focus:ring-2 focus:ring-primary transition-all" placeholder="john@example.com" />
                                         </div>
                                     </div>
                                     <div className="space-y-2">
-                                        <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Subject</label>
-                                        <select className="w-full px-5 py-3 rounded-xl border-none outline-none ring-1 ring-gray-200 focus:ring-2 focus:ring-primary transition-all bg-white">
+                                        <label htmlFor="contact-field-3" className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Subject</label>
+                                        <select id="contact-field-3" className="w-full px-5 py-3 rounded-xl border-none outline-none ring-1 ring-gray-200 focus:ring-2 focus:ring-primary transition-all bg-white">
                                             <option>General Inquiry</option>
                                             <option>Membership Question</option>
                                             <option>Partner Onboarding</option>
@@ -42,8 +42,8 @@ export default function ContactClient() {
                                         </select>
                                     </div>
                                     <div className="space-y-2">
-                                        <label className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Message</label>
-                                        <textarea rows={5} className="w-full px-5 py-3 rounded-xl border-none outline-none ring-1 ring-gray-200 focus:ring-2 focus:ring-primary transition-all" placeholder="How can we help you today?"></textarea>
+                                        <label htmlFor="contact-field-4" className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Message</label>
+                                        <textarea id="contact-field-4" rows={5} className="w-full px-5 py-3 rounded-xl border-none outline-none ring-1 ring-gray-200 focus:ring-2 focus:ring-primary transition-all" placeholder="How can we help you today?"></textarea>
                                     </div>
                                     <button type="submit" className="btn-primary w-full py-4 text-lg shadow-xl shadow-primary/20">
                                         Send Message
@@ -58,7 +58,7 @@ export default function ContactClient() {
                                 <h3 className="text-xl font-bold text-gray-900 mb-8">Get in Touch</h3>
                                 <div className="space-y-8">
                                     <div className="flex items-start gap-6 group">
-                                        <div className="w-12 h-12 bg-blue-50 text-primary rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-all">
+                                        <div className="w-12 h-12 bg-primary-50 text-primary rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-all">
                                             <Mail className="w-6 h-6" />
                                         </div>
                                         <div>
@@ -96,8 +96,8 @@ export default function ContactClient() {
                                 <h3 className="text-xl font-bold text-gray-900 mb-8">Follow Our Updates</h3>
                                 <div className="flex gap-4">
                                     {[
-                                        { icon: Linkedin, label: 'LinkedIn', color: 'hover:text-blue-700' },
-                                        { icon: Twitter, label: 'Twitter', color: 'hover:text-sky-500' },
+                                        { icon: Linkedin, label: 'LinkedIn', color: 'hover:text-primary-hover' },
+                                        { icon: Twitter, label: 'Twitter', color: 'hover:text-primary' },
                                         { icon: MessageSquare, label: 'Community', color: 'hover:text-green-500' }
                                     ].map(social => (
                                         <a key={social.label} href="#" className={`p-4 bg-surface rounded-2xl text-gray-500 ${social.color} transition-all border border-transparent hover:border-gray-200 hover:bg-white`}>

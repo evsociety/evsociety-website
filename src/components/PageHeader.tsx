@@ -1,17 +1,19 @@
 export default function PageHeader({ title, description, breadcrumb }: { title: string, description?: string, breadcrumb?: string }) {
     return (
-        <div className="bg-gradient-to-br from-primary to-blue-700 text-white py-16">
-            <div className="container-custom">
+        <div className="relative overflow-hidden bg-navy text-white">
+            {/* Thin teal rule along the top edge, echoing the identity bar */}
+            <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-primary-300/30" />
+            <div className="container-custom py-14 lg:py-20">
                 {breadcrumb && (
-                    <nav className="text-sm font-medium text-blue-100 mb-6 uppercase tracking-widest">
+                    <p className="mb-5 text-xs font-semibold uppercase tracking-[0.16em] text-primary-300">
                         {breadcrumb}
-                    </nav>
+                    </p>
                 )}
-                <h1 className="text-3xl md:text-4xl font-black mb-4 text-white tracking-tight">
+                <h1 className="max-w-4xl text-3xl font-extrabold leading-[1.15] tracking-tight text-white md:text-4xl lg:text-5xl">
                     {title}
                 </h1>
                 {description && (
-                    <p className="text-xl text-blue-50 leading-relaxed max-w-3xl">
+                    <p className="mt-5 max-w-3xl text-lg leading-relaxed text-slate-300 md:text-xl">
                         {description}
                     </p>
                 )}

@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
 
 import { Zap, Gavel, GraduationCap, Building2, Globe, Users2, ArrowRight } from 'lucide-react';
+import PageHeader from '@/components/PageHeader';
+import SectionHeading from '@/components/ui/SectionHeading';
 import ProgramCTALink from '@/components/programs/ProgramCTALink';
+import FeaturedSpaceProgram from '@/components/home/FeaturedSpaceProgram';
 
 export const metadata: Metadata = {
     title: 'Programs',
@@ -10,6 +13,43 @@ export const metadata: Metadata = {
         canonical: '/programs',
     },
 };
+
+// Flagship certifications, in the order they appear after the Space Innovation program
+const certifications = [
+    {
+        id: 'evto',
+        acronym: 'EVTO™',
+        name: 'Certified EV Technology Officer (EVTO™)',
+        description: 'The gold standard for engineering leaders, architects, and founders mastering the end-to-end EV ecosystem.',
+        href: '/programs/evto',
+        ctaId: 'view_evto_details',
+        highlights: [
+            'Architectural Design & Green Leadership',
+            'EV System Ownership & Safety',
+            'AI, Digital Twins & Connected Tech',
+            'Battery Chemistry & Management',
+            'CTO-Grade Systems Engineering',
+            'Business Strategy & Market Dominance'
+        ],
+    },
+    {
+        id: 'evlbs',
+        acronym: 'EVLBS™',
+        name: 'Certified EV Legal & Business Strategist (EVLBS™)',
+        description: 'The gold standard for legal, regulatory, and business leaders mastering the legal, contractual, and intellectual property frameworks of the EV ecosystem.',
+        // No page exists at this route yet (it returns 404); kept as published
+        href: '/programs/evlbs',
+        ctaId: 'view_evlbs_details',
+        highlights: [
+            'EV Regulatory Frameworks & Compliance',
+            'EV Contracts & Supplier Negotiations',
+            'Intellectual Property Strategy for EV',
+            'Insurance, Risk & Liability Management',
+            'EV Taxation & Global Trade',
+            'Dispute Resolution & Arbitration'
+        ],
+    },
+];
 
 const programs = [
     {
@@ -79,158 +119,99 @@ const programs = [
 
 export default function ProgramsPage() {
     return (
-        <div className="bg-gray-50 min-h-screen">
-            {/* Hero Section */}
-            <section className="bg-gradient-to-br from-primary to-blue-700 text-white py-16">
+        <div className="bg-white">
+            <PageHeader
+                title="EV Programs"
+                description="Comprehensive initiatives designed to enable every aspect of the electric mobility ecosystem."
+                breadcrumb="Programs"
+            />
+
+            {/* 1. Featured: Space Innovation program */}
+            <FeaturedSpaceProgram page="/programs" section="featured_program" className="bg-white pt-16 pb-10 lg:pt-20" />
+
+            {/* 2. Flagship certifications */}
+            <section className="bg-white pb-20 pt-10 lg:pb-24" aria-labelledby="certifications-heading">
                 <div className="container-custom">
-                    <div className="max-w-4xl">
-                        <nav className="text-sm font-medium text-blue-100 mb-6 uppercase tracking-widest">
-                            Programs
-                        </nav>
-                        <h1 className="text-3xl md:text-4xl font-black mb-4 text-white">
-                            EV Programs
-                        </h1>
-                        <p className="text-xl text-blue-50 leading-relaxed">
-                            Comprehensive initiatives designed to enable every aspect of the electric mobility ecosystem.
-                        </p>
+                    <SectionHeading id="certifications-heading" eyebrow="Executive Program" title="Flagship Certifications" />
+                    <div className="grid gap-6 lg:grid-cols-2">
+                        {certifications.map((cert) => (
+                            <article key={cert.id} id={cert.id} className="flex scroll-mt-28 flex-col overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm">
+                                <div className="bg-navy p-8 text-white sm:p-10">
+                                    <div className="flex flex-wrap gap-2">
+                                        <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-300 ring-1 ring-white/15">
+                                            Flagship Certification
+                                        </span>
+                                        <span className="rounded-full px-3 py-1 text-xs font-semibold text-slate-300 ring-1 ring-white/15">
+                                            Executive Program
+                                        </span>
+                                    </div>
+                                    <h3 className="mt-6 text-4xl font-black tracking-tight text-white">{cert.acronym}</h3>
+                                    <p className="mt-2 text-lg font-bold text-white">{cert.name}</p>
+                                    <p className="mt-4 leading-relaxed text-slate-300">{cert.description}</p>
+                                </div>
+                                <div className="flex flex-1 flex-col p-8 sm:p-10">
+                                    <h4 className="mb-5 text-sm font-semibold uppercase tracking-[0.14em] text-gray-500">Program Highlights</h4>
+                                    <ul className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
+                                        {cert.highlights.map((item) => (
+                                            <li key={item} className="flex items-start gap-3">
+                                                <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                                                <span className="text-sm text-gray-700">{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    <div className="mt-auto pt-8">
+                                        <ProgramCTALink
+                                            href={cert.href}
+                                            ctaId={cert.ctaId}
+                                            page="/programs"
+                                            section="featured_program"
+                                            className="btn-primary"
+                                        >
+                                            View Program Details
+                                            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                                        </ProgramCTALink>
+                                    </div>
+                                </div>
+                            </article>
+                        ))}
                     </div>
                 </div>
             </section>
 
-            {/* Featured Program */}
-            <section className="py-12 bg-gray-50 border-b border-gray-100">
+            {/* 3. Program areas */}
+            <section className="bg-surface py-20 lg:py-24" aria-labelledby="program-areas-heading">
                 <div className="container-custom">
-                    <div className="bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow relative">
-                        <div className="absolute top-0 right-0 bg-primary/10 text-primary px-4 py-1.5 rounded-bl-xl font-bold text-xs uppercase tracking-wider">
-                            Flagship Certification
-                        </div>
-                        <div className="grid md:grid-cols-12 gap-0">
-                            <div className="md:col-span-5 bg-gray-900 text-white p-10 flex flex-col justify-center">
-                                <div className="mb-6">
-                                    <span className="inline-block py-1 px-3 rounded-full bg-blue-900/50 text-blue-300 text-xs font-semibold border border-blue-800 mb-4">
-                                        Executive Program
-                                    </span>
-                                    <h2 className="text-3xl font-black mb-4">EVTO™</h2>
-                                    <p className="text-white font-bold text-lg">
-                                        Certified EV Technology Officer (EVTO™)
-                                    </p>
-                                </div>
-                                <p className="text-gray-400 mb-8 leading-relaxed">
-                                    The gold standard for engineering leaders, architects, and founders mastering the end-to-end EV ecosystem.
-                                </p>
-                                <ProgramCTALink
-                                    href="/programs/evto"
-                                    ctaId="view_evto_details"
-                                    page="/programs"
-                                    section="featured_program"
-                                    className="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-900 font-bold rounded-full hover:bg-gray-100 transition-colors w-fit"
-                                >
-                                    View Program Details
-                                </ProgramCTALink>
-                            </div>
-                            <div className="md:col-span-7 p-10 flex flex-col justify-center">
-                                <h3 className="text-xl font-bold text-gray-900 mb-4">Program Highlights</h3>
-                                <div className="grid sm:grid-cols-2 gap-x-8 gap-y-4">
-                                    {[
-                                        'Architectural Design & Green Leadership',
-                                        'EV System Ownership & Safety',
-                                        'AI, Digital Twins & Connected Tech',
-                                        'Battery Chemistry & Management',
-                                        'CTO-Grade Systems Engineering',
-                                        'Business Strategy & Market Dominance'
-                                    ].map((item, i) => (
-                                        <div key={i} className="flex items-start">
-                                            <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0 mr-3" />
-                                            <span className="text-gray-600 text-sm">{item}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div className="bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow relative mt-8">
-                        <div className="absolute top-0 right-0 bg-primary/10 text-primary px-4 py-1.5 rounded-bl-xl font-bold text-xs uppercase tracking-wider">
-                            Flagship Certification
-                        </div>
-                        <div className="grid md:grid-cols-12 gap-0">
-                            <div className="md:col-span-5 bg-gray-900 text-white p-10 flex flex-col justify-center">
-                                <div className="mb-6">
-                                    <span className="inline-block py-1 px-3 rounded-full bg-blue-900/50 text-blue-300 text-xs font-semibold border border-blue-800 mb-4">
-                                        Executive Program
-                                    </span>
-                                    <h2 className="text-3xl font-black mb-4">EVLBS™</h2>
-                                    <p className="text-white font-bold text-lg">
-                                        Certified EV Legal & Business Strategist (EVLBS™)
-                                    </p>
-                                </div>
-                                <p className="text-gray-400 mb-8 leading-relaxed">
-                                    The gold standard for legal, regulatory, and business leaders mastering the legal, contractual, and intellectual property frameworks of the EV ecosystem.
-                                </p>
-                                <ProgramCTALink
-                                    href="/programs/evlbs"
-                                    ctaId="view_evlbs_details"
-                                    page="/programs"
-                                    section="featured_program"
-                                    className="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-900 font-bold rounded-full hover:bg-gray-100 transition-colors w-fit"
-                                >
-                                    View Program Details
-                                </ProgramCTALink>
-                            </div>
-                            <div className="md:col-span-7 p-10 flex flex-col justify-center">
-                                <h3 className="text-xl font-bold text-gray-900 mb-4">Program Highlights</h3>
-                                <div className="grid sm:grid-cols-2 gap-x-8 gap-y-4">
-                                    {[
-                                        'EV Regulatory Frameworks & Compliance',
-                                        'EV Contracts & Supplier Negotiations',
-                                        'Intellectual Property Strategy for EV',
-                                        'Insurance, Risk & Liability Management',
-                                        'EV Taxation & Global Trade',
-                                        'Dispute Resolution & Arbitration'
-                                    ].map((item, i) => (
-                                        <div key={i} className="flex items-start">
-                                            <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0 mr-3" />
-                                            <span className="text-gray-600 text-sm">{item}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section className="py-24">
-                <div className="container-custom">
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <SectionHeading id="program-areas-heading" eyebrow="Programs" title="Program Areas" />
+                    <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                         {programs.map((program) => (
-                            <div key={program.title} className="bg-surface p-8 rounded-3xl border border-gray-200 hover:shadow-xl hover:shadow-primary/5 transition-all group flex flex-col">
-                                <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-primary mb-8 shadow-sm group-hover:bg-primary group-hover:text-white transition-colors border border-gray-100">
-                                    <program.icon className="w-7 h-7" />
-                                </div>
-                                <h3 className="text-2xl font-bold text-gray-900 mb-6">{program.title}</h3>
-                                <ul className="space-y-4 flex-1">
+                            <li key={program.title} className="flex flex-col rounded-2xl border border-gray-200 bg-white p-8">
+                                <span className="mb-7 grid h-12 w-12 place-items-center rounded-xl bg-primary-50 text-primary">
+                                    <program.icon className="h-6 w-6" aria-hidden="true" />
+                                </span>
+                                <h3 className="mb-5 text-2xl font-bold text-gray-900">{program.title}</h3>
+                                <ul className="flex-1 space-y-3">
                                     {program.bullets.map((bullet, i) => (
                                         <li key={i} className="flex items-start gap-3">
-                                            <div className="mt-2 w-1.5 h-1.5 rounded-full bg-primary/40 shrink-0" />
-                                            <span className="text-gray-600 leading-relaxed text-sm font-medium">{bullet}</span>
+                                            <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/50" />
+                                            <span className="text-sm font-medium leading-relaxed text-gray-600">{bullet}</span>
                                         </li>
                                     ))}
                                 </ul>
                                 {'cta' in program && program.cta && (
-                                    <div className="mt-8 pt-6 border-t border-gray-200">
+                                    <div className="mt-8 border-t border-gray-200 pt-6">
                                         <a
                                             href={program.cta.href}
-                                            className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white text-sm font-bold rounded-full hover:bg-blue-700 transition-colors"
+                                            className="inline-flex items-center gap-2 rounded font-semibold text-primary hover:text-primary-hover"
                                         >
                                             {program.cta.label}
-                                            <ArrowRight className="w-4 h-4" />
+                                            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                                            <span className="sr-only">: {program.title}</span>
                                         </a>
                                     </div>
                                 )}
-                            </div>
+                            </li>
                         ))}
-                    </div>
+                    </ul>
                 </div>
             </section>
         </div>

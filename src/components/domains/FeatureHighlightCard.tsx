@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 interface FeatureHighlightCardProps {
     pill: string;
@@ -21,45 +22,38 @@ export default function FeatureHighlightCard({
     ctaRoute
 }: FeatureHighlightCardProps) {
     return (
-        <section className="py-12 bg-gray-50 border-b border-gray-100">
+        <section className="bg-surface py-16 lg:py-20">
             <div className="container-custom">
-                <div className="bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-shadow relative">
-                    <div className="absolute top-0 right-0 bg-primary/10 text-primary px-4 py-1.5 rounded-bl-xl font-bold text-xs uppercase tracking-wider hidden">
-                        {pill}
+                <div className="grid overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm md:grid-cols-12">
+                    {/* Left Panel */}
+                    <div className="flex flex-col justify-center bg-navy p-8 text-white sm:p-10 md:col-span-5">
+                        <span className="mb-4 inline-block w-fit rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold text-primary-300">
+                            {pill}
+                        </span>
+                        <h2 className="mb-4 text-3xl font-extrabold leading-tight text-white">{title}</h2>
+                        <p className="mb-8 leading-relaxed text-slate-300">
+                            {description}
+                        </p>
+                        <Link
+                            href={ctaRoute}
+                            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-3 font-semibold text-gray-900 transition-colors hover:bg-primary-50 sm:w-fit motion-reduce:transition-none"
+                        >
+                            {ctaText}
+                            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                        </Link>
                     </div>
-                    <div className="grid md:grid-cols-12 gap-0">
-                        {/* Left Panel */}
-                        <div className="md:col-span-5 bg-gray-900 text-white p-10 flex flex-col justify-center">
-                            <div className="mb-6">
-                                <span className="inline-block py-1 px-3 rounded-full bg-blue-900/50 text-blue-300 text-xs font-semibold border border-blue-800 mb-4">
-                                    {pill}
-                                </span>
-                                <h2 className="text-3xl font-black mb-4 leading-tight text-white">{title}</h2>
-                                <p className="text-gray-400 leading-relaxed font-medium">
-                                    {description}
-                                </p>
-                            </div>
 
-                            <Link
-                                href={ctaRoute}
-                                className="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-900 font-bold rounded-full hover:bg-gray-100 transition-colors w-full sm:w-fit"
-                            >
-                                {ctaText}
-                            </Link>
-                        </div>
-
-                        {/* Right Panel */}
-                        <div className="md:col-span-7 p-10 flex flex-col justify-center bg-white">
-                            <h3 className="text-xl font-bold text-gray-900 mb-6">{highlightsHeading}</h3>
-                            <div className="grid sm:grid-cols-2 gap-x-8 gap-y-4">
-                                {highlights.map((item, i) => (
-                                    <div key={i} className="flex items-start">
-                                        <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0 mr-3" />
-                                        <span className="text-gray-600 text-sm font-medium">{item}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+                    {/* Right Panel */}
+                    <div className="flex flex-col justify-center p-8 sm:p-10 md:col-span-7">
+                        <h3 className="mb-6 text-xl font-bold text-gray-900">{highlightsHeading}</h3>
+                        <ul className="grid gap-x-8 gap-y-4 sm:grid-cols-2">
+                            {highlights.map((item, i) => (
+                                <li key={i} className="flex items-start gap-3 border-b border-gray-100 pb-4">
+                                    <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                                    <span className="font-medium text-gray-700">{item}</span>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
             </div>

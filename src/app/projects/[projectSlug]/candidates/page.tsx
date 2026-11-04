@@ -1,10 +1,21 @@
-import Link from 'next/link';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getAllCandidatesWithSubmissions, getProject } from '@/lib/projects-dal';
-import SectionHeader from '@/components/programs/SectionHeader';
 import CandidatesList from '@/components/programs/CandidatesList';
+import Breadcrumbs from '@/components/ui/Breadcrumbs';
 
 export const dynamic = 'force-dynamic';
+
+export async function generateMetadata({ params }: { params: Promise<{ projectSlug: string }> }): Promise<Metadata> {
+    const { projectSlug } = await params;
+    const project = await getProject(projectSlug);
+    if (!project) return { title: 'Project Not Found' };
+    return {
+        title: `${project.title} - Candidates`,
+        description: 'Student engineers working on this project',
+        alternates: { canonical: `/projects/${projectSlug}/candidates` },
+    };
+}
 
 export default async function ProjectCandidatesPage({ params }: { params: Promise<{ projectSlug: string }> }) {
     const { projectSlug } = await params;
@@ -17,42 +28,16 @@ export default async function ProjectCandidatesPage({ params }: { params: Promis
     const candidatesWithSubmissions = await getAllCandidatesWithSubmissions(projectSlug);
 
     return (
-        <div className="bg-gray-50 min-h-screen py-12">
-            <div className="container-custom">
-                {/* Breadcrumb */}
-                <nav className="flex mb-4 text-sm text-gray-500" aria-label="Breadcrumb">
-                    <ol className="inline-flex items-center space-x-1 md:space-x-3">
-                        <li className="inline-flex items-center">
-                            <Link href="/" className="hover:text-primary">Home</Link>
-                        </li>
-                        <li>
-                            <div className="flex items-center">
-                                <span className="mx-2 text-gray-400">/</span>
-                                <Link href="/projects" className="hover:text-primary">Projects</Link>
-                            </div>
-                        </li>
-                        <li>
-                            <div className="flex items-center">
-                                <span className="mx-2 text-gray-400">/</span>
-                                <Link href={`/projects/${projectSlug}`} className="hover:text-primary">
-                                    {project.title}
-                                </Link>
-                            </div>
-                        </li>
-                        <li aria-current="page">
-                            <div className="flex items-center">
-                                <span className="mx-2 text-gray-400">/</span>
-                                <span className="text-gray-900 font-medium">Candidates</span>
-                            </div>
-                        </li>
-                    </ol>
-                </nav>
+        <div className="min-h-screen bg-surface pb-20">
+            <section className="bg-navy text-white">
+                <div className="container-custom py-12 lg:py-16">
+                    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Projects', href: '/projects' }, { label: project.title, href: `/projects/${projectSlug}` }, { label: 'Candidates' }]} />
+                    <h1 className="mt-8 text-3xl font-extrabold tracking-tight text-white md:text-4xl">{`${project.title} - Candidates`}</h1>
+                    <p className="mt-3 text-lg text-slate-300">Student engineers working on this project</p>
+                </div>
+            </section>
 
-                <SectionHeader
-                    title={`${project.title} - Candidates`}
-                    subtitle="Student engineers working on this project"
-                />
-
+            <div className="container-custom pt-10">
                 <CandidatesList
                     candidates={candidatesWithSubmissions.map(c => c.candidate)}
                     submissions={candidatesWithSubmissions.map(c => c.submission).filter(Boolean) as any[]}

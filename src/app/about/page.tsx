@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import PageHeader from '@/components/PageHeader';
+import SectionHeading from '@/components/ui/SectionHeading';
+import { ORGANISATION_DESCRIPTOR, ORGANISATION_DOMAIN, ORGANISATION_NAME } from '@/config/site';
 import { Target, Users2, ShieldCheck, Globe } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -33,6 +36,12 @@ const values = [
     },
 ];
 
+const identity = [
+    { label: 'Name', value: ORGANISATION_NAME },
+    { label: 'Organisation', value: ORGANISATION_DESCRIPTOR },
+    { label: 'Website', value: ORGANISATION_DOMAIN },
+];
+
 export default function AboutPage() {
     return (
         <div className="bg-white">
@@ -42,12 +51,23 @@ export default function AboutPage() {
                 breadcrumb="About Us"
             />
 
-            <section className="py-24">
+            <section aria-label="Organisation identity" className="border-b border-gray-200 bg-surface">
+                <dl className="container-custom grid gap-6 py-8 md:grid-cols-[auto_1fr_auto] md:gap-12">
+                    {identity.map((item) => (
+                        <div key={item.label}>
+                            <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-500">{item.label}</dt>
+                            <dd className="mt-1.5 text-lg font-semibold text-gray-900">{item.value}</dd>
+                        </div>
+                    ))}
+                </dl>
+            </section>
+
+            <section className="py-20 lg:py-24">
                 <div className="container-custom">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
-                        <div>
-                            <h2 className="text-3xl font-bold text-gray-900 mb-8">What we do</h2>
-                            <ul className="space-y-4 mb-8">
+                    <div className="grid items-start gap-14 lg:grid-cols-12">
+                        <div className="lg:col-span-7">
+                            <h2 className="mb-8 text-3xl font-bold text-gray-900 sm:text-4xl">What we do</h2>
+                            <ul className="mb-10 divide-y divide-gray-100 border-y border-gray-100">
                                 {[
                                     'Build a trusted platform connecting industry, academia, startups, and practitioners',
                                     'Promote research, indigenization, and quality engineering',
@@ -55,64 +75,61 @@ export default function AboutPage() {
                                     'Enable workforce skill development and certifications',
                                     'Provide technical inputs for policies and public awareness'
                                 ].map((bullet, i) => (
-                                    <li key={i} className="flex items-start gap-3">
-                                        <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                                        <span className="text-gray-700 font-medium">{bullet}</span>
+                                    <li key={i} className="flex items-start gap-4 py-4">
+                                        <span aria-hidden="true" className="mt-0.5 text-sm font-semibold tabular-nums text-primary">0{i + 1}</span>
+                                        <span className="text-lg font-medium text-gray-800">{bullet}</span>
                                     </li>
                                 ))}
                             </ul>
-                            <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                            <p className="mb-10 text-lg leading-relaxed text-gray-600">
                                 As a professional technical body, <span className="text-primary font-bold">EV Society™</span> supports the advancement of EV engineering, safety, testing, standards, and ecosystem development—enabling reliable electric mobility across transport segments.
                             </p>
-                            <div className="grid grid-cols-2 gap-8">
-                                <div>
-                                    <h4 className="text-4xl font-extrabold text-primary mb-2">2024</h4>
-                                    <p className="text-sm font-bold text-gray-500 uppercase tracking-widest">Year of Inception</p>
+                            <dl className="grid grid-cols-2 gap-8 border-t border-gray-200 pt-8">
+                                <div className="flex flex-col-reverse">
+                                    <dt className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-gray-500">Year of Inception</dt>
+                                    <dd className="text-4xl font-bold tracking-tight text-gray-900">2024</dd>
                                 </div>
-                                <div>
-                                    <h4 className="text-4xl font-extrabold text-primary mb-2">12+</h4>
-                                    <p className="text-sm font-bold text-gray-500 uppercase tracking-widest">Focus Areas</p>
+                                <div className="flex flex-col-reverse">
+                                    <dt className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-gray-500">Focus Areas</dt>
+                                    <dd className="text-4xl font-bold tracking-tight text-gray-900">12+</dd>
                                 </div>
-                            </div>
+                            </dl>
                         </div>
-                        <div className="bg-surface rounded-3xl p-8 lg:p-12 relative">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl -mr-16 -mt-16"></div>
-                            <blockquote className="relative italic text-2xl text-gray-700 font-medium leading-relaxed">
+                        <figure className="rounded-3xl bg-navy p-8 text-white lg:col-span-5 lg:p-12">
+                            <blockquote className="text-2xl font-medium leading-relaxed text-white">
                                 &ldquo;Our goal is not just to replace internal combustion engines, but to build a mobility ecosystem that is fundamentally safer, cleaner, and smarter for everyone.&rdquo;
                             </blockquote>
-                            <p className="mt-8 font-bold text-gray-900">— Executive Board, EV Society™</p>
-                        </div>
+                            <figcaption className="mt-8 border-t border-white/10 pt-6 font-semibold text-primary-300">— Executive Board, EV Society™</figcaption>
+                        </figure>
                     </div>
                 </div>
             </section>
 
-            <section className="py-24 bg-surface">
+            <section className="bg-surface py-20 lg:py-24" aria-labelledby="values-heading">
                 <div className="container-custom">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl font-bold text-gray-900">Our Core Values</h2>
-                    </div>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <SectionHeading id="values-heading" title="Our Core Values" />
+                    <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                         {values.map(value => (
-                            <div key={value.title} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                                <div className="w-12 h-12 bg-primary/5 text-primary rounded-xl flex items-center justify-center mb-6">
-                                    <value.icon className="w-6 h-6" />
-                                </div>
-                                <h3 className="text-xl font-bold text-gray-900 mb-4">{value.title}</h3>
-                                <p className="text-gray-600 leading-relaxed">
+                            <li key={value.title} className="rounded-2xl border border-gray-200 bg-white p-7">
+                                <span className="mb-6 grid h-11 w-11 place-items-center rounded-xl bg-primary-50 text-primary">
+                                    <value.icon className="h-5 w-5" aria-hidden="true" />
+                                </span>
+                                <h3 className="mb-3 text-xl font-bold text-gray-900">{value.title}</h3>
+                                <p className="leading-relaxed text-gray-600">
                                     {value.description}
                                 </p>
-                            </div>
+                            </li>
                         ))}
-                    </div>
+                    </ul>
                 </div>
             </section>
 
-            <section className="py-24">
-                <div className="container-custom text-center">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-8">Ready to be part of the movement?</h2>
-                    <div className="flex justify-center gap-4">
-                        <a href="/join" className="btn-primary">Become a Member</a>
-                        <a href="/contact" className="btn-secondary">Contact Us</a>
+            <section className="py-20 lg:py-24">
+                <div className="container-custom flex flex-col items-center gap-8 text-center">
+                    <h2 className="text-3xl font-bold text-gray-900">Ready to be part of the movement?</h2>
+                    <div className="flex flex-col gap-3 sm:flex-row">
+                        <Link href="/join" className="btn-primary">Become a Member</Link>
+                        <Link href="/contact" className="btn-secondary">Contact Us</Link>
                     </div>
                 </div>
             </section>

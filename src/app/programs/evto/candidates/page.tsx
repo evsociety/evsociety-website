@@ -1,40 +1,33 @@
-import Link from 'next/link';
-import SectionHeader from '../../../../components/programs/SectionHeader';
+import type { Metadata } from 'next';
 import CandidatesList from '../../../../components/programs/CandidatesList';
+import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import { getAllCandidates, getAllSubmissions } from '../../../../lib/evto-dal';
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+    title: 'EVTO™ Candidates',
+    description: 'Engineering Leaders Enrolled in Certification',
+    alternates: {
+        canonical: '/programs/evto/candidates',
+    },
+};
 
 export default async function CandidatesPage() {
     const allCandidates = await getAllCandidates();
     const allSubmissions = await getAllSubmissions();
 
     return (
-        <div className="bg-gray-50 min-h-screen py-12">
-            <div className="container-custom">
-                <div className="mb-8">
-                    <nav className="flex mb-4 text-sm text-gray-500" aria-label="Breadcrumb">
-                        <ol className="inline-flex items-center space-x-1 md:space-x-3">
-                            <li className="inline-flex items-center">
-                                <Link href="/" className="hover:text-primary">Home</Link>
-                            </li>
-                            <li>
-                                <div className="flex items-center">
-                                    <span className="mx-2 text-gray-400">/</span>
-                                    <Link href="/programs/evto" className="hover:text-primary">EVTO™ Program</Link>
-                                </div>
-                            </li>
-                            <li aria-current="page">
-                                <div className="flex items-center">
-                                    <span className="mx-2 text-gray-400">/</span>
-                                    <span className="text-gray-900 font-medium">Candidates</span>
-                                </div>
-                            </li>
-                        </ol>
-                    </nav>
-                    <SectionHeader title="EVTO™ Candidates" subtitle="Engineering Leaders Enrolled in Certification" />
+        <div className="min-h-screen bg-surface pb-20">
+            <section className="bg-navy text-white">
+                <div className="container-custom py-12 lg:py-16">
+                    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'EVTO™ Program', href: '/programs/evto' }, { label: 'Candidates' }]} />
+                    <h1 className="mt-8 text-3xl font-extrabold tracking-tight text-white md:text-4xl">EVTO™ Candidates</h1>
+                    <p className="mt-3 text-lg text-slate-300">Engineering Leaders Enrolled in Certification</p>
                 </div>
+            </section>
 
+            <div className="container-custom pt-10">
                 <CandidatesList candidates={allCandidates} submissions={allSubmissions} />
             </div>
         </div>

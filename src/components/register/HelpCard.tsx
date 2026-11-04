@@ -8,7 +8,7 @@ export default function HelpCard() {
             <h3 className="text-xl font-bold text-gray-900 mb-6">Need Help?</h3>
             <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-blue-50 text-primary rounded-xl flex items-center justify-center shrink-0">
+                    <div className="w-10 h-10 bg-primary-50 text-primary rounded-xl flex items-center justify-center shrink-0">
                         <Mail className="w-5 h-5" />
                     </div>
                     <div>
@@ -17,7 +17,7 @@ export default function HelpCard() {
                         </div>
                         <a
                             href="mailto:evsociety.org@gmail.com"
-                            className="text-sm font-bold text-gray-900 hover:text-primary break-all"
+                            className="inline-block py-1 text-sm font-bold text-gray-900 hover:text-primary break-all"
                         >
                             evsociety.org@gmail.com
                         </a>
@@ -34,7 +34,7 @@ export default function HelpCard() {
                         </div>
                         <a
                             href="tel:+918904528357"
-                            className="text-sm font-bold text-gray-900 hover:text-primary"
+                            className="inline-block py-1 text-sm font-bold text-gray-900 hover:text-primary"
                         >
                             +91 8904528357
                         </a>

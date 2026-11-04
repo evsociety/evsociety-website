@@ -53,7 +53,7 @@ export default function RegistrationSummaryCard({ type, role, item, participatio
                     {/* Date/Time */}
                     {(item.date || item.startDate) && (
                         <div className="flex items-start gap-3">
-                            <div className="w-10 h-10 bg-blue-50 text-primary rounded-xl flex items-center justify-center shrink-0">
+                            <div className="w-10 h-10 bg-primary-50 text-primary rounded-xl flex items-center justify-center shrink-0">
                                 <Calendar className="w-5 h-5" />
                             </div>
                             <div>
@@ -115,7 +115,7 @@ export default function RegistrationSummaryCard({ type, role, item, participatio
                     {/* Poster Link */}
                     {item.posterLinkURL && (
                         <div className="flex items-start gap-3">
-                            <div className="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center shrink-0">
+                            <div className="w-10 h-10 bg-primary-50 text-primary rounded-xl flex items-center justify-center shrink-0">
                                 <MapPin className="w-5 h-5" /> {/* Use MapPin or an image icon as fallback */}
                             </div>
                             <div>
@@ -123,7 +123,7 @@ export default function RegistrationSummaryCard({ type, role, item, participatio
                                     POSTER
                                 </div>
                                 <div className="text-sm font-bold text-gray-900">
-                                    <a href={item.posterLinkURL} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline">
+                                    <a href={item.posterLinkURL} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-hover hover:underline">
                                         Webinar Poster
                                     </a>
                                 </div>

@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import PageHeader from '@/components/PageHeader';
+import SectionHeading from '@/components/ui/SectionHeading';
 import FeatureHighlightCard from '@/components/domains/FeatureHighlightCard';
+import ResearchDomainGrid from '@/components/domains/ResearchDomainGrid';
 import { SKILL_MATRIX_DATA } from '@/data/domains/skillMatrix';
 import {
     Zap,
     Battery,
     ShieldCheck,
-    Factory,
-    Globe,
     Cpu,
     Recycle,
     Settings,
@@ -67,21 +68,38 @@ export default function DomainsPage() {
                 breadcrumb="Focus Areas"
             />
 
-            <section className="py-24">
+            <section className="border-b border-gray-200 bg-surface py-16 lg:py-20" aria-labelledby="framework-heading">
                 <div className="container-custom">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <SectionHeading
+                        id="framework-heading"
+                        eyebrow="Organisational framework"
+                        title="Four research domains"
+                        intro="EV Society’s organisational descriptor groups its work into four umbrella domains. This is a high-level classification; the technical focus areas published below belong to the Electric Vehicles domain."
+                    />
+                    <ResearchDomainGrid tone="light" columns={4} analyticsSection="domains_framework" />
+                </div>
+            </section>
+
+            <section className="py-20 lg:py-24" aria-labelledby="focus-areas-heading">
+                <div className="container-custom">
+                    <SectionHeading
+                        id="focus-areas-heading"
+                        eyebrow="Electric Vehicles domain"
+                        title="Published focus areas"
+                    />
+                    <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
                         {focusAreas.map((area) => (
-                            <div key={area.name} className="group p-8 rounded-3xl bg-surface hover:bg-white border border-transparent hover:border-gray-200 transition-all duration-300 hover:shadow-xl flex flex-col items-center text-center">
-                                <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-primary mb-8 shadow-sm border border-gray-50 group-hover:bg-primary group-hover:text-white transition-colors">
-                                    <area.icon className="w-8 h-8" />
-                                </div>
-                                <h3 className="text-lg font-bold text-gray-900 mb-4 leading-snug">{area.name}</h3>
-                                <p className="text-gray-500 text-sm font-medium mt-auto transition-colors group-hover:text-primary">
+                            <li key={area.name} className="flex flex-col rounded-2xl border border-gray-200 bg-white p-7">
+                                <span className="mb-6 grid h-12 w-12 place-items-center rounded-xl bg-primary-50 text-primary">
+                                    <area.icon className="h-6 w-6" aria-hidden="true" />
+                                </span>
+                                <h3 className="mb-4 text-lg font-bold leading-snug text-gray-900">{area.name}</h3>
+                                <p className="mt-auto text-sm font-medium text-gray-500">
                                     Technical Working Group
                                 </p>
-                            </div>
+                            </li>
                         ))}
-                    </div>
+                    </ul>
                 </div>
             </section>
 
@@ -96,17 +114,17 @@ export default function DomainsPage() {
                 ctaRoute={SKILL_MATRIX_DATA.featuredBlock.ctaRoute}
             />
 
-            <section className="py-24 bg-surface">
+            <section className="py-20 lg:py-24">
                 <div className="container-custom text-center">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-8 max-w-2xl mx-auto leading-tight">
+                    <h2 className="mx-auto mb-6 max-w-2xl text-3xl font-bold leading-tight text-gray-900">
                         Advancing Electric Mobility—Innovation, Sustainability, Mobility.
                     </h2>
-                    <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">
+                    <p className="mx-auto mb-10 max-w-2xl text-xl leading-relaxed text-gray-600">
                         Join our focused technical committees and contribute to the evolution of zero-emission transportation.
                     </p>
-                    <a href="/join" className="btn-primary inline-flex">
+                    <Link href="/join" className="btn-primary">
                         Become a Contributor
-                    </a>
+                    </Link>
                 </div>
             </section>
         </div>

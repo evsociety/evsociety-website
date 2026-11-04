@@ -61,6 +61,7 @@ export default function ItemSelector({ type, items, selectedItem, onItemSelect }
                                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                                 <input
                                     type="text"
+                                    aria-label="Search"
                                     placeholder="Search..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
@@ -83,7 +84,7 @@ export default function ItemSelector({ type, items, selectedItem, onItemSelect }
                                             setIsOpen(false);
                                             setSearchQuery('');
                                         }}
-                                        className={`w-full p-4 text-left hover:bg-gray-50 transition-colors border-b border-gray-50 last:border-0 ${selectedItem?.id === item.id ? 'bg-blue-50' : ''
+                                        className={`w-full p-4 text-left hover:bg-gray-50 transition-colors border-b border-gray-50 last:border-0 ${selectedItem?.id === item.id ? 'bg-primary-50' : ''
                                             }`}
                                     >
                                         <div className="font-bold text-gray-900 mb-1">{item.title}</div>
@@ -98,7 +99,7 @@ export default function ItemSelector({ type, items, selectedItem, onItemSelect }
                                             {item.categoryTags.slice(0, 3).map((tag) => (
                                                 <span
                                                     key={tag}
-                                                    className="px-2 py-0.5 bg-gray-100 text-gray-600 rounded text-[10px] uppercase font-bold tracking-wider"
+                                                    className="px-2 py-0.5 bg-gray-100 text-gray-600 rounded text-xs uppercase font-bold tracking-wider"
                                                 >
                                                     {tag}
                                                 </span>

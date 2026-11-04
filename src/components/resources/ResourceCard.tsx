@@ -13,7 +13,7 @@ export const ResourceTypePill = ({ type }: { type: string }) => {
 
     switch (type.toLowerCase()) {
         case 'guideline':
-            colorClass = 'bg-blue-50 text-blue-700 border-blue-100';
+            colorClass = 'bg-primary-50 text-primary border-primary-100';
             break;
         case 'whitepaper':
             colorClass = 'bg-purple-50 text-purple-700 border-purple-100';
@@ -27,14 +27,14 @@ export const ResourceTypePill = ({ type }: { type: string }) => {
     }
 
     return (
-        <span className={`px-3 py-1 text-[11px] font-bold uppercase tracking-wider rounded-full border ${colorClass}`}>
+        <span className={`px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full border ${colorClass}`}>
             {type}
         </span>
     );
 };
 
 export const TagChip = ({ label }: { label: string }) => (
-    <span className="px-2.5 py-1 text-[11px] font-medium text-gray-500 bg-gray-50 border border-gray-100 rounded-[10px] whitespace-nowrap">
+    <span className="px-2.5 py-1 text-xs font-medium text-gray-500 bg-gray-50 border border-gray-100 rounded-[10px] whitespace-nowrap">
         #{label}
     </span>
 );
@@ -68,7 +68,7 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
                         <TagChip key={tag} label={tag} />
                     ))}
                     {resource.tags.length > 3 && (
-                        <span className="text-[11px] text-gray-400 font-medium py-1">+{resource.tags.length - 3}</span>
+                        <span className="text-xs text-gray-400 font-medium py-1">+{resource.tags.length - 3}</span>
                     )}
                 </div>
             </div>
