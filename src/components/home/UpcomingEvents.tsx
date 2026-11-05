@@ -2,9 +2,7 @@ import Link from 'next/link';
 import { Clock, MapPin, ArrowRight } from 'lucide-react';
 import { getEvents } from '@/utils/data';
 import SectionHeading from '@/components/ui/SectionHeading';
-
-// Today's date in India as YYYY-MM-DD, comparable with the event date strings
-const todayInIndia = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Kolkata' }).format(new Date());
+import { todayInIndia } from '@/lib/eventsJsonLd';
 
 const dateParts = (date: string) => {
     const d = new Date(`${date}T00:00:00`);

@@ -21,6 +21,7 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import InPageNav from '@/components/ui/InPageNav';
 import KeepCanSatTogether from '@/components/programs/KeepCanSatTogether';
 import { SPACE_PROGRAM } from '@/data/programs/space-innovation/program.config';
+import { OG_IMAGE } from '@/config/site';
 
 const PAGE_PATH = SPACE_PROGRAM.href;
 const pageDescription = `${SPACE_PROGRAM.initiativeTitle} (proposed): ${SPACE_PROGRAM.awardAmount} and ${SPACE_PROGRAM.supportDuration} of engineering development support for each of the CAN-7USAT and Model Rocketry winning teams of the ${SPACE_PROGRAM.competitionTitle}.`;
@@ -36,27 +37,11 @@ export const metadata: Metadata = {
         siteName: 'EV Society™',
         title: `${SPACE_PROGRAM.competitionTitle} | ${SPACE_PROGRAM.initiativeTitle}`,
         description: pageDescription,
-        url: `https://evsociety.org${PAGE_PATH}`,
-        images: [
-            {
-                url: '/brand/og-image.png',
-                width: 1200,
-                height: 630,
-                alt: 'EV Society™ - Innovation. Sustainability. Mobility.',
-            },
-        ],
+        url: PAGE_PATH,
+        images: [OG_IMAGE],
     },
 };
 
-const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://evsociety.org' },
-        { '@type': 'ListItem', position: 2, name: 'Programs', item: 'https://evsociety.org/programs' },
-        { '@type': 'ListItem', position: 3, name: SPACE_PROGRAM.competitionTitle, item: `https://evsociety.org${PAGE_PATH}` },
-    ],
-};
 
 const scopeIcons = [Atom, TriangleAlert, RadioTower, Gauge];
 
@@ -113,10 +98,6 @@ export default function SpaceInnovationProgramPage() {
 
     return (
         <div className="bg-white">
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-            />
 
             {/* 1. Hero */}
             <section className="bg-navy text-white" aria-labelledby="program-title">
@@ -164,6 +145,7 @@ export default function SpaceInnovationProgramPage() {
                                     alt={image.alt}
                                     fill
                                     priority
+                                    quality={90}
                                     sizes="(min-width: 1200px) 460px, (min-width: 1024px) 40vw, 100vw"
                                     className="object-cover object-[50%_72%] lg:object-[50%_65%]"
                                 />

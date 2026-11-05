@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
+import { SITE_URL } from '@/config/site';
 
 interface Crumb {
     label: string;
@@ -7,10 +8,22 @@ interface Crumb {
 }
 
 // The last crumb is the current page and is not linked
+// Also emits BreadcrumbList structured data for search engines
 export default function Breadcrumbs({ items, tone = 'dark' }: { items: Crumb[]; tone?: 'dark' | 'light' }) {
     const dark = tone === 'dark';
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: items.map((item, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            name: item.label,
+            ...(item.href ? { item: `${SITE_URL}${item.href === '/' ? '' : item.href}` } : {}),
+        })),
+    };
     return (
         <nav aria-label="Breadcrumb">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
             <ol className={`flex flex-wrap items-center gap-1.5 text-sm ${dark ? 'text-slate-300' : 'text-gray-500'}`}>
                 {items.map((item, index) => {
                     const isLast = index === items.length - 1;

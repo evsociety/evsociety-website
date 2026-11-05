@@ -90,7 +90,7 @@ export default function CandidateTable({ candidates, submissions, baseUrl = '/pr
                                     {submission?.lastUpdated || '-'}
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <Link href={`${baseUrl}/${candidate.candidateId}`} className="rounded font-semibold text-primary hover:text-primary-hover">
+                                    <Link href={`${baseUrl}/${candidate.candidateId}`} className="inline-flex min-h-8 items-center rounded font-semibold text-primary hover:text-primary-hover">
                                         View Profile<span className="sr-only">: {candidate.fullName}</span>
                                     </Link>
                                 </td>

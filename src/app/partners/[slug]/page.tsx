@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getPartnerBySlug, getPartners } from '@/utils/data';
-import { Globe, Linkedin, MapPin, ArrowLeft, ArrowRight, ShieldCheck, Mail } from 'lucide-react';
+import { Globe, Linkedin, MapPin, ArrowLeft, ArrowRight, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 import PartnerLogo from '@/components/partners/PartnerLogo';
+import Breadcrumbs from '@/components/ui/Breadcrumbs';
+import { OG_IMAGE } from '@/config/site';
 
 // Mandatory for static exports or to pre-render these routes
 export async function generateStaticParams() {
@@ -34,6 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             title: `${partner.name} | EV Society™`,
             description: partner.shortDescription,
             type: 'profile',
+            images: [OG_IMAGE],
         },
     };
 }
@@ -48,62 +51,67 @@ export default async function PartnerDetailPage({ params }: { params: Promise<{ 
 
     return (
         <div className="bg-white min-h-screen">
-            {/* Dynamic Header */}
-            <div className="bg-surface border-b border-gray-100 pt-32 pb-20 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -mr-48 -mt-48"></div>
-
-                <div className="container-custom relative z-10">
-                    <Link href="/partners" className="inline-flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-primary transition-colors mb-12 group">
-                        <div className="p-1.5 bg-white rounded-lg group-hover:bg-primary group-hover:text-white transition-colors">
-                            <ArrowLeft className="w-4 h-4" />
-                        </div>
+            {/* Header */}
+            <section className="relative bg-navy text-white">
+                <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-primary-300/30" />
+                <div className="container-custom py-12 lg:py-16">
+                    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Partners', href: '/partners' }, { label: partner.name }]} />
+                    <Link href="/partners" className="mt-6 inline-flex min-h-10 items-center gap-2 rounded-full border border-white/20 px-4 text-sm font-medium text-white transition-colors hover:bg-white/10 motion-reduce:transition-none">
+                        <ArrowLeft className="h-4 w-4" aria-hidden="true" />
                         Back to Directory
                     </Link>
 
-                    <div className="flex flex-col lg:flex-row items-start gap-12">
-                        <div className="relative h-32 w-32 shrink-0 overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-xl">
-                            <PartnerLogo src={partner.logo} name={partner.name} sizes="128px" className="p-4" textClassName="text-3xl" />
+                    <div className="mt-10 flex flex-col items-start gap-8 lg:flex-row lg:items-center lg:gap-12">
+                        <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-3xl bg-white ring-4 ring-white/10">
+                            <PartnerLogo src={partner.logo} name={partner.name} sizes="112px" className="p-4" textClassName="text-3xl" />
                         </div>
 
-                        <div className="flex-grow">
-                            <div className="flex flex-wrap items-center gap-4 mb-6">
-                                <span className={`badge ${partner.type === 'company' ? 'bg-navy' : partner.type === 'institute' ? 'bg-green-600' : 'bg-purple-600'} text-white px-4 py-1.5 rounded-xl uppercase tracking-widest text-xs`}>
+                        <div className="min-w-0 flex-grow">
+                            <ul className="mb-5 flex flex-wrap items-center gap-2" aria-label="Partner type and tags">
+                                <li className="rounded-full bg-primary-300 px-3 py-1 text-xs font-bold uppercase tracking-widest text-navy">
                                     {partner.type}
-                                </span>
+                                </li>
                                 {partner.tags.map(tag => (
-                                    <span key={tag} className="px-3 py-1 bg-white border border-gray-100 rounded-full text-xs font-medium text-gray-500">{tag}</span>
+                                    <li key={tag} className="rounded-full px-3 py-1 text-xs font-medium text-slate-200 ring-1 ring-white/20">{tag}</li>
                                 ))}
-                            </div>
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 tracking-tight">
+                            </ul>
+                            <h1 className="mb-5 text-3xl font-extrabold tracking-tight text-white md:text-4xl lg:text-5xl">
                                 {partner.name}
                             </h1>
-                            <div className="flex flex-wrap gap-8 text-gray-600 font-medium">
+                            <div className="flex flex-wrap gap-x-8 gap-y-3 text-slate-300">
                                 <div className="flex items-center gap-2">
-                                    <MapPin className="w-5 h-5 text-primary" />
-                                    <span>{partner.location.city}, {partner.location.state}, {partner.location.country}</span>
+                                    <MapPin className="h-5 w-5 text-primary-300" aria-hidden="true" />
+                                    <span>{[partner.location.city, partner.location.state, partner.location.country].filter(Boolean).join(", ")}</span>
                                 </div>
                                 {partner.links.website && (
-                                    <a href={partner.links.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
-                                        <Globe className="w-5 h-5 text-primary" />
+                                    <a href={partner.links.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded hover:text-white">
+                                        <Globe className="h-5 w-5 text-primary-300" aria-hidden="true" />
                                         <span>{new URL(partner.links.website).hostname}</span>
+                                        <span className="sr-only"> (opens in a new tab)</span>
                                     </a>
                                 )}
                             </div>
                         </div>
 
-                        <div className="flex flex-col gap-4 w-full lg:w-64">
-                            <a href={partner.links.website} target="_blank" rel="noopener noreferrer" className="btn-primary w-full shadow-lg shadow-primary/20">
-                                Visit Website
-                            </a>
-                            {partner.links.linkedin && (
-                                <a href={partner.links.linkedin} target="_blank" rel="noopener noreferrer" className="btn-secondary w-full gap-2 font-bold">
-                                    <Linkedin className="w-4 h-4" /> LinkedIn
-                                </a>
-                            )}
-                        </div>
+                        {(partner.links.website || partner.links.linkedin) && (
+                            <div className="flex w-full flex-col gap-3 lg:w-60">
+                                {partner.links.website && (
+                                    <a href={partner.links.website} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center rounded-full bg-primary px-6 font-semibold text-white transition-colors hover:bg-primary-hover motion-reduce:transition-none">
+                                        Visit Website
+                                        <span className="sr-only"> (opens in a new tab)</span>
+                                    </a>
+                                )}
+                                {partner.links.linkedin && (
+                                    <a href={partner.links.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/30 px-6 font-semibold text-white transition-colors hover:bg-white/10 motion-reduce:transition-none">
+                                        <Linkedin className="h-4 w-4" aria-hidden="true" /> LinkedIn
+                                        <span className="sr-only"> (opens in a new tab)</span>
+                                    </a>
+                                )}
+                            </div>
+                        )}
                     </div>
                 </div>
-            </div>
+            </section>
 
             {/* Content */}
             <section className="py-24">
@@ -140,24 +148,24 @@ export default async function PartnerDetailPage({ params }: { params: Promise<{ 
                                 <div className="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm">
                                     <h4 className="text-sm font-bold text-gray-900 uppercase tracking-widest mb-6">Quick Actions</h4>
                                     <div className="space-y-4">
-                                        <button className="w-full flex items-center justify-between p-4 bg-surface rounded-xl hover:bg-primary hover:text-white transition-all group font-bold text-gray-700">
+                                        {/* Previously buttons with no action; they now lead to the existing contact and membership pages */}
+                                        <Link href="/contact" className="w-full flex items-center justify-between p-4 bg-surface rounded-xl hover:bg-primary hover:text-white transition-all group font-bold text-gray-700">
                                             Request Intro
-                                            <ArrowRight className="w-4 h-4" />
-                                        </button>
-                                        <button className="w-full flex items-center justify-between p-4 bg-surface rounded-xl hover:bg-primary hover:text-white transition-all group font-bold text-gray-700">
+                                            <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                                        </Link>
+                                        <Link href="/join" className="w-full flex items-center justify-between p-4 bg-surface rounded-xl hover:bg-primary hover:text-white transition-all group font-bold text-gray-700">
                                             Join Working Group
-                                            <ArrowRight className="w-4 h-4" />
-                                        </button>
+                                            <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                                        </Link>
                                     </div>
                                 </div>
 
-                                <div className="bg-primary rounded-3xl p-8 text-white relative overflow-hidden">
-                                    <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
-                                    <h4 className="text-lg font-bold mb-4 relative z-10">Institutional Support</h4>
+                                <div className="bg-navy rounded-3xl p-8 text-white relative overflow-hidden">
+                                    <h4 className="text-lg font-bold mb-4 relative z-10 text-white">Institutional Support</h4>
                                     <p className="text-sm text-slate-300 mb-6 relative z-10 leading-relaxed">
                                         This partner is a verified member of the <span className="text-white font-extrabold">EV Society™</span> ecosystem.
                                     </p>
-                                    <Link href="/join" className="inline-block px-6 py-2 bg-white text-primary rounded-lg text-sm font-bold relative z-10">
+                                    <Link href="/join" className="inline-flex min-h-10 items-center px-6 bg-white text-navy rounded-full text-sm font-bold relative z-10 hover:bg-primary-50">
                                         Verify Partnership
                                     </Link>
                                 </div>

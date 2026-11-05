@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Hero from '@/components/home/Hero';
 import ImpactMetrics from '@/components/home/ImpactMetrics';
 import FeaturedSpaceProgram from '@/components/home/FeaturedSpaceProgram';
@@ -6,7 +7,28 @@ import FeaturedPrograms from '@/components/home/FeaturedPrograms';
 import UpcomingEvents from '@/components/home/UpcomingEvents';
 import PartnerSpotlight from '@/components/home/PartnerSpotlight';
 import Newsletter from '@/components/home/Newsletter';
-import PosterPopup from '@/components/home/PosterPopup';
+import { OG_IMAGE, ORGANISATION_DESCRIPTOR, SITE_DESCRIPTION } from '@/config/site';
+
+const homeTitle = `EV Society™ | ${ORGANISATION_DESCRIPTOR}`;
+
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+  openGraph: {
+    type: 'website',
+    siteName: 'EV Society™',
+    title: homeTitle,
+    description: SITE_DESCRIPTION,
+    url: '/',
+    images: [OG_IMAGE],
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: homeTitle,
+    description: SITE_DESCRIPTION,
+    images: [OG_IMAGE.url],
+  },
+};
 
 // Re-render hourly so "Upcoming Events" moves past events out without a redeploy
 export const revalidate = 3600;
@@ -38,7 +60,6 @@ export default function Home() {
       <UpcomingEvents />
       <PartnerSpotlight />
       <Newsletter />
-      <PosterPopup />
     </>
   );
 }

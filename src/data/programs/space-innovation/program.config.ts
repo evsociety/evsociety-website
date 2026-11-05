@@ -89,8 +89,10 @@ export const SPACE_PROGRAM = {
     // Supplied by EV Society; carries the @isro.dos credit
     image: {
         src: '/programs/space-innovation/model-rockets-launch-rails.jpg',
-        width: 800,
-        height: 1250,
+        // 2x resample of the supplied 800x1250 photo with light sharpening; a higher-resolution
+        // original would look sharper still
+        width: 1600,
+        height: 2500,
         alt: 'Four model rockets in orange, yellow and red stand ready on angled launch rails at an outdoor launch pad at dusk, with grassland and trees behind.',
         credit: 'Photo: @isro.dos',
     },

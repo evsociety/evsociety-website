@@ -180,11 +180,11 @@ export default function Navbar({ onSearchClick }: { onSearchClick: () => void })
                         <Link
                             href="/contact"
                             onClick={() => trackNav('Contact', 'utility_bar', '/contact')}
-                            className="rounded hover:text-white"
+                            className="inline-flex min-h-6 items-center rounded hover:text-white"
                         >
                             Contact
                         </Link>
-                        {loginControl('header', 'inline-flex items-center gap-1.5 rounded hover:text-white')}
+                        {loginControl('header', 'inline-flex min-h-6 items-center gap-1.5 rounded hover:text-white')}
                     </div>
                 </div>
             </div>
