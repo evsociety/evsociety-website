@@ -127,7 +127,7 @@ export default function ProgramsPage() {
             />
 
             {/* 1. Featured: Space Innovation program */}
-            <FeaturedSpaceProgram page="/programs" section="featured_program" className="bg-white pt-16 pb-10 lg:pt-20" />
+            <FeaturedSpaceProgram page="/programs" section="featured_program" className="bg-white pt-16 pb-10 lg:pt-20" priority />
 
             {/* 2. Flagship certifications */}
             <section className="bg-white pb-20 pt-10 lg:pb-24" aria-labelledby="certifications-heading">

@@ -14,8 +14,15 @@ export default function ClientLayout({
 
     return (
         <>
+            {/* First focusable element: lets keyboard users jump past the header */}
+            <a
+                href="#main-content"
+                className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-primary focus:px-5 focus:py-3 focus:font-semibold focus:text-white"
+            >
+                Skip to main content
+            </a>
             <Navbar onSearchClick={() => setIsSearchOpen(true)} />
-            <main className="min-h-screen">
+            <main id="main-content" tabIndex={-1} className="min-h-screen focus:outline-none">
                 {children}
             </main>
             <Footer />

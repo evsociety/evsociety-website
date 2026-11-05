@@ -1,8 +1,10 @@
 import { MetadataRoute } from 'next';
 import partnersData from '@/data/partners.json';
+import { getAllProjects, getProject } from '@/lib/projects-dal';
+import { SITE_URL } from '@/config/site';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://evsociety.org';
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+    const baseUrl = SITE_URL;
     const currentDate = new Date();
 
     // Static routes
@@ -41,6 +43,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
             url: `${baseUrl}/programs/inspace-model-rocketry-cansat`,
             lastModified: currentDate,
             changeFrequency: 'weekly',
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/programs/evto`,
+            lastModified: currentDate,
+            changeFrequency: 'weekly',
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/programs/evto/candidates`,
+            lastModified: currentDate,
+            changeFrequency: 'weekly',
+            priority: 0.7,
+        },
+        {
+            url: `${baseUrl}/domains/ev-industry-skill-matrix-india`,
+            lastModified: currentDate,
+            changeFrequency: 'monthly',
             priority: 0.8,
         },
         {
@@ -95,7 +115,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.6,
     }));
 
-    // Projects routes
+    // Project routes, built from the projects index; only projects with a page are listed
+    const projectsIndex = await getAllProjects();
+    const publishedProjects = (await Promise.all(
+        projectsIndex.projects.map(async (p) => ((await getProject(p.projectId)) ? p.projectId : null))
+    )).filter((id): id is string => id !== null);
+
     const projectRoutes: MetadataRoute.Sitemap = [
         {
             url: `${baseUrl}/projects`,
@@ -103,24 +128,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'weekly' as const,
             priority: 0.9,
         },
-        {
-            url: `${baseUrl}/projects/battery-safety-systems`,
-            lastModified: currentDate,
-            changeFrequency: 'weekly' as const,
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/projects/battery-safety-systems/candidates`,
-            lastModified: currentDate,
-            changeFrequency: 'weekly' as const,
-            priority: 0.7,
-        },
-        {
-            url: `${baseUrl}/projects/ai-powered-ev-battery-fire-prevention`,
-            lastModified: currentDate,
-            changeFrequency: 'weekly' as const,
-            priority: 0.8,
-        },
+        ...publishedProjects.flatMap((id) => [
+            {
+                url: `${baseUrl}/projects/${id}`,
+                lastModified: currentDate,
+                changeFrequency: 'weekly' as const,
+                priority: 0.8,
+            },
+            {
+                url: `${baseUrl}/projects/${id}/candidates`,
+                lastModified: currentDate,
+                changeFrequency: 'weekly' as const,
+                priority: 0.7,
+            },
+        ]),
     ];
 
     return [...staticRoutes, ...partnerRoutes, ...projectRoutes];

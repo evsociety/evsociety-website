@@ -1,26 +1,27 @@
 import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
 import { Inter } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import ClientLayout from "@/components/ClientLayout";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import RouteAnalytics from "@/components/analytics/RouteAnalytics";
+import { CONTACT, OG_IMAGE, ORGANISATION_DESCRIPTOR, SITE_DESCRIPTION, SITE_URL } from "@/config/site";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const siteDescription = "EV Society™ is a non-profit educational and technical community advancing electric mobility through research, safety, standards, skills, and collaboration across industry, academia, startups, and the public.";
+const siteDescription = SITE_DESCRIPTION;
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://evsociety.org"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "EV Society™ | Innovation. Sustainability. Mobility.",
+    default: `EV Society™ | ${ORGANISATION_DESCRIPTOR}`,
     template: "%s | EV Society™",
   },
   description: siteDescription,
   applicationName: "EV Society™",
   keywords: [
     "EV Society",
+    ORGANISATION_DESCRIPTOR,
     "electric mobility",
     "electric vehicles",
     "EV safety",
@@ -33,31 +34,21 @@ export const metadata: Metadata = {
     "power electronics",
     "EV policy",
     "sustainability",
+    "aerospace",
+    "space innovation",
+    "model rocketry",
   ],
-  alternates: {
-    canonical: "/",
-  },
+  // No site-wide canonical, og:title or og:url here: pages that inherited them were all
+  // pointing search engines and social previews at the home page. Each page sets its own.
   openGraph: {
     type: "website",
     siteName: "EV Society™",
-    title: "EV Society™ | Innovation. Sustainability. Mobility.",
-    description: siteDescription,
-    url: "https://evsociety.org",
-    images: [
-      {
-        url: "/brand/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "EV Society™ - Innovation. Sustainability. Mobility.",
-      },
-    ],
+    images: [OG_IMAGE],
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "EV Society™ | Innovation. Sustainability. Mobility.",
-    description: siteDescription,
-    images: ["/brand/og-image.png"],
+    images: [OG_IMAGE.url],
   },
   icons: {
     icon: [{ url: "/icon.png" }],
@@ -79,18 +70,56 @@ export const viewport: Viewport = {
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "EV Society™",
-  url: "https://evsociety.org",
-  logo: "https://evsociety.org/brand/evsociety-logo.png",
+  "@id": `${SITE_URL}/#organization`,
+  name: "EV Society",
+  alternateName: "EV Society™",
+  url: SITE_URL,
+  logo: {
+    "@type": "ImageObject",
+    url: `${SITE_URL}/brand/evsociety-logo.png`,
+    width: 512,
+    height: 512,
+  },
   description: siteDescription,
-  sameAs: [],
+  slogan: ORGANISATION_DESCRIPTOR,
+  knowsAbout: [
+    "Electric vehicles",
+    "Aerospace",
+    "Defence",
+    "Space",
+    "Battery safety",
+    "Charging infrastructure",
+    "EV standards and testing",
+    "EV skills and certification",
+  ],
+  email: CONTACT.email,
+  telephone: CONTACT.telephone,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: CONTACT.locality,
+    addressRegion: CONTACT.region,
+    postalCode: CONTACT.postalCode,
+    addressCountry: CONTACT.country,
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "general enquiries",
+    email: CONTACT.email,
+    telephone: CONTACT.telephone,
+    areaServed: "IN",
+    availableLanguage: ["English"],
+  },
 };
 
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
   name: "EV Society™",
-  url: "https://evsociety.org",
+  url: SITE_URL,
+  description: siteDescription,
+  inLanguage: "en",
+  publisher: { "@id": `${SITE_URL}/#organization` },
 };
 
 export default function RootLayout({
@@ -101,14 +130,15 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
-        <Script
+        {/* Plain script tags so the structured data is in the server HTML for crawlers that don't run JavaScript */}
+        <script
           id="organization-jsonld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationJsonLd),
           }}
         />
-        <Script
+        <script
           id="website-jsonld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{

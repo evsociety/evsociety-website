@@ -1,9 +1,13 @@
 'use client';
 
+import { useState } from 'react';
 import PageHeader from '@/components/PageHeader';
 import { Mail, Phone, MapPin, Linkedin, Twitter, MessageSquare } from 'lucide-react';
 
 export default function ContactClient() {
+    // The form has no backend yet; after a submit we say so instead of implying the message was sent
+    const [showNotice, setShowNotice] = useState(false);
+
     return (
         <div className="bg-white">
             <PageHeader
@@ -19,7 +23,7 @@ export default function ContactClient() {
                         <div className="lg:col-span-7">
                             <div className="bg-surface p-10 rounded-3xl border border-gray-100">
                                 <h2 className="text-2xl font-bold text-gray-900 mb-8">Send a Message</h2>
-                                <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                                <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); setShowNotice(true); }}>
                                     <div className="grid md:grid-cols-2 gap-6">
                                         <div className="space-y-2">
                                             <label htmlFor="contact-field-1" className="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Full Name</label>
@@ -48,6 +52,11 @@ export default function ContactClient() {
                                     <button type="submit" className="btn-primary w-full py-4 text-lg shadow-xl shadow-primary/20">
                                         Send Message
                                     </button>
+                                    <p role="status" aria-live="polite" className={showNotice ? 'rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900' : 'sr-only'}>
+                                        {showNotice && (
+                                            <>This form isn&apos;t connected to our inbox yet, so your message has not been sent. Please email <a href="mailto:evsociety.org@gmail.com" className="font-semibold underline">evsociety.org@gmail.com</a> instead.</>
+                                        )}
+                                    </p>
                                 </form>
                             </div>
                         </div>
@@ -100,8 +109,9 @@ export default function ContactClient() {
                                         { icon: Twitter, label: 'Twitter', color: 'hover:text-primary' },
                                         { icon: MessageSquare, label: 'Community', color: 'hover:text-green-500' }
                                     ].map(social => (
-                                        <a key={social.label} href="#" className={`p-4 bg-surface rounded-2xl text-gray-500 ${social.color} transition-all border border-transparent hover:border-gray-200 hover:bg-white`}>
-                                            <social.icon className="w-6 h-6" />
+                                        // Profile URLs have not been configured yet, so these still link to "#"
+                                        <a key={social.label} href="#" aria-label={social.label} className={`p-4 bg-surface rounded-2xl text-gray-500 ${social.color} transition-all border border-transparent hover:border-gray-200 hover:bg-white`}>
+                                            <social.icon className="w-6 h-6" aria-hidden="true" />
                                         </a>
                                     ))}
                                 </div>

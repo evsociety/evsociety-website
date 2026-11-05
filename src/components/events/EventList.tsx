@@ -10,6 +10,15 @@ interface EventListProps {
 
 type Tab = 'Upcoming' | 'Completed' | 'Speakers';
 
+// True when the event date is before today (local time), matching the tab filter below
+const isPastEvent = (date: string) => {
+    const eventDate = new Date(date);
+    eventDate.setHours(0, 0, 0, 0);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return eventDate < today;
+};
+
 function SpeakerGroupCard({ group }: { group: any }) {
     const [isExpanded, setIsExpanded] = useState(false);
 
@@ -334,6 +343,12 @@ export default function EventList({ events }: EventListProps) {
                                     {/* Content */}
                                     <div className="flex-grow w-full">
                                         <div className="flex flex-wrap gap-2 mb-4">
+                                            {/* Status from the event date, so past events are never labelled upcoming */}
+                                            {isPastEvent(event.date) ? (
+                                                <span className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider text-gray-700">Completed</span>
+                                            ) : (
+                                                <span className="rounded-full bg-primary-50 px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider text-primary">Upcoming</span>
+                                            )}
                                             {event.tags.map(tag => (
                                                 <span key={tag} className="px-2 py-0.5 bg-gray-50 text-gray-500 rounded text-xs uppercase font-bold tracking-wider">
                                                     {tag}
@@ -375,7 +390,7 @@ export default function EventList({ events }: EventListProps) {
                                             </div>
                                             <div className="flex items-center gap-2">
                                                 <Clock className="w-4 h-4 text-primary" />
-                                                <span>{event.time || '10:00 AM IST'}</span>
+                                                <span>{event.time || 'Time TBA'}</span>
                                             </div>
                                             {(event.posterLinkURL || event.youtubeURL || event.presentationURL) && (
                                                 <div className="flex items-center gap-4 border-l border-gray-200 pl-6 ml-2">

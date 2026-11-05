@@ -53,12 +53,12 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-[18px] md:text-[20px] font-bold text-gray-900 mb-2 md:mb-3 leading-tight line-clamp-2 min-h-[3rem] md:min-h-[3.5rem]">
+                <h3 className="text-[18px] md:text-[20px] font-bold text-gray-900 mb-2 md:mb-3 leading-tight">
                     {resource.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-[14px] md:text-[15px] text-gray-600 leading-[1.6] line-clamp-2 md:line-clamp-3 mb-4 md:mb-5 flex-grow">
+                <p className="text-[14px] md:text-[15px] text-gray-600 leading-[1.6] mb-4 md:mb-5 flex-grow">
                     {resource.summary}
                 </p>
 
@@ -83,15 +83,21 @@ export default function ResourceCard({ resource }: ResourceCardProps) {
                         className="flex-grow flex items-center justify-center gap-2 h-11 px-4 text-[14px] font-bold text-white bg-primary rounded-[12px] hover:bg-primary-dark transition-all shadow-sm hover:shadow-md active:scale-95"
                     >
                         Download PDF
-                        <Download className="w-4 h-4" />
+                        <Download className="w-4 h-4" aria-hidden="true" />
+                        <span className="sr-only">: {resource.title} (opens in a new tab)</span>
                     </a>
 
-                    <button
-                        className="flex items-center justify-center w-11 h-11 text-gray-400 bg-transparent rounded-[12px] hover:bg-gray-50 hover:text-primary transition-colors border border-transparent hover:border-gray-100"
+                    {/* Previously a button with no action; now opens the same document for preview */}
+                    <a
+                        href={resource.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Preview ${resource.title} (opens in a new tab)`}
                         title="Preview"
+                        className="flex items-center justify-center w-11 h-11 text-gray-500 bg-transparent rounded-[12px] hover:bg-gray-50 hover:text-primary transition-colors border border-transparent hover:border-gray-100"
                     >
-                        <ExternalLink className="w-5 h-5" />
-                    </button>
+                        <ExternalLink className="w-5 h-5" aria-hidden="true" />
+                    </a>
                 </div>
             </div>
         </div>

@@ -3,6 +3,10 @@ import PageHeader from '@/components/PageHeader';
 import { getEvents } from '@/utils/data';
 import EventList from '@/components/events/EventList';
 import WednesdayPlans from '@/components/WednesdayPlans';
+import { upcomingEventsJsonLd } from '@/lib/eventsJsonLd';
+
+// Re-render hourly so upcoming/completed status and structured data follow the calendar
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
     title: 'Events',
@@ -14,9 +18,13 @@ export const metadata: Metadata = {
 
 export default function EventsPage() {
     const events = getEvents();
+    const jsonLd = upcomingEventsJsonLd(events);
 
     return (
         <div className="bg-white">
+            {jsonLd['@graph'].length > 0 && (
+                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+            )}
             <PageHeader
                 title="Events & Conferences"
                 description="Participate in our roundtables, workshops, and national summits."

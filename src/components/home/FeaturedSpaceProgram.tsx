@@ -5,7 +5,8 @@ import KeepCanSatTogether from '@/components/programs/KeepCanSatTogether';
 import { SPACE_PROGRAM } from '@/data/programs/space-innovation/program.config';
 
 // Used on the home page and first on /programs; `page` and `section` label the CTA in analytics
-export default function FeaturedSpaceProgram({ page = '/', section = 'featured_space_program', className = 'bg-white py-20 lg:py-24' }: { page?: string; section?: string; className?: string }) {
+// `priority` loads the photo eagerly where the section is near the top of the page (it is the LCP image on /programs)
+export default function FeaturedSpaceProgram({ page = '/', section = 'featured_space_program', className = 'bg-white py-20 lg:py-24', priority = false }: { page?: string; section?: string; className?: string; priority?: boolean }) {
     const { image } = SPACE_PROGRAM;
     const headingId = `${section}-heading`;
 
@@ -61,6 +62,8 @@ export default function FeaturedSpaceProgram({ page = '/', section = 'featured_s
                             src={image.src}
                             alt={image.alt}
                             fill
+                            quality={90}
+                            priority={priority}
                             sizes="(min-width: 1200px) 480px, (min-width: 1024px) 40vw, 100vw"
                             className="object-cover object-[50%_72%] lg:object-[50%_60%]"
                         />

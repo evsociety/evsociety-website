@@ -1,6 +1,11 @@
 'use client';
 
+import { useState } from 'react';
+
 export default function Newsletter() {
+    // There is no mailing-list backend yet; after a submit we say so rather than confirm a subscription
+    const [showNotice, setShowNotice] = useState(false);
+
     return (
         <section className="bg-white pb-20 lg:pb-24" aria-labelledby="newsletter-heading">
             <div className="container-custom">
@@ -12,7 +17,7 @@ export default function Newsletter() {
                         </p>
                     </div>
                     <div className="lg:col-span-6">
-                        <form className="flex flex-col gap-3 sm:flex-row" onSubmit={(e) => e.preventDefault()}>
+                        <form className="flex flex-col gap-3 sm:flex-row" onSubmit={(e) => { e.preventDefault(); setShowNotice(true); }}>
                             <label htmlFor="newsletter-email" className="sr-only">Professional email address</label>
                             <input
                                 id="newsletter-email"
@@ -28,6 +33,11 @@ export default function Newsletter() {
                         </form>
                         <p className="mt-4 text-sm text-slate-300">
                             We respect your privacy. No spam, only industry insights.
+                        </p>
+                        <p role="status" aria-live="polite" className={showNotice ? 'mt-4 rounded-xl bg-white/10 p-4 text-sm text-white ring-1 ring-white/15' : 'sr-only'}>
+                            {showNotice && (
+                                <>Newsletter sign-up isn&apos;t available online yet, so you have not been subscribed. Email <a href="mailto:evsociety.org@gmail.com" className="font-semibold underline">evsociety.org@gmail.com</a> to be added.</>
+                            )}
                         </p>
                     </div>
                 </div>
