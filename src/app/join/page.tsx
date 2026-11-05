@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const tiers = [
     {
         name: 'Student Member',
-        price: '₹500 / year',
+        price: '₹10,000 / year',
         icon: GraduationCap,
         benefits: [
             'Access to technical webinars',
@@ -26,7 +26,7 @@ const tiers = [
     },
     {
         name: 'Professional Member',
-        price: '₹2,500 / year',
+        price: '₹20,000 / year',
         icon: User,
         popular: true,
         benefits: [
@@ -40,7 +40,7 @@ const tiers = [
     },
     {
         name: 'Research Member',
-        price: '₹3,000 / year',
+        price: '₹25,000 / year',
         icon: Users,
         benefits: [
             'Research grant eligibility',
