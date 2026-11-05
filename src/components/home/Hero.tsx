@@ -27,7 +27,7 @@ export default function Hero() {
                             Accelerating the future of electric vertical flight—safely and sustainably.
                         </p>
                         <p className="mt-4 text-lg leading-relaxed text-slate-300">
-                            <span className="font-extrabold text-white">EV Society™</span> is a non-profit educational and technical community advancing electric vertical (eVTOL) flight through research, safety, standards, skills, and collaboration across industry, academia, startups, and the public.
+                            <span className="font-extrabold text-white">EV Society™</span> is a not-for-profit technical educational and research organisation advancing electric vertical (eVTOL) flight through safety, standards, skills, and collaboration across industry, academia, startups, and the public.
                         </p>
                     </div>
 

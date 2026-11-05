@@ -134,7 +134,7 @@ export default function Footer() {
                 </div>
                 <div className="mt-6 space-y-2 text-center">
                     <p className="text-xs text-slate-400">
-                        EV Society™ is an independent, non-profit professional organisation and is not a government body.
+                        EV Society™ is an independent, not-for-profit professional organisation and is not a government body.
                     </p>
                     <p className="text-xs uppercase tracking-wider text-slate-400">
                         Logos are displayed for informational purposes only. No endorsement is implied.

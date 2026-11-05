@@ -128,10 +128,10 @@ export default function JoinPage() {
                         <div>
                             <h2 className="text-3xl font-bold text-gray-900 mb-6">Democratic Governance</h2>
                             <p className="text-gray-600 leading-relaxed mb-6">
-                                <span className="text-primary font-bold">EV Society™</span> is a non-profit society registered under the Societies Registration Act. Our governance is inclusive, transparent, and driven by technical excellence.
+                                <span className="text-primary font-bold">EV Society™</span> is a not-for-profit organisation. Our governance is inclusive, transparent, and driven by technical excellence.
                             </p>
                             <Link href="/about" className="text-primary font-bold inline-flex items-center group">
-                                Read our Bylaws <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                About EV Society™ <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </Link>
                         </div>
                         <div className="grid grid-cols-2 gap-4">
