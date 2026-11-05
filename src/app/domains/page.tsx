@@ -6,19 +6,19 @@ import FeatureHighlightCard from '@/components/domains/FeatureHighlightCard';
 import ResearchDomainGrid from '@/components/domains/ResearchDomainGrid';
 import { SKILL_MATRIX_DATA } from '@/data/domains/skillMatrix';
 import {
-    Zap,
     Battery,
     ShieldCheck,
     Cpu,
     Recycle,
     Settings,
-    Car,
+    Drone,
+    Plane,
     Users
 } from 'lucide-react';
 
 export const metadata: Metadata = {
     title: 'Focus Areas',
-    description: 'Explore the EV Society™ focus areas including electric vehicles, battery technology, charging infrastructure, EV safety, standards, and sustainability.',
+    description: 'Explore the EV Society™ research domains — Electric Vertical (eVTOL), Aerospace, Defence and Space — and its technical focus areas, including battery technology, charging infrastructure, safety, standards, and sustainability.',
     alternates: {
         canonical: '/domains',
     },
@@ -26,19 +26,19 @@ export const metadata: Metadata = {
 
 const focusAreas = [
     {
-        name: 'Electric two- and three-wheelers',
-        icon: Zap,
+        name: 'eVTOL aircraft design and integration',
+        icon: Drone,
     },
     {
-        name: 'Electric passenger and commercial vehicles',
-        icon: Car,
+        name: 'Air taxis, cargo and medical delivery',
+        icon: Plane,
     },
     {
-        name: 'Electric public transport and fleet electrification',
+        name: 'Urban and regional air mobility operations',
         icon: Users,
     },
     {
-        name: 'Charging infrastructure and smart grids',
+        name: 'Vertiports, charging infrastructure and smart grids',
         icon: Settings,
     },
     {
@@ -46,11 +46,11 @@ const focusAreas = [
         icon: Battery,
     },
     {
-        name: 'EV safety, standards, testing, and compliance',
+        name: 'eVTOL safety, standards, testing, and certification',
         icon: ShieldCheck,
     },
     {
-        name: 'Digitalization, AI, and data analytics for EVs',
+        name: 'Digitalization, AI, and data analytics for eVTOL',
         icon: Cpu,
     },
     {
@@ -64,7 +64,7 @@ export default function DomainsPage() {
         <div className="bg-white">
             <PageHeader
                 title="Our Focus Areas"
-                description="We prioritize sectors that drive the maximum impact for sustainable mobility transition."
+                description="We prioritize sectors that drive the maximum impact for safe, sustainable electric vertical flight."
                 breadcrumb="Focus Areas"
             />
 
@@ -74,7 +74,7 @@ export default function DomainsPage() {
                         id="framework-heading"
                         eyebrow="Organisational framework"
                         title="Four research domains"
-                        intro="EV Society’s organisational descriptor groups its work into four umbrella domains. This is a high-level classification; the technical focus areas published below belong to the Electric Vehicles domain."
+                        intro="EV Society’s work is organised into four umbrella research domains. This is a high-level classification; the technical focus areas published so far are listed below."
                     />
                     <ResearchDomainGrid tone="light" columns={4} analyticsSection="domains_framework" />
                 </div>
@@ -84,7 +84,7 @@ export default function DomainsPage() {
                 <div className="container-custom">
                     <SectionHeading
                         id="focus-areas-heading"
-                        eyebrow="Electric Vehicles domain"
+                        eyebrow="Technical focus areas"
                         title="Published focus areas"
                     />
                     <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -103,7 +103,7 @@ export default function DomainsPage() {
                 </div>
             </section>
 
-            {/* Featured Block: EV Industry Skill Matrix */}
+            {/* Featured Block: Electric Vertical Industry Skill Matrix */}
             <FeatureHighlightCard
                 pill={SKILL_MATRIX_DATA.featuredBlock.pill}
                 title={SKILL_MATRIX_DATA.featuredBlock.title}
@@ -117,10 +117,10 @@ export default function DomainsPage() {
             <section className="py-20 lg:py-24">
                 <div className="container-custom text-center">
                     <h2 className="mx-auto mb-6 max-w-2xl text-3xl font-bold leading-tight text-gray-900">
-                        Advancing Electric Mobility—Innovation, Sustainability, Mobility.
+                        Advancing Electric Vertical Flight—Innovation, Sustainability, Mobility.
                     </h2>
                     <p className="mx-auto mb-10 max-w-2xl text-xl leading-relaxed text-gray-600">
-                        Join our focused technical committees and contribute to the evolution of zero-emission transportation.
+                        Join our focused technical committees and contribute to the evolution of zero-emission air mobility.
                     </p>
                     <Link href="/join" className="btn-primary">
                         Become a Contributor

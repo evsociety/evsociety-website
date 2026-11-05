@@ -1,10 +1,10 @@
 {
-    "label": "EV Research Projects",
-    "description": "Real-world EV engineering projects built by student teams and professionals. Each project tracks milestones, artifacts, reviews, approvals, and certificate eligibility.",
+    "label": "Electric Vertical & Aerospace Research Projects",
+    "description": "Real-world Electric Vertical (eVTOL), aerospace and space engineering projects built by student teams and professionals. Each project tracks milestones, artifacts, reviews, approvals, and certificate eligibility.",
     "projects": [
         {
             "projectId": "battery-safety-systems",
-            "title": "EV BATTERY SAFETY SYSTEMS",
+            "title": "ELECTRIC VERTICAL BATTERY SAFETY SYSTEMS",
             "teamId": "EV.ENGINEER™",
             "typeLabel": "Student Project",
             "status": "in-review",
@@ -13,7 +13,7 @@
                 "Student Project",
                 "Internships"
             ],
-            "shortDescription": "A digital identity and lifecycle governance platform for EV battery packs enabling traceability, ownership verification, and regulatory compliance. The system creates an AI-ready data backbone for safety monitoring, lifecycle intelligence, and sustainable battery management..",
+            "shortDescription": "A digital identity and lifecycle governance platform for Electric Vertical (eVTOL) battery packs enabling traceability, ownership verification, and regulatory compliance. The system creates an AI-ready data backbone for safety monitoring, lifecycle intelligence, and sustainable battery management..",
             "highlights": [
                 "Unique Battery Identity with QR/NFC-based lifecycle tracking from manufacturing to recycling",
                 "Digital Battery Passport storing chemistry, configuration, warranty, and compliance records",
@@ -59,7 +59,7 @@
                 "Design and development of micro/nano satellite (CANSAT-class) systems with modular payload architecture",
                 "Lightweight model rocket design for safe payload deployment up to target altitude",
                 "Integrated avionics system including sensors, flight controller, and telemetry communication",
-                "Energy system design inspired by EV Battery Management Systems (BMS) for efficient power utilization",
+                "Energy system design inspired by Electric Vertical (eVTOL) Battery Management Systems (BMS) for efficient power utilization",
                 "Real-time data acquisition, transmission, and ground station monitoring",
                 "Safe deployment, parachute-based descent, and recovery system design",
                 "Simulation and validation using digital twin models for flight dynamics and mission performance",

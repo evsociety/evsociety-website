@@ -50,7 +50,7 @@
         },
         {
             "pillarId": "pillar1",
-            "title": "Pillar 1 – EV System Ownership",
+            "title": "Pillar 1 – Electric Vertical System Ownership",
             "percentage": 70,
             "documents": [
                 {
@@ -119,7 +119,7 @@
                 },
                 {
                     "docId": "p1-01",
-                    "name": "EV System Comparison Matrix",
+                    "name": "Electric Vertical System Comparison Matrix",
                     "description": "Artifact required by Pillar 1",
                     "required": true,
                     "status": "submitted",
@@ -135,7 +135,7 @@
                 },
                 {
                     "docId": "p1-02",
-                    "name": "EV Architecture Review Document",
+                    "name": "Electric Vertical Architecture Review Document",
                     "description": "Artifact required by Pillar 1",
                     "required": true,
                     "status": "completed",
@@ -190,7 +190,7 @@
                 },
                 {
                     "docId": "p2-02",
-                    "name": "AI System Architecture for EV Ops",
+                    "name": "AI System Architecture for Electric Vertical Ops",
                     "description": "High-level architecture + modules",
                     "required": true,
                     "status": "in-review",
@@ -224,7 +224,7 @@
         },
         {
             "pillarId": "pillar3",
-            "title": "Pillar 3 – EV Battery",
+            "title": "Pillar 3 – Electric Vertical Battery",
             "percentage": 52,
             "documents": [
                 {
@@ -364,7 +364,7 @@
             "documents": [
                 {
                     "docId": "p4-01",
-                    "name": "End-to-End EV Platform Architecture",
+                    "name": "End-to-End Electric Vertical Platform Architecture",
                     "description": "Modular platform architecture",
                     "required": true,
                     "status": "submitted",
@@ -483,7 +483,7 @@
                 },
                 {
                     "docId": "p5-01",
-                    "name": "EV Business Model Canvas",
+                    "name": "Electric Vertical Business Model Canvas",
                     "description": "BMC for EV platform",
                     "required": true,
                     "status": "submitted",

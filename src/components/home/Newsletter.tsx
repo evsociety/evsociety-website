@@ -13,7 +13,7 @@ export default function Newsletter() {
                     <div className="lg:col-span-6">
                         <h2 id="newsletter-heading" className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Stay ahead of the curve</h2>
                         <p className="mt-4 text-lg leading-relaxed text-slate-300">
-                            Get monthly updates on EV safety standards, research breakthroughs, and upcoming events delivered to your inbox.
+                            Get monthly updates on Electric Vertical (eVTOL) safety standards, research breakthroughs, and upcoming events delivered to your inbox.
                         </p>
                     </div>
                     <div className="lg:col-span-6">

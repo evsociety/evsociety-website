@@ -5,7 +5,7 @@ import { Target, ShieldCheck } from 'lucide-react';
 
 export const metadata: Metadata = {
     title: 'Vision, Mission & Objectives',
-    description: 'Discover the EV Society™ roadmap for a safe and sustainable transition to electric mobility through innovation, skill development, and policy engagement.',
+    description: 'Discover the EV Society™ roadmap for a safe and sustainable transition to electric vertical (eVTOL) flight and advanced air mobility through innovation, skill development, and policy engagement.',
     alternates: {
         canonical: '/vision-mission',
     },
@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 
 // Not currently rendered on the page; kept as authored
 const objectives = [
-    "Promote electric mobility awareness across all strata of society",
-    "Support EV research, design, testing, validation & safety protocols",
+    "Promote Electric Vertical (eVTOL) and advanced air mobility awareness across all strata of society",
+    "Support Electric Vertical research, design, testing, validation & safety protocols",
     "Act as a neutral knowledge-sharing platform for industry, academia, and startups",
     "Strengthen national standards, compliance, and certification readiness (AIS, ISO)",
     "Enable skills, training, and competency-based certifications for the workforce",
@@ -23,21 +23,21 @@ const objectives = [
 ];
 
 const mission = [
-    "Promote electric mobility adoption across all transport segments",
-    "Enable research, innovation, and indigenization of EV technologies",
-    "Build skilled manpower for the EV ecosystem",
+    "Promote safe adoption of electric vertical flight across air mobility segments",
+    "Enable research, innovation, and indigenization of Electric Vertical technologies",
+    "Build skilled manpower for the Electric Vertical ecosystem",
     "Act as a knowledge, policy, and industry interface",
     "Encourage sustainable and ethical mobility practices"
 ];
 
 const coreObjectives = [
-    "Promote electric mobility awareness",
-    "Support EV research, design, testing, and safety",
+    "Promote Electric Vertical (eVTOL) awareness",
+    "Support Electric Vertical research, design, testing, and safety",
     "Act as a knowledge-sharing platform (industry–academia–startups)",
     "Enable skill development and certification programs",
     "Provide technical inputs to policy and standards initiatives",
     "Support startups, MSMEs, and innovators",
-    "Drive a strong focus on standards, reliability, and quality—critical for EV safety"
+    "Drive a strong focus on standards, reliability, and quality—critical for eVTOL safety"
 ];
 
 export default function VisionMissionPage() {
@@ -45,7 +45,7 @@ export default function VisionMissionPage() {
         <div className="bg-white">
             <PageHeader
                 title="Vision, Mission & Objectives"
-                description="The EV Society™ roadmap for a safe and sustainable transition to electric mobility."
+                description="The EV Society™ roadmap for a safe and sustainable transition to electric vertical (eVTOL) flight."
                 breadcrumb="Vision & Mission"
             />
 
@@ -58,7 +58,7 @@ export default function VisionMissionPage() {
                             </span>
                             <h2 className="mb-6 text-xs font-semibold uppercase tracking-[0.16em] text-primary-300">Our Vision</h2>
                             <p className="text-2xl font-medium leading-relaxed text-white sm:text-[1.7rem]">
-                                “To accelerate the transition to sustainable, affordable, and indigenous electric mobility by fostering innovation, skill development, public awareness, and policy engagement—supporting energy security, environmental stewardship, and inclusive economic growth.”
+                                “To accelerate the transition to sustainable, affordable, and indigenous electric vertical (eVTOL) flight and advanced air mobility by fostering innovation, skill development, public awareness, and policy engagement—supporting energy security, environmental stewardship, and inclusive economic growth.”
                             </p>
                         </div>
 

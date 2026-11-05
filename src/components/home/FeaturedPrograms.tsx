@@ -5,19 +5,19 @@ import SectionHeading from '@/components/ui/SectionHeading';
 const programs = [
     {
         title: 'Battery Safety & Fire Prevention',
-        description: 'A dedicated initiative focusing on cell testing, thermal runaway mitigation, and standardizing pack design for safety.',
+        description: 'A dedicated initiative focusing on cell testing, thermal runaway mitigation, and standardizing flight-critical battery pack design for safety.',
         icon: Battery,
         link: '/programs',
     },
     {
         title: 'Charging & Interoperability',
-        description: 'Promoting universal charging standards (CCS2, CHAdeMO) and software interoperability for a seamless nationwide network.',
+        description: 'Promoting interoperable high-power charging standards and vertiport energy infrastructure for a seamless nationwide air mobility network.',
         icon: Zap,
         link: '/programs',
     },
     {
-        title: 'EV Software & Cybersecurity',
-        description: 'Setting benchmarks for OTA updates, data privacy, and embedded security in connected vehicle architectures.',
+        title: 'Electric Vertical Software & Cybersecurity',
+        description: 'Setting benchmarks for OTA updates, data privacy, and embedded security in connected eVTOL aircraft architectures.',
         icon: Shield,
         link: '/programs',
     },
@@ -29,9 +29,9 @@ export default function FeaturedPrograms() {
             <div className="container-custom">
                 <SectionHeading
                     id="featured-programs-heading"
-                    eyebrow="Electric mobility"
+                    eyebrow="Technology programs"
                     title="Featured Programs"
-                    intro="High-priority technical programs driving immediate impact in the automotive industry."
+                    intro="High-priority technical programs driving immediate impact in the Electric Vertical (eVTOL) and aerospace industry."
                     action={
                         <Link href="/programs" className="inline-flex items-center gap-2 rounded font-semibold text-primary hover:text-primary-hover">
                             View all programs <ArrowRight className="h-5 w-5" aria-hidden="true" />

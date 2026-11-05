@@ -8,8 +8,8 @@ import { getStatusLabel } from '@/utils/evtoStatus';
 
 export const metadata: Metadata = {
     // The title already names the site, so skip the layout's "| EV Society™" template
-    title: { absolute: 'EV Projects | EV Society™' },
-    description: 'Real-world EV engineering projects built by student teams and professionals. Each project tracks milestones, artifacts, reviews, approvals, and certificate eligibility.',
+    title: { absolute: 'Electric Vertical & Aerospace Projects | EV Society™' },
+    description: 'Real-world Electric Vertical (eVTOL), aerospace and space engineering projects built by student teams and professionals. Each project tracks milestones, artifacts, reviews, approvals, and certificate eligibility.',
     alternates: {
         canonical: '/projects',
     },

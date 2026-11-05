@@ -14,8 +14,8 @@ export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
     // The title already names the site, so skip the layout's "| EV Society™" template
-    title: { absolute: 'EVTO™ – Certified EV Technology Officer | EV Society™' },
-    description: 'Executive certification program for EV technology leadership across architecture, AI, battery, and business strategy.',
+    title: { absolute: 'EVTO™ – Certified Electric Vertical Technology Officer | EV Society™' },
+    description: 'Executive certification program for Electric Vertical (eVTOL) technology leadership across architecture, AI, battery, and business strategy.',
     alternates: {
         canonical: '/programs/evto',
     },
@@ -51,7 +51,7 @@ export default async function ProgramPage() {
                                 Flagship Certification
                             </span>
                             <h1 className="mt-6 text-3xl font-extrabold leading-tight tracking-tight text-white md:text-4xl lg:text-5xl">
-                                Certified EV Technology Officer <span className="font-normal">(EVTO™)</span>
+                                Certified Electric Vertical Technology Officer <span className="font-normal">(EVTO™)</span>
                             </h1>
                             <p className="mt-6 text-xl leading-relaxed text-slate-300 md:text-2xl">
                                 {C.tagline}

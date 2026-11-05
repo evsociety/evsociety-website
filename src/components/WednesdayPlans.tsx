@@ -7,7 +7,7 @@ import { EVEvent } from '@/types';
 
 // --- Types ---
 
-type MeetingType = 'EV Society Member’s Meeting' | 'Webinar' | 'Skills Development' | 'EV Workshop Demo' | 'Paper Presentation';
+type MeetingType = 'EV Society Member’s Meeting' | 'Webinar' | 'Skills Development' | 'Electric Vertical Workshop Demo' | 'Paper Presentation';
 type Status = 'Planned' | 'Confirmed' | 'Completed' | 'Cancelled';
 
 interface WednesdayPlan {
@@ -132,7 +132,7 @@ export default function WednesdayPlans({ events = [] }: WednesdayPlansProps) {
             // Infer meeting type from tags or title
             if (existingEvent.title.toLowerCase().includes('member')) meetingType = 'EV Society Member’s Meeting';
             else if (existingEvent.title.toLowerCase().includes('webinar') || existingEvent.tags.some(t => t.toLowerCase() === 'webinar')) meetingType = 'Webinar';
-            else if (existingEvent.title.toLowerCase().includes('workshop') || existingEvent.tags.some(t => t.toLowerCase() === 'workshop')) meetingType = 'EV Workshop Demo';
+            else if (existingEvent.title.toLowerCase().includes('workshop') || existingEvent.tags.some(t => t.toLowerCase() === 'workshop')) meetingType = 'Electric Vertical Workshop Demo';
 
             status = date < today ? 'Completed' : 'Confirmed';
         }

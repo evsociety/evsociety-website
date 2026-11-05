@@ -13,7 +13,7 @@ export async function getAllProjects(): Promise<ProjectsIndex> {
 
     if (!fs.existsSync(indexPath)) {
         return {
-            label: 'EV Projects',
+            label: 'Electric Vertical & Aerospace Projects',
             description: '',
             projects: []
         };
@@ -25,7 +25,7 @@ export async function getAllProjects(): Promise<ProjectsIndex> {
     } catch (e) {
         console.error('Error reading projects index', e);
         return {
-            label: 'EV Projects',
+            label: 'Electric Vertical & Aerospace Projects',
             description: '',
             projects: []
         };

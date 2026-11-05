@@ -27,7 +27,7 @@ export default function PoliciesPage() {
         },
         {
             title: 'Non-Endorsement Policy',
-            content: 'Logos displayed on this website are for informational purposes to showcase the EV ecosystem. No endorsement of specific commercial products or services is implied by EV Society™ unless explicitly stated in a technical certification report.'
+            content: 'Logos displayed on this website are for informational purposes to showcase the Electric Vertical (eVTOL), aerospace, defence and space ecosystem. No endorsement of specific commercial products or services is implied by EV Society™ unless explicitly stated in a technical certification report.'
         }
     ];
 

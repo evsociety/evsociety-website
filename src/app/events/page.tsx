@@ -10,7 +10,7 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
     title: 'Events',
-    description: 'Participate in EV Society™ roundtables, workshops, technical summits, and webinars focused on electric mobility innovation and safety.',
+    description: 'Participate in EV Society™ roundtables, workshops, technical summits, and webinars focused on Electric Vertical (eVTOL), aerospace and space innovation and safety.',
     alternates: {
         canonical: '/events',
     },

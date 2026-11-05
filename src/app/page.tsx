@@ -7,6 +7,7 @@ import FeaturedPrograms from '@/components/home/FeaturedPrograms';
 import UpcomingEvents from '@/components/home/UpcomingEvents';
 import PartnerSpotlight from '@/components/home/PartnerSpotlight';
 import Newsletter from '@/components/home/Newsletter';
+import ElectricVertical from '@/components/home/ElectricVertical';
 import { OG_IMAGE, ORGANISATION_DESCRIPTOR, SITE_DESCRIPTION } from '@/config/site';
 
 const homeTitle = `EV Society™ | ${ORGANISATION_DESCRIPTOR}`;
@@ -48,7 +49,7 @@ export default function Home() {
               <h2 id="why-heading" className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Why <span className="text-primary font-black">EV Society™</span> exists</h2>
             </div>
             <p className="text-xl leading-relaxed text-gray-600 lg:col-span-7">
-              Electric mobility spans engineering, safety, infrastructure, policy, and public adoption.{' '}
+              Electric vertical flight spans engineering, safety, infrastructure, policy, and public adoption.{' '}
               <span className="text-primary font-bold">EV Society™</span> brings these stakeholders together to accelerate innovation—while ensuring safety, quality, reliability, and responsible deployment.
             </p>
           </div>
@@ -59,6 +60,7 @@ export default function Home() {
       <FeaturedPrograms />
       <UpcomingEvents />
       <PartnerSpotlight />
+      <ElectricVertical />
       <Newsletter />
     </>
   );
