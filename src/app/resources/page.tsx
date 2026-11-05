@@ -5,7 +5,7 @@ import ResourcesClient from '@/components/resources/ResourcesClient';
 
 export const metadata: Metadata = {
     title: 'Resources',
-    description: 'Access EV Society™ safety playbooks, technical whitepapers, standardized guidelines, and knowledge resources for the electric mobility ecosystem.',
+    description: 'Access EV Society™ safety playbooks, technical whitepapers, standardized guidelines, and knowledge resources for the Electric Vertical (eVTOL), aerospace and space ecosystem.',
     alternates: {
         canonical: '/resources',
     },
@@ -18,7 +18,7 @@ export default function ResourcesPage() {
         <div className="bg-white">
             <PageHeader
                 title="Knowledge Repository"
-                description="Access safety playbooks, technical whitepapers, and standardized guidelines for the EV ecosystem."
+                description="Access safety playbooks, technical whitepapers, and standardized guidelines for the Electric Vertical (eVTOL) ecosystem."
                 breadcrumb="Resources"
             />
 

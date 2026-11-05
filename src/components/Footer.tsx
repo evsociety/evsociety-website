@@ -78,7 +78,7 @@ export default function Footer() {
                         </Link>
                         <p className="mb-4 text-sm font-semibold text-primary-300">{ORGANISATION_DESCRIPTOR}</p>
                         <p className="mb-6 max-w-sm text-sm leading-relaxed text-slate-300">
-                            Uniting government, industry, academia, and startups to advance EV safety, standards, research, and skills.
+                            Uniting government, industry, academia, and startups to advance Electric Vertical (eVTOL), aerospace, defence and space safety, standards, research, and skills.
                         </p>
                         <div className="flex gap-3">
                             {socialLinks.map(({ label, icon: Icon }) => (

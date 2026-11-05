@@ -8,7 +8,7 @@ import FeaturedSpaceProgram from '@/components/home/FeaturedSpaceProgram';
 
 export const metadata: Metadata = {
     title: 'Programs',
-    description: 'Comprehensive EV Society™ programs for technology innovation, policy advocacy, skill development, industry collaboration, sustainability, and public awareness.',
+    description: 'Comprehensive EV Society™ Electric Vertical (eVTOL), aerospace and space programs for technology innovation, policy advocacy, skill development, industry collaboration, sustainability, and public awareness.',
     alternates: {
         canonical: '/programs',
     },
@@ -19,13 +19,13 @@ const certifications = [
     {
         id: 'evto',
         acronym: 'EVTO™',
-        name: 'Certified EV Technology Officer (EVTO™)',
-        description: 'The gold standard for engineering leaders, architects, and founders mastering the end-to-end EV ecosystem.',
+        name: 'Certified Electric Vertical Technology Officer (EVTO™)',
+        description: 'The gold standard for engineering leaders, architects, and founders mastering the end-to-end Electric Vertical (eVTOL) ecosystem.',
         href: '/programs/evto',
         ctaId: 'view_evto_details',
         highlights: [
             'Architectural Design & Green Leadership',
-            'EV System Ownership & Safety',
+            'Electric Vertical System Ownership & Safety',
             'AI, Digital Twins & Connected Tech',
             'Battery Chemistry & Management',
             'CTO-Grade Systems Engineering',
@@ -35,17 +35,17 @@ const certifications = [
     {
         id: 'evlbs',
         acronym: 'EVLBS™',
-        name: 'Certified EV Legal & Business Strategist (EVLBS™)',
-        description: 'The gold standard for legal, regulatory, and business leaders mastering the legal, contractual, and intellectual property frameworks of the EV ecosystem.',
+        name: 'Certified Electric Vertical Legal & Business Strategist (EVLBS™)',
+        description: 'The gold standard for legal, regulatory, and business leaders mastering the legal, contractual, and intellectual property frameworks of the Electric Vertical (eVTOL) ecosystem.',
         // No page exists at this route yet (it returns 404); kept as published
         href: '/programs/evlbs',
         ctaId: 'view_evlbs_details',
         highlights: [
-            'EV Regulatory Frameworks & Compliance',
-            'EV Contracts & Supplier Negotiations',
-            'Intellectual Property Strategy for EV',
+            'Electric Vertical Regulatory Frameworks & Compliance',
+            'Electric Vertical Contracts & Supplier Negotiations',
+            'Intellectual Property Strategy for Electric Vertical',
             'Insurance, Risk & Liability Management',
-            'EV Taxation & Global Trade',
+            'Electric Vertical Taxation & Global Trade',
             'Dispute Resolution & Arbitration'
         ],
     },
@@ -57,7 +57,7 @@ const programs = [
         icon: Zap,
         bullets: [
             'Encourage R&D in batteries, power electronics, motors, charging systems, BMS, diagnostics, and recycling',
-            'Support startups, MSMEs, and academic institutions building EV technologies',
+            'Support startups, MSMEs, and academic institutions building Electric Vertical technologies',
             'Promote indigenous solutions aligned with manufacturing and innovation priorities'
         ],
         cta: { label: 'Learn More', href: '#' }
@@ -68,7 +68,7 @@ const programs = [
         bullets: [
             'Provide technical inputs to relevant bodies on policies, standards, and safety guidelines',
             'Advocate harmonized regulations, safety compliance, and enabling incentives',
-            'Support state and city-level electric mobility roadmaps and implementation playbooks'
+            'Support state and city-level advanced air mobility roadmaps and implementation playbooks'
         ],
         cta: { label: 'Learn More', href: '#' }
     },
@@ -76,12 +76,12 @@ const programs = [
         title: 'Skill Development & Education',
         icon: GraduationCap,
         bullets: [
-            'Develop EV-focused curricula, certifications, and practical training programs',
+            'Develop Electric Vertical-focused curricula, certifications, and practical training programs',
             'Conduct workshops, seminars, and faculty development programs',
-            'Enable reskilling and upskilling from conventional automotive roles to EV domains'
+            'Enable reskilling and upskilling from conventional aerospace and automotive roles to Electric Vertical (eVTOL) domains'
         ],
         cta: {
-            label: 'View EV Skill Matrix',
+            label: 'View Electric Vertical Skill Matrix',
             href: '/domains/ev-industry-skill-matrix-india'
         }
     },
@@ -91,7 +91,7 @@ const programs = [
         bullets: [
             'Connect industry, academia, government, startups, and users through working groups',
             'Facilitate collaborations, pilot projects, and technology transfer',
-            'Support ecosystem readiness across charging, diagnostics, service, and recycling supply chains'
+            'Support ecosystem readiness across vertiports, charging, diagnostics, maintenance, and recycling supply chains'
         ],
         cta: { label: 'Learn More', href: '#' }
     },
@@ -99,7 +99,7 @@ const programs = [
         title: 'Sustainability & Environment',
         icon: Globe,
         bullets: [
-            'Promote life-cycle thinking for EV adoption',
+            'Promote life-cycle thinking for Electric Vertical adoption',
             'Encourage battery reuse, second-life applications, and responsible recycling',
             'Support renewable energy integration with charging and smart energy management'
         ],
@@ -111,7 +111,7 @@ const programs = [
         bullets: [
             'Build awareness around benefits, myths, safety, and responsible usage',
             'Promote adoption across rural, semi-urban, and urban communities',
-            'Engage students and youth through EV clubs, challenges, and competitions'
+            'Engage students and youth through Electric Vertical, aerospace and space clubs, challenges, and competitions'
         ],
         cta: { label: 'Learn More', href: '#' }
     }
@@ -121,8 +121,8 @@ export default function ProgramsPage() {
     return (
         <div className="bg-white">
             <PageHeader
-                title="EV Programs"
-                description="Comprehensive initiatives designed to enable every aspect of the electric mobility ecosystem."
+                title="Electric Vertical & Aerospace Programs"
+                description="Comprehensive initiatives designed to enable every aspect of the Electric Vertical (eVTOL), aerospace and space ecosystem."
                 breadcrumb="Programs"
             />
 

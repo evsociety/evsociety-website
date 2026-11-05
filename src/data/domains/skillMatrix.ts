@@ -1,36 +1,36 @@
 export const SKILL_MATRIX_DATA = {
     featuredBlock: {
         pill: "India Skill Framework",
-        title: "EV Industry Skill Matrix (India)",
-        description: "A structured skills framework for India’s electric vehicle ecosystem, covering manufacturing, battery technology, charging, software, testing, service, operations, and future mobility domains.",
+        title: "Electric Vertical Industry Skill Matrix (India)",
+        description: "A structured skills framework for India’s Electric Vertical (eVTOL) ecosystem, covering manufacturing, battery technology, electric propulsion, charging, software, testing, maintenance, operations, and future air mobility domains.",
         highlights: [
-            "EV Manufacturing & Assembly",
+            "Electric Vertical Manufacturing & Assembly",
             "Battery Technology & BMS",
-            "Charging Infrastructure Skills",
-            "EV Software, AI & Digital Skills",
+            "Vertiport & Charging Infrastructure Skills",
+            "Electric Vertical Software, AI & Digital Skills",
             "Testing, Validation & Safety",
             "Technician Competency Framework"
         ],
-        ctaText: "View EV Skill Matrix",
+        ctaText: "View Electric Vertical Skill Matrix",
         ctaRoute: "/domains/ev-industry-skill-matrix-india"
     },
 
     pageMeta: {
-        title: "EV Industry Skill Matrix (India) | EV Society",
-        description: "Explore India’s EV Industry Skill Matrix covering manufacturing, battery systems, charging, software, diagnostics, technician competency pathways, and future EV skills.",
+        title: "Electric Vertical Industry Skill Matrix (India) | EV Society",
+        description: "Explore India’s Electric Vertical (eVTOL) Industry Skill Matrix covering manufacturing, battery systems, electric propulsion, charging, software, diagnostics, technician competency pathways, and future air mobility skills.",
     },
 
     hero: {
         pill: "National Skills Framework",
-        title: "EV Industry Skill Matrix (India)",
-        subtitle: "Structured capabilities across manufacturing, battery systems, charging infrastructure, software, diagnostics, safety, and future EV domains.",
+        title: "Electric Vertical Industry Skill Matrix (India)",
+        subtitle: "Structured capabilities across manufacturing, battery systems, electric propulsion, vertiport charging infrastructure, software, diagnostics, safety, and future Electric Vertical domains.",
         primaryCta: "Download Skill Matrix PDF",
         secondaryCta: "Explore Skill Areas"
     },
 
     whoIsThisFor: {
         heading: "Who is this for?",
-        description: "Designed for India’s EV ecosystem stakeholders across learning, service, manufacturing, engineering, operations, and policy.",
+        description: "Designed for India’s Electric Vertical (eVTOL) ecosystem stakeholders across learning, maintenance, manufacturing, engineering, operations, and policy.",
         audiences: [
             "Students",
             "Technicians",
@@ -40,7 +40,7 @@ export const SKILL_MATRIX_DATA = {
             "OEMs",
             "Institutions",
             "Policy Stakeholders",
-            "EV Professionals",
+            "Electric Vertical Professionals",
             "Researchers",
             "Technology Leaders"
 
@@ -50,12 +50,12 @@ export const SKILL_MATRIX_DATA = {
     overview: {
         heading: "Why this Skill Matrix?",
         paragraphs: [
-            "This framework maps critical skills required across India’s EV ecosystem.",
+            "This framework maps critical skills required across India’s Electric Vertical (eVTOL) ecosystem.",
             "It supports students, technicians, engineers, industry professionals, training institutions, OEMs, suppliers, and policy stakeholders.",
-            "It connects job roles, competency levels, technical domains, safety practices, and future-facing EV technologies."
+            "It connects job roles, competency levels, technical domains, safety practices, and future-facing Electric Vertical technologies."
         ],
         documentCard: {
-            title: "EV Industry Skill Matrix (India).pdf",
+            title: "Electric Vertical Industry Skill Matrix (India).pdf",
             statusLabel: "Updated: 2026",
             buttonText: "View / Download",
             downloadUrl: "#" // Placeholder for now
@@ -64,20 +64,20 @@ export const SKILL_MATRIX_DATA = {
 
     tables: [
         {
-            title: "SECTION A — EV Manufacturing Skill Matrix",
+            title: "SECTION A — Electric Vertical Manufacturing Skill Matrix",
             columns: ["Domain", "Technician Level", "Engineer Level", "Expert Level"],
             rows: [
                 {
-                    domain: "Mechanical Assembly",
-                    technician: "EV chassis assembly, torque tightening",
-                    engineer: "Vehicle packaging design",
-                    expert: "Advanced vehicle integration"
+                    domain: "Airframe & Structural Assembly",
+                    technician: "Airframe assembly, torque tightening",
+                    engineer: "Aircraft packaging design",
+                    expert: "Advanced aircraft integration"
                 },
                 {
-                    domain: "Electric Powertrain",
-                    technician: "Motor assembly",
+                    domain: "Electric Propulsion",
+                    technician: "Motor & propeller assembly",
                     engineer: "Motor design & simulation",
-                    expert: "Powertrain optimization"
+                    expert: "Propulsion optimization"
                 },
                 {
                     domain: "Battery Pack Assembly",
@@ -112,7 +112,7 @@ export const SKILL_MATRIX_DATA = {
             ]
         },
         {
-            title: "SECTION B — EV Battery Technology Skill Matrix",
+            title: "SECTION B — Electric Vertical Battery Technology Skill Matrix",
             columns: ["Domain", "Technician", "Engineer", "Research / Specialist"],
             rows: [
                 {
@@ -148,7 +148,7 @@ export const SKILL_MATRIX_DATA = {
             ]
         },
         {
-            title: "SECTION C — EV Power Electronics Skill Matrix",
+            title: "SECTION C — Electric Vertical Power Electronics Skill Matrix",
             columns: ["Domain", "Technician", "Engineer", "Specialist"],
             rows: [
                 {
@@ -178,11 +178,11 @@ export const SKILL_MATRIX_DATA = {
             ]
         },
         {
-            title: "SECTION D — EV Charging Infrastructure Skills",
+            title: "SECTION D — Electric Vertical Charging & Vertiport Infrastructure Skills",
             columns: ["Domain", "Technician", "Engineer", "Specialist"],
             rows: [
                 {
-                    domain: "Charging Station Installation",
+                    domain: "Vertiport Charger Installation",
                     technician: "Charger installation",
                     engineer: "Grid integration",
                     expert: "Smart charging architecture"
@@ -190,7 +190,7 @@ export const SKILL_MATRIX_DATA = {
                 {
                     domain: "Charging Standards",
                     technician: "Basic protocols",
-                    engineer: "CCS/CHAdeMO design",
+                    engineer: "Aircraft charging connector design",
                     expert: "Interoperability systems"
                 },
                 {
@@ -208,26 +208,26 @@ export const SKILL_MATRIX_DATA = {
             ]
         },
         {
-            title: "SECTION E — EV Software & Digital Skills",
+            title: "SECTION E — Electric Vertical Software & Digital Skills",
             columns: ["Domain", "Technician", "Engineer", "Expert"],
             rows: [
                 {
                     domain: "Embedded Systems",
-                    technician: "ECU programming",
+                    technician: "Flight-control unit programming",
                     engineer: "Embedded software development",
-                    expert: "Autonomous vehicle software"
+                    expert: "Autonomous flight software"
                 },
                 {
                     domain: "Data Analytics",
-                    technician: "Data logging",
-                    engineer: "Vehicle data analysis",
+                    technician: "Flight data logging",
+                    engineer: "Flight data analysis",
                     expert: "AI-based diagnostics"
                 },
                 {
-                    domain: "Vehicle Connectivity",
+                    domain: "Aircraft Connectivity",
                     technician: "Telemetry installation",
                     engineer: "IoT integration",
-                    expert: "Cloud mobility platforms"
+                    expert: "Cloud air mobility platforms"
                 },
                 {
                     domain: "Simulation",
@@ -238,13 +238,13 @@ export const SKILL_MATRIX_DATA = {
             ]
         },
         {
-            title: "SECTION F — EV Testing & Validation Skills",
+            title: "SECTION F — Electric Vertical Testing & Validation Skills",
             columns: ["Domain", "Technician", "Engineer", "Expert"],
             rows: [
                 {
-                    domain: "Vehicle Testing",
+                    domain: "Flight Testing",
                     technician: "Basic test setup",
-                    engineer: "Vehicle performance testing",
+                    engineer: "Aircraft performance testing",
                     expert: "Certification engineering"
                 },
                 {
@@ -263,16 +263,16 @@ export const SKILL_MATRIX_DATA = {
                     domain: "Safety Testing",
                     technician: "HV safety inspection",
                     engineer: "Functional safety",
-                    expert: "ISO 26262 compliance"
+                    expert: "DO-178C / DO-254 compliance"
                 }
             ]
         },
         {
-            title: "SECTION G — EV Service & Maintenance Skills",
+            title: "SECTION G — Electric Vertical Maintenance & Repair Skills",
             columns: ["Domain", "Technician", "Engineer", "Specialist"],
             rows: [
                 {
-                    domain: "EV Diagnostics",
+                    domain: "Electric Vertical Diagnostics",
                     technician: "Fault detection",
                     engineer: "Advanced diagnostics",
                     expert: "Predictive maintenance"
@@ -298,11 +298,11 @@ export const SKILL_MATRIX_DATA = {
             ]
         },
         {
-            title: "SECTION H — EV Supply Chain & Operations Skills",
+            title: "SECTION H — Electric Vertical Supply Chain & Operations Skills",
             columns: ["Domain", "Technician", "Manager/Engineer", "Expert"],
             rows: [
                 {
-                    domain: "EV Component Sourcing",
+                    domain: "Electric Vertical Component Sourcing",
                     technician: "Inventory handling",
                     engineer: "Strategic sourcing",
                     expert: "Global supply chain"
@@ -311,7 +311,7 @@ export const SKILL_MATRIX_DATA = {
                     domain: "Logistics",
                     technician: "Material handling",
                     engineer: "Distribution planning",
-                    expert: "EV logistics optimization"
+                    expert: "Aerospace logistics optimization"
                 },
                 {
                     domain: "Production Planning",
@@ -323,7 +323,7 @@ export const SKILL_MATRIX_DATA = {
                     domain: "Quality Systems",
                     technician: "Inspection",
                     engineer: "Process quality",
-                    expert: "Six Sigma EV manufacturing"
+                    expert: "Six Sigma aerospace manufacturing"
                 }
             ]
         }
@@ -331,13 +331,13 @@ export const SKILL_MATRIX_DATA = {
 
     simpleLists: [
         {
-            title: "SECTION I — Emerging Skills for Future EV Industry",
+            title: "SECTION I — Emerging Skills for Future Electric Vertical Industry",
             items: [
                 { name: "Solid State Batteries", desc: "Advanced battery chemistry" },
-                { name: "Autonomous EVs", desc: "AI, computer vision" },
-                { name: "Smart Charging", desc: "V2G (Vehicle-to-grid)" },
-                { name: "EV Recycling", desc: "Battery recycling technology" },
-                { name: "Hydrogen Mobility", desc: "Fuel cell engineering" }
+                { name: "Autonomous Flight", desc: "AI, computer vision, detect-and-avoid" },
+                { name: "Smart Charging", desc: "Vertiport energy & grid management" },
+                { name: "Battery Recycling", desc: "Second-life & recycling technology" },
+                { name: "Hydrogen-Electric Propulsion", desc: "Fuel cell engineering" }
             ]
         },
         {
@@ -351,47 +351,47 @@ export const SKILL_MATRIX_DATA = {
             ]
         },
         {
-            title: "SECTION K — Typical EV Job Roles (India)",
+            title: "SECTION K — Typical Electric Vertical Job Roles (India)",
             items: [
-                { name: "EV Design Engineer", desc: "Powertrain, CAD, battery systems" },
+                { name: "Electric Vertical Design Engineer", desc: "Propulsion, CAD, battery systems" },
                 { name: "Battery Engineer", desc: "Electrochemistry, BMS" },
-                { name: "EV Service Technician", desc: "Diagnostics, motor repair" },
-                { name: "Charging Infrastructure Engineer", desc: "Grid integration" },
-                { name: "Embedded Systems Engineer", desc: "ECU programming" },
-                { name: "EV Manufacturing Engineer", desc: "Production automation" }
+                { name: "Electric Vertical Service Technician", desc: "Diagnostics, motor repair" },
+                { name: "Vertiport & Charging Infrastructure Engineer", desc: "Grid integration" },
+                { name: "Embedded Systems Engineer", desc: "Flight-control software" },
+                { name: "Electric Vertical Manufacturing Engineer", desc: "Production automation" }
             ]
         },
         {
             title: "SECTION L — Skill Levels Framework",
             items: [
-                { name: "Level 1", desc: "Basic EV technician (ITI / Diploma)" },
-                { name: "Level 2", desc: "EV engineer (B.Tech / Diploma)" },
+                { name: "Level 1", desc: "Basic Electric Vertical technician (ITI / Diploma)" },
+                { name: "Level 2", desc: "Electric Vertical engineer (B.Tech / Diploma)" },
                 { name: "Level 3", desc: "Senior engineer / specialist" },
-                { name: "Level 4", desc: "EV research scientist" }
+                { name: "Level 4", desc: "Electric Vertical research scientist" }
             ]
         }
     ],
 
     technicianFramework: {
-        title: "SECTION M — EV Technician Competency Framework (NSQF Aligned)",
+        title: "SECTION M — Electric Vertical Technician Competency Framework (NSQF Aligned)",
         overviewTable: {
             title: "Subsection M1 — Framework Overview",
             columns: ["NSQF Level", "Job Role", "Qualification", "Experience"],
             rows: [
-                { level: "Level 3", role: "EV Helper / Assistant Technician", qualification: "ITI / Short-term training", experience: "Entry level" },
-                { level: "Level 4", role: "EV Service Technician", qualification: "ITI / Diploma", experience: "1–2 years" },
-                { level: "Level 5", role: "Senior EV Technician", qualification: "Diploma / Advanced certificate", experience: "3–5 years" },
-                { level: "Level 6", role: "EV Diagnostic Engineer / Supervisor", qualification: "Diploma / B.Tech", experience: "5+ years" }
+                { level: "Level 3", role: "Electric Vertical Helper / Assistant Technician", qualification: "ITI / Short-term training", experience: "Entry level" },
+                { level: "Level 4", role: "Electric Vertical Service Technician", qualification: "ITI / Diploma", experience: "1–2 years" },
+                { level: "Level 5", role: "Senior Electric Vertical Technician", qualification: "Diploma / Advanced certificate", experience: "3–5 years" },
+                { level: "Level 6", role: "Electric Vertical Diagnostic Engineer / Supervisor", qualification: "Diploma / B.Tech", experience: "5+ years" }
             ]
         },
         levels: [
             {
                 id: "M2",
-                title: "Subsection M2 — Level 3: EV Assistant Technician",
-                role: "Supports EV maintenance, assembly, and basic service operations.",
+                title: "Subsection M2 — Level 3: Electric Vertical Assistant Technician",
+                role: "Supports Electric Vertical maintenance, assembly, and basic service operations.",
                 competencies: [
                     { name: "Basic Electrical Safety", desc: "Understanding of high voltage safety" },
-                    { name: "EV Fundamentals", desc: "Basic EV architecture knowledge" },
+                    { name: "Electric Vertical Fundamentals", desc: "Basic Electric Vertical architecture knowledge" },
                     { name: "Battery Handling", desc: "Safe handling of battery modules" },
                     { name: "Workshop Tools", desc: "Use of torque tools and electrical testers" },
                     { name: "Charging", desc: "Basic charging station operation" },
@@ -399,22 +399,22 @@ export const SKILL_MATRIX_DATA = {
                 ],
                 tasks: [
                     "Assist in battery removal and installation",
-                    "Support EV service operations",
+                    "Support Electric Vertical service operations",
                     "Perform basic visual inspection",
                     "Assist technicians in diagnostics"
                 ]
             },
             {
                 id: "M3",
-                title: "Subsection M3 — Level 4: EV Service Technician",
-                role: "Performs routine maintenance and troubleshooting of electric vehicles.",
+                title: "Subsection M3 — Level 4: Electric Vertical Service Technician",
+                role: "Performs routine maintenance and troubleshooting of Electric Vertical (eVTOL) aircraft.",
                 competencies: [
-                    { name: "EV Architecture", desc: "Motor, inverter, battery system" },
+                    { name: "Electric Vertical Architecture", desc: "Motor, inverter, battery system" },
                     { name: "Battery Systems", desc: "Battery pack inspection" },
                     { name: "Charging Systems", desc: "AC/DC charger diagnostics" },
                     { name: "Electrical Testing", desc: "Multimeter, insulation testing" },
                     { name: "Diagnostics", desc: "Fault code reading" },
-                    { name: "Preventive Maintenance", desc: "Scheduled EV servicing" }
+                    { name: "Preventive Maintenance", desc: "Scheduled Electric Vertical servicing" }
                 ],
                 tasks: [
                     "Diagnose minor faults",
@@ -425,39 +425,39 @@ export const SKILL_MATRIX_DATA = {
             },
             {
                 id: "M4",
-                title: "Subsection M4 — Level 5: Senior EV Technician",
-                role: "Handles advanced diagnostics and supervises EV service operations.",
+                title: "Subsection M4 — Level 5: Senior Electric Vertical Technician",
+                role: "Handles advanced diagnostics and supervises Electric Vertical service operations.",
                 competencies: [
                     { name: "Battery Management System", desc: "BMS diagnostics" },
                     { name: "Power Electronics", desc: "Inverter troubleshooting" },
                     { name: "High Voltage Systems", desc: "HV isolation and repair" },
                     { name: "Advanced Diagnostics", desc: "CAN bus analysis" },
-                    { name: "Vehicle Software", desc: "ECU updates" },
+                    { name: "Aircraft Software", desc: "Avionics & ECU updates" },
                     { name: "Thermal Management", desc: "Cooling system diagnostics" }
                 ],
                 tasks: [
-                    "Diagnose complex EV faults",
+                    "Diagnose complex Electric Vertical faults",
                     "Repair motor controllers",
                     "Perform battery pack repairs",
-                    "Supervise EV technicians"
+                    "Supervise Electric Vertical technicians"
                 ]
             },
             {
                 id: "M5",
-                title: "Subsection M5 — Level 6: EV Diagnostic Engineer / Supervisor",
+                title: "Subsection M5 — Level 6: Electric Vertical Diagnostic Engineer / Supervisor",
                 role: "Responsible for system-level diagnostics and technical leadership.",
                 competencies: [
-                    { name: "System Integration", desc: "EV powertrain integration" },
+                    { name: "System Integration", desc: "Electric Vertical propulsion integration" },
                     { name: "Advanced Diagnostics", desc: "Data analytics & telematics" },
                     { name: "Safety Compliance", desc: "Functional safety procedures" },
-                    { name: "Technical Training", desc: "Train EV technicians" },
+                    { name: "Technical Training", desc: "Train Electric Vertical technicians" },
                     { name: "Quality Assurance", desc: "Root cause analysis" },
                     { name: "Fleet Diagnostics", desc: "Predictive maintenance" }
                 ],
                 tasks: [
-                    "Analyze complex EV failures",
+                    "Analyze complex Electric Vertical failures",
                     "Support field service teams",
-                    "Lead EV service operations",
+                    "Lead Electric Vertical service operations",
                     "Implement diagnostic protocols"
                 ]
             }
@@ -493,15 +493,15 @@ export const SKILL_MATRIX_DATA = {
                 { name: "Insulation Tester", desc: "HV safety testing" },
                 { name: "Oscilloscope", desc: "Signal analysis" },
                 { name: "Torque Wrench", desc: "Precision assembly" },
-                { name: "EV Diagnostic Software", desc: "Fault detection" }
+                { name: "Electric Vertical Diagnostic Software", desc: "Fault detection" }
             ]
         },
         {
             title: "SECTION Q — Digital Skills",
             items: [
-                { name: "CAN Communication", desc: "Vehicle diagnostics" },
+                { name: "CAN Communication", desc: "Aircraft diagnostics" },
                 { name: "Telemetry Systems", desc: "Remote monitoring" },
-                { name: "Firmware Updates", desc: "ECU software update" },
+                { name: "Firmware Updates", desc: "Avionics software update" },
                 { name: "Diagnostic Software", desc: "Fault code analysis" }
             ]
         },
@@ -509,7 +509,7 @@ export const SKILL_MATRIX_DATA = {
             title: "SECTION R — Behavioural Competencies",
             items: [
                 { name: "Safety Awareness", desc: "Critical in high voltage systems" },
-                { name: "Problem Solving", desc: "Diagnosing EV faults" },
+                { name: "Problem Solving", desc: "Diagnosing Electric Vertical faults" },
                 { name: "Teamwork", desc: "Service team coordination" },
                 { name: "Documentation", desc: "Service reporting" }
             ]
@@ -517,12 +517,12 @@ export const SKILL_MATRIX_DATA = {
         {
             title: "SECTION S — Training Modules",
             items: [
-                { name: "EV Fundamentals", desc: "40 hours" },
+                { name: "Electric Vertical Fundamentals", desc: "40 hours" },
                 { name: "Battery Technology", desc: "60 hours" },
-                { name: "EV Powertrain", desc: "50 hours" },
+                { name: "Electric Vertical Propulsion", desc: "50 hours" },
                 { name: "Diagnostics & Troubleshooting", desc: "60 hours" },
                 { name: "Safety & High Voltage Systems", desc: "30 hours" },
-                { name: "EV Charging Infrastructure", desc: "30 hours" }
+                { name: "Electric Vertical Charging Infrastructure", desc: "30 hours" }
             ]
         }
     ],
@@ -541,20 +541,20 @@ export const SKILL_MATRIX_DATA = {
             title: "SECTION U — Certification Pathway",
             items: [
                 "National Skill Development Corporation",
-                "Automotive Skills Development Council",
+                "Aerospace & Aviation Sector Skill Council",
                 "All India Council for Technical Education"
             ]
         }
     ],
 
     pathway: {
-        title: "SECTION V — Career Path in EV Industry",
+        title: "SECTION V — Career Path in Electric Vertical Industry",
         steps: [
-            "EV Assistant Technician",
-            "EV Service Technician",
-            "Senior EV Technician",
-            "EV Diagnostic Engineer",
-            "EV Technical Specialist"
+            "Electric Vertical Assistant Technician",
+            "Electric Vertical Service Technician",
+            "Senior Electric Vertical Technician",
+            "Electric Vertical Diagnostic Engineer",
+            "Electric Vertical Technical Specialist"
         ]
     }
 };

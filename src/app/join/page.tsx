@@ -5,7 +5,7 @@ import { Check, User, Users, GraduationCap, Building2, Landmark, ArrowRight } fr
 
 export const metadata: Metadata = {
     title: 'Membership',
-    description: 'Join EV Society™ as a student, professional, researcher, corporate, or institutional member and shape the future of electric mobility.',
+    description: 'Join EV Society™ as a student, professional, researcher, corporate, or institutional member and shape the future of electric vertical (eVTOL) flight.',
     alternates: {
         canonical: '/join',
     },
@@ -82,7 +82,7 @@ export default function JoinPage() {
         <div className="bg-white">
             <PageHeader
                 title="Membership & Governance"
-                description="Join the community shaping the future of electric mobility."
+                description="Join the community shaping the future of electric vertical (eVTOL) flight."
                 breadcrumb="Join EV Society™"
             />
 

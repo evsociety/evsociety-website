@@ -1,12 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowUpRight, BatteryCharging, Plane, Satellite, Shield } from 'lucide-react';
+import { ArrowUpRight, Drone, Plane, Satellite, Shield } from 'lucide-react';
 import { trackEvent } from '@/utils/analytics/ga4';
 import { RESEARCH_DOMAINS } from '@/data/domains/researchDomains';
 
 const domainIcons = {
-    ev: BatteryCharging,
+    ev: Drone,
     aerospace: Plane,
     defence: Shield,
     space: Satellite,
@@ -29,8 +29,8 @@ const tones = {
     },
 };
 
-// The four umbrella research domains as full-width button rows. A domain whose page is still
-// a placeholder shows a "Coming soon" pill.
+// The four umbrella research domains as full-width button rows. A domain with a tag (eVTOL)
+// shows it as a label pill; a domain whose page is still a placeholder shows a "Coming soon" pill.
 // columns={1} stacks one button per row; columns={4} lays them out four across on wide screens.
 export default function ResearchDomainGrid({ tone, columns, analyticsSection }: { tone: 'dark' | 'light'; columns: 1 | 4; analyticsSection: string }) {
     const t = tones[tone];
@@ -53,6 +53,9 @@ export default function ResearchDomainGrid({ tone, columns, analyticsSection }: 
                             </span>
                             <span className="flex min-w-0 flex-1 flex-wrap items-center gap-x-3 gap-y-1">
                                 <span className={`text-lg font-semibold leading-tight ${t.name}`}>{domain.name}</span>
+                                {domain.tag && (
+                                    <span className={`rounded-full px-2 py-0.5 text-xs font-semibold ${t.pill}`}>{domain.tag}</span>
+                                )}
                                 {domain.comingSoon ? (
                                     <span className={`rounded-full px-2 py-0.5 text-xs font-semibold ${t.pill}`}>{domain.link.label}</span>
                                 ) : (

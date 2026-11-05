@@ -25,7 +25,7 @@ export default function UpcomingEvents() {
                 <SectionHeading
                     id="upcoming-events-heading"
                     title="Upcoming Events"
-                    intro="Join the dialogue and stay updated with the latest in EV technology."
+                    intro="Join the dialogue and stay updated with the latest in Electric Vertical (eVTOL) technology."
                     action={
                         <Link href="/events" className="inline-flex items-center gap-2 rounded font-semibold text-primary hover:text-primary-hover">
                             See all events <ArrowRight className="h-5 w-5" aria-hidden="true" />

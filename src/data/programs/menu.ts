@@ -9,12 +9,12 @@ export const PROGRAMS_MENU = [
         href: SPACE_PROGRAM.href,
     },
     {
-        name: 'Certified EV Technology Officer (EVTO™)',
+        name: 'Certified Electric Vertical Technology Officer (EVTO™)',
         description: 'Flagship certification · Executive program',
         href: '/programs/evto',
     },
     {
-        name: 'Certified EV Legal & Business Strategist (EVLBS™)',
+        name: 'Certified Electric Vertical Legal & Business Strategist (EVLBS™)',
         description: 'Flagship certification · Executive program',
         href: '/programs#evlbs',
     },

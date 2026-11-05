@@ -41,7 +41,7 @@ const navItems: NavItem[] = [
         href: '/domains',
         children: [
             { name: 'Focus Areas', href: '/domains' },
-            { name: 'EV Industry Skill Matrix (India)', href: '/domains/ev-industry-skill-matrix-india' },
+            { name: 'Electric Vertical Industry Skill Matrix (India)', href: '/domains/ev-industry-skill-matrix-india' },
         ],
     },
     { name: 'Programs', href: '/programs', children: PROGRAMS_MENU, overviewLabel: 'All programs' },

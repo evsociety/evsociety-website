@@ -37,7 +37,7 @@ export default function PartnersClient() {
         <div className="bg-white min-h-screen">
             <PageHeader
                 title="Partner Directory"
-                description="Connect with the organizations and researchers driving the EV revolution."
+                description="Connect with the organizations and researchers driving the Electric Vertical (eVTOL) revolution."
                 breadcrumb="Partners"
             />
 

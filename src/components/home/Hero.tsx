@@ -24,10 +24,10 @@ export default function Hero() {
 
                     <div className="mt-10 max-w-2xl border-l-2 border-primary-300/40 pl-6">
                         <p className="text-2xl font-bold leading-snug text-white sm:text-3xl">
-                            Accelerating the future of electric mobility—safely and sustainably.
+                            Accelerating the future of electric vertical flight—safely and sustainably.
                         </p>
                         <p className="mt-4 text-lg leading-relaxed text-slate-300">
-                            <span className="font-extrabold text-white">EV Society™</span> is a non-profit educational and technical community advancing electric mobility through research, safety, standards, skills, and collaboration across industry, academia, startups, and the public.
+                            <span className="font-extrabold text-white">EV Society™</span> is a non-profit educational and technical community advancing electric vertical (eVTOL) flight through research, safety, standards, skills, and collaboration across industry, academia, startups, and the public.
                         </p>
                     </div>
 

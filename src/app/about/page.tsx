@@ -7,7 +7,7 @@ import { Target, Users2, ShieldCheck, Globe } from 'lucide-react';
 
 export const metadata: Metadata = {
     title: 'About EV Society™',
-    description: 'EV Society™ is a non-profit, charitable educational and technical organization dedicated to strengthening the understanding and responsible adoption of electric vehicle technology.',
+    description: 'EV Society™ is a non-profit, charitable educational and technical organization dedicated to strengthening the understanding and responsible adoption of electric vertical (eVTOL) technology.',
     alternates: {
         canonical: '/about',
     },
@@ -31,7 +31,7 @@ const values = [
     },
     {
         title: 'Skill Sovereignty',
-        description: 'Empowering the workforce with the competencies needed for a global EV market.',
+        description: 'Empowering the workforce with the competencies needed for a global Electric Vertical (eVTOL) market.',
         icon: Users2,
     },
 ];
@@ -47,7 +47,7 @@ export default function AboutPage() {
         <div className="bg-white">
             <PageHeader
                 title="EV Society™"
-                description="EV Society™ is a non-profit, charitable educational and technical organization dedicated to strengthening the understanding and responsible adoption of electric vehicle technology across all stakeholders."
+                description="EV Society™ is a non-profit, charitable educational and technical organization dedicated to strengthening the understanding and responsible adoption of electric vertical (eVTOL) technology across all stakeholders."
                 breadcrumb="About Us"
             />
 
@@ -82,7 +82,7 @@ export default function AboutPage() {
                                 ))}
                             </ul>
                             <p className="mb-10 text-lg leading-relaxed text-gray-600">
-                                As a professional technical body, <span className="text-primary font-bold">EV Society™</span> supports the advancement of EV engineering, safety, testing, standards, and ecosystem development—enabling reliable electric mobility across transport segments.
+                                As a professional technical body, <span className="text-primary font-bold">EV Society™</span> supports the advancement of Electric Vertical (eVTOL) engineering, safety, testing, standards, and ecosystem development—enabling reliable electric flight across air mobility segments.
                             </p>
                             <dl className="grid grid-cols-2 gap-8 border-t border-gray-200 pt-8">
                                 <div className="flex flex-col-reverse">
@@ -97,7 +97,7 @@ export default function AboutPage() {
                         </div>
                         <figure className="rounded-3xl bg-navy p-8 text-white lg:col-span-5 lg:p-12">
                             <blockquote className="text-2xl font-medium leading-relaxed text-white">
-                                &ldquo;Our goal is not just to replace internal combustion engines, but to build a mobility ecosystem that is fundamentally safer, cleaner, and smarter for everyone.&rdquo;
+                                &ldquo;Our goal is not just to electrify flight, but to build an air mobility ecosystem that is fundamentally safer, cleaner, and smarter for everyone.&rdquo;
                             </blockquote>
                             <figcaption className="mt-8 border-t border-white/10 pt-6 font-semibold text-primary-300">— Executive Board, EV Society™</figcaption>
                         </figure>

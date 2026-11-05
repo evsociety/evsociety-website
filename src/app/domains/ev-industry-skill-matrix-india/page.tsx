@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     },
 };
 
-// "SECTION A — EV Manufacturing Skill Matrix" → anchor "section-a", code "A", name "EV Manufacturing Skill Matrix"
+// "SECTION A — Electric Vertical Manufacturing Skill Matrix" → anchor "section-a", code "A", name "Electric Vertical Manufacturing Skill Matrix"
 const anchorFor = (title: string) => {
     const match = title.match(/^(?:SECTION|Subsection)\s+([A-Z]\d?)/i);
     return match ? `section-${match[1].toLowerCase()}` : title.toLowerCase().replace(/[^a-z0-9]+/g, '-');

@@ -142,7 +142,7 @@ export default function DynamicFormFields({ type, role, item, formData, errors, 
                         onChange={(e) => onChange('organization', e.target.value)}
                         className={`w-full px-5 py-3 rounded-xl border-none outline-none ring-1 ${errors.organization ? 'ring-red-500' : 'ring-gray-200'
                             } focus:ring-2 focus:ring-primary transition-all`}
-                        placeholder="EV Company Inc."
+                        placeholder="Electric Vertical Company Inc."
                     />
                     {errors.organization && <p className="text-sm text-red-500 pl-1">{errors.organization}</p>}
                 </div>

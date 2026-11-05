@@ -1,7 +1,8 @@
-import { CONTACT, ORGANISATION_DESCRIPTOR, SITE_DESCRIPTION, SITE_URL } from '@/config/site';
+import { CONTACT, EV_MEANING, ORGANISATION_DESCRIPTOR, SITE_DESCRIPTION, SITE_URL } from '@/config/site';
 import { SPACE_PROGRAM } from '@/data/programs/space-innovation/program.config';
 import { EVTO_PROGRAM_CONFIG } from '@/data/programs/evto/program.config';
 import { RESEARCH_DOMAINS } from '@/data/domains/researchDomains';
+import { SKILL_MATRIX_DATA } from '@/data/domains/skillMatrix';
 import { getAllProjects, getProject } from '@/lib/projects-dal';
 import { getEvents } from '@/utils/data';
 import { todayInIndia } from '@/lib/eventsJsonLd';
@@ -24,23 +25,29 @@ export async function GET() {
         '',
         `> ${SITE_DESCRIPTION}`,
         '',
-        `EV Society describes itself as an "${ORGANISATION_DESCRIPTOR}", based in ${CONTACT.locality}, ${CONTACT.region}, India. EV Society™ is an independent, non-profit professional organisation and is not a government body.`,
+        `In EV Society, "EV" stands for ${EV_MEANING}: electric vertical take-off and landing aircraft for advanced air mobility. EV Society describes itself as an "${ORGANISATION_DESCRIPTOR}", based in ${CONTACT.locality}, ${CONTACT.region}, India. EV Society™ is an independent, non-profit professional organisation and is not a government body.`,
         '',
         `- Website: ${SITE_URL}`,
         `- Email: ${CONTACT.email}`,
         `- Phone: ${CONTACT.telephone}`,
         '',
+        '## About Electric Vertical (eVTOL)',
+        '',
+        'eVTOL stands for electric vertical take-off and landing. eVTOL aircraft use electric propulsion to take off, hover and land vertically like a helicopter, then fly efficiently like an aeroplane, without needing a runway. They are being developed for air taxis, cargo and medical delivery, emergency response and regional travel, an area known as advanced air mobility.',
+        '',
+        `EV Society's research domains are ${RESEARCH_DOMAINS.map((d) => (d.tag ? `${d.name} (${d.tag})` : d.name)).join(', ')}. Its technical focus areas include battery and energy systems, electric propulsion, flight control and autonomy, safety and certification, and vertiport and charging infrastructure.`,
+        '',
         '## Programs',
         '',
         `- [${SPACE_PROGRAM.competitionTitle} — ${SPACE_PROGRAM.initiativeTitle}](${url(SPACE_PROGRAM.href)}): EV Society proposes an innovation award of ${SPACE_PROGRAM.awardAmount} and ${SPACE_PROGRAM.supportDuration} of engineering development support for each of the CAN-7USAT and Model Rocketry winning teams (${SPACE_PROGRAM.totalAwards} in total), with a proposed final demonstration on ${SPACE_PROGRAM.finalDeadline.label}. All of this is proposed and subject to confirmation. The competition itself is organized independently by IN-SPACe; EV Society's awards are its own initiative and are not endorsed by IN-SPACe. Official competition information: ${SPACE_PROGRAM.officialUrl}`,
         `- [${EVTO_PROGRAM_CONFIG.title}](${url('/programs/evto')}): ${EVTO_PROGRAM_CONFIG.description}`,
-        `- [Certified EV Legal & Business Strategist (EVLBS™)](${url('/programs#evlbs')}): The gold standard for legal, regulatory, and business leaders mastering the legal, contractual, and intellectual property frameworks of the EV ecosystem.`,
+        `- [Certified Electric Vertical Legal & Business Strategist (EVLBS™)](${url('/programs#evlbs')}): The gold standard for legal, regulatory, and business leaders mastering the legal, contractual, and intellectual property frameworks of the Electric Vertical (eVTOL) ecosystem.`,
         `- [All programs](${url('/programs')})`,
         '',
         '## Research domains',
         '',
-        ...RESEARCH_DOMAINS.map((d) => `- [${d.name}](${url(d.link.href)})${d.comingSoon ? ': coming soon' : `: ${d.link.label}`}`),
-        `- [EV Industry Skill Matrix (India)](${url('/domains/ev-industry-skill-matrix-india')}): a structured skills framework for India's electric vehicle ecosystem.`,
+        ...RESEARCH_DOMAINS.map((d) => `- [${d.name}${d.tag ? ` (${d.tag})` : ''}](${url(d.link.href)})${d.comingSoon ? ': coming soon' : `: ${d.link.label}`}`),
+        `- [${SKILL_MATRIX_DATA.featuredBlock.title}](${url(SKILL_MATRIX_DATA.featuredBlock.ctaRoute)}): ${SKILL_MATRIX_DATA.featuredBlock.description}`,
         '',
         '## Projects',
         '',

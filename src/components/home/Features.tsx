@@ -4,12 +4,12 @@ import SectionHeading from '@/components/ui/SectionHeading';
 const features = [
     {
         title: 'Public Awareness',
-        description: 'Educating citizens about EV benefits, safety, and recharging practices through national campaigns.',
+        description: 'Educating citizens about the benefits and safety of electric vertical (eVTOL) flight through national campaigns.',
         icon: Megaphone,
     },
     {
         title: 'Safety & Standards',
-        description: 'Working with regulatory bodies to refine battery and vehicle safety standards for diverse operational conditions.',
+        description: 'Working with regulatory bodies to refine battery and aircraft safety standards for diverse operational conditions.',
         icon: ShieldAlert,
     },
     {
@@ -19,17 +19,17 @@ const features = [
     },
     {
         title: 'Knowledge Platform',
-        description: 'A shared repository for whitepapers, guidelines, and technical documentation for the EV ecosystem.',
+        description: 'A shared repository for whitepapers, guidelines, and technical documentation for the Electric Vertical (eVTOL) ecosystem.',
         icon: Terminal,
     },
     {
         title: 'Skill Development',
-        description: 'Developing competency-based certification programs for engineers and technicians in the EV sector.',
+        description: 'Developing competency-based certification programs for engineers and technicians in the Electric Vertical sector.',
         icon: GraduationCap,
     },
     {
         title: 'Startup & MSME Support',
-        description: 'Providing mentorship and access to testing facilities for early-stage EV startups.',
+        description: 'Providing mentorship and access to testing facilities for early-stage Electric Vertical startups.',
         icon: Rocket,
     },
 ];
@@ -42,7 +42,7 @@ export default function Features() {
                     id="features-heading"
                     eyebrow="Six pillars"
                     title={<>What <span className="text-primary">EV Society™</span> Does</>}
-                    intro="Our mission is implemented through six core pillars of excellence designed to support the entire EV value chain."
+                    intro="Our mission is implemented through six core pillars of excellence designed to support the entire Electric Vertical (eVTOL) value chain."
                 />
 
                 <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
