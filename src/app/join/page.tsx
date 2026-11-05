@@ -14,7 +14,8 @@ export const metadata: Metadata = {
 const tiers = [
     {
         name: 'Student Member',
-        price: '₹10,000 / year',
+        price: '₹9,999 / year',
+        tax: '+ 18% GST',
         icon: GraduationCap,
         benefits: [
             'Access to technical webinars',
@@ -26,7 +27,8 @@ const tiers = [
     },
     {
         name: 'Professional Member',
-        price: '₹20,000 / year',
+        price: '₹19,999 / year',
+        tax: '+ 18% GST',
         icon: User,
         popular: true,
         benefits: [
@@ -40,7 +42,8 @@ const tiers = [
     },
     {
         name: 'Research Member',
-        price: '₹25,000 / year',
+        price: '₹24,999 / year',
+        tax: '+ 18% GST',
         icon: Users,
         benefits: [
             'Research grant eligibility',
@@ -102,7 +105,10 @@ export default function JoinPage() {
                                 </div>
 
                                 <h3 className="text-2xl font-black text-gray-900 mb-2">{tier.name}</h3>
-                                <p className={`text-lg font-bold mb-10 ${tier.popular ? 'text-primary' : 'text-gray-500'}`}>{tier.price}</p>
+                                <p className={`text-lg font-bold mb-10 ${tier.popular ? 'text-primary' : 'text-gray-500'}`}>
+                                    {tier.price}
+                                    {tier.tax && <span className="ml-0.5 text-sm font-semibold text-gray-500"> {tier.tax}</span>}
+                                </p>
 
                                 <ul className="space-y-4 mb-12 flex-grow">
                                     {tier.benefits.map(benefit => (
