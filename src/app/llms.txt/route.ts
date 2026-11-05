@@ -25,7 +25,7 @@ export async function GET() {
         '',
         `> ${SITE_DESCRIPTION}`,
         '',
-        `In EV Society, "EV" stands for ${EV_MEANING}: electric vertical take-off and landing aircraft for advanced air mobility. EV Society describes itself as an "${ORGANISATION_DESCRIPTOR}", based in ${CONTACT.locality}, ${CONTACT.region}, India. EV Society™ is an independent, non-profit professional organisation and is not a government body.`,
+        `In EV Society, "EV" stands for ${EV_MEANING}: electric vertical take-off and landing aircraft for advanced air mobility. EV Society describes itself as an "${ORGANISATION_DESCRIPTOR}", based in ${CONTACT.locality}, ${CONTACT.region}, India. EV Society™ is an independent, not-for-profit professional organisation and is not a government body.`,
         '',
         `- Website: ${SITE_URL}`,
         `- Email: ${CONTACT.email}`,

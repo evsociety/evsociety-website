@@ -1,5 +1,6 @@
-// Organisation identity supplied by the site owner. It describes brand positioning only;
-// legal and governance wording on the site stays as published.
+// Organisation identity supplied by the site owner. It describes brand positioning only.
+// Legal status, per the owner (5 Nov 2026): call EV Society "not-for-profit", never "charitable",
+// and name no registration (society, trust or Section 8 company) until one has been granted.
 export const ORGANISATION_NAME = 'EV Society';
 export const ORGANISATION_DESCRIPTOR = 'Electric Vertical, Aerospace, Defence & Space Research Organisation';
 // "EV" in EV Society stands for Electric Vertical (eVTOL)
@@ -10,7 +11,7 @@ export const ORGANISATION_DOMAIN = 'evsociety.org';
 // sitemap entries and structured data all use this origin
 export const SITE_URL = 'https://www.evsociety.org';
 
-export const SITE_DESCRIPTION = 'EV Society™ is a non-profit Electric Vertical (eVTOL), Aerospace, Defence & Space research organisation advancing safe, sustainable electric vertical flight through research, standards, skills, and collaboration.';
+export const SITE_DESCRIPTION = 'EV Society™ is a not-for-profit Electric Vertical (eVTOL), Aerospace, Defence & Space research organisation advancing safe, sustainable electric vertical flight through research, standards, skills, and collaboration.';
 
 // Default image for social previews (the brand lockup in public/brand)
 export const OG_IMAGE = {

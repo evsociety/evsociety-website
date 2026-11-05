@@ -7,7 +7,7 @@ import { Target, Users2, ShieldCheck, Globe } from 'lucide-react';
 
 export const metadata: Metadata = {
     title: 'About EV Society™',
-    description: 'EV Society™ is a non-profit, charitable educational and technical organization dedicated to strengthening the understanding and responsible adoption of electric vertical (eVTOL) technology.',
+    description: 'EV Society™ is a not-for-profit technical educational and research organisation dedicated to strengthening the understanding and responsible adoption of electric vertical (eVTOL) technology.',
     alternates: {
         canonical: '/about',
     },
@@ -47,7 +47,7 @@ export default function AboutPage() {
         <div className="bg-white">
             <PageHeader
                 title="EV Society™"
-                description="EV Society™ is a non-profit, charitable educational and technical organization dedicated to strengthening the understanding and responsible adoption of electric vertical (eVTOL) technology across all stakeholders."
+                description="EV Society™ is a not-for-profit technical educational and research organisation dedicated to strengthening the understanding and responsible adoption of electric vertical (eVTOL) technology across all stakeholders."
                 breadcrumb="About Us"
             />
 
