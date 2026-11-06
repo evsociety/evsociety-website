@@ -23,6 +23,13 @@
   /* Logo green, darkened enough for text on white */
   --color-brand-green: #15803d;
 
+  /* Restrained recognition gold: gold-300 for accents on navy, gold-700 for text on white
+     (6:1), gold-50/200 for quiet backgrounds and rules */
+  --color-gold-50: #fbf7ec;
+  --color-gold-200: #ead9a8;
+  --color-gold-300: #e2c47a;
+  --color-gold-700: #7a5c12;
+
   /* Neutral scale tuned to the navy/ink palette; gray-600 is the secondary text colour */
   --color-gray-50: #f5f7fa;
   --color-gray-100: #edf1f6;

@@ -20,10 +20,16 @@ export function competitionPaths(competition: CompetitionDefinition) {
         manage: `${base}/manage`,
         participants: `${base}/participants`,
         winners: `${base}/winners`,
+        categoryWinners: (categorySlug: string) => `${base}/winners/${categorySlug}`,
         awards: `${base}/winners#awards`,
+        recognitionCard: (slug: string) => `${base}/teams/${slug}/recognition-card`,
         team: (slug: string) => `${base}/teams/${slug}`,
         consent: (token: string) => `${base}/consent/${token}`,
     };
+}
+
+export function categoryBySlug(competition: CompetitionDefinition, slug: string) {
+    return competition.categories.find((c) => c.slug === slug) ?? null;
 }
 
 export function categoryLabel(competition: CompetitionDefinition, categoryId: string): string {

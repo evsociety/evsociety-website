@@ -38,6 +38,7 @@ export default function TeamProfileCard({ team, competition, variant = 'compact'
                         <Link href={href} className="rounded hover:text-primary">{team.name}</Link>
                     ) : team.name}
                 </Heading>
+                {team.teamCode && <p className="mt-1.5 font-mono text-sm font-semibold tracking-wide text-gray-700">{team.teamCode}</p>}
                 {team.college && (
                     <p className="mt-1.5 flex items-start gap-1.5 text-gray-600">
                         <GraduationCap className="mt-0.5 h-4 w-4 shrink-0 text-gray-400" aria-hidden="true" />
@@ -99,9 +100,9 @@ export default function TeamProfileCard({ team, competition, variant = 'compact'
         <article aria-labelledby={headingId} className="space-y-12">
             <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
                 {identity}
-                {team.teamPhotoUrl && (
+                {team.teamPhoto && (
                     <figure className="mt-8 overflow-hidden rounded-2xl bg-gray-100">
-                        <Image src={team.teamPhotoUrl} alt={`Team photograph of ${team.name}`} width={1200} height={675} unoptimized loading="lazy" className="aspect-video h-auto w-full object-cover" />
+                        <Image src={team.teamPhoto.url} alt={team.teamPhoto.alt} width={team.teamPhoto.width ?? 1200} height={team.teamPhoto.height ?? 800} unoptimized loading="lazy" className="h-auto w-full object-contain" />
                     </figure>
                 )}
             </div>

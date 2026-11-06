@@ -9,6 +9,7 @@ import { competitionPaths, getCompetition } from '@/config/competitions';
 import { registrationAvailable } from '@/lib/competitions/server/env';
 import { getCompetitionDataSafe } from '@/lib/competitions/server/publicData';
 import { competitionOr404, competitionParams, type CompetitionPageProps } from '../competitionRoute';
+import { OG_IMAGE } from '@/config/site';
 
 export const revalidate = 60;
 export const dynamicParams = false;
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: CompetitionPageProps): Promis
         title: `Register Team | ${competition.shortName}`,
         description: competition.copy.registerSubtitle,
         alternates: { canonical: path },
-        openGraph: { title: `Register Team | ${competition.shortName}`, description: competition.copy.registerSubtitle, url: path },
+        openGraph: { title: `Register Team | ${competition.shortName}`, description: competition.copy.registerSubtitle, url: path, images: [OG_IMAGE] },
     };
 }
 

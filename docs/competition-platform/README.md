@@ -7,6 +7,7 @@ India Student Competition and reusable for future competitions.
 - Setup and go-live: [`google-apps-script/README.md`](../../google-apps-script/README.md)
 - Reviewing teams in the spreadsheet: [ADMIN-GUIDE.md](ADMIN-GUIDE.md)
 - Adding a competition: [ADDING-A-COMPETITION.md](ADDING-A-COMPETITION.md)
+- Winners pages, team profiles, sharing, analytics and search: [WINNERS-PLATFORM.md](WINNERS-PLATFORM.md)
 
 ## 1. Existing system: findings (Phase 1 audit)
 

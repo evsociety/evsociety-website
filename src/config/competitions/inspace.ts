@@ -14,8 +14,22 @@ export const INSPACE_COMPETITION: CompetitionDefinition = {
     participantType: 'team',
     landing: 'custom',
     categories: [
-        { id: 'model-rocketry', label: 'Model Rocketry', winnersLabel: 'Model Rocketry Winners' },
-        { id: 'can-7usat', label: 'CAN-7USAT', winnersLabel: 'CAN-7USAT Winners' },
+        {
+            id: 'model-rocketry',
+            label: 'Model Rocketry',
+            winnersLabel: 'Model Rocketry Winners',
+            slug: 'model-rocketry',
+            winnersTitle: 'IN-SPACe Model Rocketry India Student Competition Winners',
+            winnersIntro: 'Recognising student engineering excellence, innovation and the next generation of space technology leaders.',
+        },
+        {
+            id: 'can-7usat',
+            label: 'CAN-7USAT',
+            winnersLabel: 'CAN-7USAT Winners',
+            slug: 'can-7usat',
+            winnersTitle: 'IN-SPACe CAN-7USAT India Student Competition Winners',
+            winnersIntro: 'Recognising student engineering excellence, innovation and the next generation of space technology leaders.',
+        },
     ],
     registrationOptions: [
         { id: 'model-rocketry', label: 'Model Rocketry', categoryIds: ['model-rocketry'] },
@@ -89,5 +103,7 @@ export const INSPACE_COMPETITION: CompetitionDefinition = {
         participantsSubtitle: "Recognising the engineering students, colleges and mentors contributing to India's space technology ecosystem.",
         winnersTitle: 'IN-SPACe Model Rocketry/CAN-7USAT India Student Competition Winners',
         winnersSubtitle: 'Celebrating the next generation of aerospace engineers, student innovators and future space entrepreneurs.',
+        shareName: 'IN-SPACe India Student Competition',
+        organiserShort: 'IN-SPACe',
     },
 };

@@ -9,6 +9,8 @@ import type { CompetitionRuntimeConfig, TeamView } from '@/lib/competitions/mode
 import { ApiClientError, competitionApi, newIdempotencyKey } from '@/lib/competitions/client/api';
 import { normalizeEmail, validateLeaderStart, validateTeamPayload, validateYearAndCategories } from '@/lib/competitions/validation';
 import { ApprovalStatus, LockedBadge, statusHelp } from '../ApprovalStatus';
+import { GA4_EVENTS } from '@/data/analytics/events';
+import { trackEvent } from '@/utils/analytics/ga4';
 import TeamProfileCard from '../TeamProfileCard';
 import CompetitionCategorySelector from './CompetitionCategorySelector';
 import EmailVerification from './EmailVerification';
@@ -172,6 +174,7 @@ export default function TeamRegistrationForm({ competition, config, mode, initia
             setTeam(res.team);
             setForm((f) => ({ ...f, leader: { ...f.leader, email } }));
             setDuplicate(null);
+            trackEvent(GA4_EVENTS.TEAM_REGISTRATION_START, { competition_id: competition.id, competition_year: res.team.data.year ?? undefined, category: res.team.data.categories.join('+') });
             setDirty(false);
             setStep(1);
             setNotice({ tone: 'success', text: `Draft saved. Your Team Registration ID is ${res.team.teamId}.` });
@@ -204,6 +207,10 @@ export default function TeamRegistrationForm({ competition, config, mode, initia
             setErrors({});
             setDirty(false);
             if (submit && res.outcome.submitted) {
+                // Sent only after the server confirmed the submission, never for failed attempts
+                if (res.outcome.mode !== 'revision') {
+                    trackEvent(GA4_EVENTS.TEAM_REGISTRATION_SUBMIT, { competition_id: competition.id, competition_year: res.team.data.year ?? undefined, category: res.team.data.categories.join('+') });
+                }
                 setConfirmation({ teamId: res.team.teamId, revision: res.outcome.mode === 'revision' });
             } else {
                 setNotice({ tone: 'success', text: revision ? 'Changes saved. They are not public until you submit them and EV Society approves them.' : 'Saved.' });
@@ -489,6 +496,7 @@ export default function TeamRegistrationForm({ competition, config, mode, initia
                         <div className="grid gap-5 md:grid-cols-2">
                             <TextField path="team.name" label="Team name" required value={form.team.name} onChange={(v) => patch((f) => ({ ...f, team: { ...f.team, name: v } }))} error={errors['team.name']} maxLength={120} />
                             <TextField path="team.college" label="College / university name" required value={form.team.college} onChange={(v) => patch((f) => ({ ...f, team: { ...f.team, college: v } }))} error={errors['team.college']} autoComplete="organization" maxLength={200} />
+                            <TextField path="team.teamCode" label="Competition team ID" optional value={form.team.teamCode} onChange={(v) => patch((f) => ({ ...f, team: { ...f.team, teamCode: v } }))} error={errors['team.teamCode']} hint="The identifier the organiser gave your team, for example Rocketry-014." maxLength={40} />
                             {competition.fields.institutionLogo && <FileUploadField path="team.institutionLogoFileId" label="Institution logo" kind="institution-logo" shape="logo" value={form.team.institutionLogo} onChange={(v) => patch((f) => ({ ...f, team: { ...f.team, institutionLogo: v } }))} api={api} teamId={team?.teamId ?? null} error={errors['team.institutionLogoFileId']} />}
                             {competition.fields.teamLogo && <FileUploadField path="team.teamLogoFileId" label="Team logo" kind="team-logo" shape="logo" value={form.team.teamLogo} onChange={(v) => patch((f) => ({ ...f, team: { ...f.team, teamLogo: v } }))} api={api} teamId={team?.teamId ?? null} error={errors['team.teamLogoFileId']} />}
                             {competition.fields.teamPhoto && (
@@ -496,7 +504,7 @@ export default function TeamRegistrationForm({ competition, config, mode, initia
                                     <FileUploadField path="team.teamPhotoFileId" label="Team photograph" kind="team-photo" shape="wide" value={form.team.teamPhoto} onChange={(v) => patch((f) => ({ ...f, team: { ...f.team, teamPhoto: v, teamPhotoConsent: v ? f.team.teamPhotoConsent : false } }))} api={api} teamId={team?.teamId ?? null} error={errors['team.teamPhotoFileId']} />
                                     {form.team.teamPhoto && (
                                         <div className="mt-3">
-                                            <CheckboxField path="team.teamPhotoConsent" checked={form.team.teamPhotoConsent} onChange={(v) => patch((f) => ({ ...f, team: { ...f.team, teamPhotoConsent: v } }))} description="Without this confirmation the team photograph is kept private.">
+                                            <CheckboxField path="team.teamPhotoConsent" checked={form.team.teamPhotoConsent} onChange={(v) => patch((f) => ({ ...f, team: { ...f.team, teamPhotoConsent: v } }))} description="Without this confirmation the team photograph is kept private. EV Society also reviews every photograph before publishing it.">
                                                 Everyone in this photograph has agreed to it being published
                                             </CheckboxField>
                                         </div>

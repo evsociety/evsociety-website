@@ -4,6 +4,7 @@
 
 import { describe, expect, it } from 'vitest';
 import { signEnvelope, verifyWebhook } from '@/lib/competitions/server/envelope';
+import { createAppsScriptRuntime, createStore } from '@/lib/competitions/backend/appsScriptHarness';
 import { COMPETITION, OWNER, PDF, SECRET, setupBackend } from './helpers';
 
 describe('setup', () => {
@@ -13,6 +14,20 @@ describe('setup', () => {
         expect(names).toEqual(['EVSociety Registrations', 'Competitions', 'Teams', 'Team_Categories', 'Members', 'Mentors', 'Files', 'Awards', 'Change_Requests', 'Audit_Log']);
         expect(b.rt.sheet('EVSociety Registrations').cells).toEqual([['registrationId', 'type', 'fullName', 'email']]);
         expect(b.store.triggers.map((t) => t.handler).sort()).toEqual(['evsCompetitionOnEdit', 'evsCompetitionOnOpen']);
+    });
+
+    it('creates the website API secret when none is set, and never replaces an existing one', () => {
+        const store = createStore();
+        const rt = createAppsScriptRuntime(store, { quiet: true, effectiveUser: OWNER });
+        const report = String(rt.call('evsCompetitionSetup'));
+        const created = store.properties.EVSC_API_SECRET;
+        expect(created).toMatch(/^[0-9a-f]{64}$/);
+        expect(report).toMatch(/Created the website API secret/);
+        expect(report).not.toContain(created);
+        rt.call('evsCompetitionSetup');
+        expect(store.properties.EVSC_API_SECRET).toBe(created);
+        const b = setupBackend();
+        expect(b.store.properties.EVSC_API_SECRET).toBe(SECRET);
     });
 
     it('is safe to run again and refuses to take over an unrelated tab', () => {
@@ -231,7 +246,8 @@ describe('admin review in the sheet', () => {
         b.review('Team_Categories', 'Association ID', String(b.categoryRow(teamId, 'model-rocketry')['Association ID']), 'Participation Verified', 'Yes');
         const [team] = b.snapshot().teams;
         expect(team).toMatchObject({ slug: 'team-astra-2026', name: 'Team Astra', college: 'RV College of Engineering', year: 2026 });
-        expect(team.categories).toEqual([{ categoryId: 'model-rocketry', participationVerified: true, winnerVerified: false, achievement: '' }]);
+        expect(team.categories).toMatchObject([{ categoryId: 'model-rocketry', participationVerified: true, winnerVerified: false, achievement: '', officialResultUrl: '' }]);
+        expect(team.categories[0].verifiedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
         const leader = team.people.find((p: any) => p.role === 'leader');
         expect(leader).toMatchObject({ name: 'Asha Rao', linkedin: 'https://www.linkedin.com/in/asha-rao', email: null, phone: null });
         expect(leader.photoFileId).toMatch(/^FIL-/);
@@ -260,7 +276,7 @@ describe('admin review in the sheet', () => {
         b.review('Team_Categories', 'Association ID', String(b.categoryRow(both.teamId, 'can-7usat')['Association ID']), 'Achievement', 'First place');
         const teams = b.snapshot().teams;
         const bothTeam = teams.find((t: any) => t.name === 'Team Both');
-        expect(bothTeam.categories).toEqual([
+        expect(bothTeam.categories).toMatchObject([
             { categoryId: 'model-rocketry', participationVerified: true, winnerVerified: false, achievement: '' },
             { categoryId: 'can-7usat', participationVerified: true, winnerVerified: true, achievement: 'First place' },
         ]);

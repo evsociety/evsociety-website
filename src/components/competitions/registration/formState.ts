@@ -39,6 +39,7 @@ export interface FormState {
     optionId: string;
     team: {
         name: string;
+        teamCode: string;
         college: string;
         institutionLogo: FileRef | null;
         teamLogo: FileRef | null;
@@ -71,7 +72,7 @@ export function initialFormState(competition: CompetitionDefinition, defaultYear
     return {
         year: defaultYear,
         optionId: '',
-        team: { name: '', college: '', institutionLogo: null, teamLogo: null, teamPhoto: null, teamPhotoConsent: false },
+        team: { name: '', teamCode: '', college: '', institutionLogo: null, teamLogo: null, teamPhoto: null, teamPhotoConsent: false },
         leader: { name: '', email, phone: '', linkedin: '', photo: null, resume: null, under18: false },
         leaderPermissions: { photo: false, linkedin: false, email: false, phone: false },
         members: [],
@@ -97,6 +98,7 @@ export function fromTeamView(view: TeamView, competition: CompetitionDefinition,
         optionId: optionForCategories(competition, d.categories)?.id ?? '',
         team: {
             name: d.team.name,
+            teamCode: d.team.teamCode ?? '',
             college: d.team.college,
             institutionLogo: ref(d.team.institutionLogoFileId),
             teamLogo: ref(d.team.teamLogoFileId),
@@ -145,6 +147,7 @@ export function toPayload(state: FormState, competition: CompetitionDefinition):
         categories: categoriesForOption(competition, state.optionId),
         team: {
             name: state.team.name,
+            teamCode: state.team.teamCode,
             college: state.team.college,
             institutionLogoFileId: id(state.team.institutionLogo),
             teamLogoFileId: id(state.team.teamLogo),
@@ -186,13 +189,14 @@ export function previewTeam(state: FormState, competition: CompetitionDefinition
         slug: slug || 'preview',
         year: state.year ?? competition.defaults.defaultRegistrationYear,
         name: state.team.name || 'Your team name',
+        teamCode: state.team.teamCode,
         college: state.team.college,
         entryType: 'Team',
         revision: 1,
         teamLogoUrl: photo(state.team.teamLogo),
         institutionLogoUrl: photo(state.team.institutionLogo),
-        teamPhotoUrl: state.team.teamPhotoConsent ? photo(state.team.teamPhoto) : null,
-        categories: categoriesForOption(competition, state.optionId).map((categoryId) => ({ categoryId, participationVerified: false, winnerVerified: false, achievement: '' })),
+        teamPhoto: state.team.teamPhotoConsent && photo(state.team.teamPhoto) ? { url: photo(state.team.teamPhoto)!, width: null, height: null, alt: `Group photograph of ${state.team.name || 'the team'}` } : null,
+        categories: categoriesForOption(competition, state.optionId).map((categoryId) => ({ categoryId, participationVerified: false, winnerVerified: false, achievement: '', verifiedAt: '', officialResultUrl: '' })),
         leader: state.leader.under18 ? null : {
             role: 'leader',
             name: state.leader.name || 'Team leader',

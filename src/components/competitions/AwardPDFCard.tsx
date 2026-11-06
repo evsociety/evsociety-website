@@ -4,6 +4,8 @@ import { useRef } from 'react';
 import Image from 'next/image';
 import { Download, Eye, FileText, FileX2, X } from 'lucide-react';
 import type { PublicAward } from '@/lib/competitions/model';
+import { GA4_EVENTS } from '@/data/analytics/events';
+import { trackEvent } from '@/utils/analytics/ga4';
 
 const STATUS_STYLE: Record<PublicAward['status'], string> = {
     Proposed: 'bg-primary-50 text-primary ring-primary-200',
@@ -13,10 +15,13 @@ const STATUS_STYLE: Record<PublicAward['status'], string> = {
 
 // An award document card. Actions appear only for a document the administrator published;
 // otherwise the card says the document is not available yet, with no broken link.
-export default function AwardPDFCard({ award, categoryLabel }: { award: PublicAward; categoryLabel: string }) {
+export default function AwardPDFCard({ award, categoryLabel, competitionId = '', orientation = 'vertical' }: { award: PublicAward; categoryLabel: string; competitionId?: string; orientation?: 'vertical' | 'horizontal' }) {
+    const horizontal = orientation === 'horizontal';
     const dialog = useRef<HTMLDialogElement>(null);
     const doc = award.document;
+    const analytics = { competition_id: competitionId, competition_year: award.year ?? undefined, category: award.categoryId, content_type: 'award_pdf' as const };
     const openViewer = (e: React.MouseEvent) => {
+        trackEvent(GA4_EVENTS.AWARD_PDF_VIEW, analytics);
         // Phones open the PDF in their own viewer; larger screens get the embedded viewer
         if (!dialog.current || !window.matchMedia('(min-width: 768px)').matches) return;
         e.preventDefault();
@@ -24,8 +29,8 @@ export default function AwardPDFCard({ award, categoryLabel }: { award: PublicAw
     };
     const titleId = `award-${award.awardId}`;
     return (
-        <article aria-labelledby={titleId} className="flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
-            <div className="relative aspect-[4/3] bg-off-white">
+        <article aria-labelledby={titleId} className={`flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm ${horizontal ? 'sm:flex-row' : ''}`}>
+            <div className={`relative bg-off-white ${horizontal ? 'aspect-[4/3] sm:aspect-auto sm:w-52 sm:shrink-0' : 'aspect-[4/3]'}`}>
                 {award.thumbnailUrl ? (
                     <Image src={award.thumbnailUrl} alt={`First page of ${award.title}`} fill unoptimized className="object-contain p-4" />
                 ) : (
@@ -54,7 +59,7 @@ export default function AwardPDFCard({ award, categoryLabel }: { award: PublicAw
                             View PDF
                             <span className="sr-only">: {award.title}</span>
                         </a>
-                        <a href={doc.downloadUrl} {...(doc.kind === 'site' ? { download: '' } : { target: '_blank', rel: 'noopener noreferrer' })} className="btn-secondary min-h-11 flex-1">
+                        <a href={doc.downloadUrl} onClick={() => trackEvent(GA4_EVENTS.AWARD_PDF_DOWNLOAD, analytics)} {...(doc.kind === 'site' ? { download: '' } : { target: '_blank', rel: 'noopener noreferrer' })} className="btn-secondary min-h-11 flex-1">
                             <Download className="h-4 w-4" aria-hidden="true" />
                             Download PDF
                             <span className="sr-only">: {award.title}</span>

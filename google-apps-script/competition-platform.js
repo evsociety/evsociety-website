@@ -11,9 +11,10 @@
  *      "competition-platform" and paste this file into it.
  *   2. In the existing doPost(e), right after `const data = JSON.parse(e.postData.contents);`
  *      add:   if (data && data.kind === 'evs-competition-v1') return evscHandlePost(data);
- *   3. Project Settings > Script Properties: set EVSC_API_SECRET (same value as the website's
- *      COMPETITION_API_SECRET) and optionally EVSC_SITE_URL, EVSC_REVALIDATE_URLS, EVSC_REVIEWERS.
- *   4. Run evsCompetitionSetup once from the editor and accept the permissions.
+ *   3. Project Settings > Script Properties: set EVSC_SITE_URL, EVSC_REVALIDATE_URLS and
+ *      optionally EVSC_REVIEWERS.
+ *   4. Run evsCompetitionSetup once from the editor and accept the permissions. It creates
+ *      EVSC_API_SECRET; copy that value into the website's COMPETITION_API_SECRET.
  *   5. Deploy > Manage deployments > edit the existing deployment > New version > Deploy.
  *
  * Security model
@@ -37,11 +38,11 @@ var EVSC_ENVELOPE_KIND = 'evs-competition-v1';
 
 var EVSC_SCHEMA = {
     Competitions: ['Competition ID', 'Name', 'Slug', 'Organiser', 'Available Years', 'Categories', 'Registration Status', 'Registration Years', 'Default Registration Year', 'Public Visibility', 'Show Registered Teams', 'Configuration', 'Last Reviewed By', 'Last Reviewed At', 'Verification Metadata', 'Updated At'],
-    Teams: ['Team ID', 'Competition ID', 'Year', 'Entry Type', 'Team Name', 'College', 'Slug', 'Leader Member ID', 'Registration Status', 'Profile Approved', 'Publication Approved', 'Publication Consent', 'Profile Publication Status', 'Revision Number', 'Pending Change Request ID', 'Review Comments', 'Institution Logo File ID', 'Team Logo File ID', 'Team Photo File ID', 'Team Photo Consent', 'Processing Consent At', 'Deletion Requested', 'Startup Profile', 'Version', 'Last Reviewed By', 'Last Reviewed At', 'Verification Metadata', 'Created At', 'Updated At', 'Submitted At', 'First Published At'],
-    Team_Categories: ['Association ID', 'Team ID', 'Team (reference)', 'Year', 'Category ID', 'Category', 'Registration Status', 'Participation Verified', 'Winner Verified', 'Achievement', 'Last Reviewed By', 'Last Reviewed At', 'Verification Metadata', 'Created At', 'Updated At'],
+    Teams: ['Team ID', 'Competition ID', 'Year', 'Entry Type', 'Team Name', 'Team Code', 'College', 'Slug', 'Leader Member ID', 'Registration Status', 'Profile Approved', 'Publication Approved', 'Publication Consent', 'Profile Publication Status', 'Revision Number', 'Pending Change Request ID', 'Review Comments', 'Institution Logo File ID', 'Team Logo File ID', 'Team Photo File ID', 'Team Photo Consent', 'Team Photo Approved', 'Processing Consent At', 'Deletion Requested', 'Startup Profile', 'Version', 'Last Reviewed By', 'Last Reviewed At', 'Verification Metadata', 'Created At', 'Updated At', 'Submitted At', 'First Published At'],
+    Team_Categories: ['Association ID', 'Team ID', 'Team (reference)', 'Year', 'Category ID', 'Category', 'Registration Status', 'Participation Verified', 'Winner Verified', 'Achievement', 'Official Result Reference', 'Last Reviewed By', 'Last Reviewed At', 'Verification Metadata', 'Created At', 'Updated At'],
     Members: ['Member ID', 'Team ID', 'Full Name', 'Role', 'Email', 'Phone', 'LinkedIn', 'Photo File ID', 'Resume File ID', 'Display Order', 'Under 18', 'Guardian Consent Verified', 'Publication Permissions', 'Consent Status', 'Consent Updated At', 'Verification Status', 'Consent Token Hash', 'Consent Token Expires', 'Last Reviewed By', 'Last Reviewed At', 'Verification Metadata', 'Created At', 'Updated At'],
     Mentors: ['Mentor ID', 'Team ID', 'Name', 'Institution', 'LinkedIn', 'Photo File ID', 'Display Order', 'Listing Consent', 'Created At', 'Updated At'],
-    Files: ['File ID', 'Team ID', 'Owner ID', 'Kind', 'Drive File ID', 'MIME Type', 'Size (bytes)', 'Original Name', 'Status', 'Uploaded By', 'Uploaded At'],
+    Files: ['File ID', 'Team ID', 'Owner ID', 'Kind', 'Drive File ID', 'MIME Type', 'Size (bytes)', 'Image Width', 'Image Height', 'Alt Text', 'Original Name', 'Status', 'Uploaded By', 'Uploaded At'],
     Awards: ['Award ID', 'Competition ID', 'Year', 'Category', 'Award Title', 'PDF Reference', 'Thumbnail Reference', 'Award Status', 'Publication Status', 'Last Reviewed By', 'Last Reviewed At', 'Verification Metadata', 'Updated At'],
     Change_Requests: ['Change Request ID', 'Team ID', 'Team (reference)', 'Revision ID', 'Base Revision Number', 'Summary of Changes', 'Submitted Data', 'Review Status', 'Submission Timestamp', 'Decision Timestamp', 'Reviewer', 'Review Comments', 'Verification Metadata', 'Updated At'],
     Audit_Log: ['Event ID', 'Timestamp', 'Actor', 'Entity Type', 'Entity ID', 'Event Type', 'Outcome', 'Before', 'After', 'Details'],
@@ -74,12 +75,16 @@ var EVSC_REVIEW_FIELDS = {
         'Registration Status': { values: ['Pending Review', 'Changes Requested', 'Approved', 'Rejected'], system: ['Draft', 'Pending Review'] },
         'Profile Approved': { values: EVSC_YES_NO },
         'Publication Approved': { values: EVSC_YES_NO },
+        // Group photographs are published only after EV Society confirms permission to use them
+        'Team Photo Approved': { values: EVSC_YES_NO },
     },
     Team_Categories: {
         'Registration Status': { values: ['Registered', 'Withdrawn', 'Rejected'] },
         'Participation Verified': { values: EVSC_YES_NO },
         'Winner Verified': { values: EVSC_YES_NO },
         'Achievement': { type: 'text', max: 200 },
+        // Link to the organiser's published result, shown as the source of the verification
+        'Official Result Reference': { type: 'httpsref' },
     },
     Members: {
         'Guardian Consent Verified': { values: EVSC_YES_NO },
@@ -135,7 +140,7 @@ var EVSC_LIMITS = {
     fileName: 120, achievement: 200, comments: 2000,
     // Technical safety caps that protect the sheet; competitions can set lower limits
     maxMembersCap: 50, maxMentorsCap: 10,
-    uploadBytes: { photo: 3 * 1024 * 1024, logo: 2 * 1024 * 1024, resume: 4 * 1024 * 1024 },
+    uploadBytes: { photo: 3 * 1024 * 1024, logo: 2 * 1024 * 1024, resume: 4 * 1024 * 1024, original: 15 * 1024 * 1024 },
     submittedDataChars: 45000,
 };
 
@@ -146,6 +151,8 @@ var EVSC_FILE_KINDS = {
     'team-logo': { mimes: ['image/jpeg', 'image/png', 'image/webp'], max: 'logo', publicImage: true },
     'institution-logo': { mimes: ['image/jpeg', 'image/png', 'image/webp'], max: 'logo', publicImage: true },
     'resume': { mimes: ['application/pdf'], max: 'resume', publicImage: false },
+    // Untouched original of an imported photograph, kept privately for the record
+    'team-photo-original': { mimes: ['image/jpeg', 'image/png', 'image/webp'], max: 'original', publicImage: false, preserved: true },
 };
 
 var EVSC_PERMISSION_KEYS = ['photo', 'linkedin', 'email', 'phone'];
@@ -340,6 +347,12 @@ function evscSlugify(value) {
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/^-+|-+$/g, '');
     return s.slice(0, 60).replace(/-+$/g, '') || 'team';
+}
+
+var EVSC_TEAM_CODE_RE = /^[A-Za-z0-9][A-Za-z0-9 _\-\/]{0,39}$/;
+
+function evscTeamCode(value) {
+    return evscText(value, 40);
 }
 
 function evscNormalizedKey(value) {
@@ -827,6 +840,7 @@ function evscLiveTeamData(tables, team) {
             .map(function (c) { return evscStr(c['Category ID']); }),
         team: {
             name: evscStr(team['Team Name']),
+            teamCode: evscStr(team['Team Code']),
             college: evscStr(team['College']),
             institutionLogoFileId: evscStr(team['Institution Logo File ID']),
             teamLogoFileId: evscStr(team['Team Logo File ID']),
@@ -864,6 +878,7 @@ function evscNormalizeTeamInput(raw, config, opts) {
     var t = raw.team || {};
     data.team = {
         name: evscText(t.name, EVSC_LIMITS.teamName),
+        teamCode: evscTeamCode(t.teamCode),
         college: evscText(t.college, EVSC_LIMITS.college),
         institutionLogoFileId: evscText(t.institutionLogoFileId, 40),
         teamLogoFileId: evscText(t.teamLogoFileId, 40),
@@ -880,6 +895,7 @@ function evscNormalizeTeamInput(raw, config, opts) {
         resumeFileId: evscText(l.resumeFileId, 40),
         under18: l.under18 === true,
     };
+    if (data.team.teamCode && !EVSC_TEAM_CODE_RE.test(data.team.teamCode)) errors['team.teamCode'] = 'Use letters, numbers and hyphens, as given by the organiser (for example Rocketry-014).';
     if (data.leader.phone && !evscIsPhone(data.leader.phone)) errors['leader.phone'] = 'Enter a valid phone number.';
     if (data.leader.linkedin && !evscIsLinkedIn(data.leader.linkedin)) errors['leader.linkedin'] = 'Enter a LinkedIn profile URL, such as https://www.linkedin.com/in/your-name.';
 
@@ -1075,6 +1091,7 @@ function evscTeamView(tables, team, config) {
             consent: evscYes(team['Publication Consent']),
             profileApproved: evscSignedIs(team, 'Teams', 'Profile Approved', 'Yes'),
             publicationApproved: evscSignedIs(team, 'Teams', 'Publication Approved', 'Yes'),
+            teamPhotoApproved: evscSignedIs(team, 'Teams', 'Team Photo Approved', 'Yes'),
             status: evscPublicationLabel(team),
         },
         processingConsentAt: evscStr(team['Processing Consent At']),
@@ -1195,7 +1212,7 @@ function evscActionCreateDraft(params, ctx) {
                 'Created At': now,
                 'Updated At': now,
             });
-            evscSetSigned(tables.Teams, team, { 'Registration Status': EVSC_TEAM_STATUS.DRAFT, 'Profile Approved': 'No', 'Publication Approved': 'No' }, 'system:create');
+            evscSetSigned(tables.Teams, team, { 'Registration Status': EVSC_TEAM_STATUS.DRAFT, 'Profile Approved': 'No', 'Publication Approved': 'No', 'Team Photo Approved': 'No' }, 'system:create');
             var leader = tables.Members.insert({
                 'Member ID': leaderId,
                 'Team ID': teamId,
@@ -1270,13 +1287,15 @@ function evscResetConsent(changes) {
 function evscApplyTeamData(tables, team, data, actor, opts) {
     var teamId = evscStr(team['Team ID']);
     var now = evscIso();
+    var photoChanged = evscStr(team['Team Photo File ID']) !== evscStr(data.team.teamPhotoFileId);
     var teamChanges = {
         'Team Name': data.team.name,
+        'Team Code': data.team.teamCode || '',
         'College': data.team.college,
         'Institution Logo File ID': data.team.institutionLogoFileId,
         'Team Logo File ID': data.team.teamLogoFileId,
         'Team Photo File ID': data.team.teamPhotoFileId,
-        'Team Photo Consent': evscYesNo(data.team.teamPhotoConsent && data.team.teamPhotoFileId),
+        'Team Photo Consent': evscYesNo(data.team.teamPhotoConsent === true && !!data.team.teamPhotoFileId),
         'Updated At': now,
     };
     if (opts.allowYearCategory) {
@@ -1284,9 +1303,15 @@ function evscApplyTeamData(tables, team, data, actor, opts) {
     }
     // Public URLs stay stable once a profile has been published
     if (!evscStr(team['First Published At']) && data.team.name) {
-        teamChanges['Slug'] = evscUniqueSlug(tables, data.team.name, data.year || team['Year'], teamId);
+        teamChanges['Slug'] = evscUniqueSlug(tables, data.team.name, data.year || team['Year'], teamId, data.team.teamCode);
     }
     tables.Teams.update(team, teamChanges);
+    // A new group photograph needs its own approval. When a reviewer approves a change request
+    // that includes it, that approval covers the photograph; otherwise it waits for review.
+    if (photoChanged) {
+        if (opts.photoApprovedBy && data.team.teamPhotoFileId) evscSetSigned(tables.Teams, team, { 'Team Photo Approved': 'Yes' }, opts.photoApprovedBy);
+        else evscSetSigned(tables.Teams, team, { 'Team Photo Approved': 'No' }, 'system:photo-changed');
+    }
     if (opts.allowYearCategory) evscSyncCategories(tables, team, data.categories, opts.config, 'system:' + actor);
 
     var existing = evscTeamMembers(tables, teamId);
@@ -1402,8 +1427,9 @@ function evscLinkFiles(tables, data, teamId) {
     });
 }
 
-function evscUniqueSlug(tables, name, year, teamId) {
-    var base = evscSlugify(name) + (year ? '-' + year : '');
+function evscUniqueSlug(tables, name, year, teamId, teamCode) {
+    // The organiser's team code makes a clearer, stable URL than the year when it is known
+    var base = evscSlugify(name) + (teamCode ? '-' + evscSlugify(teamCode) : year ? '-' + year : '');
     var slug = base;
     var n = 2;
     while (tables.Teams.find(function (t) { return evscStr(t['Slug']) === slug && evscStr(t['Team ID']) !== teamId; })) {
@@ -1434,6 +1460,7 @@ function evscSummarizeChanges(before, after) {
     var lines = [];
     var cmp = function (label, a, b) { if (evscStr(a) !== evscStr(b)) lines.push(label + ': "' + evscStr(a) + '" → "' + evscStr(b) + '"'); };
     cmp('Team name', before.team.name, after.team.name);
+    cmp('Team code', before.team.teamCode, after.team.teamCode);
     cmp('College', before.team.college, after.team.college);
     if (before.team.teamLogoFileId !== after.team.teamLogoFileId) lines.push('Team logo ' + (after.team.teamLogoFileId ? 'updated' : 'removed'));
     if (before.team.institutionLogoFileId !== after.team.institutionLogoFileId) lines.push('Institution logo ' + (after.team.institutionLogoFileId ? 'updated' : 'removed'));
@@ -1664,6 +1691,14 @@ function evscSniffMime(bytes) {
     return '';
 }
 
+// Pixel size measured by the website from the file's header; used to reserve layout space
+function evscImageDimensions(params) {
+    var w = Math.round(Number(params.width));
+    var h = Math.round(Number(params.height));
+    if (!(w > 0 && w <= 20000 && h > 0 && h <= 20000)) return { width: '', height: '' };
+    return { width: w, height: h };
+}
+
 function evscActionUpload(params, ctx) {
     var email = evscActorEmail(ctx);
     var kind = evscText(params.kind, 40);
@@ -1687,6 +1722,7 @@ function evscActionUpload(params, ctx) {
         var blob = Utilities.newBlob(bytes, mime, kind + '-' + fileId + '.' + ext);
         var driveFile = evscUploadFolder(teamId).createFile(blob);
         driveFile.setDescription('EV Society competition upload ' + fileId + ' for team ' + teamId + ' (' + kind + '). Private.');
+        var dims = evscImageDimensions(params);
         tables.Files.insert({
             'File ID': fileId,
             'Team ID': teamId,
@@ -1695,6 +1731,9 @@ function evscActionUpload(params, ctx) {
             'Drive File ID': driveFile.getId(),
             'MIME Type': mime,
             'Size (bytes)': bytes.length,
+            'Image Width': dims.width,
+            'Image Height': dims.height,
+            'Alt Text': '',
             'Original Name': name,
             'Status': 'Active',
             'Uploaded By': email,
@@ -1950,12 +1989,17 @@ function evscBuildPublicSnapshot(competitionId) {
         var categories = evscTeamCategories(tables, teamId).map(function (c) {
             var participation = evscSignedIs(c, 'Team_Categories', 'Participation Verified', 'Yes');
             var winner = participation && evscSignedIs(c, 'Team_Categories', 'Winner Verified', 'Yes');
+            var meta = evscMeta(c);
+            var decided = winner ? meta['Winner Verified'] : participation ? meta['Participation Verified'] : null;
+            var resultRef = evscSignedValue(c, 'Team_Categories', 'Official Result Reference');
             return {
                 categoryId: evscStr(c['Category ID']),
                 active: evscSignedIs(c, 'Team_Categories', 'Registration Status', 'Registered'),
                 participationVerified: participation,
                 winnerVerified: winner,
                 achievement: winner ? (evscSignedValue(c, 'Team_Categories', 'Achievement') || '') : '',
+                verifiedAt: decided && decided.at ? evscStr(decided.at).slice(0, 10) : '',
+                officialResultUrl: participation && resultRef && /^https:\/\//.test(resultRef) ? resultRef : '',
             };
         }).filter(function (c) { return c.active && config.categories.indexOf(c.categoryId) !== -1; });
 
@@ -2005,14 +2049,15 @@ function evscBuildPublicSnapshot(competitionId) {
             slug: evscStr(team['Slug']),
             year: year,
             name: evscText(team['Team Name'], EVSC_LIMITS.teamName),
+            teamCode: evscTeamCode(team['Team Code']),
             college: evscText(team['College'], EVSC_LIMITS.college),
             entryType: evscStr(team['Entry Type']) || 'Team',
             revision: Number(team['Revision Number']) || 1,
             teamLogoFileId: activeFile(evscStr(team['Team Logo File ID']), teamId, ['team-logo']),
             institutionLogoFileId: activeFile(evscStr(team['Institution Logo File ID']), teamId, ['institution-logo']),
-            teamPhotoFileId: evscYes(team['Team Photo Consent']) ? activeFile(evscStr(team['Team Photo File ID']), teamId, ['team-photo']) : null,
+            teamPhoto: evscPublicTeamPhoto(tables, team, activeFile),
             categories: visibleCategories.map(function (c) {
-                return { categoryId: c.categoryId, participationVerified: c.participationVerified, winnerVerified: c.winnerVerified, achievement: c.achievement };
+                return { categoryId: c.categoryId, participationVerified: c.participationVerified, winnerVerified: c.winnerVerified, achievement: c.achievement, verifiedAt: c.verifiedAt, officialResultUrl: c.officialResultUrl };
             }),
             people: people,
             mentors: mentors,
@@ -2041,6 +2086,20 @@ function evscBuildPublicSnapshot(competitionId) {
     snapshot.teams.sort(function (a, b) { return b.year - a.year || a.name.localeCompare(b.name); });
     snapshot.publicFileIds = Object.keys(fileIds);
     return snapshot;
+}
+
+// The group photograph, only with the team's consent and EV Society's explicit approval
+function evscPublicTeamPhoto(tables, team, activeFile) {
+    if (!evscYes(team['Team Photo Consent']) || !evscSignedIs(team, 'Teams', 'Team Photo Approved', 'Yes')) return null;
+    var fileId = activeFile(evscStr(team['Team Photo File ID']), evscStr(team['Team ID']), ['team-photo']);
+    if (!fileId) return null;
+    var file = tables.Files.byId(fileId);
+    return {
+        fileId: fileId,
+        width: Number(file['Image Width']) || null,
+        height: Number(file['Image Height']) || null,
+        alt: evscText(file['Alt Text'], 300),
+    };
 }
 
 function evscActionPublicSnapshot(params) {
@@ -2112,6 +2171,7 @@ function evscValidateReviewValue(tables, tab, row, field, value, previous) {
     if (spec.type === 'year' && !/^\d{4}$/.test(value)) return 'Enter a four-digit year.';
     if (spec.type === 'json' && value && evscJsonParse(value, null) === null) return 'Enter valid JSON, for example {"maxMentors":4}.';
     if (spec.type === 'docref' && !evscIsDocRef(value)) return 'Enter a site path starting with / or an https:// link.';
+    if (spec.type === 'httpsref' && value && !/^https:\/\/[^\s<>"']+$/.test(value)) return 'Enter an https:// link to the official result.';
     if (spec.type === 'text' && value.length > (spec.max || 200)) return 'Keep this under ' + (spec.max || 200) + ' characters.';
 
     if (tab === 'Teams') {
@@ -2274,7 +2334,7 @@ function evscApplyChangeRequest(tables, team, cr, reviewer) {
     data.leader.resumeFileId = check(data.leader.resumeFileId);
     data.members.forEach(function (m) { m.photoFileId = check(m.photoFileId); m.resumeFileId = check(m.resumeFileId); });
     data.mentors.forEach(function (m) { m.photoFileId = check(m.photoFileId); });
-    evscApplyTeamData(tables, team, data, reviewer, { allowYearCategory: false, config: config });
+    evscApplyTeamData(tables, team, data, reviewer, { allowYearCategory: false, config: config, photoApprovedBy: reviewer });
     tables.Teams.update(team, { 'Revision Number': (Number(team['Revision Number']) || 1) + 1, 'Updated At': evscIso() });
     evscSendPendingConsentRequests(tables, team, config);
     evscRefreshPublicationStatus(tables, team);
@@ -2362,9 +2422,15 @@ function evsCompetitionSetup() {
     if (!props.getProperty('EVSC_OTP_PEPPER')) {
         props.setProperty('EVSC_OTP_PEPPER', evscRandomHex(32));
     }
+    // The secret shared with the website is created here, so nobody has to type one in. Copy it
+    // from Project Settings > Script Properties into the website's COMPETITION_API_SECRET.
+    // An existing value is never replaced.
     var apiSecret = props.getProperty('EVSC_API_SECRET');
-    if (!apiSecret || apiSecret.length < 32) {
-        report.push('ACTION NEEDED: set Script Property EVSC_API_SECRET (at least 32 characters) to the same value as COMPETITION_API_SECRET on the website.');
+    if (!apiSecret) {
+        props.setProperty('EVSC_API_SECRET', evscRandomHex(64));
+        report.push('Created the website API secret (Script Property EVSC_API_SECRET). Copy its value into COMPETITION_API_SECRET on the website.');
+    } else if (apiSecret.length < 32) {
+        report.push('ACTION NEEDED: Script Property EVSC_API_SECRET is shorter than 32 characters. Delete it and run setup again to create a new one, then copy it into COMPETITION_API_SECRET on the website.');
     }
     var ss = evscSpreadsheet();
     Object.keys(EVSC_SCHEMA).forEach(function (name) {
@@ -2537,6 +2603,8 @@ function evscCleanupUploads(olderThanDays) {
         var removed = 0;
         tables.Files.rows.forEach(function (f) {
             if (evscStr(f['Status']) !== 'Active' || refs[evscStr(f['File ID'])]) return;
+            var kindSpec = EVSC_FILE_KINDS[evscStr(f['Kind'])];
+            if (kindSpec && kindSpec.preserved) return;
             if (new Date(evscStr(f['Uploaded At'])).getTime() > cutoff) return;
             try {
                 DriveApp.getFileById(evscStr(f['Drive File ID'])).setTrashed(true);
@@ -2610,6 +2678,148 @@ function evsCompetitionDeleteSelectedTeam() {
     ui.alert('Team data deleted.');
 }
 
+/* ───────────────────────── Admin import ───────────────────────── */
+
+function evscStoreImportFile(tables, team, kind, file, actor) {
+    var spec = EVSC_FILE_KINDS[kind];
+    var bytes = Utilities.base64Decode(evscStr(file.base64));
+    var mime = evscSniffMime(bytes);
+    if (spec.mimes.indexOf(mime) === -1) throw evscError('VALIDATION', 'The ' + kind + ' file must be a JPG, PNG or WebP image.');
+    if (bytes.length > EVSC_LIMITS.uploadBytes[spec.max]) throw evscError('VALIDATION', 'The ' + kind + ' file is too large.');
+    var teamId = evscStr(team['Team ID']);
+    var fileId = evscNewId('FIL', 12);
+    var ext = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' }[mime];
+    var driveFile = evscUploadFolder(teamId).createFile(Utilities.newBlob(bytes, mime, kind + '-' + fileId + '.' + ext));
+    driveFile.setDescription('EV Society competition file ' + fileId + ' for team ' + teamId + ' (' + kind + '), added by administrator import. Private.');
+    var dims = evscImageDimensions(file);
+    tables.Files.insert({
+        'File ID': fileId,
+        'Team ID': teamId,
+        'Owner ID': teamId,
+        'Kind': kind,
+        'Drive File ID': driveFile.getId(),
+        'MIME Type': mime,
+        'Size (bytes)': bytes.length,
+        'Image Width': dims.width,
+        'Image Height': dims.height,
+        'Alt Text': evscText(file.alt, 300),
+        'Original Name': evscText(file.name, EVSC_LIMITS.fileName).replace(/[\\\/:*?"<>|]/g, '_') || (kind + '.' + ext),
+        'Status': 'Active',
+        'Uploaded By': actor,
+        'Uploaded At': evscIso(),
+    });
+    return fileId;
+}
+
+// Creates a team record supplied by EV Society itself (for example an official winner whose
+// leader has not registered yet). Create-only: an existing team with the same code or name for
+// the same competition and year is returned unchanged, so running an import twice is safe.
+// Everything starts unapproved; reviewers then decide in the sheet as for any other team.
+function evscActionImportTeam(params, ctx) {
+    if (ctx.admin !== true) throw evscError('UNAUTHORIZED', 'Imports are available to administrators only.');
+    var actor = 'admin-import:' + (evscNormalizeEmail(ctx.actorEmail) || 'evsociety');
+    return evscWithLock(function () {
+        var tables = evscTables(EVSC_ALL_TABS);
+        var competitionId = evscText(params.competitionId, 80);
+        var config = evscRequireConfig(competitionId, tables);
+        var year = Number(params.year);
+        var fields = {};
+        if (!year || config.availableYears.indexOf(year) === -1) fields.year = 'Add ' + (year || 'the year') + ' to Available Years in the Competitions tab first.';
+        var categories = (Array.isArray(params.categories) ? params.categories : []).map(function (c) { return evscText(c, 60); });
+        if (!categories.length || categories.some(function (c) { return config.categories.indexOf(c) === -1; })) fields.categories = 'Use category IDs configured for this competition.';
+        var name = evscText(params.teamName, EVSC_LIMITS.teamName);
+        if (!name) fields.teamName = 'A team name is required.';
+        var code = evscTeamCode(params.teamCode);
+        if (code && !EVSC_TEAM_CODE_RE.test(code)) fields.teamCode = 'Use letters, numbers and hyphens.';
+        var members = (Array.isArray(params.members) ? params.members : []).map(function (m) { return evscText(m && typeof m === 'object' ? m.name : m, EVSC_LIMITS.name); });
+        if (!members.length || members.some(function (m) { return !m; })) fields.members = 'List every member by full name.';
+        if (members.length > EVSC_LIMITS.maxMembersCap) fields.members = 'Too many members.';
+        var slug = evscText(params.slug, 90);
+        if (slug && !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) fields.slug = 'Use lowercase letters, numbers and hyphens.';
+        if (Object.keys(fields).length) throw evscError('VALIDATION', 'The import data is incomplete.', { fields: fields });
+
+        var key = evscNormalizedKey(name);
+        var existing = tables.Teams.find(function (t) {
+            if (evscStr(t['Competition ID']) !== competitionId || Number(t['Year']) !== year) return false;
+            if (code && evscNormalizedKey(t['Team Code']) === evscNormalizedKey(code)) return true;
+            return evscNormalizedKey(t['Team Name']) === key;
+        });
+        if (existing) return { created: false, teamId: evscStr(existing['Team ID']), slug: evscStr(existing['Slug']) };
+        if (slug && tables.Teams.find(function (t) { return evscStr(t['Slug']) === slug; })) throw evscError('DUPLICATE_TEAM', 'Another team already uses the address ' + slug + '.');
+
+        var now = evscIso();
+        var teamId = evscUniqueTeamId(tables);
+        var team = tables.Teams.insert({
+            'Team ID': teamId,
+            'Competition ID': competitionId,
+            'Year': year,
+            'Entry Type': 'Team',
+            'Team Name': name,
+            'Team Code': code,
+            'College': evscText(params.college, EVSC_LIMITS.college),
+            'Slug': slug || evscUniqueSlug(tables, name, year, '', code),
+            'Leader Member ID': '',
+            'Publication Consent': evscYesNo(params.publicationConsent === true),
+            'Profile Publication Status': 'Not published',
+            'Revision Number': 0,
+            'Team Photo Consent': 'No',
+            'Deletion Requested': 'No',
+            'Version': 1,
+            'Created At': now,
+            'Updated At': now,
+            'Submitted At': now,
+        });
+        evscSetSigned(tables.Teams, team, { 'Registration Status': EVSC_TEAM_STATUS.PENDING, 'Profile Approved': 'No', 'Publication Approved': 'No', 'Team Photo Approved': 'No' }, 'system:import');
+        members.forEach(function (memberName, i) {
+            var row = tables.Members.insert({
+                'Member ID': evscNewId('MBR'),
+                'Team ID': teamId,
+                'Full Name': memberName,
+                'Role': 'Member',
+                'Display Order': i + 1,
+                'Under 18': 'No',
+                'Publication Permissions': '',
+                'Consent Status': 'Not requested',
+                'Verification Status': 'Unverified',
+                'Created At': now,
+                'Updated At': now,
+            });
+            evscSetSigned(tables.Members, row, { 'Guardian Consent Verified': 'No' }, 'system:import');
+        });
+        (Array.isArray(params.mentors) ? params.mentors : []).slice(0, config.maxMentors).forEach(function (m, i) {
+            var mentorName = evscText(m && m.name, EVSC_LIMITS.name);
+            if (!mentorName) return;
+            var linkedin = evscNormalizeLinkedIn(m.linkedin);
+            tables.Mentors.insert({
+                'Mentor ID': evscNewId('MNT'),
+                'Team ID': teamId,
+                'Name': mentorName,
+                'Institution': evscText(m.institution, EVSC_LIMITS.institution),
+                'LinkedIn': linkedin && evscIsLinkedIn(linkedin) ? linkedin : '',
+                'Display Order': i + 1,
+                'Listing Consent': evscYesNo(m.listingConsent === true),
+                'Created At': now,
+                'Updated At': now,
+            });
+        });
+        evscSyncCategories(tables, team, categories, config, 'system:import');
+        var photo = params.teamPhoto;
+        if (photo && photo.base64) {
+            var photoId = evscStoreImportFile(tables, team, 'team-photo', photo, actor);
+            tables.Teams.update(team, { 'Team Photo File ID': photoId, 'Team Photo Consent': evscYesNo(photo.consent === true) });
+            if (params.teamPhotoOriginal && params.teamPhotoOriginal.base64) evscStoreImportFile(tables, team, 'team-photo-original', params.teamPhotoOriginal, actor);
+        }
+        evscRefreshPublicationStatus(tables, team);
+        evscInvalidatePublic(competitionId);
+        evscAudit(tables, {
+            actor: actor, entityType: 'Team', entityId: teamId, type: 'team.imported',
+            after: { name: name, teamCode: code, year: year, categories: categories, members: members.length },
+            details: evscText(params.sourceNote, 500),
+        });
+        return { created: true, teamId: teamId, slug: evscStr(team['Slug']) };
+    });
+}
+
 /* ───────────────────────── Action registry ───────────────────────── */
 
 var EVSC_ACTIONS = {
@@ -2627,6 +2837,7 @@ var EVSC_ACTIONS = {
     'teams.requestDeletion': evscActionRequestDeletion,
     'teams.resendConsent': evscActionResendConsent,
     'files.upload': evscActionUpload,
+    'admin.importTeam': evscActionImportTeam,
     'files.private': evscActionPrivateFile,
     'consent.get': evscActionGetConsent,
     'consent.save': evscActionSaveConsent,

@@ -5,7 +5,7 @@ review column is checked, signed and logged by the review trigger, and the websi
 within seconds. Make decisions while signed in as the account that owns the script (or a
 reviewer listed in `EVSC_REVIEWERS`); edits from anyone else are put back with a note.
 
-## The four separate decisions
+## The separate decisions
 
 | Decision | Where | What it means |
 | --- | --- | --- |
@@ -13,7 +13,12 @@ reviewer listed in `EVSC_REVIEWERS`); edits from anyone else are put back with a
 | **Profile Approved** | Teams | Have you checked the names, photos and links? |
 | **Publication Approved** | Teams | May the profile appear on the website? (needs Profile Approved = Yes) |
 | **Participation Verified** | Team_Categories (one row per category) | Did the team actually take part in this category? |
-| **Winner Verified** | Team_Categories | Officially verified winner in this category (needs Participation Verified = Yes) |
+| **Winner Verified** | Team_Categories | Officially verified winner in this category (needs Participation Verified = Yes). Check the organiser's official result first |
+| **Official Result Reference** | Team_Categories | The `https://` link to the organiser's published result. Shown on the winners pages next to the verification date |
+| **Team Photo Approved** | Teams | May the group photograph be shown? Set `Yes` only once permission to publish it is confirmed; it also needs the team's consent (Team Photo Consent = Yes). Resets to `No` when the team uploads a different photo |
+
+**Team Code** (Teams) is the identifier the organiser gave the team, e.g. `Rocketry-001`. It is
+shown with the team name and used in new profile addresses. Correct it if the team typed it wrongly.
 
 Approving a registration never makes a team a participant or a winner. A team that entered both
 Model Rocketry and CAN-7USAT has two Team_Categories rows, decided independently.

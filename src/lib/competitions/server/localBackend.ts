@@ -56,7 +56,12 @@ export function callLocalBackend(request: BackendRequest): Promise<any> {
         const store = loadLocalStore();
         const sent = store.outbox.length;
         const runtime = createAppsScriptRuntime(store, { quiet: true, effectiveUser: LOCAL_OWNER });
-        const result = runtime.call('evscHandleEnvelope', signEnvelope(localSecrets().apiSecret, request));
+        let result = runtime.call('evscHandleEnvelope', signEnvelope(localSecrets().apiSecret, request));
+        if (result?.error?.code === 'SETUP_REQUIRED') {
+            // A newer script added columns: add them to the local spreadsheet, as setup would
+            runtime.call('evsCompetitionSetup');
+            result = runtime.call('evscHandleEnvelope', signEnvelope(localSecrets().apiSecret, request));
+        }
         // Keep the local store small: the outbox and fetch log only need recent entries
         printMail(store, sent);
         store.outbox = store.outbox.slice(-200);

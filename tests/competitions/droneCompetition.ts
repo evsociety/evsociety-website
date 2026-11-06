@@ -13,8 +13,8 @@ export const DRONE_COMPETITION: CompetitionDefinition = {
     participantType: 'team',
     landing: 'generic',
     categories: [
-        { id: 'autonomy', label: 'Autonomous Navigation', winnersLabel: 'Autonomous Navigation Winners' },
-        { id: 'payload', label: 'Payload Delivery', winnersLabel: 'Payload Delivery Winners' },
+        { id: 'autonomy', label: 'Autonomous Navigation', winnersLabel: 'Autonomous Navigation Winners', slug: 'autonomous-navigation', winnersTitle: 'Autonomous Navigation Winners', winnersIntro: 'Verified winners in autonomous navigation.' },
+        { id: 'payload', label: 'Payload Delivery', winnersLabel: 'Payload Delivery Winners', slug: 'payload-delivery', winnersTitle: 'Payload Delivery Winners', winnersIntro: 'Verified winners in payload delivery.' },
     ],
     registrationOptions: [
         { id: 'autonomy', label: 'Autonomous Navigation', categoryIds: ['autonomy'] },
@@ -34,5 +34,7 @@ export const DRONE_COMPETITION: CompetitionDefinition = {
         participantsSubtitle: 'Student drone teams verified by EV Society.',
         winnersTitle: 'Student Drone Challenge Winners',
         winnersSubtitle: 'Verified winners of the EV Society Student Drone Challenge.',
+        shareName: 'EV Society Student Drone Challenge',
+        organiserShort: 'EV Society',
     },
 };

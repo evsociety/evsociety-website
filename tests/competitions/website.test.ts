@@ -82,9 +82,10 @@ describe('public data sanitiser', () => {
         publicFileIds: ['FIL-ABCDEFGHJKLM'],
         teams: [
             {
-                slug: 'team-astra-2026', year: 2026, name: 'Team Astra', college: 'RVCE',
+                slug: 'team-astra-2026', year: 2026, name: 'Team Astra', college: 'RVCE', teamCode: 'Rocketry-014',
                 teamLogoFileId: 'FIL-ABCDEFGHJKLM', institutionLogoFileId: 'FIL-NOTPUBLIC234',
-                categories: [{ categoryId: 'model-rocketry', participationVerified: true, winnerVerified: true, achievement: 'Winner' }, { categoryId: 'unknown', participationVerified: true }],
+                teamPhoto: { fileId: 'FIL-ABCDEFGHJKLM', width: 1132, height: 754, alt: 'Team Astra at the award presentation' },
+                categories: [{ categoryId: 'model-rocketry', participationVerified: true, winnerVerified: true, achievement: 'Winner', verifiedAt: '2026-11-06', officialResultUrl: 'javascript:alert(1)' }, { categoryId: 'unknown', participationVerified: true }],
                 people: [
                     { role: 'leader', name: 'Asha', email: 'asha@rvce.edu.in', phone: '+91 98450 12345', linkedin: 'https://www.linkedin.com/in/asha', photoFileId: 'FIL-ABCDEFGHJKLM', resumeFileId: 'FIL-RESUME234567' },
                     { role: 'member', name: 'Ravi', email: 'not-an-email', linkedin: 'javascript:alert(1)' },
@@ -106,7 +107,13 @@ describe('public data sanitiser', () => {
         expect(team).not.toHaveProperty('privateNotes');
         expect(team.teamLogoUrl).toBe('/api/competitions/media/inspace-model-rocketry-cansat/FIL-ABCDEFGHJKLM');
         expect(team.institutionLogoUrl).toBeNull();
-        expect(team.categories).toEqual([{ categoryId: 'model-rocketry', participationVerified: true, winnerVerified: true, achievement: 'Winner' }]);
+        expect(team.categories).toEqual([{ categoryId: 'model-rocketry', participationVerified: true, winnerVerified: true, achievement: 'Winner', verifiedAt: '2026-11-06', officialResultUrl: '' }]);
+        expect(team.teamCode).toBe('Rocketry-014');
+        expect(team.teamPhoto).toEqual({ url: '/api/competitions/media/inspace-model-rocketry-cansat/FIL-ABCDEFGHJKLM', width: 1132, height: 754, alt: 'Team Astra at the award presentation' });
+        const withResult = sanitizeSnapshot({ ...raw, teams: [{ ...raw.teams[0], teamCode: '<script>', teamPhoto: { fileId: 'FIL-NOTPUBLIC234' }, categories: [{ categoryId: 'model-rocketry', participationVerified: true, officialResultUrl: 'https://www.inspace.gov.in/results' }] }] }, INSPACE_COMPETITION);
+        expect(withResult.teams[0].categories[0].officialResultUrl).toBe('https://www.inspace.gov.in/results');
+        expect(withResult.teams[0].teamCode).toBe('');
+        expect(withResult.teams[0].teamPhoto).toBeNull();
         expect(team.leader).toEqual({ role: 'leader', name: 'Asha', email: 'asha@rvce.edu.in', phone: '+91 98450 12345', linkedin: 'https://www.linkedin.com/in/asha', photoUrl: '/api/competitions/media/inspace-model-rocketry-cansat/FIL-ABCDEFGHJKLM' });
         expect(team.members).toEqual([{ role: 'member', name: 'Ravi', email: null, phone: null, linkedin: null, photoUrl: null }]);
         expect(team.mentors).toEqual([{ name: 'Dr. M', institution: 'IISc', linkedin: null, photoUrl: null }]);
@@ -117,7 +124,7 @@ describe('public data sanitiser', () => {
         const shown = sanitizeSnapshot({ ...raw, config: { ...raw.config, showRegisteredTeams: true } }, INSPACE_COMPETITION);
         const registered = shown.teams.find((t) => t.slug === 'registered-only')!;
         expect(stageOf(registered.categories[0])).toBe('registered');
-        expect(stageOf({ categoryId: 'x', participationVerified: false, winnerVerified: true, achievement: '' })).toBe('registered');
+        expect(stageOf({ categoryId: 'x', participationVerified: false, winnerVerified: true, achievement: '', verifiedAt: '', officialResultUrl: '' })).toBe('registered');
     });
 
     it('hides everything when the directory is not public, and closes registration without a sheet row', () => {

@@ -5,22 +5,22 @@ import { categoryLabel } from '@/config/competitions';
 import type { PublicAward } from '@/lib/competitions/model';
 import AwardPDFCard from './AwardPDFCard';
 
-export default function AwardsSection({ competition, awards }: { competition: CompetitionDefinition; awards: PublicAward[] }) {
+export default function AwardsSection({ competition, awards, heading, sectionId = 'awards' }: { competition: CompetitionDefinition; awards: PublicAward[]; heading?: string; sectionId?: string }) {
     const config = competition.awards;
-    if (!config) return null;
+    if (!config || !awards.length) return null;
     return (
-        <section id="awards" aria-labelledby="awards-heading" className="scroll-mt-32 border-t border-gray-200 bg-off-white py-16 lg:py-20">
+        <section id={sectionId} aria-labelledby={`${sectionId}-heading`} className="scroll-mt-32 border-t border-gray-200 bg-off-white py-16 lg:py-20">
             <div className="container-custom">
                 <div className="max-w-3xl">
                     <p className="eyebrow">Innovation awards</p>
-                    <h2 id="awards-heading" className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">{config.heading}</h2>
+                    <h2 id={`${sectionId}-heading`} className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">{heading ?? config.heading}</h2>
                     {config.intro && <p className="mt-4 text-lg leading-relaxed text-gray-600">{config.intro}</p>}
                 </div>
 
-                <ul className="mt-10 grid gap-6 md:grid-cols-2">
+                <ul className={`mt-10 grid gap-6 ${awards.length > 1 ? 'md:grid-cols-2' : 'max-w-3xl'}`}>
                     {awards.map((award) => (
                         <li key={award.awardId}>
-                            <AwardPDFCard award={award} categoryLabel={categoryLabel(competition, award.categoryId)} />
+                            <AwardPDFCard award={award} categoryLabel={categoryLabel(competition, award.categoryId)} competitionId={competition.id} orientation={awards.length === 1 ? 'horizontal' : 'vertical'} />
                         </li>
                     ))}
                 </ul>

@@ -105,6 +105,7 @@ export function validateTeamPayload(payload: TeamSavePayload, opts: ValidateOpti
 
     const t = payload.team;
     if (complete && !cleanText(t.name, LIMITS.teamName)) errors['team.name'] = 'Enter the team name.';
+    if (t.teamCode && !/^[A-Za-z0-9][A-Za-z0-9 _\-/]{0,39}$/.test(t.teamCode)) errors['team.teamCode'] = 'Use letters, numbers and hyphens, as given by the organiser (for example Rocketry-014).';
     if (complete && !cleanText(t.college, LIMITS.college)) errors['team.college'] = 'Enter the college or university name.';
 
     const l = payload.leader;
@@ -166,6 +167,7 @@ export function normalizeTeamPayload(raw: unknown): TeamSavePayload {
         categories: Array.isArray(r.categories) ? r.categories.map((c: unknown) => cleanText(c, 60)).filter(Boolean) : [],
         team: {
             name: cleanText(team.name, LIMITS.teamName),
+            teamCode: cleanText(team.teamCode, 40),
             college: cleanText(team.college, LIMITS.college),
             institutionLogoFileId: id(team.institutionLogoFileId),
             teamLogoFileId: id(team.teamLogoFileId),

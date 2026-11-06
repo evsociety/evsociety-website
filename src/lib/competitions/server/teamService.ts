@@ -3,6 +3,7 @@ import { revalidateTag } from 'next/cache';
 import type { CompetitionDefinition } from '@/config/competitions';
 import type { FileKind, FileSummary, TeamListItem, TeamView } from '../model';
 import { checkUpload, safeFileName } from '../files';
+import { imageSize } from '../imageSize';
 import { cleanText, isEmail, LIMITS, normalizeEmail, normalizeTeamPayload, validateLeaderStart, validateTeamPayload, validateYearAndCategories } from '../validation';
 import { ApiError } from './http';
 import { BackendError, callBackend } from './backend';
@@ -117,12 +118,15 @@ export async function uploadFile(competition: CompetitionDefinition, email: stri
     const bytes = new Uint8Array(await file.arrayBuffer());
     const check = checkUpload(kind, bytes);
     if (!check.ok) throw new ApiError(422, 'VALIDATION', check.message, { file: check.message });
+    const dims = check.mime.startsWith('image/') ? imageSize(bytes) : null;
     const result = await callBackend<{ file: FileSummary }>('files.upload', {
         competitionId: competition.id,
         teamId,
         kind,
         originalName: safeFileName(file.name || kind),
         base64: Buffer.from(bytes).toString('base64'),
+        width: dims?.width ?? null,
+        height: dims?.height ?? null,
     }, { actorEmail: email, ip });
     return result.file;
 }

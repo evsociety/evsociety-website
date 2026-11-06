@@ -35,6 +35,20 @@ export const GA4_EVENTS = {
     // Profile views
     CANDIDATE_OPEN: 'candidate_open',
     PROJECT_OPEN: 'project_open',
+
+    // Competition platform (see CompetitionEventParams)
+    COMPETITION_PAGE_VIEW: 'competition_page_view',
+    WINNERS_PAGE_VIEW: 'winners_page_view',
+    WINNER_CATEGORY_VIEW: 'winner_category_view',
+    COMPETITION_YEAR_SELECT: 'competition_year_select',
+    TEAM_PROFILE_VIEW: 'team_profile_view',
+    TEAM_SHARE_CLICK: 'team_share_click',
+    SHARE_LINK_COPY: 'share_link_copy',
+    RECOGNITION_CARD_DOWNLOAD: 'recognition_card_download',
+    AWARD_PDF_VIEW: 'award_pdf_view',
+    AWARD_PDF_DOWNLOAD: 'award_pdf_download',
+    TEAM_REGISTRATION_START: 'team_registration_start',
+    TEAM_REGISTRATION_SUBMIT: 'team_registration_submit',
 } as const;
 
 // ============================================================================
@@ -161,6 +175,20 @@ export interface CandidateOpenParams {
 export interface ProjectOpenParams {
     project_id: string;
     page: string;
+}
+
+/**
+ * Competition platform events. Only public, non-personal identifiers: never emails, phone
+ * numbers, names of people, internal team or member IDs, or unpublished data.
+ * team_registration_submit is sent only after the server confirms the submission.
+ */
+export interface CompetitionEventParams {
+    competition_id: string;
+    competition_year?: number;
+    category?: string;          // category id, e.g. 'model-rocketry'
+    team_slug?: string;         // public URL slug of a published team only
+    share_platform?: 'linkedin' | 'whatsapp' | 'native' | 'copy_link' | 'copy_caption';
+    content_type?: 'team_profile' | 'winners_category' | 'award_pdf' | 'recognition_card';
 }
 
 // ============================================================================

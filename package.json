@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
-    "competitions:dev-admin": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/competition-dev-admin.mjs"
+    "competitions:dev-admin": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/competition-dev-admin.mjs",
+    "competitions:import": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/competition-import-team.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.562.0",

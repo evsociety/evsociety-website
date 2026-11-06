@@ -25,16 +25,17 @@ The admin fix does not depend on the competition platform and should go live fir
 
 Every **active** deployment runs the version it is pinned to. Check Deploy → Manage deployments:
 older active deployments keep serving old code at their own URLs, so update them to the new
-version or archive them. (Done on 6 Nov 2026 for the deployment the websites use; five older
-active deployments were still on versions 5–12.)
+version or archive them. (On 6 Nov 2026 all six active deployments were moved to Version 14,
+the fixed version; repeat this check whenever you deploy a new version.)
 
 Until the platform file is added, the router line in `doPost` is reached only by signed
 competition requests, which fail harmlessly. Public registration and the admin page work as before.
 
 ## One-time setup (about 15 minutes)
 
-1. **Generate two secrets** (any random strings of 32+ characters), for example in a terminal:
-   `openssl rand -hex 32` (run it twice). Call them API secret and session secret.
+1. **Generate the session secret** (used only by the website), for example in a terminal:
+   `openssl rand -hex 32`. Keep it for step 8. The API secret shared by the script and the
+   website is created by the setup in step 6, so nobody has to type it in.
 2. **Open the script editor**: open the spreadsheet → Extensions → Apps Script.
 3. **Add the platform file**: click + next to Files → Script → name it `competition-platform`,
    then paste the whole contents of `google-apps-script/competition-platform.js`.
@@ -50,7 +51,7 @@ competition requests, which fail harmlessly. Public registration and the admin p
    | Property | Value |
    | --- | --- |
    | `ADMIN_OAUTH_CLIENT_ID` | the website's `NEXT_PUBLIC_GOOGLE_CLIENT_ID` (ends in `.apps.googleusercontent.com`). Required by the admin page; without it every admin request is refused |
-   | `EVSC_API_SECRET` | the API secret from step 1 |
+   | `EVSC_API_SECRET` | leave it out: setup (step 6) creates it. Copy it from here in step 8 |
    | `EVSC_SITE_URL` | `https://www.evsociety.org` |
    | `EVSC_REVALIDATE_URLS` | `https://www.evsociety.org/api/competitions/revalidate` (comma-separate several sites if needed) |
    | `EVSC_REVIEWERS` | optional: extra reviewer emails, comma-separated. The script owner is always a reviewer. |
@@ -67,10 +68,23 @@ competition requests, which fail harmlessly. Public registration and the admin p
    | Variable | Value |
    | --- | --- |
    | `COMPETITION_API_URL` | the web app URL (same as `NEXT_PUBLIC_REGISTRATION_API_URL`) |
-   | `COMPETITION_API_SECRET` | the API secret (same as `EVSC_API_SECRET`) |
+   | `COMPETITION_API_SECRET` | the value of Script Property `EVSC_API_SECRET` (created by setup) |
    | `COMPETITION_SESSION_SECRET` | the session secret |
 
    Never give these a `NEXT_PUBLIC_` prefix.
+
+## After updating the code
+
+Whenever `competition-platform.js` changes (the winners update of 6 Nov 2026 adds the columns
+Team Code, Team Photo Approved, Official Result Reference, Image Width, Image Height and Alt Text):
+
+1. Paste the new contents over the `competition-platform` file in the script editor.
+2. Run `evsCompetitionSetup` again. It only appends missing columns to the end of the platform
+   tabs and never changes existing rows; the execution log lists what it added.
+3. Deploy → Manage deployments → *New version*, and move **every** active deployment to it.
+
+To add a team that EV Society supplies (for example a winner whose leader has not registered),
+see `docs/competition-platform/WINNERS-PLATFORM.md`, section 4.
 
 ## Check it works
 

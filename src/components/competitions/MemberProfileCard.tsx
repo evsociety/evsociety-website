@@ -37,9 +37,11 @@ export default function MemberProfileCard({ person, variant = 'member' }: { pers
             <ProfilePhoto name={person.name} src={person.photoUrl} size="lg" />
             <h4 className="mt-4 break-words text-base font-semibold text-gray-900">{person.name}</h4>
             <p className="mt-0.5 text-sm text-gray-500">{roleLabel}</p>
-            <div className="mt-4">
-                <ContactLinks name={person.name} linkedin={person.linkedin} email={person.email} phone={person.phone} />
-            </div>
+            {(person.linkedin || person.email || person.phone) && (
+                <div className="mt-4">
+                    <ContactLinks name={person.name} linkedin={person.linkedin} email={person.email} phone={person.phone} />
+                </div>
+            )}
         </article>
     );
 }

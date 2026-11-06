@@ -7,6 +7,24 @@ import type { CompetitionRuntimeConfig, PublicAward, PublicCompetitionData, Publ
 import { cleanText, isEmail, isLinkedInUrl, isPhone, LIMITS, normalizeEmail, normalizeLinkedIn } from './validation';
 
 const FILE_ID_RE = /^FIL-[2-9A-HJ-NP-Z]{12}$/;
+export const TEAM_CODE_RE = /^[A-Za-z0-9][A-Za-z0-9 _\-/]{0,39}$/;
+
+function safeHttpsUrl(value: string): string | null {
+    try {
+        const url = new URL(value.trim());
+        return url.protocol === 'https:' ? url.toString() : null;
+    } catch {
+        return null;
+    }
+}
+
+function publicImage(raw: any, file: (id: unknown) => string | null, fallbackAlt: string) {
+    if (!raw || typeof raw !== 'object') return null;
+    const url = file(raw.fileId);
+    if (!url) return null;
+    const dim = (v: unknown) => (Number.isInteger(Number(v)) && Number(v) > 0 && Number(v) <= 20000 ? Number(v) : null);
+    return { url, width: dim(raw.width), height: dim(raw.height), alt: cleanText(raw.alt, 300) || fallbackAlt };
+}
 const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 export function mediaUrl(competitionId: string, fileId: string) {
@@ -172,7 +190,15 @@ export function sanitizeSnapshot(raw: any, competition: CompetitionDefinition): 
             .map((c: any) => {
                 const participationVerified = c.participationVerified === true;
                 const winnerVerified = participationVerified && c.winnerVerified === true;
-                return { categoryId: c.categoryId as string, participationVerified, winnerVerified, achievement: winnerVerified ? cleanText(c.achievement, 200) : '' };
+                const result = typeof c.officialResultUrl === 'string' ? safeHttpsUrl(c.officialResultUrl) : null;
+                return {
+                    categoryId: c.categoryId as string,
+                    participationVerified,
+                    winnerVerified,
+                    achievement: winnerVerified ? cleanText(c.achievement, 200) : '',
+                    verifiedAt: participationVerified && typeof c.verifiedAt === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(c.verifiedAt) ? c.verifiedAt : '',
+                    officialResultUrl: participationVerified && result ? result : '',
+                };
             });
         if (!categories.length) continue;
         if (!config.showRegisteredTeams && !categories.some((c: { participationVerified: boolean }) => c.participationVerified)) continue;
@@ -183,12 +209,13 @@ export function sanitizeSnapshot(raw: any, competition: CompetitionDefinition): 
             slug,
             year,
             name,
+            teamCode: TEAM_CODE_RE.test(cleanText(t.teamCode, 40)) ? cleanText(t.teamCode, 40) : '',
             college: cleanText(t.college, LIMITS.college),
             entryType: t.entryType === 'Individual' ? 'Individual' : 'Team',
             revision: Number(t.revision) || 1,
             teamLogoUrl: file(t.teamLogoFileId),
             institutionLogoUrl: file(t.institutionLogoFileId),
-            teamPhotoUrl: file(t.teamPhotoFileId),
+            teamPhoto: publicImage(t.teamPhoto, file, `Group photograph of ${name}`),
             categories,
             leader: people.find((p: PublicPerson) => p.role === 'leader') ?? null,
             members: people.filter((p: PublicPerson) => p.role === 'member'),

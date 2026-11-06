@@ -157,6 +157,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             { url: `${baseUrl}${paths.register}`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.7 },
             { url: `${baseUrl}${paths.participants}`, lastModified: currentDate, changeFrequency: 'weekly', priority: 0.7 },
             { url: `${baseUrl}${paths.winners}`, lastModified: currentDate, changeFrequency: 'weekly', priority: 0.7 },
+            ...competition.categories.map((c) => ({ url: `${baseUrl}${paths.categoryWinners(c.slug)}`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.7 })),
         );
         const published = await getCompetitionDataSafe(competition);
         for (const team of published?.data.teams ?? []) {

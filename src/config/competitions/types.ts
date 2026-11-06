@@ -8,6 +8,11 @@ export interface CompetitionCategory {
     /** Tab label on the winners page, e.g. "Model Rocketry Winners" */
     winnersLabel: string;
     description?: string;
+    /** URL segment of the category's winners page */
+    slug: string;
+    /** H1 of the category's winners page */
+    winnersTitle: string;
+    winnersIntro: string;
 }
 
 /** A choice offered in the registration form; each maps to one or more categories */
@@ -94,5 +99,9 @@ export interface CompetitionDefinition {
         participantsSubtitle: string;
         winnersTitle: string;
         winnersSubtitle: string;
+        /** Short competition name used in share captions and recognition cards */
+        shareName: string;
+        /** Short name of the independent organiser, e.g. IN-SPACe */
+        organiserShort: string;
     };
 }

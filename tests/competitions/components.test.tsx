@@ -8,7 +8,7 @@ import CompetitionNav from '@/components/competitions/CompetitionNav';
 import ContactLinks from '@/components/competitions/ContactLinks';
 import DefaultProfileAvatar, { initialsOf } from '@/components/competitions/DefaultProfileAvatar';
 import TeamProfileCard from '@/components/competitions/TeamProfileCard';
-import WinnersDirectory from '@/components/competitions/WinnersDirectory';
+import TeamShowcase from '@/components/competitions/TeamShowcase';
 import { INSPACE_COMPETITION } from '@/config/competitions/inspace';
 import type { PublicTeam } from '@/lib/competitions/model';
 import { DRONE_COMPETITION } from './droneCompetition';
@@ -17,15 +17,16 @@ const team: PublicTeam = {
     slug: 'team-astra-2026',
     year: 2026,
     name: 'Team Astra',
+    teamCode: '',
     college: 'RV College of Engineering',
     entryType: 'Team',
     revision: 1,
     teamLogoUrl: null,
     institutionLogoUrl: null,
-    teamPhotoUrl: null,
+    teamPhoto: null,
     categories: [
-        { categoryId: 'model-rocketry', participationVerified: true, winnerVerified: false, achievement: '' },
-        { categoryId: 'can-7usat', participationVerified: true, winnerVerified: true, achievement: 'First place' },
+        { categoryId: 'model-rocketry', participationVerified: true, winnerVerified: false, achievement: '', verifiedAt: '2026-11-06', officialResultUrl: '' },
+        { categoryId: 'can-7usat', participationVerified: true, winnerVerified: true, achievement: 'First place', verifiedAt: '2026-11-06', officialResultUrl: '' },
     ],
     leader: { role: 'leader', name: 'Asha Rao', photoUrl: '/api/competitions/media/x/FIL-ABCDEFGHJKLM', linkedin: 'https://www.linkedin.com/in/asha', email: null, phone: null },
     members: [{ role: 'member', name: 'Ravi Kumar', photoUrl: null, linkedin: null, email: null, phone: null }],
@@ -82,19 +83,12 @@ describe('profile components', () => {
         expect(published).toContain('download=""');
     });
 
-    it('shows dignified empty states instead of invented winners', () => {
-        const html = renderToStaticMarkup(<WinnersDirectory competition={INSPACE_COMPETITION} teams={[]} years={[2026]} defaultYear={2026} />);
-        expect(html).toContain('Competition winners will be announced following official verification.');
-        expect(html).toContain('Model Rocketry Winners');
-        expect(html).toContain('CAN-7USAT Winners');
-        expect(html).not.toMatch(/All winners|Combined/i);
-    });
-
     it('30: the same components render a differently configured competition', () => {
-        const drone = { ...team, slug: 'sky-2027', year: 2027, name: 'Sky Team', categories: [{ categoryId: 'autonomy', participationVerified: true, winnerVerified: true, achievement: '' }] };
-        const html = renderToStaticMarkup(<WinnersDirectory competition={DRONE_COMPETITION} teams={[drone]} years={[2027]} defaultYear={2027} />);
-        expect(html).toContain('Autonomous Navigation Winners');
+        const drone = { ...team, slug: 'sky-2027', year: 2027, name: 'Sky Team', categories: [{ categoryId: 'autonomy', participationVerified: true, winnerVerified: true, achievement: '', verifiedAt: '2027-03-01', officialResultUrl: '' }] };
+        const html = renderToStaticMarkup(<TeamShowcase team={drone} competition={DRONE_COMPETITION} categoryId="autonomy" />);
+        expect(html).toContain('Verified winner · Autonomous Navigation · 2027');
         expect(html).toContain('href="/programs/drone-challenge/teams/sky-2027"');
+        expect(html).toContain('/programs/drone-challenge/teams/sky-2027/recognition-card');
         const nav = renderToStaticMarkup(<CompetitionNav competition={DRONE_COMPETITION} active="winners" />);
         expect(nav).not.toContain('Innovation Awards');
     });

@@ -47,6 +47,8 @@ export interface TeamDocument {
     categories: string[];
     team: {
         name: string;
+        /** Identifier the organiser assigned, e.g. Rocketry-014 */
+        teamCode: string;
         college: string;
         institutionLogoFileId: string;
         teamLogoFileId: string;
@@ -105,6 +107,7 @@ export interface TeamView {
         consent: boolean;
         profileApproved: boolean;
         publicationApproved: boolean;
+        teamPhotoApproved: boolean;
         status: string;
     };
     processingConsentAt: string;
@@ -161,18 +164,31 @@ export interface PublicTeamCategory {
     participationVerified: boolean;
     winnerVerified: boolean;
     achievement: string;
+    /** Date (YYYY-MM-DD) EV Society recorded the verification */
+    verifiedAt: string;
+    /** The organiser's published result, when a reviewer linked it */
+    officialResultUrl: string;
+}
+
+export interface PublicImage {
+    url: string;
+    width: number | null;
+    height: number | null;
+    alt: string;
 }
 
 export interface PublicTeam {
     slug: string;
     year: number;
     name: string;
+    teamCode: string;
     college: string;
     entryType: string;
     revision: number;
     teamLogoUrl: string | null;
     institutionLogoUrl: string | null;
-    teamPhotoUrl: string | null;
+    /** Group photograph, only after the team's consent and EV Society's approval */
+    teamPhoto: PublicImage | null;
     categories: PublicTeamCategory[];
     leader: PublicPerson | null;
     members: PublicPerson[];
@@ -236,7 +252,7 @@ export function emptyTeamDocument(year: number | null, categories: string[]): Te
     return {
         year,
         categories,
-        team: { name: '', college: '', institutionLogoFileId: '', teamLogoFileId: '', teamPhotoFileId: '', teamPhotoConsent: false },
+        team: { name: '', teamCode: '', college: '', institutionLogoFileId: '', teamLogoFileId: '', teamPhotoFileId: '', teamPhotoConsent: false },
         leader: { name: '', phone: '', linkedin: '', photoFileId: '', resumeFileId: '', under18: false },
         members: [],
         mentors: [],

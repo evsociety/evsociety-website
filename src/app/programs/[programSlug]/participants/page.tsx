@@ -7,6 +7,7 @@ import ParticipantsDirectory from '@/components/competitions/ParticipantsDirecto
 import { competitionPaths, getCompetition } from '@/config/competitions';
 import { getCompetitionData } from '@/lib/competitions/server/publicData';
 import { competitionOr404, competitionParams, directoryYears, type CompetitionPageProps } from '../competitionRoute';
+import { OG_IMAGE } from '@/config/site';
 
 export const revalidate = 60;
 export const dynamicParams = false;
@@ -20,7 +21,7 @@ export async function generateMetadata({ params }: CompetitionPageProps): Promis
         title: `${competition.copy.participantsTitle} | ${competition.shortName}`,
         description: competition.copy.participantsSubtitle,
         alternates: { canonical: path },
-        openGraph: { title: `${competition.copy.participantsTitle} | ${competition.shortName}`, description: competition.copy.participantsSubtitle, url: path },
+        openGraph: { title: `${competition.copy.participantsTitle} | ${competition.shortName}`, description: competition.copy.participantsSubtitle, url: path, images: [OG_IMAGE] },
     };
 }
 

@@ -21,6 +21,7 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import InPageNav from '@/components/ui/InPageNav';
 import KeepCanSatTogether from '@/components/programs/KeepCanSatTogether';
 import CompetitionJourneys from '@/components/competitions/CompetitionJourneys';
+import TrackView from '@/components/competitions/TrackView';
 import { INSPACE_COMPETITION } from '@/config/competitions/inspace';
 import { SPACE_PROGRAM } from '@/data/programs/space-innovation/program.config';
 import { OG_IMAGE } from '@/config/site';
@@ -101,6 +102,7 @@ export default function SpaceInnovationProgramPage() {
 
     return (
         <div className="bg-white">
+            <TrackView event="competition_page_view" params={{ competition_id: INSPACE_COMPETITION.id }} />
 
             {/* 1. Hero */}
             <section className="bg-navy text-white" aria-labelledby="program-title">
