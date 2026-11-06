@@ -30,3 +30,6 @@ pnpm-debug.log*
 # misc
 coverage/
 tmp/
+
+# local competition platform data (development backend, generated secrets)
+.data/

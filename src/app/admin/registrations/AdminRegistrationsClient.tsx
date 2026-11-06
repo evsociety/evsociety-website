@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { isAdminAuthenticated, initGoogleSignIn, renderGoogleSignInButton, signOutAdmin } from '@/lib/adminAuth';
-import { listRegistrations, exportToCSV, generateExportFilename } from '@/lib/adminRegistrationsService';
+import { AdminAuthError, listRegistrations, exportToCSV, generateExportFilename } from '@/lib/adminRegistrationsService';
 import { trackEvent } from '@/utils/analytics/ga4';
 import type { AdminRegistration, AdminFilters } from '@/types/admin';
 import AdminHeader from '@/components/admin/AdminHeader';
@@ -99,6 +99,13 @@ export default function AdminRegistrationsClient() {
                 total_registrations: data.length,
             });
         } catch (err) {
+            if (err instanceof AdminAuthError) {
+                // Back to the sign-in screen; the session was cleared by the service
+                setRegistrations([]);
+                setFilteredRegistrations([]);
+                setIsAuthenticated(false);
+                return;
+            }
             const errorMessage = err instanceof Error ? err.message : 'Failed to fetch registrations';
             setError(errorMessage);
             console.error('Error fetching registrations:', err);

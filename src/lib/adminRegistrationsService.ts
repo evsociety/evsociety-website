@@ -5,7 +5,15 @@
 
 import { adminConfig } from '@/config/adminConfig';
 import type { AdminFilters, AdminRegistration, AdminApiResponse } from '@/types/admin';
-import { getAdminSession } from '@/lib/adminAuth';
+import { clearAdminSession, getAdminSession } from '@/lib/adminAuth';
+
+/** Thrown when the server refuses the admin's Google sign-in */
+export class AdminAuthError extends Error {
+    constructor(message: string) {
+        super(message);
+        this.name = 'AdminAuthError';
+    }
+}
 
 /**
  * List registrations with optional filters
@@ -60,6 +68,12 @@ export const listRegistrations = async (
 
         if (!data.ok) {
             console.error('[Admin Service] API Error:', data.error);
+            // The server verifies the Google sign-in on every request; a refusal means the
+            // sign-in has expired or is not the admin account, so the admin signs in again
+            if (/access denied/i.test(data.error || '')) {
+                clearAdminSession();
+                throw new AdminAuthError('Your admin sign-in has expired or was not accepted. Please sign in again.');
+            }
             throw new Error(data.error || 'Failed to fetch registrations');
         }
 

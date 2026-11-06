@@ -10,7 +10,12 @@
  * 
  * 1. Open your "EVSociety Registrations" Google Sheet
  * 2. Go to Extensions > Apps Script
- * 3. REPLACE ALL existing code with this file.
+ * 3. REPLACE ALL code in this file (Code.gs) with this file. Keep the separate
+ *    "competition-platform" file if it is installed.
+ * 3a. Project Settings > Script Properties: set ADMIN_OAUTH_CLIENT_ID to the website's
+ *     NEXT_PUBLIC_GOOGLE_CLIENT_ID. Without it, the admin page is refused (fail-safe).
+ * 3b. Select getSheet in the function list and click Run once, then approve the permission
+ *     "Connect to an external service" (used to verify admin sign-ins with Google).
  * 4. Click "Deploy" > "Manage deployments"
  * 5. Click "Edit" (pencil icon) next to your existing deployment
  * 6. Select "New version" from the version dropdown (CRITICAL!)
@@ -43,6 +48,9 @@ function doPost(e) {
 
         const data = JSON.parse(e.postData.contents);
 
+        // Competition platform (signed requests from the website server; see competition-platform.gs)
+        if (data && data.kind === 'evs-competition-v1') return evscHandlePost(data);
+
         // ROUTER LOGIC:
         // If action is 'listRegistrations', it's an Admin Request
         if (data.action === 'listRegistrations' || data.verifyToken) {
@@ -70,6 +78,12 @@ function handleRegistration(data, output) {
     if (!sheet) {
         throw new Error('Sheet not found');
     }
+
+    // Visitor input starting with = + - or @ would otherwise be stored as a spreadsheet formula.
+    // A leading apostrophe keeps it as plain text (the apostrophe is not shown in the sheet).
+    const asText = function (value) {
+        return typeof value === 'string' && /^[=+\-@\t\r]/.test(value) ? "'" + value : value;
+    };
 
     // Prepare row data (Append Order)
     const row = [
@@ -99,7 +113,7 @@ function handleRegistration(data, output) {
         data.sessionTrack || '',
         data.questions || '',
         data.timestamp || new Date().toISOString()
-    ];
+    ].map(asText);
 
     sheet.appendRow(row);
 
@@ -147,11 +161,59 @@ function handleAdminAction(data, output) {
 
 /**
  * Helper: Verify Admin Token
+ *
+ * The admin page sends the Google ID token from "Sign in with Google". Google confirms the token
+ * is genuine and current; access is granted only if it was issued to EV Society's own OAuth
+ * client (Script Property ADMIN_OAUTH_CLIENT_ID, the same value as NEXT_PUBLIC_GOOGLE_CLIENT_ID)
+ * for the verified admin address. Anything else, including a missing configuration, is refused.
+ * Google ID tokens expire after about an hour; the admin page then asks to sign in again.
  */
+const ADMIN_TOKEN_ISSUERS = ['accounts.google.com', 'https://accounts.google.com'];
+
 function verifyAdminToken(idToken) {
-    // Basic check for now
-    if (!idToken || idToken.length < 5) return false;
-    return true;
+    if (typeof idToken !== 'string' || idToken.length < 100 || idToken.length > 4096 || idToken.split('.').length !== 3) {
+        return false;
+    }
+    const clientIds = String(PropertiesService.getScriptProperties().getProperty('ADMIN_OAUTH_CLIENT_ID') || '')
+        .split(',')
+        .map(function (id) { return id.trim(); })
+        .filter(function (id) { return id; });
+    if (!clientIds.length) {
+        Logger.log('Admin access refused: Script Property ADMIN_OAUTH_CLIENT_ID is not set.');
+        return false;
+    }
+
+    // Tokens already confirmed by Google are remembered (by hash) until they expire
+    const digest = Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256, idToken)
+        .map(function (b) { return ('0' + ((b + 256) % 256).toString(16)).slice(-2); })
+        .join('');
+    const cache = CacheService.getScriptCache();
+    const cacheKey = 'admin-token:' + digest.slice(0, 40);
+    if (cache.get(cacheKey) === 'ok') return true;
+
+    let info;
+    try {
+        const response = UrlFetchApp.fetch('https://oauth2.googleapis.com/tokeninfo?id_token=' + encodeURIComponent(idToken), { muteHttpExceptions: true });
+        if (response.getResponseCode() !== 200) return false;
+        info = JSON.parse(response.getContentText());
+    } catch (err) {
+        Logger.log('Admin token check failed: ' + err);
+        return false;
+    }
+
+    const now = Math.floor(Date.now() / 1000);
+    const expires = Number(info.exp);
+    const valid = clientIds.indexOf(String(info.aud)) !== -1 &&
+        ADMIN_TOKEN_ISSUERS.indexOf(String(info.iss)) !== -1 &&
+        String(info.email_verified) === 'true' &&
+        String(info.email || '').toLowerCase() === ADMIN_EMAIL.toLowerCase() &&
+        expires > now;
+    if (valid) {
+        cache.put(cacheKey, 'ok', Math.max(1, Math.min(expires - now, 3600)));
+    } else {
+        Logger.log('Admin access refused for ' + (info.email || 'unknown account'));
+    }
+    return valid;
 }
 
 /**

@@ -20,6 +20,8 @@ import TrackedLink from '@/components/analytics/TrackedLink';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import InPageNav from '@/components/ui/InPageNav';
 import KeepCanSatTogether from '@/components/programs/KeepCanSatTogether';
+import CompetitionJourneys from '@/components/competitions/CompetitionJourneys';
+import { INSPACE_COMPETITION } from '@/config/competitions/inspace';
 import { SPACE_PROGRAM } from '@/data/programs/space-innovation/program.config';
 import { OG_IMAGE } from '@/config/site';
 
@@ -47,6 +49,7 @@ const scopeIcons = [Atom, TriangleAlert, RadioTower, Gauge];
 
 const pageSections = [
     { id: 'about', label: 'About' },
+    { id: 'teams', label: 'Teams & winners' },
     { id: 'awards', label: 'Awards' },
     { id: 'development', label: 'Engineering development' },
     { id: 'timeline', label: 'Timeline' },
@@ -204,6 +207,24 @@ export default function SpaceInnovationProgramPage() {
                                 from the IN-SPACe competition, its rules and its judging.
                             </p>
                         </article>
+                    </div>
+                </div>
+            </section>
+
+            {/* Team platform: register, participants, winners, award documents */}
+            <section id="teams" className="scroll-mt-32 border-b border-gray-200 py-20 lg:py-24" aria-labelledby="teams-heading">
+                <div className="container-custom">
+                    <div className="max-w-3xl">
+                        <Eyebrow>EV Society team platform</Eyebrow>
+                        <h2 id="teams-heading" className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+                            Team profiles, participants and winners
+                        </h2>
+                        <p className="mt-4 text-lg leading-relaxed text-gray-600">
+                            Showcase your team&apos;s engineering talent, mentors and achievements. Profiles are reviewed by EV Society before they are published.
+                        </p>
+                    </div>
+                    <div className="mt-12">
+                        <CompetitionJourneys competition={INSPACE_COMPETITION} />
                     </div>
                 </div>
             </section>

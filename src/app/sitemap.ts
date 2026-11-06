@@ -2,6 +2,11 @@ import { MetadataRoute } from 'next';
 import partnersData from '@/data/partners.json';
 import { getAllProjects, getProject } from '@/lib/projects-dal';
 import { SITE_URL } from '@/config/site';
+import { COMPETITIONS, competitionPaths } from '@/config/competitions';
+import { getCompetitionDataSafe } from '@/lib/competitions/server/publicData';
+
+// Rebuilt hourly so newly published team profiles are listed
+export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = SITE_URL;
@@ -144,5 +149,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         ]),
     ];
 
-    return [...staticRoutes, ...partnerRoutes, ...projectRoutes];
+    // Competition team platform: register, directories, and every published team profile
+    const competitionRoutes: MetadataRoute.Sitemap = [];
+    for (const competition of COMPETITIONS) {
+        const paths = competitionPaths(competition);
+        competitionRoutes.push(
+            { url: `${baseUrl}${paths.register}`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.7 },
+            { url: `${baseUrl}${paths.participants}`, lastModified: currentDate, changeFrequency: 'weekly', priority: 0.7 },
+            { url: `${baseUrl}${paths.winners}`, lastModified: currentDate, changeFrequency: 'weekly', priority: 0.7 },
+        );
+        const published = await getCompetitionDataSafe(competition);
+        for (const team of published?.data.teams ?? []) {
+            competitionRoutes.push({ url: `${baseUrl}${paths.team(team.slug)}`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.5 });
+        }
+    }
+
+    return [...staticRoutes, ...competitionRoutes, ...partnerRoutes, ...projectRoutes];
 }

@@ -25,12 +25,36 @@ export const isAdminAuthenticated = (): boolean => {
             return false;
         }
 
+        // The server accepts only a current Google ID token (they last about an hour), so an
+        // expired token means signing in again rather than an "Access denied" error
+        const expiresAt = getIdTokenExpiry(session.idToken);
+        if (!expiresAt || expiresAt - 60_000 <= now) {
+            clearAdminSession();
+            return false;
+        }
+
         // Check if email matches admin email
         return session.adminEmail === adminConfig.ADMIN_EMAIL;
 
     } catch (error) {
         console.error('Error checking admin auth:', error);
         return false;
+    }
+};
+
+/**
+ * Expiry time (ms) of a Google ID token, read from its payload. Only used to decide when to ask
+ * the admin to sign in again; the Apps Script verifies the token with Google on every request.
+ */
+export const getIdTokenExpiry = (idToken: string): number | null => {
+    try {
+        const part = idToken.split('.')[1];
+        if (!part) return null;
+        const json = atob(part.replace(/-/g, '+').replace(/_/g, '/').padEnd(Math.ceil(part.length / 4) * 4, '='));
+        const exp = Number(JSON.parse(json).exp);
+        return Number.isFinite(exp) && exp > 0 ? exp * 1000 : null;
+    } catch {
+        return null;
     }
 };
 

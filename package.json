@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "vitest run",
+    "competitions:dev-admin": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/competition-dev-admin.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.562.0",
@@ -24,6 +26,7 @@
     "eslint": "^9",
     "eslint-config-next": "^15.1.4",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^4.1.12"
   }
 }

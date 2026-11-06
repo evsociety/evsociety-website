@@ -1,9 +1,16 @@
-// Test script to debug the Admin API using curl
+// Test script to debug the Admin API using curl.
+// Usage: ADMIN_API_URL=https://script.google.com/macros/s/…/exec node test_admin_api.js
+// With the Google ID token check in place, the fake token below must be refused
+// ("Access denied. Invalid token."). If it returns registrations, the check is not deployed.
 const { exec } = require('child_process');
 const util = require('util');
 const execPromise = util.promisify(exec);
 
-const ADMIN_API_URL = 'https://script.google.com/macros/s/AKfycbzexTstKRRYFOgNTNLURYbcWY9_xP-1uQ9xtydR4lz6FOq1Zgka4kGmO1bOCWmnHq9l/exec';
+const ADMIN_API_URL = process.env.ADMIN_API_URL;
+if (!ADMIN_API_URL) {
+    console.error('Set ADMIN_API_URL to the Apps Script web app URL.');
+    process.exit(1);
+}
 
 async function testAdminAPI() {
     console.log('🔍 Testing Admin API...\n');
@@ -16,7 +23,9 @@ async function testAdminAPI() {
         idToken: 'test-token-12345'
     });
 
-    const curlCommand = `curl -X POST "${ADMIN_API_URL}" -H "Content-Type: application/json" -d '${payload}' -w "\\n\\nHTTP Status: %{http_code}\\n" -s`;
+    // Apps Script answers a POST with a redirect that must be followed with GET (as browsers do):
+    // -L follows it, and --data without -X lets curl switch to GET for the redirect
+    const curlCommand = `curl -sL "${ADMIN_API_URL}" -H "Content-Type: text/plain;charset=utf-8" --data '${payload}' -w "\\n\\nHTTP Status: %{http_code}\\n"`;
 
     try {
         console.log('Executing curl command...\n');
