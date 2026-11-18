@@ -13,8 +13,9 @@ into it. Team data waiting for review lives in `.data/` (git-ignored) and in the
 | Area | State |
 | --- | --- |
 | Code | Complete locally. Not committed or deployed |
-| Live site | Shows the pages in their "awaiting verification" state, because the competition backend is not yet configured in production (`NOT_CONFIGURED`) |
-| First winning team | Prepared as a local import file (`.data/competition-imports/`). Not in the live spreadsheet |
+| Google side | **Live since 6 Nov 2026**: platform installed, setup run, all active deployments on Version 15 |
+| Live site | **Connected since 6 Nov 2026.** The `COMPETITION_*` variables are set on Vercel project `evsociety-website-ggo2` (Production only). Team registration is open, and sign-in codes are emailed |
+| First winning team | Imported into the live spreadsheet on 6 Nov 2026, pending review and not public |
 | Winner claim | **Unverified.** Needs checking against IN-SPACe's official result before Winner Verified is set |
 | Group photograph | **Permission not yet confirmed.** Stays private until a reviewer sets Team Photo Approved |
 
@@ -252,12 +253,10 @@ Not yet exercised end to end: award PDF events (no award is published), the year
 
 ## 10. Going live (each step needs approval)
 
-1. Google: add `competition-platform.js` and the updated `Code.gs`. Set the Script Properties,
-   run `evsCompetitionSetup`, deploy a new version and move **every** active deployment to it
-   (`google-apps-script/README.md`).
-2. Vercel: `COMPETITION_API_URL`, `COMPETITION_API_SECRET`, `COMPETITION_SESSION_SECRET`, then
-   redeploy.
-3. Import the team with `--production`.
+1. ~~Google: install the platform, set Script Properties, run setup, deploy to every active
+   deployment.~~ Done 6 Nov 2026 (Version 15).
+2. ~~Vercel variables and redeploy.~~ Done 6 Nov 2026.
+3. ~~Import the team with `--production`.~~ Done 6 Nov 2026.
 4. Confirm the result against IN-SPACe's official source and confirm photo permission, then make
    the reviewer decisions in the sheet.
 5. Run the Search Console checklist (section 7).

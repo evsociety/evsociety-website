@@ -2842,3 +2842,13 @@ var EVSC_ACTIONS = {
     'consent.get': evscActionGetConsent,
     'consent.save': evscActionSaveConsent,
 };
+
+/**
+ * Editor helper: confirms the script may send email (sign-in codes, review decisions). Run it
+ * once from the editor; if Google asks, allow "Send email as you". It sends nothing.
+ */
+function evsCompetitionCheckEmail() {
+    var remaining = MailApp.getRemainingDailyQuota();
+    Logger.log('Email permission OK. Emails left today: ' + remaining);
+    return remaining;
+}

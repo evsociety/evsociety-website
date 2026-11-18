@@ -25,8 +25,28 @@ The admin fix does not depend on the competition platform and should go live fir
 
 Every **active** deployment runs the version it is pinned to. Check Deploy → Manage deployments:
 older active deployments keep serving old code at their own URLs, so update them to the new
-version or archive them. (On 6 Nov 2026 all six active deployments were moved to Version 14,
-the fixed version; repeat this check whenever you deploy a new version.)
+version or archive them. Repeat this check whenever you deploy a new version.
+
+**Live state (6 Nov 2026):** the platform file is installed, setup has run (tabs, triggers,
+private uploads folder, secrets), and all six active deployments, including `AKfycbzR0McW…`
+used by the website, run **Version 15**. A seventh deployment, `AKfycbzF8GGz…` on Version 16
+(identical code), was created from the editor's Deploy menu the same day; archive it if it is not
+needed. The website side (step 8) is done: the variables are on Vercel project `evsociety-website-ggo2`
+(Production only), and the live site has been verified end to end.
+
+**Permissions to grant.** Google's consent screen lets you untick individual permissions. The
+script needs all of them: Sheets, Drive, "Send email as you", "Connect to an external service" and
+"Allow this application to run when you are not present". Run `evsCompetitionCheckEmail` from
+the editor to confirm email works; it sends nothing.
+
+**Rotating the API secret** (for example if it was ever pasted somewhere visible):
+1. Script Properties: delete `EVSC_API_SECRET`.
+2. Run `evsCompetitionSetup`, which creates a new one.
+3. Vercel → `evsociety-website-ggo2` → Environment Variables → `COMPETITION_API_SECRET` → Edit →
+   paste the new value.
+4. Redeploy production.
+
+Requests fail between steps 2 and 4, so do them together.
 
 Until the platform file is added, the router line in `doPost` is reached only by signed
 competition requests, which fail harmlessly. Public registration and the admin page work as before.
@@ -74,6 +94,13 @@ competition requests, which fail harmlessly. Public registration and the admin p
    Never give these a `NEXT_PUBLIC_` prefix.
 
 ## After updating the code
+
+Pushing from this repository with Google's `clasp` tool avoids pasting the file by hand:
+`npx @google/clasp login`, `clasp clone <script ID>` into an empty folder, copy
+`competition-platform.js` over the cloned file, `clasp push`, `clasp version "<description>"`,
+then `clasp redeploy <deployment ID> -V <version>` for each active deployment
+(`clasp deployments` lists them). It needs the Google Apps Script API switched on at
+script.google.com/home/usersettings.
 
 Whenever `competition-platform.js` changes (the winners update of 6 Nov 2026 adds the columns
 Team Code, Team Photo Approved, Official Result Reference, Image Width, Image Height and Alt Text):

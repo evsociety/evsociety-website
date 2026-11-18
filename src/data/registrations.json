@@ -226,6 +226,49 @@
     ],
     "webinars": [
         {
+            "id": "web_20261118_1",
+            "title": "SIM-005: Cyber Attack Simulator",
+            "date": "2026-11-18",
+            "time": "8:00 PM IST",
+            "speaker": "Ms. Astha Singh",
+            "speakerTitle": "Intern, Cybersecurity",
+            "speakerOrganization": "iTelematics® Software Private Limited, Bengaluru",
+            "speakerInstitution": "Techno India University, Kolkata",
+            "location": "Bengaluru, India",
+            "modeOptions": [
+                "online"
+            ],
+            "categoryTags": [
+                "Cybersecurity",
+                "Battery Safety",
+                "Attack Simulation",
+                "Webinar"
+            ],
+            "sessionTracks": [
+                "Battery Failure Detection",
+                "Thermal Runaway Prevention",
+                "AI-Based Monitoring",
+                "Cyber Attack Simulation",
+                "BMS Threat Vectors"
+            ],
+            "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/13Webinars/ms-astha-singh_cyber-attack-simulator_poster.png",
+            "youtubeURL": "",
+            "presentationURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/12Presentation/ms-astha-singh_sim-005-cyber-attack-simulator_ppt.pdf",
+            "description": "Cybersecurity Architecture, Execution Flow, Clerk Auth & Platform Integration. Studied EV & battery cybersecurity concepts. Explored BMS architecture and attack surfaces. Researched EV battery attack scenarios and ecosystem risks.",
+            "reference": [
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                },
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                }
+            ]
+        },
+        {
             "id": "web_20261028_1",
             "title": "Security Analysis",
             "date": "2026-10-28",
