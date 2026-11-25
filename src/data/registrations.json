@@ -226,6 +226,50 @@
     ],
     "webinars": [
         {
+            "id": "web_20261125_2",
+            "title": "SIM-006: Detection Rule Simulator",
+            "date": "2026-11-25",
+            "time": "8:00 PM IST",
+            "speaker": "Mrs. Bhavya Naga Sai Parvathi Kshatri",
+            "speakerTitle": "Cybersecurity Architect | Research Lead",
+            "speakerOrganization": "iTelematics® Software Private Limited, Bengaluru",
+            "speakerInstitution": "",
+            "location": "Bengaluru, India",
+            "modeOptions": [
+                "online"
+            ],
+            "categoryTags": [
+                "Cybersecurity",
+                "Battery Safety",
+                "Attack Simulation",
+                "Detection Engineering",
+                "Webinar"
+            ],
+            "sessionTracks": [
+                "Battery Failure Detection",
+                "Thermal Runaway Prevention",
+                "AI-Based Monitoring",
+                "Cyber Attack Simulation",
+                "Detection Rules"
+            ],
+            "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/13Webinars/mrs-bhavya-naga-sai-parvathi_ev-battery-cybersecurity_poster.png",
+            "youtubeURL": "",
+            "presentationURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/12Presentation/mr-kalmadi-saisiddi_sim-006-detection-rule-simulator_ppt.pdf",
+            "description": "Demonstration of the Battery Cybersecurity Platform, showcasing backend components, database integration, and the Cyber Attack Simulator. The demo will cover simulated cyberattacks, including telemetry spoofing, replay attacks, and Battery Management System (BMS) intrusion scenarios, along with the Detection Rule Simulator.",
+            "reference": [
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                },
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                }
+            ]
+        },
+        {
             "id": "web_20261125_1",
             "title": "SIM-006: Detection Rule Simulator",
             "date": "2026-11-25",
