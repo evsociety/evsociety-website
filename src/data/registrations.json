@@ -226,6 +226,49 @@
     ],
     "webinars": [
         {
+            "id": "web_20261125_1",
+            "title": "SIM-006: Detection Rule Simulator",
+            "date": "2026-11-25",
+            "time": "8:00 PM IST",
+            "speaker": "Mr. Kalmadi Saisiddi",
+            "speakerTitle": "Intern, Cybersecurity",
+            "speakerOrganization": "iTelematics® Software Private Limited, Bengaluru",
+            "speakerInstitution": "S-VYASA Deemed University, Bengaluru",
+            "location": "Bengaluru, India",
+            "modeOptions": [
+                "online"
+            ],
+            "categoryTags": [
+                "Cybersecurity",
+                "Battery Safety",
+                "Detection Engineering",
+                "Webinar"
+            ],
+            "sessionTracks": [
+                "Battery Failure Detection",
+                "Thermal Runaway Prevention",
+                "AI-Based Monitoring",
+                "Detection Rules",
+                "Battery Event Trust"
+            ],
+            "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/13Webinars/mr-kalmadi-saisiddi_ev-battery-cybersecurity_poster.png",
+            "youtubeURL": "",
+            "presentationURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/12Presentation/mr-kalmadi-saisiddi_sim-006-detection-rule-simulator_ppt.pdf",
+            "description": "SIM-006 is the decision layer of the Battery Cybersecurity Platform. It takes one battery event (telemetry, identity, firmware or cyber), checks it against 8 detection rules, and returns PASS, WARN or HARD_FAIL for each rule plus one overall gate. Other simulators produce data; SIM-006 decides whether that data can be trusted.",
+            "reference": [
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                },
+                {
+                    "docName": "",
+                    "docURL": "",
+                    "Source": ""
+                }
+            ]
+        },
+        {
             "id": "web_20261118_1",
             "title": "SIM-005: Cyber Attack Simulator",
             "date": "2026-11-18",
