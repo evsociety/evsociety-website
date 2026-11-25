@@ -2,7 +2,7 @@
     "projectId": "battery-safety-systems",
     "teamId": "EV.ENGINEER™",
     "overallStatus": "submitted",
-    "overallPercentage": 43,
+    "overallPercentage": 57,
     "certificateIssued": false,
     "certificatePath": "",
     "lastUpdated": "2026-11-25",
@@ -13,7 +13,7 @@
         {
             "stageId": "stage0",
             "title": "EV BATTERY SAFETY SYSTEMS",
-            "percentage": 43,
+            "percentage": 57,
             "documents": [
                 {
                     "docId": "s0-031-1",
@@ -100,10 +100,10 @@
                     "name": "WEBINAR - SIM-006: Detection Rule Simulator (LinkedIn Event)",
                     "description": "The decision layer of the Battery Cybersecurity Platform: every battery event in, one verdict out — PASS, WARN or HARD_FAIL.",
                     "required": true,
-                    "status": "not-started",
-                    "submittedOn": "",
+                    "status": "completed",
+                    "submittedOn": "2026-11-25",
                     "reviewNotes": "",
-                    "fileUrl": "",
+                    "fileUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7531160984049098752",
                     "reviewerName": "",
                     "reviewerComment": "",
                     "reviewDate": "",
