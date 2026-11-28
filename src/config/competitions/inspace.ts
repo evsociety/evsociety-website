@@ -1,5 +1,31 @@
-import { SPACE_PROGRAM } from '@/data/programs/space-innovation/program.config';
+import { SPACE_PROGRAM, recipientName, type AwardRecipient } from '@/data/programs/space-innovation/program.config';
+import type { PublicTeam } from '@/lib/competitions/model';
 import type { CompetitionDefinition } from './types';
+
+// The award recipients named on the program page, published as verified winners of their
+// category. With no team name, the institution is the team's public name.
+function recipientTeam(categoryId: string, recipient: AwardRecipient): PublicTeam {
+    const name = recipientName(recipient);
+    const [photo] = recipient.photos;
+    const person = (memberName: string) => ({ role: 'member' as const, name: memberName, photoUrl: null, linkedin: null, email: null, phone: null });
+    return {
+        slug: recipient.slug,
+        year: recipient.year,
+        name,
+        teamCode: recipient.teamCode,
+        college: recipient.teamName ? recipient.institution : '',
+        entryType: 'Team',
+        revision: 1,
+        teamLogoUrl: null,
+        institutionLogoUrl: null,
+        teamPhoto: photo ? { url: photo.src, width: photo.width, height: photo.height, alt: photo.alt } : null,
+        categories: [{ categoryId, participationVerified: true, winnerVerified: true, achievement: '', verifiedAt: recipient.confirmedOn, officialResultUrl: '' }],
+        leader: null,
+        members: recipient.members.map(person),
+        mentors: [],
+        links: recipient.link ? [recipient.link] : [],
+    };
+}
 
 // First competition on the platform. Titles come from the existing program config so the
 // program page, registration and directories always use the same wording.
@@ -61,6 +87,7 @@ export const INSPACE_COMPETITION: CompetitionDefinition = {
         mentorInstitution: true,
     },
     directories: { participants: true, winners: true },
+    publishedTeams: SPACE_PROGRAM.awards.flatMap((award) => (award.winner ? [recipientTeam(award.id, award.winner)] : [])),
     awards: {
         heading: 'EV Society Innovation Awards 2026',
         intro: 'EV Society’s proposed innovation awards for the winning CAN-7USAT and Model Rocketry teams.',

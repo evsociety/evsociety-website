@@ -2,7 +2,7 @@ import 'server-only';
 import { unstable_cache } from 'next/cache';
 import type { CompetitionDefinition } from '@/config/competitions';
 import type { PublicCompetitionData } from '../model';
-import { emptyCompetitionData, sanitizeSnapshot } from '../publicModel';
+import { emptyCompetitionData, sanitizeSnapshot, withPublishedTeams } from '../publicModel';
 import { callBackend } from './backend';
 import { backendMode } from './env';
 
@@ -41,9 +41,9 @@ export interface CompetitionDataResult {
 }
 
 export async function getCompetitionData(competition: CompetitionDefinition): Promise<CompetitionDataResult> {
-    if (backendMode() === 'unconfigured') return { data: emptyCompetitionData(competition), source: 'not-configured' };
+    if (backendMode() === 'unconfigured') return { data: withPublishedTeams(emptyCompetitionData(competition), competition), source: 'not-configured' };
     try {
-        const data = await cachedSnapshot(competition);
+        const data = withPublishedTeams(await cachedSnapshot(competition), competition);
         lastGood().set(competition.id, data);
         return { data, source: 'live' };
     } catch (err) {

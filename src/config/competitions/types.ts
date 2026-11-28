@@ -2,6 +2,8 @@
 // editing, the participants and winners directories and award documents, so a new competition
 // needs a definition (and a row in the Competitions tab) rather than new pages or components.
 
+import type { PublicTeam } from '@/lib/competitions/model';
+
 export interface CompetitionCategory {
     id: string;
     label: string;
@@ -89,6 +91,12 @@ export interface CompetitionDefinition {
         disclaimer?: string;
         links?: { label: string; href: string }[];
     } | null;
+    /**
+     * Teams EV Society publishes from code, for results it has confirmed directly. They are added
+     * to the spreadsheet's published teams; a published spreadsheet team with the same slug or
+     * year and team code takes their place.
+     */
+    publishedTeams?: PublicTeam[];
     copy: {
         heroEyebrow: string;
         registerSubtitle: string;

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, ArrowUpRight, GraduationCap, ShieldCheck, Users } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, GraduationCap, Linkedin, ShieldCheck, Users } from 'lucide-react';
 import type { CompetitionDefinition } from '@/config/competitions';
 import { competitionPaths } from '@/config/competitions';
 import { SITE_URL } from '@/config/site';
@@ -83,6 +83,26 @@ export default function TeamShowcase({ team, competition, categoryId, variant = 
                         </div>
                     </div>
                 </section>
+            )}
+
+            {team.links && team.links.length > 0 && (
+                <ul aria-label={`Links about ${team.name}`} className="mt-6 flex flex-wrap gap-3">
+                    {team.links.map((link) => (
+                        <li key={link.href}>
+                            <a
+                                href={link.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex min-h-11 items-center gap-2 rounded-full border border-gray-300 bg-white px-5 font-semibold text-gray-800 transition-colors hover:border-primary hover:text-primary motion-reduce:transition-none"
+                            >
+                                {link.href.startsWith('https://www.linkedin.com/') && <Linkedin className="h-4 w-4 shrink-0" aria-hidden="true" />}
+                                {link.label}
+                                <ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true" />
+                                <span className="sr-only"> (opens in a new tab)</span>
+                            </a>
+                        </li>
+                    ))}
+                </ul>
             )}
 
             {team.teamPhoto && variant === 'feature' && (

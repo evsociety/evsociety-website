@@ -3,6 +3,91 @@
 // Awards, engineering support, collaborators and dates are EV Society proposals until
 // formally confirmed. The competition itself is organized independently by IN-SPACe.
 
+/**
+ * A winning team named by EV Society for one of the awards. Shown on the program page and
+ * published on the competition's winners and team pages (src/config/competitions/inspace.ts).
+ * Leave a field empty when it has not been supplied; it is then left out, never filled in.
+ */
+export interface AwardRecipient {
+    /** Public team page address, /programs/…/teams/<slug>; keep it stable once published */
+    slug: string;
+    year: number;
+    teamName: string;
+    teamCode: string;
+    institution: string;
+    /** Date (YYYY-MM-DD) EV Society confirmed the result */
+    confirmedOn: string;
+    members: string[];
+    link: { label: string; href: string } | null;
+    /** The first photograph is the group photograph used on the winners and team pages */
+    photos: { src: string; width: number; height: number; alt: string }[];
+}
+
+// Details, photographs and link supplied by the EV Society project owner on 28 Nov 2026
+const CAN_7USAT_RECIPIENT: AwardRecipient = {
+    slug: 'dr-mgr-educational-and-research-institute-can-7usat-2026',
+    year: 2026,
+    teamName: '',
+    teamCode: '',
+    institution: 'Dr. M.G.R. Educational and Research Institute, Chennai',
+    confirmedOn: '2026-11-28',
+    members: [],
+    // Canonical form of the supplied https://lnkd.in/p/dvYNtn99 short link
+    link: {
+        label: 'Read on LinkedIn',
+        href: 'https://www.linkedin.com/posts/saishanmugaraja-v-672966220_cansat-can7u-inspace-activity-7524448857238163456-zGig',
+    },
+    photos: [
+        {
+            src: '/programs/space-innovation/can-7usat-award-presentation.jpg',
+            width: 1600,
+            height: 1065,
+            alt: 'The CAN-7USAT winning students from Dr. M.G.R. Educational and Research Institute, Chennai, on stage at the IN-SPACe competition receiving a trophy, one of them holding a red cylinder overhead.',
+        },
+    ],
+};
+
+const MODEL_ROCKETRY_RECIPIENT: AwardRecipient = {
+    slug: 'team-dyaus-rocketry-014',
+    year: 2026,
+    teamName: 'Team Dyaus',
+    teamCode: 'Rocketry-014',
+    institution: '',
+    confirmedOn: '2026-11-28',
+    members: [
+        'Meet Chaklasiya',
+        'Daivik Jajiya',
+        'Arya Patel',
+        'Nikhil Rathod',
+        'Aahna Patel',
+        'Yagna Patel',
+        'Sai Gaikwad',
+        'Meet Kacha',
+    ],
+    // Canonical form of the supplied https://lnkd.in/p/dpw4EvyC short link
+    link: {
+        label: 'Team Dyaus on LinkedIn',
+        href: 'https://www.linkedin.com/posts/team-dyaus-itnu_teamdyaus-nirmauniversity-inspace-activity-7524847331611979776-F2n7',
+    },
+    photos: [
+        {
+            src: '/programs/space-innovation/team-dyaus-award-presentation.jpg',
+            width: 1132,
+            height: 754,
+            alt: 'Team Dyaus on stage at the IN-SPACe competition receiving a trophy, standing and seated in front of an IN-SPACe backdrop beside a model rocket.',
+        },
+        {
+            src: '/programs/space-innovation/team-dyaus-rocket-launch-rail.webp',
+            width: 960,
+            height: 1600,
+            alt: 'A Team Dyaus member stands beside the team’s black model rocket, marked “Team Dyaus”, on a steel launch rail at the competition launch site.',
+        },
+    ],
+};
+
+/** The recipient's public name: the team name, or the institution when no team name was given */
+export const recipientName = (recipient: AwardRecipient) => recipient.teamName || recipient.institution;
+
 export const SPACE_PROGRAM = {
     href: '/programs/inspace-model-rocketry-cansat',
     competitionTitle: 'IN-SPACe Model Rocketry/CAN-7USAT India Student Competition',
@@ -22,47 +107,14 @@ export const SPACE_PROGRAM = {
             category: 'CAN-7USAT',
             name: 'EV Society CAN-7USAT Innovation Award 2026',
             recipient: 'CAN-7USAT winning team',
-            winner: null,
+            winner: CAN_7USAT_RECIPIENT as AwardRecipient | null,
         },
         {
             id: 'model-rocketry',
             category: 'Model Rocketry',
             name: 'EV Society Model Rocketry Innovation Award 2026',
             recipient: 'Model Rocketry winning team',
-            // Team details, photographs and link supplied by the EV Society project owner on 28 Nov 2026
-            winner: {
-                teamName: 'Team Dyaus',
-                teamCode: 'Rocketry-014',
-                members: [
-                    'Meet Chaklasiya',
-                    'Daivik Jajiya',
-                    'Arya Patel',
-                    'Nikhil Rathod',
-                    'Aahna Patel',
-                    'Yagna Patel',
-                    'Sai Gaikwad',
-                    'Meet Kacha',
-                ],
-                // Canonical form of the supplied https://lnkd.in/p/dpw4EvyC short link
-                link: {
-                    label: 'Team Dyaus on LinkedIn',
-                    href: 'https://www.linkedin.com/posts/team-dyaus-itnu_teamdyaus-nirmauniversity-inspace-activity-7524847331611979776-F2n7',
-                },
-                photos: [
-                    {
-                        src: '/programs/space-innovation/team-dyaus-award-presentation.jpg',
-                        width: 1132,
-                        height: 754,
-                        alt: 'Team Dyaus on stage at the IN-SPACe competition receiving a trophy, standing and seated in front of an IN-SPACe backdrop beside a model rocket.',
-                    },
-                    {
-                        src: '/programs/space-innovation/team-dyaus-rocket-launch-rail.webp',
-                        width: 960,
-                        height: 1600,
-                        alt: 'A Team Dyaus member stands beside the team’s black model rocket, marked “Team Dyaus”, on a steel launch rail at the competition launch site.',
-                    },
-                ],
-            },
+            winner: MODEL_ROCKETRY_RECIPIENT as AwardRecipient | null,
         },
     ],
     // Identical for both winning teams by design

@@ -24,8 +24,9 @@ import InPageNav from '@/components/ui/InPageNav';
 import KeepCanSatTogether from '@/components/programs/KeepCanSatTogether';
 import CompetitionJourneys from '@/components/competitions/CompetitionJourneys';
 import TrackView from '@/components/competitions/TrackView';
+import { competitionPaths } from '@/config/competitions';
 import { INSPACE_COMPETITION } from '@/config/competitions/inspace';
-import { SPACE_PROGRAM } from '@/data/programs/space-innovation/program.config';
+import { SPACE_PROGRAM, recipientName, type AwardRecipient } from '@/data/programs/space-innovation/program.config';
 import { OG_IMAGE } from '@/config/site';
 
 const PAGE_PATH = SPACE_PROGRAM.href;
@@ -100,77 +101,104 @@ function OfficialCompetitionLink({ linkId, className, children }: { linkId: stri
 }
 
 type ProgramAward = (typeof SPACE_PROGRAM.awards)[number];
-type AwardWinner = NonNullable<ProgramAward['winner']>;
 
-// Recipient showcase under the award cards: team photographs, members and the team's own link
-function AwardRecipient({ award, winner }: { award: ProgramAward; winner: AwardWinner }) {
-    const [groupPhoto, launchPhoto] = winner.photos;
+// Recipient showcase under the award cards: photographs, members and the team's own link.
+// Anything not supplied (team code, members, a second photograph) is left out.
+function AwardRecipientFeature({ award, winner }: { award: ProgramAward; winner: AwardRecipient }) {
+    const [groupPhoto, secondPhoto] = winner.photos;
     const recipientId = `${award.id}-recipient`;
+    const name = recipientName(winner);
+    // One photograph and no member list: photograph and details side by side on wide screens
+    const sideBySide = !secondPhoto && winner.members.length === 0;
+    const isLinkedIn = winner.link?.href.startsWith('https://www.linkedin.com/') ?? false;
 
     return (
-        <article id={recipientId} className="mt-10 scroll-mt-32 overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm" aria-labelledby={`${recipientId}-heading`}>
-            <div className="grid gap-2 p-2 sm:grid-cols-[5fr_2fr]">
-                <figure className="relative aspect-[3/2] overflow-hidden rounded-2xl bg-gray-100">
-                    <Image
-                        src={groupPhoto.src}
-                        alt={groupPhoto.alt}
-                        fill
-                        quality={90}
-                        sizes="(min-width: 1280px) 860px, (min-width: 640px) 70vw, 100vw"
-                        className="object-cover"
-                    />
-                </figure>
-                <figure className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-gray-100 sm:aspect-auto">
-                    <Image
-                        src={launchPhoto.src}
-                        alt={launchPhoto.alt}
-                        fill
-                        quality={90}
-                        sizes="(min-width: 1280px) 340px, (min-width: 640px) 28vw, 100vw"
-                        className="object-cover object-[50%_40%]"
-                    />
-                </figure>
-            </div>
+        <article
+            id={recipientId}
+            className={`mt-10 scroll-mt-32 overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm ${sideBySide ? 'lg:grid lg:grid-cols-12 lg:items-center' : ''}`}
+            aria-labelledby={`${recipientId}-heading`}
+        >
+            {groupPhoto && (
+                <div className={`grid gap-2 p-2 ${secondPhoto ? 'sm:grid-cols-[5fr_2fr]' : ''} ${sideBySide ? 'lg:col-span-7' : ''}`}>
+                    <figure className="relative overflow-hidden rounded-2xl bg-gray-100" style={{ aspectRatio: `${groupPhoto.width} / ${groupPhoto.height}` }}>
+                        <Image
+                            src={groupPhoto.src}
+                            alt={groupPhoto.alt}
+                            fill
+                            quality={90}
+                            sizes={sideBySide ? '(min-width: 1280px) 700px, (min-width: 1024px) 56vw, 100vw' : '(min-width: 1280px) 860px, (min-width: 640px) 70vw, 100vw'}
+                            className="object-cover"
+                        />
+                    </figure>
+                    {secondPhoto && (
+                        <figure className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-gray-100 sm:aspect-auto">
+                            <Image
+                                src={secondPhoto.src}
+                                alt={secondPhoto.alt}
+                                fill
+                                quality={90}
+                                sizes="(min-width: 1280px) 340px, (min-width: 640px) 28vw, 100vw"
+                                className="object-cover object-[50%_40%]"
+                            />
+                        </figure>
+                    )}
+                </div>
+            )}
 
-            <div className="grid gap-10 p-6 sm:p-8 lg:grid-cols-12 lg:p-10">
-                <div className="lg:col-span-5">
+            <div className={sideBySide ? 'p-6 sm:p-8 lg:col-span-5 lg:p-10' : 'grid gap-10 p-6 sm:p-8 lg:grid-cols-12 lg:p-10'}>
+                <div className={sideBySide ? '' : 'lg:col-span-5'}>
                     <span className="inline-flex items-center gap-1.5 rounded-full bg-navy px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white">
                         <Trophy className="h-3.5 w-3.5 text-primary-300" aria-hidden="true" />
                         Award recipient
                     </span>
-                    <h3 id={`${recipientId}-heading`} className="mt-5 text-2xl font-bold tracking-tight sm:text-3xl">{winner.teamName}</h3>
-                    <p className="mt-1 text-sm font-medium text-gray-500">Team code {winner.teamCode}</p>
+                    <h3 id={`${recipientId}-heading`} className="mt-5 text-2xl font-bold tracking-tight sm:text-3xl">{name}</h3>
+                    {winner.teamName && winner.institution && <p className="mt-1 font-medium text-gray-700">{winner.institution}</p>}
+                    {winner.teamCode && <p className="mt-1 text-sm font-medium text-gray-500">Team code {winner.teamCode}</p>}
                     <p className="mt-4 leading-relaxed text-gray-600">
-                        Recipient of the <strong className="font-semibold text-gray-900">{award.name}</strong>.
+                        {award.category} winning team, recipient of the <strong className="font-semibold text-gray-900">{award.name}</strong>.
                     </p>
-                    <TrackedLink
-                        href={winner.link.href}
-                        linkId={`space_program_${award.id}_recipient_linkedin`}
-                        useNextLink={false}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 font-semibold text-white transition-colors hover:bg-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary motion-reduce:transition-none"
-                    >
-                        <Linkedin className="h-4 w-4 shrink-0" aria-hidden="true" />
-                        {winner.link.label}
-                        <ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true" />
-                        <span className="sr-only"> (opens in a new tab)</span>
-                    </TrackedLink>
+                    <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                        {winner.link && (
+                            <TrackedLink
+                                href={winner.link.href}
+                                linkId={`space_program_${award.id}_recipient_link`}
+                                useNextLink={false}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 font-semibold text-white transition-colors hover:bg-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary motion-reduce:transition-none"
+                            >
+                                {isLinkedIn && <Linkedin className="h-4 w-4 shrink-0" aria-hidden="true" />}
+                                {winner.link.label}
+                                <ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true" />
+                                <span className="sr-only"> (opens in a new tab)</span>
+                            </TrackedLink>
+                        )}
+                        <Link
+                            href={competitionPaths(INSPACE_COMPETITION).team(winner.slug)}
+                            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-gray-300 px-6 font-semibold text-gray-800 transition-colors hover:border-primary hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary motion-reduce:transition-none"
+                        >
+                            Team profile
+                            <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
+                            <span className="sr-only">: {name}</span>
+                        </Link>
+                    </div>
                 </div>
 
-                <div className="lg:col-span-7">
-                    <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-500">
-                        Team members ({winner.members.length})
-                    </h4>
-                    <ul className="mt-4 grid gap-2 sm:grid-cols-2">
-                        {winner.members.map((member) => (
-                            <li key={member} className="flex items-center gap-3 rounded-xl bg-off-white px-4 py-3 font-medium text-gray-900">
-                                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden="true" />
-                                {member}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+                {winner.members.length > 0 && (
+                    <div className="lg:col-span-7">
+                        <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-500">
+                            Team members ({winner.members.length})
+                        </h4>
+                        <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+                            {winner.members.map((member) => (
+                                <li key={member} className="flex items-center gap-3 rounded-xl bg-off-white px-4 py-3 font-medium text-gray-900">
+                                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden="true" />
+                                    {member}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
             </div>
         </article>
     );
@@ -341,9 +369,9 @@ export default function SpaceInnovationProgramPage() {
                                             href={`#${award.id}-recipient`}
                                             className="rounded font-semibold text-primary hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                                         >
-                                            {award.winner.teamName}
-                                        </a>{' '}
-                                        ({award.winner.teamCode}), the {award.recipient}
+                                            {recipientName(award.winner)}
+                                        </a>
+                                        {award.winner.teamCode ? ` (${award.winner.teamCode})` : ''}, the {award.recipient}
                                     </p>
                                 ) : (
                                     <p className="mt-1 text-sm text-gray-500">For the {award.recipient}</p>
@@ -374,7 +402,7 @@ export default function SpaceInnovationProgramPage() {
                     </div>
 
                     {SPACE_PROGRAM.awards.map((award) => award.winner && (
-                        <AwardRecipient key={award.id} award={award} winner={award.winner} />
+                        <AwardRecipientFeature key={award.id} award={award} winner={award.winner} />
                     ))}
                 </div>
             </section>

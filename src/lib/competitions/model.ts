@@ -193,6 +193,8 @@ export interface PublicTeam {
     leader: PublicPerson | null;
     members: PublicPerson[];
     mentors: PublicMentor[];
+    /** https links about the team, e.g. its announcement post; only on teams EV Society publishes from code */
+    links?: { label: string; href: string }[];
 }
 
 export interface PublicAward {

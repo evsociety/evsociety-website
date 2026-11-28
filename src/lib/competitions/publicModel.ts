@@ -246,6 +246,25 @@ export function sanitizeSnapshot(raw: any, competition: CompetitionDefinition): 
     };
 }
 
+/**
+ * Adds the competition's code-published teams to the data, unless the competition is hidden.
+ * The same team in the spreadsheet (same slug, or same year and team code) is kept instead once
+ * it is published there as a verified winner; until then the code copy replaces it.
+ */
+export function withPublishedTeams(data: PublicCompetitionData, competition: CompetitionDefinition): PublicCompetitionData {
+    if (!competition.publishedTeams?.length || !data.config.publicVisible) return data;
+    const codeKey = (t: PublicTeam) => (t.teamCode ? `${t.year}:${t.teamCode.toLowerCase()}` : '');
+    const sameTeam = (a: PublicTeam, b: PublicTeam) => a.slug === b.slug || (!!codeKey(a) && codeKey(a) === codeKey(b));
+    const isWinner = (t: PublicTeam) => t.categories.some((c) => c.winnerVerified && c.participationVerified);
+    let teams = data.teams;
+    for (const team of competition.publishedTeams) {
+        const copies = teams.filter((t) => sameTeam(t, team));
+        if (copies.some(isWinner)) continue;
+        teams = [...teams.filter((t) => !sameTeam(t, team)), team];
+    }
+    return teams === data.teams ? data : { ...data, teams };
+}
+
 /** Data for when no backend is configured: nothing published, awards from code config */
 export function emptyCompetitionData(competition: CompetitionDefinition): PublicCompetitionData {
     return {

@@ -1,6 +1,9 @@
 import 'server-only';
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
 import { ImageResponse } from 'next/og';
 import type { CompetitionDefinition } from '@/config/competitions';
+import { SITE_URL } from '@/config/site';
 import type { PublicTeam } from '../model';
 import { recognitionOf } from '../recognition';
 import { callBackend } from './backend';
@@ -36,8 +39,34 @@ async function fonts(): Promise<Font[]> {
     return loaded.filter((f): f is Font => !!f);
 }
 
+// Photographs of teams EV Society publishes from code are site images under /programs/
+const SITE_PHOTO_RE = /^\/programs\/[a-z0-9-]+(?:\/[a-z0-9-]+)*\.(jpe?g|png)$/;
+
+async function sitePhotoDataUrl(url: string): Promise<string | null> {
+    const ext = SITE_PHOTO_RE.exec(url)?.[1];
+    if (!ext) return null;
+    const mime = ext === 'png' ? 'image/png' : 'image/jpeg';
+    try {
+        const bytes = await readFile(path.join(process.cwd(), 'public', url));
+        return `data:${mime};base64,${bytes.toString('base64')}`;
+    } catch {
+        // Not bundled with this function: fetch the published copy instead
+        try {
+            const res = await fetch(`${SITE_URL}${url}`, { next: { revalidate: 60 * 60 * 24 } });
+            if (!res.ok || res.headers.get('content-type')?.split(';')[0] !== mime) return null;
+            return `data:${mime};base64,${Buffer.from(await res.arrayBuffer()).toString('base64')}`;
+        } catch {
+            return null;
+        }
+    }
+}
+
 /** The approved group photograph as a data URL, or null (never anything unapproved) */
 export async function teamPhotoDataUrl(competition: CompetitionDefinition, team: PublicTeam): Promise<{ src: string; width: number; height: number } | null> {
+    if (team.teamPhoto?.url.startsWith('/programs/')) {
+        const src = await sitePhotoDataUrl(team.teamPhoto.url);
+        return src ? { src, width: team.teamPhoto.width ?? 1200, height: team.teamPhoto.height ?? 800 } : null;
+    }
     const fileId = team.teamPhoto?.url.split('/').pop();
     if (!team.teamPhoto || !fileId) return null;
     try {
