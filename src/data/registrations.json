@@ -427,7 +427,7 @@
                 "Battery Anomaly Detection"
             ],
             "posterLinkURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/13Webinars/mr-vishal-kumar_sim-003-mqtt-telemetry-simulator_poster.png",
-            "youtubeURL": "",
+            "youtubeURL": "https://youtu.be/srUOJorU9Gg",
             "presentationURL": "https://www.evsociety.org/ongoing/OpenDesign/EV.ENGINEER_BatterySafetySystems/12Presentation/mr-vishal-kumar_sim-003-mqtt-telemetry-simulator_ppt.pdf",
             "description": "Design and Development of a Battery Telemetry Simulation System with Anomaly Scenarios, FastAPI Integration, and an Interactive Streamlit Dashboard",
             "reference": [
