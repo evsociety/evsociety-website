@@ -22,12 +22,47 @@ export const SPACE_PROGRAM = {
             category: 'CAN-7USAT',
             name: 'EV Society CAN-7USAT Innovation Award 2026',
             recipient: 'CAN-7USAT winning team',
+            winner: null,
         },
         {
             id: 'model-rocketry',
             category: 'Model Rocketry',
             name: 'EV Society Model Rocketry Innovation Award 2026',
             recipient: 'Model Rocketry winning team',
+            // Team details, photographs and link supplied by the EV Society project owner on 28 Nov 2026
+            winner: {
+                teamName: 'Team Dyaus',
+                teamCode: 'Rocketry-014',
+                members: [
+                    'Meet Chaklasiya',
+                    'Daivik Jajiya',
+                    'Arya Patel',
+                    'Nikhil Rathod',
+                    'Aahna Patel',
+                    'Yagna Patel',
+                    'Sai Gaikwad',
+                    'Meet Kacha',
+                ],
+                // Canonical form of the supplied https://lnkd.in/p/dpw4EvyC short link
+                link: {
+                    label: 'Team Dyaus on LinkedIn',
+                    href: 'https://www.linkedin.com/posts/team-dyaus-itnu_teamdyaus-nirmauniversity-inspace-activity-7524847331611979776-F2n7',
+                },
+                photos: [
+                    {
+                        src: '/programs/space-innovation/team-dyaus-award-presentation.jpg',
+                        width: 1132,
+                        height: 754,
+                        alt: 'Team Dyaus on stage at the IN-SPACe competition receiving a trophy, standing and seated in front of an IN-SPACe backdrop beside a model rocket.',
+                    },
+                    {
+                        src: '/programs/space-innovation/team-dyaus-rocket-launch-rail.webp',
+                        width: 960,
+                        height: 1600,
+                        alt: 'A Team Dyaus member stands beside the team’s black model rocket, marked “Team Dyaus”, on a steel launch rail at the competition launch site.',
+                    },
+                ],
+            },
         },
     ],
     // Identical for both winning teams by design
